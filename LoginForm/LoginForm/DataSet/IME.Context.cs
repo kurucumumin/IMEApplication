@@ -1258,6 +1258,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemDetailTabFiller_Result>("ItemDetailTabFiller", articleNoParameter);
         }
     
+        public virtual ObjectResult<ItemMovement_Result> ItemMovement(string article)
+        {
+            var articleParameter = article != null ?
+                new ObjectParameter("article", article) :
+                new ObjectParameter("article", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemMovement_Result>("ItemMovement", articleParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> MasterAdd(Nullable<int> formName, Nullable<bool> isTwoLineForHedder, Nullable<bool> isTwoLineForDetails, Nullable<int> pageSize1, Nullable<int> pageSizeOther, Nullable<int> blankLneForFooter, string footerLocation, Nullable<int> lineCountBetweenTwo, string pitch, string condensed, Nullable<int> lineCountAfterPrint)
         {
             var formNameParameter = formName.HasValue ?

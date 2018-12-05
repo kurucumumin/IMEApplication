@@ -627,5 +627,12 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("Sales Orders Details Report", "Sales Orders Details report screen has been entered");
         }
+
+        private void btnItemMovement_Click(object sender, EventArgs e)
+        {
+            frmItemMovement frm = new frmItemMovement();
+            frm.ShowDialog();
+            Utils.LogKayit("ItemMovement Report", "Item Movement report screen has been entered");
+        }
     }
 }

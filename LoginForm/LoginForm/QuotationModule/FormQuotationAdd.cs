@@ -2234,7 +2234,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
-                    txtStandartWeight.Text = sW.ToString();
+                    txtStandartWeight.Text = String.Format("{0:0.0000}", sW.ToString());
                 }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bf14b544a10b44e59cf7f014e440596b" Name="Diagram1">
+      <Diagram DiagramId="f4d2d83bcd97449faccd470b4dd6dc8e" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="71.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountOperation" Width="1.5" PointX="17.25" PointY="54" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="6.75" PointY="65.625" IsExpanded="true" />
@@ -68,12 +68,12 @@
         <EntityTypeShape EntityType="IMEModel.RS_InvoiceDetails" Width="1.5" PointX="22.5" PointY="54.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RsFileHistory" Width="1.5" PointX="11.25" PointY="68.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.5" PointX="19.5" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.SaleOrderDetail" Width="1.5" PointX="29.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.5" PointX="19.5" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.SaleOrderDetail" Width="1.5" PointX="29.25" PointY="46.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalesOperation" Width="1.5" PointX="14.25" PointY="64" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="12" PointY="42.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="8.25" PointY="76.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockReserve" Width="1.5" PointX="21.75" PointY="60.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockReserve" Width="1.5" PointX="21.75" PointY="61.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDisk" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDiskP" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Supplier" Width="1.5" PointX="6" PointY="56.625" IsExpanded="true" />

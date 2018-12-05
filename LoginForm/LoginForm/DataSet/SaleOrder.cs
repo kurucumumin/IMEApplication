@@ -61,6 +61,7 @@ namespace LoginForm.DataSet
         public Nullable<bool> ViewSale { get; set; }
         public Nullable<int> BillTo { get; set; }
         public Nullable<int> ShipTo { get; set; }
+        public string CurrName { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }

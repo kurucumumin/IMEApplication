@@ -92,7 +92,8 @@ namespace LoginForm
                            Status = so.Status,
                            QuotationNo = so.QuotationNos,
                            PurchaseID = so.PurchaseOrderID,
-                           PurchaseDate = po.PurchaseOrderDate
+                           PurchaseDate = po.PurchaseOrderDate,
+                           Currency = so.CurrName
                        }).OrderByDescending(s=> s.SaleOrderNO);
             populateGrid(list.ToList());
         }
@@ -122,6 +123,7 @@ namespace LoginForm
                 row.Cells[QuotationNo.Index].Value = item.QuotationNo;
                 row.Cells[PurchaseID.Index].Value = item.PurchaseID;
                 row.Cells[PurchaseDate.Index].Value = item.PurchaseDate;
+                row.Cells[Currency.Index].Value = item.Currency;
             }
 
             foreach (DataGridViewRow row in dgSales.Rows)
@@ -378,7 +380,8 @@ namespace LoginForm
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
                                              PurchaseID = so.PurchaseOrderID,
-                                             PurchaseDate = po.PurchaseOrderDate
+                                             PurchaseDate = po.PurchaseOrderDate,
+                                             Currency = so.CurrName
                                          }).ToList().Where(x => x.SaleOrderNO.ToString().Contains(txtSearchText.Text));
                             //DataTable list1 = new DataTable();
                             //list1 = new Sp_SaleOrder().SearchSaleOrdersWithSaleNo(txtSearchText.Text);
@@ -410,7 +413,8 @@ namespace LoginForm
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
                                             PurchaseID = so.PurchaseOrderID,
-                                            PurchaseDate = po.PurchaseOrderDate
+                                            PurchaseDate = po.PurchaseOrderDate,
+                                            Currency = so.CurrName
                                         };
 
                             populateGrid(list2.ToList());
@@ -440,7 +444,8 @@ namespace LoginForm
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
                                             PurchaseID = so.PurchaseOrderID,
-                                            PurchaseDate = po.PurchaseOrderDate
+                                            PurchaseDate = po.PurchaseOrderDate,
+                                            Currency = so.CurrName
                                         };
 
                             populateGrid(list3.ToList());
@@ -474,7 +479,8 @@ namespace LoginForm
                                                 Status = so.Status,
                                                 QuotationNo = so.QuotationNos,
                                                 PurchaseID = so.PurchaseOrderID,
-                                                PurchaseDate = po.PurchaseOrderDate
+                                                PurchaseDate = po.PurchaseOrderDate,
+                                                Currency = so.CurrName
                                             };
 
                                 populateGrid(list4.ToList());
@@ -506,7 +512,8 @@ namespace LoginForm
                                             Status = so.Status,
                                             QuotationNo = so.QuotationNos,
                                             PurchaseID = so.PurchaseOrderID,
-                                            PurchaseDate = po.PurchaseOrderDate
+                                            PurchaseDate = po.PurchaseOrderDate,
+                                            Currency = so.CurrName
                                         };
 
                             populateGrid(list5.ToList());
@@ -562,7 +569,8 @@ namespace LoginForm
                                              Status = so.Status,
                                              QuotationNo = so.QuotationNos,
                                              PurchaseID = so.PurchaseOrderID,
-                                             PurchaseDate = po.PurchaseOrderDate
+                                             PurchaseDate = po.PurchaseOrderDate,
+                                             Currency = so.CurrName
                                          }).ToList().Where(x => x.SaleOrderNO.ToString().Contains(txtSearchText.Text));
 
                             populateGrid(list1.ToList());

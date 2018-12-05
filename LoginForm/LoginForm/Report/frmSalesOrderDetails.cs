@@ -138,27 +138,27 @@ namespace LoginForm
             var gridAdapterPC = (from a in IME.SalesOrdersDetail(StartDate, EndDate)
                                  select new
                                  {
-                                     QuotationStatus = a.QuotationStatus,
+                                     QuotationStatus = a.SaleOrderStatus,
                                      QuotationNo = a.QuotationNo,
-                                     StartDate = a.StartDate,
+                                     StartDate = a.SaleDate,
                                      CustomerCode = a.ID,
                                      CustomerName = a.c_name,
                                      CategoryName = a.categoryname,
                                      SubCategoryName = a.subcategoryname,
                                      ItemCard = a.ItemCode,
-                                     Qty = a.Qty,
+                                     Qty = a.Quantity,
                                      UcupCurr = a.UCUPCurr,
-                                     TotalQty = a.Qty * a.UCUPCurr,
+                                     TotalQty = a.Quantity * a.UCUPCurr,
                                      CurrName = a.CurrName,
                                      Rate = a.rate,
                                      GBPTotal = a.TLTotal * a.rate * CurrValue,
-                                     GBPCost = a.TLCost * a.Qty,
-                                     GBPLandingCost = a.TLLandingCost * a.Qty,
+                                     GBPCost = a.TLCost * a.Quantity,
+                                     GBPLandingCost = a.TLLandingCost * a.Quantity,
                                      AEDTotal = a.TLTotal * a.rate,
-                                     AEDCost = a.TLCost * CurrValue * a.Qty,
-                                     AEDLandingCost = a.TLLandingCost * CurrValue * a.Qty,
-                                     Marge = a.Marge,
-                                     Markup = (((a.TLTotal * a.rate) / (a.TLLandingCost * CurrValue * a.Qty)) - 1) * 100,
+                                     AEDCost = a.TLCost * CurrValue * a.Quantity,
+                                     AEDLandingCost = a.TLLandingCost * CurrValue * a.Quantity,
+                                     Marge = a.Margin,
+                                     Markup = (((a.TLTotal * a.rate) / (a.TLLandingCost * CurrValue * a.Quantity)) - 1) * 100,
                                      Status = a.Status,
                                      RFQ = a.RFQNo,
                                      Only = a.Only,
@@ -177,7 +177,7 @@ namespace LoginForm
                                      NameLastName = a.NameLastName,
                                      SaleOrderNature = a.SaleOrderNature
                                  }
-                           ).Where(x=> x.SaleOrderNo != null).ToList();
+                           ).ToList();
 
             populateGrid(gridAdapterPC.ToList());
 

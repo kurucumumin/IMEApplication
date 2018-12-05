@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCostMargin = new System.Windows.Forms.Label();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateFirst = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -88,6 +86,8 @@
             this.lblGbpLandingCost = new System.Windows.Forms.Label();
             this.lblLandingCostMarkup = new System.Windows.Forms.Label();
             this.lblLandingCostMargin = new System.Windows.Forms.Label();
+            this.dateFirst = new System.Windows.Forms.DateTimePicker();
+            this.dateEnd = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotList)).BeginInit();
             this.SuspendLayout();
@@ -96,25 +96,11 @@
             // 
             this.lblCostMargin.AutoSize = true;
             this.lblCostMargin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCostMargin.Location = new System.Drawing.Point(605, 25);
+            this.lblCostMargin.Location = new System.Drawing.Point(597, 25);
             this.lblCostMargin.Name = "lblCostMargin";
             this.lblCostMargin.Size = new System.Drawing.Size(15, 15);
             this.lblCostMargin.TabIndex = 391;
             this.lblCostMargin.Text = "0";
-            // 
-            // dateEnd
-            // 
-            this.dateEnd.Location = new System.Drawing.Point(74, 46);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(200, 20);
-            this.dateEnd.TabIndex = 381;
-            // 
-            // dateFirst
-            // 
-            this.dateFirst.Location = new System.Drawing.Point(74, 9);
-            this.dateFirst.Name = "dateFirst";
-            this.dateFirst.Size = new System.Drawing.Size(200, 20);
-            this.dateFirst.TabIndex = 380;
             // 
             // label7
             // 
@@ -470,7 +456,7 @@
             // 
             this.lblCostMarkup.AutoSize = true;
             this.lblCostMarkup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCostMarkup.Location = new System.Drawing.Point(680, 25);
+            this.lblCostMarkup.Location = new System.Drawing.Point(672, 25);
             this.lblCostMarkup.Name = "lblCostMarkup";
             this.lblCostMarkup.Size = new System.Drawing.Size(15, 15);
             this.lblCostMarkup.TabIndex = 393;
@@ -570,7 +556,7 @@
             // 
             this.lblLandingCostMarkup.AutoSize = true;
             this.lblLandingCostMarkup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLandingCostMarkup.Location = new System.Drawing.Point(680, 50);
+            this.lblLandingCostMarkup.Location = new System.Drawing.Point(672, 50);
             this.lblLandingCostMarkup.Name = "lblLandingCostMarkup";
             this.lblLandingCostMarkup.Size = new System.Drawing.Size(15, 15);
             this.lblLandingCostMarkup.TabIndex = 403;
@@ -580,17 +566,33 @@
             // 
             this.lblLandingCostMargin.AutoSize = true;
             this.lblLandingCostMargin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLandingCostMargin.Location = new System.Drawing.Point(605, 50);
+            this.lblLandingCostMargin.Location = new System.Drawing.Point(597, 50);
             this.lblLandingCostMargin.Name = "lblLandingCostMargin";
             this.lblLandingCostMargin.Size = new System.Drawing.Size(15, 15);
             this.lblLandingCostMargin.TabIndex = 402;
             this.lblLandingCostMargin.Text = "0";
+            // 
+            // dateFirst
+            // 
+            this.dateFirst.Location = new System.Drawing.Point(74, 6);
+            this.dateFirst.Name = "dateFirst";
+            this.dateFirst.Size = new System.Drawing.Size(200, 20);
+            this.dateFirst.TabIndex = 420;
+            // 
+            // dateEnd
+            // 
+            this.dateEnd.Location = new System.Drawing.Point(74, 43);
+            this.dateEnd.Name = "dateEnd";
+            this.dateEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateEnd.TabIndex = 421;
             // 
             // frmSalesOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 720);
+            this.Controls.Add(this.dateEnd);
+            this.Controls.Add(this.dateFirst);
             this.Controls.Add(this.lblLandingCostMarkup);
             this.Controls.Add(this.lblLandingCostMargin);
             this.Controls.Add(this.lblGbpLandingCost);
@@ -604,8 +606,6 @@
             this.Controls.Add(this.lblCostMargin);
             this.Controls.Add(this.lblGbpCost);
             this.Controls.Add(this.lblGbpTotal);
-            this.Controls.Add(this.dateEnd);
-            this.Controls.Add(this.dateFirst);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
@@ -629,8 +629,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblCostMargin;
-        private System.Windows.Forms.DateTimePicker dateEnd;
-        private System.Windows.Forms.DateTimePicker dateFirst;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -687,5 +685,7 @@
         private System.Windows.Forms.Label lblGbpLandingCost;
         private System.Windows.Forms.Label lblLandingCostMarkup;
         private System.Windows.Forms.Label lblLandingCostMargin;
+        private System.Windows.Forms.DateTimePicker dateFirst;
+        private System.Windows.Forms.DateTimePicker dateEnd;
     }
 }

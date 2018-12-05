@@ -81,6 +81,7 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlReport = new System.Windows.Forms.Panel();
+            this.brnSalesOrderDetailReport = new AltoControls.AltoButton();
             this.btnQuotvsOrdersDetail = new AltoControls.AltoButton();
             this.btnQuotationOrder = new AltoControls.AltoButton();
             this.btnQuotationOrderCurrency = new AltoControls.AltoButton();
@@ -101,7 +102,7 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.brnSalesOrderDetailReport = new AltoControls.AltoButton();
+            this.btnItemMovement = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -941,6 +942,7 @@ namespace LoginForm.Main
             // 
             this.pnlReport.AutoScroll = true;
             this.pnlReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlReport.Controls.Add(this.btnItemMovement);
             this.pnlReport.Controls.Add(this.brnSalesOrderDetailReport);
             this.pnlReport.Controls.Add(this.btnQuotvsOrdersDetail);
             this.pnlReport.Controls.Add(this.btnQuotationOrder);
@@ -952,6 +954,28 @@ namespace LoginForm.Main
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(218, 0);
             this.pnlReport.TabIndex = 12;
+            // 
+            // brnSalesOrderDetailReport
+            // 
+            this.brnSalesOrderDetailReport.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.brnSalesOrderDetailReport.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.brnSalesOrderDetailReport.BackColor = System.Drawing.Color.Transparent;
+            this.brnSalesOrderDetailReport.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.brnSalesOrderDetailReport.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.brnSalesOrderDetailReport.ForeColor = System.Drawing.Color.Black;
+            this.brnSalesOrderDetailReport.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.brnSalesOrderDetailReport.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.brnSalesOrderDetailReport.Location = new System.Drawing.Point(2, 175);
+            this.brnSalesOrderDetailReport.Margin = new System.Windows.Forms.Padding(2);
+            this.brnSalesOrderDetailReport.Name = "brnSalesOrderDetailReport";
+            this.brnSalesOrderDetailReport.Radius = 5;
+            this.brnSalesOrderDetailReport.Size = new System.Drawing.Size(194, 32);
+            this.brnSalesOrderDetailReport.Stroke = false;
+            this.brnSalesOrderDetailReport.StrokeColor = System.Drawing.Color.Gray;
+            this.brnSalesOrderDetailReport.TabIndex = 14;
+            this.brnSalesOrderDetailReport.Text = "Sales Order Details";
+            this.brnSalesOrderDetailReport.Transparency = true;
+            this.brnSalesOrderDetailReport.Click += new System.EventHandler(this.brnSalesOrderDetailReport_Click);
             // 
             // btnQuotvsOrdersDetail
             // 
@@ -1271,27 +1295,27 @@ namespace LoginForm.Main
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
-            // brnSalesOrderDetailReport
+            // btnItemMovement
             // 
-            this.brnSalesOrderDetailReport.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.brnSalesOrderDetailReport.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.brnSalesOrderDetailReport.BackColor = System.Drawing.Color.Transparent;
-            this.brnSalesOrderDetailReport.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.brnSalesOrderDetailReport.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.brnSalesOrderDetailReport.ForeColor = System.Drawing.Color.Black;
-            this.brnSalesOrderDetailReport.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.brnSalesOrderDetailReport.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.brnSalesOrderDetailReport.Location = new System.Drawing.Point(2, 175);
-            this.brnSalesOrderDetailReport.Margin = new System.Windows.Forms.Padding(2);
-            this.brnSalesOrderDetailReport.Name = "brnSalesOrderDetailReport";
-            this.brnSalesOrderDetailReport.Radius = 5;
-            this.brnSalesOrderDetailReport.Size = new System.Drawing.Size(194, 32);
-            this.brnSalesOrderDetailReport.Stroke = false;
-            this.brnSalesOrderDetailReport.StrokeColor = System.Drawing.Color.Gray;
-            this.brnSalesOrderDetailReport.TabIndex = 14;
-            this.brnSalesOrderDetailReport.Text = "Sales Order Details";
-            this.brnSalesOrderDetailReport.Transparency = true;
-            this.brnSalesOrderDetailReport.Click += new System.EventHandler(this.brnSalesOrderDetailReport_Click);
+            this.btnItemMovement.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnItemMovement.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnItemMovement.BackColor = System.Drawing.Color.Transparent;
+            this.btnItemMovement.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnItemMovement.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnItemMovement.ForeColor = System.Drawing.Color.Black;
+            this.btnItemMovement.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnItemMovement.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnItemMovement.Location = new System.Drawing.Point(2, 211);
+            this.btnItemMovement.Margin = new System.Windows.Forms.Padding(2);
+            this.btnItemMovement.Name = "btnItemMovement";
+            this.btnItemMovement.Radius = 5;
+            this.btnItemMovement.Size = new System.Drawing.Size(194, 32);
+            this.btnItemMovement.Stroke = false;
+            this.btnItemMovement.StrokeColor = System.Drawing.Color.Gray;
+            this.btnItemMovement.TabIndex = 15;
+            this.btnItemMovement.Text = "Item Movement";
+            this.btnItemMovement.Transparency = true;
+            this.btnItemMovement.Click += new System.EventHandler(this.btnItemMovement_Click);
             // 
             // frmMainMetro
             // 
@@ -1390,5 +1414,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnQuotationOrder;
         private AltoControls.AltoButton btnQuotvsOrdersDetail;
         private AltoControls.AltoButton brnSalesOrderDetailReport;
+        private AltoControls.AltoButton btnItemMovement;
     }
 }

@@ -28,18 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label13 = new System.Windows.Forms.Label();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotList = new System.Windows.Forms.DataGridView();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateFirst = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deleted = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +76,10 @@
             this.CCCNNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RepName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateFirst = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblLandingCostMarkup = new System.Windows.Forms.Label();
             this.lblLandingCostMargin = new System.Windows.Forms.Label();
             this.lblGbpLandingCost = new System.Windows.Forms.Label();
@@ -211,38 +211,6 @@
             this.dgQuotList.Size = new System.Drawing.Size(1342, 607);
             this.dgQuotList.TabIndex = 0;
             // 
-            // dateEnd
-            // 
-            this.dateEnd.Location = new System.Drawing.Point(74, 52);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(200, 20);
-            this.dateEnd.TabIndex = 359;
-            // 
-            // dateFirst
-            // 
-            this.dateFirst.Location = new System.Drawing.Point(74, 12);
-            this.dateFirst.Name = "dateFirst";
-            this.dateFirst.Size = new System.Drawing.Size(200, 20);
-            this.dateFirst.TabIndex = 358;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 56);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
-            this.label7.TabIndex = 354;
-            this.label7.Text = "End Date";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 353;
-            this.label2.Text = "Start Date";
-            // 
             // No
             // 
             this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -273,8 +241,8 @@
             // 
             // CustomerCode
             // 
-            dataGridViewCellStyle5.Format = "N2";
-            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Format = "N2";
+            this.CustomerCode.DefaultCellStyle = dataGridViewCellStyle3;
             this.CustomerCode.HeaderText = "Cust Code";
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.ReadOnly = true;
@@ -287,8 +255,8 @@
             // 
             // CustomerCategory
             // 
-            dataGridViewCellStyle6.Format = "N2";
-            this.CustomerCategory.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Format = "N2";
+            this.CustomerCategory.DefaultCellStyle = dataGridViewCellStyle4;
             this.CustomerCategory.HeaderText = "Cust. Category";
             this.CustomerCategory.Name = "CustomerCategory";
             this.CustomerCategory.ReadOnly = true;
@@ -491,11 +459,43 @@
             this.DeliveryType.Name = "DeliveryType";
             this.DeliveryType.ReadOnly = true;
             // 
+            // dateEnd
+            // 
+            this.dateEnd.Location = new System.Drawing.Point(74, 52);
+            this.dateEnd.Name = "dateEnd";
+            this.dateEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateEnd.TabIndex = 359;
+            // 
+            // dateFirst
+            // 
+            this.dateFirst.Location = new System.Drawing.Point(74, 12);
+            this.dateFirst.Name = "dateFirst";
+            this.dateFirst.Size = new System.Drawing.Size(200, 20);
+            this.dateFirst.TabIndex = 358;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 354;
+            this.label7.Text = "End Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 353;
+            this.label2.Text = "Start Date";
+            // 
             // lblLandingCostMarkup
             // 
             this.lblLandingCostMarkup.AutoSize = true;
             this.lblLandingCostMarkup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLandingCostMarkup.Location = new System.Drawing.Point(725, 50);
+            this.lblLandingCostMarkup.Location = new System.Drawing.Point(717, 50);
             this.lblLandingCostMarkup.Name = "lblLandingCostMarkup";
             this.lblLandingCostMarkup.Size = new System.Drawing.Size(15, 15);
             this.lblLandingCostMarkup.TabIndex = 416;
@@ -505,7 +505,7 @@
             // 
             this.lblLandingCostMargin.AutoSize = true;
             this.lblLandingCostMargin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLandingCostMargin.Location = new System.Drawing.Point(650, 50);
+            this.lblLandingCostMargin.Location = new System.Drawing.Point(642, 50);
             this.lblLandingCostMargin.Name = "lblLandingCostMargin";
             this.lblLandingCostMargin.Size = new System.Drawing.Size(15, 15);
             this.lblLandingCostMargin.TabIndex = 415;
@@ -547,9 +547,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label12.Location = new System.Drawing.Point(423, 73);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 15);
+            this.label12.Size = new System.Drawing.Size(119, 15);
             this.label12.TabIndex = 411;
-            this.label12.Text = "SALES (GBP)      :";
+            this.label12.Text = "SALES (AED)      :";
             // 
             // label9
             // 
@@ -557,9 +557,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.Location = new System.Drawing.Point(423, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 15);
+            this.label9.Size = new System.Drawing.Size(120, 15);
             this.label9.TabIndex = 410;
-            this.label9.Text = "LANDING (GBP)  :";
+            this.label9.Text = "LANDING (AED)  :";
             // 
             // label6
             // 
@@ -567,9 +567,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.Location = new System.Drawing.Point(423, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 15);
+            this.label6.Size = new System.Drawing.Size(120, 15);
             this.label6.TabIndex = 409;
-            this.label6.Text = "COST (GBP)        :";
+            this.label6.Text = "COST (AED)        :";
             // 
             // label4
             // 
@@ -585,7 +585,7 @@
             // 
             this.lblCostMarkup.AutoSize = true;
             this.lblCostMarkup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCostMarkup.Location = new System.Drawing.Point(725, 25);
+            this.lblCostMarkup.Location = new System.Drawing.Point(717, 25);
             this.lblCostMarkup.Name = "lblCostMarkup";
             this.lblCostMarkup.Size = new System.Drawing.Size(15, 15);
             this.lblCostMarkup.TabIndex = 407;
@@ -595,7 +595,7 @@
             // 
             this.lblCostMargin.AutoSize = true;
             this.lblCostMargin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCostMargin.Location = new System.Drawing.Point(650, 25);
+            this.lblCostMargin.Location = new System.Drawing.Point(642, 25);
             this.lblCostMargin.Name = "lblCostMargin";
             this.lblCostMargin.Size = new System.Drawing.Size(15, 15);
             this.lblCostMargin.TabIndex = 406;

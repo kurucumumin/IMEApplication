@@ -13,15 +13,15 @@ namespace LoginForm.DataSet
     
     public partial class SalesOrdersDetail_Result
     {
-        public string QuotationStatus { get; set; }
+        public string SaleOrderStatus { get; set; }
         public string QuotationNo { get; set; }
-        public System.DateTime StartDate { get; set; }
+        public System.DateTime SaleDate { get; set; }
         public string ID { get; set; }
         public string c_name { get; set; }
         public string categoryname { get; set; }
         public string subcategoryname { get; set; }
         public string ItemCode { get; set; }
-        public Nullable<int> Qty { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> UCUPCurr { get; set; }
         public string TotalQuo { get; set; }
         public string CurrName { get; set; }
@@ -32,12 +32,11 @@ namespace LoginForm.DataSet
         public Nullable<decimal> GBPTotal { get; set; }
         public Nullable<decimal> GBPCost { get; set; }
         public Nullable<decimal> GBPLandingCost { get; set; }
-        public Nullable<decimal> Marge { get; set; }
+        public Nullable<decimal> Margin { get; set; }
         public string Status { get; set; }
         public string RFQNo { get; set; }
         public string Only { get; set; }
-        public Nullable<decimal> SaleOrderNo { get; set; }
-        public Nullable<System.DateTime> SaleDate { get; set; }
+        public decimal SaleOrderNo { get; set; }
         public string LPONO { get; set; }
         public string PurchaseNo { get; set; }
         public string RSinvoice { get; set; }

@@ -378,6 +378,9 @@
     <Compile Include="DataSet\ItemHistory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ItemMovement_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ItemNote.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1104,6 +1107,12 @@
     <Compile Include="Report\frmGetCost.Designer.cs">
       <DependentUpon>frmGetCost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmItemMovement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmItemMovement.Designer.cs">
+      <DependentUpon>frmItemMovement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmQuotOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1542,6 +1551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmGetCost.resx">
       <DependentUpon>frmGetCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmItemMovement.resx">
+      <DependentUpon>frmItemMovement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmQuotOrders.resx">
       <DependentUpon>frmQuotOrders.cs</DependentUpon>

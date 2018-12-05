@@ -73,6 +73,7 @@
             this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
@@ -413,7 +414,8 @@
             this.Status,
             this.QuotationNo,
             this.PurchaseID,
-            this.PurchaseDate});
+            this.PurchaseDate,
+            this.Currency});
             this.dgSales.ContextMenuStrip = this.gridRightClick;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -547,6 +549,12 @@
             this.PurchaseDate.Name = "PurchaseDate";
             this.PurchaseDate.ReadOnly = true;
             // 
+            // Currency
+            // 
+            this.Currency.HeaderText = "Currency";
+            this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
+            // 
             // FormSalesOrderMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -614,5 +622,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
     }
 }
