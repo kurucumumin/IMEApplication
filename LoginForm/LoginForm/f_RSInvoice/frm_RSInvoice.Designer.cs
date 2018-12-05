@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -73,7 +72,7 @@
             this.dgCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctx_dgRSInvoice = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctx_dgRSInvoice = new System.Windows.Forms.ContextMenuStrip();
             this.viewInvoicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -339,7 +338,6 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(62, 15);
             this.dtpToDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpToDate.MaxDate = new System.DateTime(9998, 9, 5, 0, 0, 0, 0);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(90, 20);
             this.dtpToDate.TabIndex = 18;
@@ -351,7 +349,6 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(62, 41);
             this.dtpFromDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFromDate.MaxDate = new System.DateTime(2018, 9, 4, 0, 0, 0, 0);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
             this.dtpFromDate.TabIndex = 19;
@@ -406,14 +403,14 @@
             this.dgSupplierID,
             this.dgUserID});
             this.dgvRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRSInvoice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRSInvoice.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRSInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvRSInvoice.Location = new System.Drawing.Point(6, 104);

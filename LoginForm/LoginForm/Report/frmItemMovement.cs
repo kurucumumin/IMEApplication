@@ -7,6 +7,7 @@ using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.DataSet;
 using System.Globalization;
+using System.Windows.Documents;
 
 namespace LoginForm
 {
@@ -14,7 +15,7 @@ namespace LoginForm
     {
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
-
+        IEnumerable<List> GridMovement;
         public frmItemMovement()
         {
             InitializeComponent();
@@ -134,13 +135,12 @@ namespace LoginForm
         {
             string Article_No = dgItem.CurrentRow.Cells[Code.Index].Value.ToString();
 
-            var gridAdapterPC = (from a in IME.ItemMovement(Article_No)
+            var gridAdapterPC = (from a in IME.ItemMovement(Article_No) 
                                  select new
                                  {
                                      Date = a.SaleDate,
                                      FicheNo = a.FicheNo,
                                      Customer = a.c_name,
-                                     FicheDocumentNo = a.FicheDocumentNo,
                                      Qty = a.Quantity,
                                      InOut = a.InOut,
                                      Type = a.Type,
@@ -156,6 +156,9 @@ namespace LoginForm
 
         private void populateGridMovement<T>(List<T> queryable)
         {
+            int In = 0;
+            int Out = 0;
+            int qty = 0;
             dgMovement.Rows.Clear();
             dgMovement.Refresh();
             foreach (dynamic item in queryable)
@@ -166,21 +169,101 @@ namespace LoginForm
                 row.Cells[Date.Index].Value = item.Date;
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[CustomerName.Index].Value = item.Customer;
-                row.Cells[FicheDocNo.Index].Value = item.FicheDocumentNo;
                 row.Cells[Qty.Index].Value = item.Qty;
                 row.Cells[InOut.Index].Value = item.InOut;
                 if (item.InOut == "IN")
                 {
-                    row.Cells[Type.Index].Value = "Sales Invoice";
+                    row.Cells[Type.Index].Value = "Purchase invoice";
                 }
                 else
                 {
-                    row.Cells[Type.Index].Value = "Purchase invoice";
+                    row.Cells[Type.Index].Value = "Sales Invoice";
                 }
                 row.Cells[UnitOfMeasure.Index].Value = item.UOM;
                 row.Cells[UKPrice.Index].Value = item.Price;
                 row.Cells[Total.Index].Value = item.Total;
                 row.Cells[Currency.Index].Value = item.Currency;
+            }
+
+            for (int i = 0; i < dgMovement.RowCount; i++)
+            {
+                if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "IN")
+                {
+                    In = In + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                }
+                else if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "OUT")
+                {
+                    Out = Out + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                }
+                else
+                {
+                    qty = qty + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                }
+            }
+            txtIN.Text = In.ToString();
+            txtOUT.Text = Out.ToString();
+            txtQty.Text = qty.ToString();
+        }
+
+        private void btnMovementItem_Click(object sender, EventArgs e)
+        {
+            MovementSelect(txtMovement.Text);
+            dgMovement.Select();
+        }
+
+        private void txtMovement_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MovementSelect(txtMovement.Text);
+                dgMovement.Select();
+            }
+        }
+
+        private void MovementSelect(string name)
+        {
+            string Article_No = dgItem.CurrentRow.Cells[Code.Index].Value.ToString();
+            string cName= name.ToUpperInvariant();
+            if (name != "")
+            {
+                var gridAdapterPC = (from a in IME.ItemMovement(Article_No)
+                                     where a.c_name.Intersect(cName).Any()
+                                     select new
+                                     {
+                                         Date = a.SaleDate,
+                                         FicheNo = a.FicheNo,
+                                         Customer = a.c_name,
+                                         Qty = a.Quantity,
+                                         InOut = a.InOut,
+                                         Type = a.Type,
+                                         UOM = a.UnitMeasure,
+                                         Price = a.UKPrice,
+                                         Total = a.SubTotal,
+                                         Currency = a.CurrName
+                                     }
+                       ).ToList();
+
+                populateGridMovement(gridAdapterPC.ToList());
+            }
+            else
+            {
+                var gridAdapterPC = (from a in IME.ItemMovement(Article_No)
+                                     select new
+                                     {
+                                         Date = a.SaleDate,
+                                         FicheNo = a.FicheNo,
+                                         Customer = a.c_name,
+                                         Qty = a.Quantity,
+                                         InOut = a.InOut,
+                                         Type = a.Type,
+                                         UOM = a.UnitMeasure,
+                                         Price = a.UKPrice,
+                                         Total = a.SubTotal,
+                                         Currency = a.CurrName
+                                     }
+                       ).ToList();
+
+                populateGridMovement(gridAdapterPC.ToList());
             }
         }
     }

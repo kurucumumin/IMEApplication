@@ -12,7 +12,7 @@ namespace LoginForm.Services.SP
 {
     class Sp_RSInvoice
     {
-        public Sp_RSInvoice() { }
+       // public Sp_RSInvoice() { }
 
         public DataTable GetRSInvoiceAll()
         {
@@ -281,6 +281,7 @@ namespace LoginForm.Services.SP
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
                 invoiceTransaction.Rollback();
                 return false;
             }

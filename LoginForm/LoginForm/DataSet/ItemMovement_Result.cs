@@ -14,7 +14,7 @@ namespace LoginForm.DataSet
     public partial class ItemMovement_Result
     {
         public System.DateTime SaleDate { get; set; }
-        public string FicheNo { get; set; }
+        public Nullable<int> FicheNo { get; set; }
         public string c_name { get; set; }
         public string FicheDocumentNo { get; set; }
         public Nullable<int> Quantity { get; set; }

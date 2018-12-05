@@ -9406,7 +9406,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </ComplexType>
         <ComplexType Name="ItemMovement_Result">
           <Property Type="DateTime" Name="SaleDate" Nullable="false" />
-          <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="FicheNo" Nullable="true" />
           <Property Type="String" Name="c_name" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="FicheDocumentNo" Nullable="false" MaxLength="1" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />

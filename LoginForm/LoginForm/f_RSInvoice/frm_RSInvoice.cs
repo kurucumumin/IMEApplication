@@ -38,8 +38,8 @@ namespace LoginForm.f_RSInvoice
 
         private void frm_RSInvoice_Load(object sender, EventArgs e)
         {
-            dtpToDate.Value = DateTime.Now.Date;
-            dtpFromDate.Value = DateTime.Now.AddMonths(-1).Date;
+            dtpToDate.Value = Utils.GetCurrentDateTime().Date;
+            dtpFromDate.Value = Utils.GetCurrentDateTime().AddMonths(-3).Date;
 
             bgw_RSInvoiceGetter.RunWorkerAsync();
 

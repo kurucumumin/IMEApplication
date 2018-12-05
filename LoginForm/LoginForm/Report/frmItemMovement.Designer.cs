@@ -32,6 +32,8 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.grpItemList = new System.Windows.Forms.GroupBox();
             this.dgItem = new System.Windows.Forms.DataGridView();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnItemClear = new System.Windows.Forms.Button();
             this.btnItemFind = new System.Windows.Forms.Button();
             this.txtItem = new System.Windows.Forms.TextBox();
@@ -40,15 +42,18 @@
             this.btnMovementClear = new System.Windows.Forms.Button();
             this.txtMovement = new System.Windows.Forms.TextBox();
             this.btnMovementItem = new System.Windows.Forms.Button();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArticleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIN = new System.Windows.Forms.TextBox();
+            this.txtOUT = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FicheDocNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.InOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +67,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 64);
+            this.label13.Location = new System.Drawing.Point(8, 53);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 380;
@@ -75,12 +80,13 @@
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
             this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcel.Location = new System.Drawing.Point(9, 9);
+            this.btnExcel.Location = new System.Drawing.Point(9, 1);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(0);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.btnExcel.Size = new System.Drawing.Size(52, 52);
             this.btnExcel.TabIndex = 379;
+            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
@@ -90,24 +96,38 @@
             this.grpItemList.Controls.Add(this.btnItemClear);
             this.grpItemList.Controls.Add(this.btnItemFind);
             this.grpItemList.Controls.Add(this.txtItem);
-            this.grpItemList.Location = new System.Drawing.Point(7, 97);
+            this.grpItemList.Location = new System.Drawing.Point(7, 75);
             this.grpItemList.Name = "grpItemList";
-            this.grpItemList.Size = new System.Drawing.Size(336, 611);
+            this.grpItemList.Size = new System.Drawing.Size(336, 644);
             this.grpItemList.TabIndex = 381;
             this.grpItemList.TabStop = false;
             this.grpItemList.Text = "Item List";
             // 
             // dgItem
             // 
+            this.dgItem.AllowUserToAddRows = false;
+            this.dgItem.AllowUserToDeleteRows = false;
             this.dgItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Code,
             this.ArticleName});
             this.dgItem.Location = new System.Drawing.Point(6, 46);
             this.dgItem.Name = "dgItem";
+            this.dgItem.ReadOnly = true;
             this.dgItem.Size = new System.Drawing.Size(321, 559);
             this.dgItem.TabIndex = 5;
             this.dgItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItem_CellDoubleClick);
+            // 
+            // Code
+            // 
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // ArticleName
+            // 
+            this.ArticleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleName.HeaderText = "Name";
+            this.ArticleName.Name = "ArticleName";
             // 
             // btnItemClear
             // 
@@ -143,31 +163,33 @@
             this.grpMovementList.Controls.Add(this.btnMovementClear);
             this.grpMovementList.Controls.Add(this.txtMovement);
             this.grpMovementList.Controls.Add(this.btnMovementItem);
-            this.grpMovementList.Location = new System.Drawing.Point(349, 97);
+            this.grpMovementList.Location = new System.Drawing.Point(349, 75);
             this.grpMovementList.Name = "grpMovementList";
-            this.grpMovementList.Size = new System.Drawing.Size(987, 611);
+            this.grpMovementList.Size = new System.Drawing.Size(996, 644);
             this.grpMovementList.TabIndex = 382;
             this.grpMovementList.TabStop = false;
-            this.grpMovementList.Text = "Movement List";
+            this.grpMovementList.Text = "Search Name";
             // 
             // dgMovement
             // 
+            this.dgMovement.AllowUserToAddRows = false;
+            this.dgMovement.AllowUserToDeleteRows = false;
             this.dgMovement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMovement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
             this.FicheNo,
+            this.Type,
             this.CustomerName,
-            this.FicheDocNo,
             this.Qty,
             this.InOut,
-            this.Type,
             this.UnitOfMeasure,
             this.UKPrice,
             this.Total,
             this.Currency});
             this.dgMovement.Location = new System.Drawing.Point(0, 45);
             this.dgMovement.Name = "dgMovement";
-            this.dgMovement.Size = new System.Drawing.Size(975, 559);
+            this.dgMovement.ReadOnly = true;
+            this.dgMovement.Size = new System.Drawing.Size(990, 559);
             this.dgMovement.TabIndex = 6;
             // 
             // btnMovementClear
@@ -186,6 +208,7 @@
             this.txtMovement.Name = "txtMovement";
             this.txtMovement.Size = new System.Drawing.Size(179, 20);
             this.txtMovement.TabIndex = 3;
+            this.txtMovement.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMovement_KeyDown);
             // 
             // btnMovementItem
             // 
@@ -195,78 +218,128 @@
             this.btnMovementItem.TabIndex = 2;
             this.btnMovementItem.Text = "Find";
             this.btnMovementItem.UseVisualStyleBackColor = true;
+            this.btnMovementItem.Click += new System.EventHandler(this.btnMovementItem_Click);
             // 
-            // Code
+            // label1
             // 
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(518, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 383;
+            this.label1.Text = "Total IN";
             // 
-            // ArticleName
+            // label2
             // 
-            this.ArticleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ArticleName.HeaderText = "Name";
-            this.ArticleName.Name = "ArticleName";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(635, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 384;
+            this.label2.Text = "Total OUT";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(574, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 385;
+            this.label3.Text = "Stock Qty";
+            // 
+            // txtIN
+            // 
+            this.txtIN.Location = new System.Drawing.Point(569, 15);
+            this.txtIN.Name = "txtIN";
+            this.txtIN.Size = new System.Drawing.Size(59, 20);
+            this.txtIN.TabIndex = 7;
+            // 
+            // txtOUT
+            // 
+            this.txtOUT.Location = new System.Drawing.Point(698, 15);
+            this.txtOUT.Name = "txtOUT";
+            this.txtOUT.Size = new System.Drawing.Size(59, 20);
+            this.txtOUT.TabIndex = 386;
+            // 
+            // txtQty
+            // 
+            this.txtQty.Location = new System.Drawing.Point(633, 46);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(59, 20);
+            this.txtQty.TabIndex = 387;
             // 
             // Date
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // FicheNo
             // 
-            this.FicheNo.HeaderText = "Fiche No";
+            this.FicheNo.HeaderText = "Document No";
             this.FicheNo.Name = "FicheNo";
+            this.FicheNo.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Document Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
             // 
             // CustomerName
             // 
-            this.CustomerName.HeaderText = "Customer Name";
+            this.CustomerName.HeaderText = "Name";
             this.CustomerName.Name = "CustomerName";
-            // 
-            // FicheDocNo
-            // 
-            this.FicheDocNo.HeaderText = "Fiche Doc No";
-            this.FicheDocNo.Name = "FicheDocNo";
+            this.CustomerName.ReadOnly = true;
             // 
             // Qty
             // 
             this.Qty.HeaderText = "Qty";
             this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // InOut
             // 
             this.InOut.HeaderText = "I/O";
             this.InOut.Name = "InOut";
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
+            this.InOut.ReadOnly = true;
             // 
             // UnitOfMeasure
             // 
             this.UnitOfMeasure.HeaderText = "UOM";
             this.UnitOfMeasure.Name = "UnitOfMeasure";
+            this.UnitOfMeasure.ReadOnly = true;
             // 
             // UKPrice
             // 
             this.UKPrice.HeaderText = "UKPrice";
             this.UKPrice.Name = "UKPrice";
+            this.UKPrice.ReadOnly = true;
             // 
             // Total
             // 
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // Currency
             // 
             this.Currency.HeaderText = "Currency";
             this.Currency.Name = "Currency";
+            this.Currency.ReadOnly = true;
             // 
             // frmItemMovement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 720);
+            this.Controls.Add(this.txtQty);
+            this.Controls.Add(this.txtOUT);
+            this.Controls.Add(this.txtIN);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.grpMovementList);
             this.Controls.Add(this.grpItemList);
             this.Controls.Add(this.label13);
@@ -303,13 +376,18 @@
         private System.Windows.Forms.DataGridView dgMovement;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtIN;
+        private System.Windows.Forms.TextBox txtOUT;
+        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn FicheNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FicheDocNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
         private System.Windows.Forms.DataGridViewTextBoxColumn UKPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
