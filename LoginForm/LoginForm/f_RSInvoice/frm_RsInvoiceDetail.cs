@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LoginForm.DataSet;
 using System.Windows.Forms;
+using LoginForm.Services;
+using System.Data.SqlClient;
 
 namespace LoginForm.f_RSInvoice
 {
@@ -170,16 +172,119 @@ namespace LoginForm.f_RSInvoice
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            int RSInvoiceID = 0;
             try
             {
-                new Sp_RSInvoice().RsInvoiceAdd(Invoice);
+                IMEEntities IME = new IMEEntities();
+
+                RS_Invoice rs = new RS_Invoice();
+
+                rs.ShipmentReference = Invoice.ShipmentReference.ToString();
+                rs.BillingDocumentReference = Invoice.BillingDocumentReference.ToString();
+                rs.ShippingCondition = Invoice.ShippingCondition.ToString();
+                rs.BillingDocumentDate = Invoice.BillingDocumentDate;
+                rs.SupplyingECCompany= Invoice.SupplyingECCompany.ToString();
+                rs.CustomerReference= Invoice.CustomerReference.ToString();
+                rs.InvoiceTaxValue= Invoice.InvoiceTaxValue;
+                rs.InvoiceGoodsValue= Invoice.InvoiceGoodsValue;
+                rs.InvoiceNettValue= Invoice.InvoiceNettValue;
+                rs.Currency= Invoice.Currency.ToString();
+                rs.AirwayBillNumber= Invoice.AirwayBillNumber.ToString();
+                rs.Discount = Invoice.Discount;
+                rs.Surcharge= Invoice.Surcharge;
+                rs.SupplierID = IME.Suppliers.Where(x => x.s_name == "RS").FirstOrDefault().ID;
+                rs.CreateDate= Utils.GetCurrentDateTime();
+                rs.UserID = Utils.getCurrentUser().WorkerID;
+                rs.Deleted= Invoice.Deleted;
+
+                IME.RS_Invoice.Add(rs);
+                IME.SaveChanges();
+
+                foreach (RS_InvoiceDetails item in Invoice.RS_InvoiceDetails)
+                {
+                    RS_InvoiceDetails rsd = new RS_InvoiceDetails();
+                    DataGridViewRow gRow = dgRsInvoiceItems.Rows[dgRsInvoiceItems.Rows.Add()];
+
+                    RSInvoiceID = Convert.ToInt32(GetRSInvoiceWithBillingDocumentReference(Invoice.BillingDocumentReference).Rows[0]["ID"]);
+
+                    rsd.RS_InvoiceID = RSInvoiceID;
+                    rsd.PurchaseOrderNumber = item.PurchaseOrderNumber.ToString();
+                    rsd.PurchaseOrderItemNumber= item.PurchaseOrderItemNumber;
+                    rsd.ProductNumber = item.ProductNumber.ToString();
+                    rsd.BillingItemNumber = item.BillingItemNumber;
+                    rsd.Quantity = item.Quantity;
+                    rsd.SalesUnit = item.SalesUnit.ToString();
+                    rsd.UnitPrice = item.UnitPrice;
+                    rsd.Discount = item.Discount;
+                    rsd.GoodsValue = item.GoodsValue;
+                    rsd.Amount = item.Amount;
+                    rsd.CCCNNO = item.CCCNNO.ToString();
+                    rsd.CountryofOrigin = item.CountryofOrigin.ToString();
+                    rsd.ArticleDescription = item.ArticleDescription.ToString();
+                    rsd.DeliveryNumber = item.DeliveryNumber;
+                    rsd.DeliveryItemNumber = item.DeliveryItemNumber;
+                    rsd.PurchaseOrderID = item.PurchaseOrderID;
+                    rsd.Tax = item.Tax;
+
+                    IME.RS_InvoiceDetails.Add(rsd);
+                    IME.SaveChanges();
+                }
+
+                
             }
             catch (Exception)
             {
-
+                MessageBox.Show("An error was encountered", "Error!");
                 throw;
             }
-            
+
+            this.Close();
+            //try
+            //{
+            //    new Sp_RSInvoice().RsInvoiceAdd(Invoice);
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
+
+        }
+
+        public DataTable GetRSInvoiceWithBillingDocumentReference(string reference)
+        {
+            SqlConnection conn = new Utils().ImeSqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction imeTransaction = null;
+            DataTable dataTableResult = new DataTable();
+
+            try
+            {
+                imeTransaction = conn.BeginTransaction();
+                cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    Transaction = imeTransaction,
+                    CommandText = @"[prc_GetRSInvoiceWithBillingDocumentReference]"
+                };
+                cmd.Parameters.AddWithValue("@BillingDocumentReference", reference);
+
+                SqlDataAdapter daRsInvoice = new SqlDataAdapter(cmd);
+                daRsInvoice.Fill(dataTableResult);
+                imeTransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                imeTransaction.Rollback();
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dataTableResult;
         }
     }
 }

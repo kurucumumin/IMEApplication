@@ -80,8 +80,9 @@ namespace LoginForm.MyClasses
             ImeLogoPurchaseInvoice invoice = new ImeLogoPurchaseInvoice();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-
-            return invoice.addPurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), ImeSettings.FrmNo, ImeSettings.DnmNo);
+            string dnmNo = Utils.dbDnmNo();
+            string frmNo = Utils.dbFrmNo();
+            return invoice.addPurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), frmNo, dnmNo);
         }
 
         public string BackFromLogo_SaleOrder(int SoNO)

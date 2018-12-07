@@ -1447,6 +1447,7 @@
           <Property Name="panNumber" Type="varchar(max)" />
           <Property Name="pfNumber" Type="varchar(max)" />
           <Property Name="esiNumber" Type="varchar(max)" />
+          <Property Name="country" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.CariHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6150,6 +6151,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="panNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="pfNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="esiNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AccountOperations" Relationship="Self.FK__AccountOp__Repre__2FE4F47A" FromRole="Worker" ToRole="AccountOperation" />
           <NavigationProperty Name="BackOrderMains" Relationship="Self.FK__BackOrder__userI__75ED5D0F" FromRole="Worker" ToRole="BackOrderMain" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__accoun__428DB49A" FromRole="Worker" ToRole="Customer" />
@@ -11537,6 +11539,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="panNumber" ColumnName="panNumber" />
                 <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
                 <ScalarProperty Name="esiNumber" ColumnName="esiNumber" />
+                <ScalarProperty Name="country" ColumnName="country" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

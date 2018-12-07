@@ -28,29 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnCreatePurchase = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.gridControl1 = new System.Windows.Forms.DataGridView();
+            this.Choose = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SaleOrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Location = new System.Drawing.Point(2, 3);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1043, 604);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // btnCreatePurchase
             // 
@@ -71,6 +61,67 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Create Purchase Order";
             // 
+            // gridControl1
+            // 
+            this.gridControl1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridControl1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Choose,
+            this.SaleOrderID,
+            this.SaleDate,
+            this.QuotationNos,
+            this.SubTotal,
+            this.TotalPrice,
+            this.TotalMargin,
+            this.SaleOrderNature});
+            this.gridControl1.Location = new System.Drawing.Point(3, 2);
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1041, 605);
+            this.gridControl1.TabIndex = 15;
+            // 
+            // Choose
+            // 
+            this.Choose.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Choose.HeaderText = "Choose";
+            this.Choose.Name = "Choose";
+            this.Choose.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Choose.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Choose.Width = 68;
+            // 
+            // SaleOrderID
+            // 
+            this.SaleOrderID.HeaderText = "SaleOrderID";
+            this.SaleOrderID.Name = "SaleOrderID";
+            // 
+            // SaleDate
+            // 
+            this.SaleDate.HeaderText = "SaleDate";
+            this.SaleDate.Name = "SaleDate";
+            // 
+            // QuotationNos
+            // 
+            this.QuotationNos.HeaderText = "QuotationNos";
+            this.QuotationNos.Name = "QuotationNos";
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "SubTotal";
+            this.SubTotal.Name = "SubTotal";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "TotalPrice";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
+            // TotalMargin
+            // 
+            this.TotalMargin.HeaderText = "TotalMargin";
+            this.TotalMargin.Name = "TotalMargin";
+            // 
+            // SaleOrderNature
+            // 
+            this.SaleOrderNature.HeaderText = "SaleOrderNature";
+            this.SaleOrderNature.Name = "SaleOrderNature";
+            // 
             // FormNewPurchaseOrder
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
@@ -78,9 +129,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1053, 687);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCreatePurchase);
-            this.Controls.Add(this.gridControl1);
             this.MaximumSize = new System.Drawing.Size(1069, 726);
             this.MinimumSize = new System.Drawing.Size(1069, 726);
             this.Name = "FormNewPurchaseOrder";
@@ -88,17 +139,22 @@
             this.Text = "FormNewPurchaseOrder";
             this.Load += new System.EventHandler(this.FormNewPurchaseOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.Button btnCreatePurchase;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView gridControl1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Choose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMargin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderNature;
     }
 }

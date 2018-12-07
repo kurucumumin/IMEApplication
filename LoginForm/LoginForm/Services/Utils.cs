@@ -54,7 +54,7 @@ namespace LoginForm.Services
             {
                 return "002";
             }
-            if (Name == "Bahreyn")
+            if (Name == "Bahrain")
             {
                 return "001";
             }
@@ -79,7 +79,7 @@ namespace LoginForm.Services
             {
                 return "01";
             }
-            if (Name == "Bahreyn")
+            if (Name == "Bahrain")
             {
                 return "01";
             }

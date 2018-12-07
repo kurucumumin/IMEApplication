@@ -84,7 +84,9 @@ namespace LoginForm.PurchaseOrder
         private void PurchaseOrderMain_Load(object sender, EventArgs e)
         {
             ControlAutorization();
-            PurchaseOrderFill(DateTime.Today, DateTime.Today.AddDays(-7));
+            dateStarting.Value = Utils.GetCurrentDateTime();
+            dateEnding.Value = Utils.GetCurrentDateTime().AddMonths(-3);
+            PurchaseOrderFill(Utils.GetCurrentDateTime(), Utils.GetCurrentDateTime().AddMonths(-3));
         }
 
         private void PurchaseOrderFill(DateTime startDate, DateTime endDate)

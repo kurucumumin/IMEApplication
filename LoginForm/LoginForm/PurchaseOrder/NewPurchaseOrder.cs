@@ -13,8 +13,10 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
+        List<SaleOrder> saleList = new List<SaleOrder>();
         int purchasecode;
         int purchaseno;
+        List<DataSet.PurchaseOrderDetail> itemList = new List<DataSet.PurchaseOrderDetail>();
         string strPrefix = string.Empty;
         string strSuffix = string.Empty;
         //decimal decPurchaseSuffixPrefixId = 0;
@@ -25,6 +27,15 @@ namespace LoginForm.PurchaseOrder
         {
             InitializeComponent();
             dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
+        }
+
+        public NewPurchaseOrder(List<SaleOrderDetail> item_code, List<SaleOrder> item)
+        {
+            InitializeComponent();
+            dgPurchase.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
+            saleItemList = item_code;
+            saleList = item;
+            PurchaseOrdersDetailFill3(saleItemList);
         }
 
         public NewPurchaseOrder(decimal item_code)
@@ -59,7 +70,7 @@ namespace LoginForm.PurchaseOrder
             if (rowList.Count != 0)
             {
                 //PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
-                PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode, Convert.ToInt32(txtOrderNumber.Text));
+                PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode, Convert.ToInt32(txtOrderNumber.Text),saleList);
                 form.ShowDialog();
                 this.Close();
             }
@@ -105,6 +116,33 @@ namespace LoginForm.PurchaseOrder
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
         }
 
+        private void PurchaseOrdersDetailFill3(List<SaleOrderDetail> code)
+        {
+            readOnly();
+            foreach (var item in code)
+            {
+                int rowIndex = dgPurchase.Rows.Add();
+                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+
+                row.Cells[c_name.Index].Value = item.SaleOrder.Customer.c_name;
+                row.Cells[QuotationNos.Index].Value = item.SaleOrder.QuotationNos;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
+                row.Cells[ItemCode.Index].Value = item.ItemCode;
+                row.Cells[ItemDescription.Index].Value = item.ItemDescription;
+                row.Cells[UnitOfMeasure.Index].Value = item.UnitOfMeasure;
+                row.Cells[Quantity.Index].Value = item.Quantity;
+                row.Cells[Hazardous.Index].Value = item.Hazardous;
+                row.Cells[Calibration.Index].Value = item.Calibration;
+                row.Cells[SaleOrderNature.Index].Value = item.SaleOrder.SaleOrderNature;
+                row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
+                row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
+                row.Cells[UPIME.Index].Value = item.UPIME;
+                row.Cells[SaleID.Index].Value = item.SaleOrderID;
+                row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+            }
+
+        }
+
         private void PurchaseOrdersDetailFill(decimal code)
         {
             IME = new IMEEntities();
@@ -123,7 +161,7 @@ namespace LoginForm.PurchaseOrder
                                p.Hazardous,
                                p.Calibration,
                                p.SaleOrder.SaleOrderNature,
-                               p.ItemCost,
+                               p.UnitOfMeasure,
                                p.SaleOrderID
                            }).ToList();
             readOnly();
@@ -137,14 +175,14 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
-                row.Cells[UnitOfMeasure.Index].Value = item.UPIME;
+                row.Cells[UnitOfMeasure.Index].Value = item.UnitOfMeasure;
                 row.Cells[Quantity.Index].Value = item.Quantity;
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
                 row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
                 row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
                 row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
-                row.Cells[UPIME.Index].Value = item.ItemCost;
+                row.Cells[UPIME.Index].Value = item.UPIME;
                 row.Cells[SaleID.Index].Value = item.SaleOrderID;
                 row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
             }
@@ -184,7 +222,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
-                row.Cells[UnitOfMeasure.Index].Value = item.UnitPrice;
+                row.Cells[UnitOfMeasure.Index].Value = item.Unit;
                 row.Cells[Quantity.Index].Value = item.SendQty;
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
@@ -200,7 +238,7 @@ namespace LoginForm.PurchaseOrder
                     row.Cells[AddressType.Index].Value = "3RD PARTY";
                     row.Cells[AdressTitle.Index].Value = "3RD PARTY";
                 }
-                row.Cells[UPIME.Index].Value = item.Unit;
+                row.Cells[UPIME.Index].Value = item.UnitPrice;
                 Decimal sonuc = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
                 row.Cells[Total.Index].Value = sonuc.ToString();
                 row.Cells[SLC.Index].ReadOnly = true;

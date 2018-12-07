@@ -871,8 +871,8 @@ namespace LoginForm.QuotationModule
 
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                 dgQuotationAddedItems.Rows.Add(dgRow);
-                //txtQuotationNo.Text = NewQuotationID();/*New 1*/
-                txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
+                txtQuotationNo.Text = NewQuotationID();/*New 1*/
+                //txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
                 dgQuotationAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 vat = (decimal)Utils.getManagement().VAT;

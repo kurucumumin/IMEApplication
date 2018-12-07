@@ -42,16 +42,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotations = new System.Windows.Forms.DataGridView();
-            this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgItems = new System.Windows.Forms.DataGridView();
-            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +80,10 @@
             this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgItems = new System.Windows.Forms.DataGridView();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +115,12 @@
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationDeliveryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleOrderDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -364,141 +364,6 @@
             this.dgQuotations.Size = new System.Drawing.Size(929, 180);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
-            // 
-            // quotationBindingSource
-            // 
-            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(8, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox2.Size = new System.Drawing.Size(935, 254);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Items";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // dgItems
-            // 
-            this.dgItems.AllowUserToAddRows = false;
-            this.dgItems.AllowUserToDeleteRows = false;
-            this.dgItems.AllowUserToOrderColumns = true;
-            this.dgItems.AutoGenerateColumns = false;
-            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chk,
-            this.dgID,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn36,
-            this.dgCost,
-            this.dgLandingCost,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
-            this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn34,
-            this.dataGridViewTextBoxColumn35,
-            this.dataGridViewTextBoxColumn37,
-            this.dataGridViewTextBoxColumn38,
-            this.dataGridViewTextBoxColumn39,
-            this.uCDataGridViewTextBoxColumn,
-            this.sSMDataGridViewTextBoxColumn,
-            this.unitWeightDataGridViewTextBoxColumn,
-            this.dependantTableDataGridViewTextBoxColumn,
-            this.unitConversionIdDataGridViewTextBoxColumn,
-            this.quotationDeliveryIDDataGridViewTextBoxColumn,
-            this.costDataGridViewTextBoxColumn,
-            this.landingCostDataGridViewTextBoxColumn,
-            this.mPNDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn40,
-            this.quotationDeliveryDataGridViewTextBoxColumn,
-            this.saleOrderDetailsDataGridViewTextBoxColumn});
-            this.dgItems.DataSource = this.quotationDetailBindingSource;
-            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItems.Location = new System.Drawing.Point(3, 3);
-            this.dgItems.Name = "dgItems";
-            this.dgItems.RowTemplate.Height = 24;
-            this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItems.Size = new System.Drawing.Size(929, 141);
-            this.dgItems.TabIndex = 0;
-            // 
-            // quotationDetailBindingSource
-            // 
-            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.btnClear);
-            this.panel3.Controls.Add(this.btnSelect);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 150);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(929, 87);
-            this.panel3.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(81, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Clear All";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 60);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Select All";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
-            this.btnClear.Location = new System.Drawing.Point(80, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 52);
-            this.btnClear.TabIndex = 21;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
-            this.btnSelect.Location = new System.Drawing.Point(0, 3);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(52, 52);
-            this.btnSelect.TabIndex = 20;
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -766,6 +631,87 @@
             this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
             this.workerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // quotationBindingSource
+            // 
+            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(8, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(935, 254);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Items";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 14);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(935, 240);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // dgItems
+            // 
+            this.dgItems.AllowUserToAddRows = false;
+            this.dgItems.AllowUserToDeleteRows = false;
+            this.dgItems.AllowUserToOrderColumns = true;
+            this.dgItems.AutoGenerateColumns = false;
+            this.dgItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk,
+            this.dgID,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn36,
+            this.dgCost,
+            this.dgLandingCost,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn31,
+            this.dataGridViewTextBoxColumn32,
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn34,
+            this.dataGridViewTextBoxColumn35,
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn38,
+            this.dataGridViewTextBoxColumn39,
+            this.uCDataGridViewTextBoxColumn,
+            this.sSMDataGridViewTextBoxColumn,
+            this.unitWeightDataGridViewTextBoxColumn,
+            this.dependantTableDataGridViewTextBoxColumn,
+            this.unitConversionIdDataGridViewTextBoxColumn,
+            this.quotationDeliveryIDDataGridViewTextBoxColumn,
+            this.costDataGridViewTextBoxColumn,
+            this.landingCostDataGridViewTextBoxColumn,
+            this.mPNDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn40,
+            this.quotationDeliveryDataGridViewTextBoxColumn,
+            this.saleOrderDetailsDataGridViewTextBoxColumn});
+            this.dgItems.DataSource = this.quotationDetailBindingSource;
+            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItems.Location = new System.Drawing.Point(3, 3);
+            this.dgItems.Name = "dgItems";
+            this.dgItems.RowTemplate.Height = 24;
+            this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgItems.Size = new System.Drawing.Size(929, 141);
+            this.dgItems.TabIndex = 0;
+            // 
             // chk
             // 
             this.chk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -952,6 +898,60 @@
             this.saleOrderDetailsDataGridViewTextBoxColumn.DataPropertyName = "SaleOrderDetails";
             this.saleOrderDetailsDataGridViewTextBoxColumn.HeaderText = "SaleOrderDetails";
             this.saleOrderDetailsDataGridViewTextBoxColumn.Name = "saleOrderDetailsDataGridViewTextBoxColumn";
+            // 
+            // quotationDetailBindingSource
+            // 
+            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.btnClear);
+            this.panel3.Controls.Add(this.btnSelect);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 150);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(929, 87);
+            this.panel3.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(81, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Clear All";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Select All";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::LoginForm.Properties.Resources.if_Line_ui_icons_Svg_03_1465842;
+            this.btnClear.Location = new System.Drawing.Point(80, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(52, 52);
+            this.btnClear.TabIndex = 21;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = global::LoginForm.Properties.Resources.if_Select_46755;
+            this.btnSelect.Location = new System.Drawing.Point(0, 3);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(52, 52);
+            this.btnSelect.TabIndex = 20;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // FormSaleOrderCreate
             // 

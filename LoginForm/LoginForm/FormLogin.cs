@@ -42,6 +42,7 @@ namespace LoginForm
             #region LoginBlock
             string UserName = textBox1.Text;
             string PW = Utils.MD5Hash(textBox2.Text);
+            string countryLogo = IME.Workers.Where(uName => uName.UserName == UserName).FirstOrDefault().country;
             Worker Logged = new Worker();
 
             Logged = IME.Workers
@@ -53,7 +54,7 @@ namespace LoginForm
                 {
                     Utils.setCurrentUser(Logged);
 
-                    Utils.User(UserName, PW);
+                    Utils.User(countryLogo, PW);
 
                     Utils.LogKayit("Login", "Login form screen has been entered");
 

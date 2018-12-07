@@ -72,6 +72,7 @@ namespace LoginForm.DataSet
         public string panNumber { get; set; }
         public string pfNumber { get; set; }
         public string esiNumber { get; set; }
+        public string country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AccountOperation> AccountOperations { get; set; }

@@ -20,7 +20,7 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
-        List<Mail> MailList = new List<Mail>();
+        List<SaleOrder> saleList = new List<SaleOrder>();
         int puchaseId;
         int purchaseNo;
         SmtpClient sc = new SmtpClient();
@@ -36,12 +36,13 @@ namespace LoginForm.PurchaseOrder
             dgCc.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id, int purchase_No)
+        public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id, int purchase_No, List<SaleOrder> item)
         {
             InitializeComponent();
             dgMail.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             dgCc.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor ;
             rowList = List;
+            saleList = item;
             puchaseId = purchase_Id;
             purchaseNo = purchase_No;
         }
@@ -121,7 +122,7 @@ namespace LoginForm.PurchaseOrder
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             decimal s = (decimal)rowList[0].Cells["SaleID"].Value;
 
-            SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == s).FirstOrDefault();
+            //SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == s).FirstOrDefault();
 
             po.purchaseOrderId = puchaseId;
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
@@ -132,9 +133,17 @@ namespace LoginForm.PurchaseOrder
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
 
-            so.PurchaseOrderID = po.purchaseOrderId;
+            for (int i2 = 0; i2 < saleList.Count; i2++)
+            {
+                decimal s2 = saleList[i2].SaleOrderID;
+
+                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == s2).FirstOrDefault();
+                so.PurchaseOrderID = po.purchaseOrderId;
+            }
+
             IME.SaveChanges();
             Utils.LogKayit("Purchase Order", "Purchase Order added");
+
 
             po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == po.purchaseOrderId).FirstOrDefault();
 
@@ -150,7 +159,7 @@ namespace LoginForm.PurchaseOrder
                 pod.ItemDescription = row.Cells[5].Value.ToString();
                 //if (row.Cells[5].Value.ToString() == null || row.Cells[5].Value.ToString() =="") pod.ItemDescription = null;
                 //else pod.ItemDescription = row.Cells[5].Value.ToString();
-                pod.UnitPrice = (decimal)row.Cells[6].Value;
+                pod.UnitPrice = Convert.ToDecimal(row.Cells[13].Value);
                 pod.SendQty = (int)row.Cells[7].Value;
                 pod.Hazardous = (bool)row.Cells[8].Value;
                 pod.Calibration = (bool)row.Cells[9].Value;
@@ -166,7 +175,7 @@ namespace LoginForm.PurchaseOrder
                 
                 pod.purchaseOrderId = po.purchaseOrderId;
                 //pod.purchaseOrderId = puchaseId;
-                pod.Unit = row.Cells[13].Value.ToString();
+                pod.Unit = row.Cells[6].Value.ToString();
                 podList.Add(pod);
             }
 

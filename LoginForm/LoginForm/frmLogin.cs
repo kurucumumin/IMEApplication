@@ -29,6 +29,7 @@ namespace LoginForm
             #region LoginBlock
             string UserName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
+            string countryLogo = IME.Workers.Where(uName => uName.UserName == UserName).FirstOrDefault().country;
             Worker Logged = new Worker();
 
             Logged = IME.Workers
@@ -40,7 +41,7 @@ namespace LoginForm
                 {
                     Utils.setCurrentUser(Logged);
 
-                    Utils.User(UserName, PW);
+                    Utils.User(countryLogo, PW);
 
                     Utils.LogKayit("Login", "Login form screen has been entered");
 
@@ -59,6 +60,7 @@ namespace LoginForm
                 MessageBox.Show("Wrong ID or Password", "Login Error", MessageBoxButtons.OK);
                 txtID.Text = "";
                 txtPassWord.Text = "";
+                txtID.Focus();
             }
             #endregion
         }
