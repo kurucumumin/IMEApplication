@@ -151,14 +151,18 @@ namespace LoginForm
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.Add("DATE_", typeof(DateTime));
-            dt.Columns.Add("FTIME", typeof(int));
-            dt.Columns.Add("IO", typeof(string));
-            dt.Columns.Add("AMOUNT", typeof(double));
+            dt.Columns.Add("ITEMCODE", typeof(string));
+            dt.Columns.Add("ITEMDESC", typeof(string));
+            dt.Columns.Add("DATE", typeof(DateTime));
+            dt.Columns.Add("DOCUMENT NO", typeof(int));
+            dt.Columns.Add("DOCUMENT TYPE", typeof(string));
+            dt.Columns.Add("IN/OUT", typeof(string));
+            dt.Columns.Add("QTY", typeof(double));
             dt.Columns.Add("PRICE", typeof(double));
             dt.Columns.Add("TOTAL", typeof(double));
-            dt.Columns.Add("CODE", typeof(string));
-            dt.Columns.Add("LINEEXP", typeof(string));
+            dt.Columns.Add("CURR", typeof(string));
+
+
 
             hata = "";
 
@@ -178,7 +182,9 @@ namespace LoginForm
   WHEN LGMAIN.LINETYPE IN (2,3) THEN DECARDS.DEFINITION_
   WHEN LGMAIN.LINETYPE NOT IN (2,3,4)   THEN ITEM.NAME
    ELSE '' END AS LINEEXP,
-   CASE LGMAIN.TRCODE WHEN 1 THEN 'PURCHASE INVOICE' WHEN 8 THEN 'SALES INVOICE' END AS IO
+   CASE LGMAIN.TRCODE WHEN 1 THEN 'PURCHASE INVOICE' WHEN 8 THEN 'SALES INVOICE' END AS TYPE,
+   CASE LGMAIN.TRCODE WHEN 1 THEN 'IN' WHEN 8 THEN 'OUT' END AS IO,
+   CURR=''
 FROM
      LG_002_01_STLINE LGMAIN WITH(NOLOCK)
   LEFT OUTER JOIN LG_002_ITEMS ITEM WITH(NOLOCK) ON LGMAIN.STOCKREF = ITEM.LOGICALREF
@@ -193,15 +199,21 @@ where ITEM.CODE = '" + article_no + "'";
                 {
                     DataRow dr = dt.NewRow();
 
-                    dr["DATE_"] = drCurr.GetDateTime(0);
-                    dr["FTIME"] = drCurr.GetInt32(1);
-                    dr["AMOUNT"] = drCurr.GetDouble(7);
-                    dr["IO"] = drCurr.GetString(13);
+                    dr["ITEMCODE"] = drCurr.GetString(11);
+                    dr["ITEMDESC"] = drCurr.GetString(12);
+                    dr["DATE"] = drCurr.GetDateTime(0);
+                    dr["DOCUMENT NO"] = drCurr.GetInt32(1);
+                    dr["DOCUMENT TYPE"] = drCurr.GetString(13);
+                    dr["IN/OUT"] = drCurr.GetString(14);
+                    dr["QTY"] = drCurr.GetDouble(7);
                     dr["PRICE"] = drCurr.GetDouble(8);
                     dr["TOTAL"] = drCurr.GetDouble(9);
-                    dr["CODE"] = drCurr.GetString(11);
-                    dr["LINEEXP"] = drCurr.GetString(12);
-                    
+                    if (IME.SaleOrderDetails.Where(x => x.ItemCode == drCurr.GetString(11).ToString()).FirstOrDefault() != null)
+                    {
+                        dr["CURR"] = IME.SaleOrderDetails.Where(x => x.ItemCode == dr["ITEMCODE"].ToString()).FirstOrDefault().SaleOrder.CurrName;
+                    }
+                    dr["CURR"] = drCurr.GetString(15);
+
 
                     dt.Rows.Add(dr);
                 }
@@ -224,40 +236,22 @@ where ITEM.CODE = '" + article_no + "'";
 
             for (int i = 0; i < dgMovement.RowCount; i++)
             {
-                if (dgMovement.Rows[i].Cells["IO"].Value.ToString() == "SALES INVOICE")
+                if (dgMovement.Rows[i].Cells["DOCUMENT TYPE"].Value.ToString() == "PURCHASE INVOICE")
                 {
                     In = In + Decimal.Parse(dgMovement.Rows[i].Cells["TOTAL"].Value.ToString());
                 }
-                else if (dgMovement.Rows[i].Cells["IO"].Value.ToString() == "PURCHASE INVOICE")
+                else if (dgMovement.Rows[i].Cells["DOCUMENT TYPE"].Value.ToString() == "SALES INVOICE")
                 {
                     Out = Out + Decimal.Parse(dgMovement.Rows[i].Cells["TOTAL"].Value.ToString());
                 }
                 else
                 {
-                    qty = qty + Decimal.Parse(dgMovement.Rows[i].Cells["AMOUNT"].Value.ToString());
+                    qty = qty + Decimal.Parse(dgMovement.Rows[i].Cells["QTY"].Value.ToString());
                 }
             }
             txtIN.Text = In.ToString();
             txtOUT.Text = Out.ToString();
             txtQty.Text = qty.ToString();
-
-            //var gridAdapterPC = (from a in IME.ItemMovement(Article_No) 
-            //                     select new
-            //                     {
-            //                         Date = a.SaleDate,
-            //                         FicheNo = a.FicheNo,
-            //                         Customer = a.c_name,
-            //                         Qty = a.Quantity,
-            //                         InOut = a.InOut,
-            //                         Type = a.Type,
-            //                         UOM = a.UnitMeasure,
-            //                         Price = a.UKPrice,
-            //                         Total = a.SubTotal,
-            //                         Currency = a.CurrName
-            //                     }
-            //           ).ToList();
-
-            //populateGridMovement(currencyList.ToList());
         }
 
         private void populateGridMovement<T>(List<T> queryable)
