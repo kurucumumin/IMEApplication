@@ -102,5 +102,7 @@ namespace LoginForm.MyClasses
             LogoSQL logosql = new LogoSQL();
             return invoice.deletePurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), "001", "01");
         }
+
+
     }
 }

@@ -8,6 +8,8 @@ using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.DataSet;
 using System.Globalization;
 using System.Windows.Documents;
+using ImeLogoLibrary;
+using System.Data.SqlClient;
 
 namespace LoginForm
 {
@@ -15,7 +17,20 @@ namespace LoginForm
     {
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
-        IEnumerable<List> GridMovement;
+        LogoSQL logosql = new LogoSQL();
+        ImeSQL imesql = new ImeSQL();
+        string server = @"159.69.213.172";
+        string logodatabase = "LOGO";
+        string imedatabase = "IME";
+        string sqluser = "sa";
+        string sqlpassword = "IME1453";
+
+        static public string AddSuccessful = "Added successfully";
+        static public string DeleteSuccessful = "Deleted successfully";
+
+        string hata = "Error";
+        DataTable currencyList = new DataTable();
+        ImeLogoSalesOrder logoLibrary = new ImeLogoSalesOrder();
         public frmItemMovement()
         {
             InitializeComponent();
@@ -99,7 +114,7 @@ namespace LoginForm
 
             }
 
-            if (dgItem.RowCount == 1)
+            if (dgItem.RowCount == 0)
             {
                 MessageBox.Show("There is no such a data");
             }
@@ -131,78 +146,169 @@ namespace LoginForm
             txtMovement.Text = "";
         }
 
-        private void dgItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        public DataTable getItem(string hata, SqlConnection LogoSQL, string article_no)
         {
-            string Article_No = dgItem.CurrentRow.Cells[Code.Index].Value.ToString();
+            DataTable dt = new DataTable();
 
-            var gridAdapterPC = (from a in IME.ItemMovement(Article_No) 
-                                 select new
-                                 {
-                                     Date = a.SaleDate,
-                                     FicheNo = a.FicheNo,
-                                     Customer = a.c_name,
-                                     Qty = a.Quantity,
-                                     InOut = a.InOut,
-                                     Type = a.Type,
-                                     UOM = a.UnitMeasure,
-                                     Price = a.UKPrice,
-                                     Total = a.SubTotal,
-                                     Currency = a.CurrName
-                                 }
-                       ).ToList();
+            dt.Columns.Add("DATE_", typeof(DateTime));
+            dt.Columns.Add("FTIME", typeof(int));
+            dt.Columns.Add("IO", typeof(string));
+            dt.Columns.Add("AMOUNT", typeof(double));
+            dt.Columns.Add("PRICE", typeof(double));
+            dt.Columns.Add("TOTAL", typeof(double));
+            dt.Columns.Add("CODE", typeof(string));
+            dt.Columns.Add("LINEEXP", typeof(string));
 
-            populateGridMovement(gridAdapterPC.ToList());
+            hata = "";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = LogoSQL;
+                cmd.CommandText = @"SELECT
+     LGMAIN.DATE_, LGMAIN.FTIME, LGMAIN.LOGICALREF, LGMAIN.INVOICEREF, LGMAIN.STOCKREF, LGMAIN.LINETYPE, LGMAIN.TRCODE, LGMAIN.AMOUNT, LGMAIN.PRICE, LGMAIN.TOTAL, LGMAIN.INVOICELNNO,
+      CASE
+  WHEN LGMAIN.LINETYPE IN (4)   THEN SRVCARD.CODE
+  WHEN LGMAIN.LINETYPE IN (2,3) THEN DECARDS.CODE
+  WHEN LGMAIN.LINETYPE NOT IN (2,3,4)   THEN ITEM.CODE
+   ELSE '' END AS CODE,
+      CASE
+  WHEN LGMAIN.LINETYPE IN (4)   THEN SRVCARD.DEFINITION_
+  WHEN LGMAIN.LINETYPE IN (2,3) THEN DECARDS.DEFINITION_
+  WHEN LGMAIN.LINETYPE NOT IN (2,3,4)   THEN ITEM.NAME
+   ELSE '' END AS LINEEXP,
+   CASE LGMAIN.TRCODE WHEN 1 THEN 'PURCHASE INVOICE' WHEN 8 THEN 'SALES INVOICE' END AS IO
+FROM
+     LG_002_01_STLINE LGMAIN WITH(NOLOCK)
+  LEFT OUTER JOIN LG_002_ITEMS ITEM WITH(NOLOCK) ON LGMAIN.STOCKREF = ITEM.LOGICALREF
+  LEFT OUTER JOIN LG_002_DECARDS DECARDS WITH(NOLOCK) ON LGMAIN.STOCKREF = DECARDS.LOGICALREF
+  LEFT OUTER JOIN LG_002_SRVCARD SRVCARD WITH(NOLOCK) ON LGMAIN.STOCKREF = SRVCARD.LOGICALREF
+where ITEM.CODE = '" + article_no + "'";
+
+                SqlDataReader drCurr = cmd.ExecuteReader();
+
+                while (drCurr.Read())
+
+                {
+                    DataRow dr = dt.NewRow();
+
+                    dr["DATE_"] = drCurr.GetDateTime(0);
+                    dr["FTIME"] = drCurr.GetInt32(1);
+                    dr["AMOUNT"] = drCurr.GetDouble(7);
+                    dr["IO"] = drCurr.GetString(13);
+                    dr["PRICE"] = drCurr.GetDouble(8);
+                    dr["TOTAL"] = drCurr.GetDouble(9);
+                    dr["CODE"] = drCurr.GetString(11);
+                    dr["LINEEXP"] = drCurr.GetString(12);
+                    
+
+                    dt.Rows.Add(dr);
+                }
+            }
+            catch (Exception ex) { hata = ex.ToString(); }
+            finally { LogoSQL.Close(); }
+
+            return dt;
         }
 
-        private void populateGridMovement<T>(List<T> queryable)
+        private void dgItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int In = 0;
-            int Out = 0;
-            int qty = 0;
-            dgMovement.Rows.Clear();
-            dgMovement.Refresh();
-            foreach (dynamic item in queryable)
-            {
-                int rowIndex = dgMovement.Rows.Add();
-                DataGridViewRow row = dgMovement.Rows[rowIndex];
+            decimal In = 0;
+            decimal Out = 0;
+            decimal qty = 0;
+            string Article_No = dgItem.CurrentRow.Cells[Code.Index].Value.ToString();
 
-                row.Cells[Date.Index].Value = item.Date;
-                row.Cells[FicheNo.Index].Value = item.FicheNo;
-                row.Cells[CustomerName.Index].Value = item.Customer;
-                row.Cells[Qty.Index].Value = item.Qty;
-                row.Cells[InOut.Index].Value = item.InOut;
-                if (item.InOut == "IN")
-                {
-                    row.Cells[Type.Index].Value = "Purchase invoice";
-                }
-                else
-                {
-                    row.Cells[Type.Index].Value = "Sales Invoice";
-                }
-                row.Cells[UnitOfMeasure.Index].Value = item.UOM;
-                row.Cells[UKPrice.Index].Value = item.Price;
-                row.Cells[Total.Index].Value = item.Total;
-                row.Cells[Currency.Index].Value = item.Currency;
-            }
+            currencyList = getItem(hata, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), Article_No);
+            dgMovement.DataSource = currencyList;
 
             for (int i = 0; i < dgMovement.RowCount; i++)
             {
-                if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "IN")
+                if (dgMovement.Rows[i].Cells["IO"].Value.ToString() == "SALES INVOICE")
                 {
-                    In = In + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                    In = In + Decimal.Parse(dgMovement.Rows[i].Cells["TOTAL"].Value.ToString());
                 }
-                else if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "OUT")
+                else if (dgMovement.Rows[i].Cells["IO"].Value.ToString() == "PURCHASE INVOICE")
                 {
-                    Out = Out + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                    Out = Out + Decimal.Parse(dgMovement.Rows[i].Cells["TOTAL"].Value.ToString());
                 }
                 else
                 {
-                    qty = qty + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+                    qty = qty + Decimal.Parse(dgMovement.Rows[i].Cells["AMOUNT"].Value.ToString());
                 }
             }
             txtIN.Text = In.ToString();
             txtOUT.Text = Out.ToString();
             txtQty.Text = qty.ToString();
+
+            //var gridAdapterPC = (from a in IME.ItemMovement(Article_No) 
+            //                     select new
+            //                     {
+            //                         Date = a.SaleDate,
+            //                         FicheNo = a.FicheNo,
+            //                         Customer = a.c_name,
+            //                         Qty = a.Quantity,
+            //                         InOut = a.InOut,
+            //                         Type = a.Type,
+            //                         UOM = a.UnitMeasure,
+            //                         Price = a.UKPrice,
+            //                         Total = a.SubTotal,
+            //                         Currency = a.CurrName
+            //                     }
+            //           ).ToList();
+
+            //populateGridMovement(currencyList.ToList());
+        }
+
+        private void populateGridMovement<T>(List<T> queryable)
+        {
+            //int In = 0;
+            //int Out = 0;
+            //int qty = 0;
+            //dgMovement.Rows.Clear();
+            //dgMovement.Refresh();
+            //foreach (dynamic item in queryable)
+            //{
+            //    int rowIndex = dgMovement.Rows.Add();
+            //    DataGridViewRow row = dgMovement.Rows[rowIndex];
+
+            //    row.Cells[Date.Index].Value = item.Date;
+            //    row.Cells[FicheNo.Index].Value = item.FicheNo;
+            //    row.Cells[CustomerName.Index].Value = item.Customer;
+            //    row.Cells[Qty.Index].Value = item.Qty;
+            //    row.Cells[InOut.Index].Value = item.InOut;
+            //    if (item.InOut == "IN")
+            //    {
+            //        row.Cells[Type.Index].Value = "Purchase invoice";
+            //    }
+            //    else
+            //    {
+            //        row.Cells[Type.Index].Value = "Sales Invoice";
+            //    }
+            //    row.Cells[UnitOfMeasure.Index].Value = item.UOM;
+            //    row.Cells[UKPrice.Index].Value = item.Price;
+            //    row.Cells[Total.Index].Value = item.Total;
+            //    row.Cells[Currency.Index].Value = item.Currency;
+            //}
+
+            //for (int i = 0; i < dgMovement.RowCount; i++)
+            //{
+            //    if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "IN")
+            //    {
+            //        In = In + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+            //    }
+            //    else if (dgMovement.Rows[i].Cells[InOut.Index].Value.ToString() == "OUT")
+            //    {
+            //        Out = Out + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+            //    }
+            //    else
+            //    {
+            //        qty = qty + Int32.Parse(dgMovement.Rows[i].Cells[Qty.Index].Value.ToString());
+            //    }
+            //}
+            //txtIN.Text = In.ToString();
+            //txtOUT.Text = Out.ToString();
+            //txtQty.Text = qty.ToString();
         }
 
         private void btnMovementItem_Click(object sender, EventArgs e)

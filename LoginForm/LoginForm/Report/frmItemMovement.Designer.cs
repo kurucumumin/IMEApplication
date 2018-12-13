@@ -48,16 +48,6 @@
             this.txtIN = new System.Windows.Forms.TextBox();
             this.txtOUT = new System.Windows.Forms.TextBox();
             this.txtQty = new System.Windows.Forms.TextBox();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
-            this.InOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitOfMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Currency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpItemList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItem)).BeginInit();
             this.grpMovementList.SuspendLayout();
@@ -122,12 +112,14 @@
             // 
             this.Code.HeaderText = "Code";
             this.Code.Name = "Code";
+            this.Code.ReadOnly = true;
             // 
             // ArticleName
             // 
             this.ArticleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ArticleName.HeaderText = "Name";
             this.ArticleName.Name = "ArticleName";
+            this.ArticleName.ReadOnly = true;
             // 
             // btnItemClear
             // 
@@ -175,17 +167,6 @@
             this.dgMovement.AllowUserToAddRows = false;
             this.dgMovement.AllowUserToDeleteRows = false;
             this.dgMovement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMovement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Date,
-            this.FicheNo,
-            this.Type,
-            this.CustomerName,
-            this.Qty,
-            this.InOut,
-            this.UnitOfMeasure,
-            this.UKPrice,
-            this.Total,
-            this.Currency});
             this.dgMovement.Location = new System.Drawing.Point(0, 45);
             this.dgMovement.Name = "dgMovement";
             this.dgMovement.ReadOnly = true;
@@ -268,67 +249,6 @@
             this.txtQty.Size = new System.Drawing.Size(59, 20);
             this.txtQty.TabIndex = 387;
             // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // FicheNo
-            // 
-            this.FicheNo.HeaderText = "Document No";
-            this.FicheNo.Name = "FicheNo";
-            this.FicheNo.ReadOnly = true;
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Document Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "Name";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            this.Qty.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // InOut
-            // 
-            this.InOut.HeaderText = "I/O";
-            this.InOut.Name = "InOut";
-            this.InOut.ReadOnly = true;
-            // 
-            // UnitOfMeasure
-            // 
-            this.UnitOfMeasure.HeaderText = "UOM";
-            this.UnitOfMeasure.Name = "UnitOfMeasure";
-            this.UnitOfMeasure.ReadOnly = true;
-            // 
-            // UKPrice
-            // 
-            this.UKPrice.HeaderText = "UKPrice";
-            this.UKPrice.Name = "UKPrice";
-            this.UKPrice.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Currency
-            // 
-            this.Currency.HeaderText = "Currency";
-            this.Currency.Name = "Currency";
-            this.Currency.ReadOnly = true;
-            // 
             // frmItemMovement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,15 +302,5 @@
         private System.Windows.Forms.TextBox txtIN;
         private System.Windows.Forms.TextBox txtOUT;
         private System.Windows.Forms.TextBox txtQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FicheNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InOut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitOfMeasure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UKPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Currency;
     }
 }
