@@ -208,12 +208,12 @@ where ITEM.CODE = '" + article_no + "'";
                     dr["QTY"] = drCurr.GetDouble(7);
                     dr["PRICE"] = drCurr.GetDouble(8);
                     dr["TOTAL"] = drCurr.GetDouble(9);
-                    if (IME.SaleOrderDetails.Where(x => x.ItemCode == drCurr.GetString(11).ToString()).FirstOrDefault() != null)
-                    {
-                        dr["CURR"] = IME.SaleOrderDetails.Where(x => x.ItemCode == dr["ITEMCODE"].ToString()).FirstOrDefault().SaleOrder.CurrName;
-                    }
-                    dr["CURR"] = drCurr.GetString(15);
+                    //if (IME.SaleOrderDetails.Where(x => x.ItemCode == drCurr.GetString(11).ToString()).FirstOrDefault() != null)
+                    //{
 
+                    //}
+                    //dr["CURR"] = drCurr.GetString(15);
+                    dr["CURR"] = IME.SaleOrderDetails.Where(x => x.ItemCode == article_no).FirstOrDefault().SaleOrder.CurrName;
 
                     dt.Rows.Add(dr);
                 }
