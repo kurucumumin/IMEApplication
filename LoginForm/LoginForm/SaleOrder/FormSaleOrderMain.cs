@@ -292,24 +292,32 @@ namespace LoginForm
 
         private void sentToLogoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            IMEEntities db = new IMEEntities();
             int SoNO = Convert.ToInt32(dgSales.CurrentRow.Cells["SaleOrderNO"].Value);
             string resultMessage = logoLibrary.SendToLogo_SaleOrder(SoNO);
 
-            if (resultMessage == LogoLibrary.AddSuccessful)
+            SaleOrder so = db.SaleOrders.Where(x => x.SaleOrderNo == SoNO).FirstOrDefault();
+
+            if (so.Status == "LOGO")
             {
-                IMEEntities db = new IMEEntities();
-
-                SaleOrder so = db.SaleOrders.Where(x => x.SaleOrderNo == SoNO).FirstOrDefault();
-                so.Status = "LOGO";
-                db.SaveChanges();
-
-                BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
                 MessageBox.Show("Sent To Logo Successfully");
-                Utils.LogKayit("Sale Order", "Sale Order send to logo");
             }
             else
             {
-                MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                if (resultMessage == LogoLibrary.AddSuccessful)
+                {
+
+                    so.Status = "LOGO";
+                    db.SaveChanges();
+
+                    BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
+                    MessageBox.Show("Sent To Logo Successfully");
+                    Utils.LogKayit("Sale Order", "Sale Order send to logo");
+                }
+                else
+                {
+                    MessageBox.Show("Operation Failed" + "\n\nError Message: " + resultMessage);
+                }
             }
 
         }
