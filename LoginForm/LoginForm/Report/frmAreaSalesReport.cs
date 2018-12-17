@@ -6,23 +6,21 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class frmCustomerGroup : DevExpress.XtraEditors.XtraForm
+    public partial class frmAreaSalesReport : DevExpress.XtraEditors.XtraForm
     {
         DataTable currencyList = new DataTable();
-
-        public frmCustomerGroup()
+        public frmAreaSalesReport()
         {
             InitializeComponent();
 
-
-            dgMonthly.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
+            dgArea.RowsDefaultCellStyle.SelectionBackColor = ImeSettings.DefaultGridSelectedRowColor;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-            dgMonthly, new object[] { true });
+            dgArea, new object[] { true });
         }
 
-        public DataTable Monthly_Sales(int monthly)
+        public DataTable Area_Sales(int monthly)
         {
             SqlConnection conn = new Utils().ImeSqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -37,7 +35,7 @@ namespace LoginForm
                     Connection = conn,
                     CommandType = CommandType.StoredProcedure,
                     Transaction = imeTransaction,
-                    CommandText = @"[prc_Monthly_Sales]"
+                    CommandText = @"[prc_Area_Sales]"
                 };
                 cmd.Parameters.AddWithValue("@year", monthly);
 
@@ -58,16 +56,16 @@ namespace LoginForm
             return dataTableResult;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            currencyList = Monthly_Sales(Convert.ToInt32(cmbYear.GetItemText(cmbYear.SelectedItem)));
-            dgMonthly.DataSource = currencyList;
-        }
-
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.ReportQuotvsSale(dgMonthly);
-            Utils.LogKayit("CustomerGroup Report", "Customer Group Report excel");
+            QuotationExcelExport.ReportQuotvsSale(dgArea);
+            Utils.LogKayit("AreaSales Report", "Area Sales Report excel");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            currencyList = Area_Sales(Convert.ToInt32(cmbYear.GetItemText(cmbYear.SelectedItem)));
+            dgArea.DataSource = currencyList;
         }
     }
 }

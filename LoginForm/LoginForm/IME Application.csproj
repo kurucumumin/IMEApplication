@@ -1095,6 +1095,12 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmAreaSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmAreaSalesReport.Designer.cs">
+      <DependentUpon>frmAreaSalesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmCustomerGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1545,6 +1551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmAreaSalesReport.resx">
+      <DependentUpon>frmAreaSalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmCustomerGroup.resx">
       <DependentUpon>frmCustomerGroup.cs</DependentUpon>

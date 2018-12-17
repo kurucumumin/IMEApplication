@@ -641,5 +641,12 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("CustomerGroup Report", "Customer Group report screen has been entered");
         }
+
+        private void btnAreaSales_Click(object sender, EventArgs e)
+        {
+            frmAreaSalesReport frm = new frmAreaSalesReport();
+            frm.ShowDialog();
+            Utils.LogKayit("AreaSales Report", "Area Sales report screen has been entered");
+        }
     }
 }

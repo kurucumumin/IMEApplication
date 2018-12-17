@@ -81,6 +81,7 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlReport = new System.Windows.Forms.Panel();
+            this.btnMonthly = new AltoControls.AltoButton();
             this.btnItemMovement = new AltoControls.AltoButton();
             this.brnSalesOrderDetailReport = new AltoControls.AltoButton();
             this.btnQuotvsOrdersDetail = new AltoControls.AltoButton();
@@ -103,7 +104,7 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.btnMonthly = new AltoControls.AltoButton();
+            this.btnAreaSales = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -943,6 +944,7 @@ namespace LoginForm.Main
             // 
             this.pnlReport.AutoScroll = true;
             this.pnlReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlReport.Controls.Add(this.btnAreaSales);
             this.pnlReport.Controls.Add(this.btnMonthly);
             this.pnlReport.Controls.Add(this.btnItemMovement);
             this.pnlReport.Controls.Add(this.brnSalesOrderDetailReport);
@@ -956,6 +958,28 @@ namespace LoginForm.Main
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(218, 0);
             this.pnlReport.TabIndex = 12;
+            // 
+            // btnMonthly
+            // 
+            this.btnMonthly.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnMonthly.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnMonthly.BackColor = System.Drawing.Color.Transparent;
+            this.btnMonthly.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnMonthly.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnMonthly.ForeColor = System.Drawing.Color.Black;
+            this.btnMonthly.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnMonthly.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnMonthly.Location = new System.Drawing.Point(2, 247);
+            this.btnMonthly.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMonthly.Name = "btnMonthly";
+            this.btnMonthly.Radius = 5;
+            this.btnMonthly.Size = new System.Drawing.Size(194, 32);
+            this.btnMonthly.Stroke = false;
+            this.btnMonthly.StrokeColor = System.Drawing.Color.Gray;
+            this.btnMonthly.TabIndex = 16;
+            this.btnMonthly.Text = "Monthly Sales";
+            this.btnMonthly.Transparency = true;
+            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
             // 
             // btnItemMovement
             // 
@@ -1319,27 +1343,27 @@ namespace LoginForm.Main
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
-            // btnMonthly
+            // btnAreaSales
             // 
-            this.btnMonthly.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnMonthly.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnMonthly.BackColor = System.Drawing.Color.Transparent;
-            this.btnMonthly.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnMonthly.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnMonthly.ForeColor = System.Drawing.Color.Black;
-            this.btnMonthly.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnMonthly.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnMonthly.Location = new System.Drawing.Point(2, 247);
-            this.btnMonthly.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMonthly.Name = "btnMonthly";
-            this.btnMonthly.Radius = 5;
-            this.btnMonthly.Size = new System.Drawing.Size(194, 32);
-            this.btnMonthly.Stroke = false;
-            this.btnMonthly.StrokeColor = System.Drawing.Color.Gray;
-            this.btnMonthly.TabIndex = 16;
-            this.btnMonthly.Text = "Monthly Sales";
-            this.btnMonthly.Transparency = true;
-            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
+            this.btnAreaSales.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnAreaSales.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnAreaSales.BackColor = System.Drawing.Color.Transparent;
+            this.btnAreaSales.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAreaSales.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnAreaSales.ForeColor = System.Drawing.Color.Black;
+            this.btnAreaSales.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnAreaSales.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnAreaSales.Location = new System.Drawing.Point(2, 283);
+            this.btnAreaSales.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAreaSales.Name = "btnAreaSales";
+            this.btnAreaSales.Radius = 5;
+            this.btnAreaSales.Size = new System.Drawing.Size(194, 32);
+            this.btnAreaSales.Stroke = false;
+            this.btnAreaSales.StrokeColor = System.Drawing.Color.Gray;
+            this.btnAreaSales.TabIndex = 17;
+            this.btnAreaSales.Text = "Area Sales";
+            this.btnAreaSales.Transparency = true;
+            this.btnAreaSales.Click += new System.EventHandler(this.btnAreaSales_Click);
             // 
             // frmMainMetro
             // 
@@ -1440,5 +1464,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton brnSalesOrderDetailReport;
         private AltoControls.AltoButton btnItemMovement;
         private AltoControls.AltoButton btnMonthly;
+        private AltoControls.AltoButton btnAreaSales;
     }
 }
