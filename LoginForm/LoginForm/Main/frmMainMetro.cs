@@ -634,5 +634,12 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("ItemMovement Report", "Item Movement report screen has been entered");
         }
+
+        private void btnMonthly_Click(object sender, EventArgs e)
+        {
+            frmCustomerGroup frm = new frmCustomerGroup();
+            frm.ShowDialog();
+            Utils.LogKayit("CustomerGroup Report", "Customer Group report screen has been entered");
+        }
     }
 }
