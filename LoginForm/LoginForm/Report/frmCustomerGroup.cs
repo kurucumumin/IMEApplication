@@ -89,17 +89,18 @@ namespace LoginForm
                 for (int i = 7; i < dgMonthly.ColumnCount; i++)
                 {
                     dgMonthly.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    dgMonthly.Columns[6].DefaultCellStyle.Format = "N2";
                     dgMonthly.Columns[i].DefaultCellStyle.Format = "N2";
                 }
 
                 for (int i = 0; i < dgMonthly.RowCount; i++)
                 {
 
-                    if (dgMonthly.Rows[i].Cells["Y1_Total"].Value.ToString() != "0")
+                    if (dgMonthly.Rows[i].Cells["Y1_Total"].FormattedValue.ToString() != "0.00")
                     {
                         dgMonthly.Rows[i].Cells["Status"].Value = "Existing";
                     }
-                    else if (dgMonthly.Rows[i].Cells["Y1_Total"].Value.ToString() == "0")
+                    else if (dgMonthly.Rows[i].Cells["Y1_Total"].FormattedValue.ToString() == "0.00")
                     {
                         if (dgMonthly.Rows[i].Cells["Total"].Value.ToString() != "0")
                         {

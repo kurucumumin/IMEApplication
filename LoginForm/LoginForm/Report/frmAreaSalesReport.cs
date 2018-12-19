@@ -88,7 +88,7 @@ namespace LoginForm
                 dgArea.DataSource = currencyList;
             }
 
-            for (int i = 6; i < dgArea.ColumnCount; i++)
+            for (int i = 1; i < dgArea.ColumnCount; i++)
             {
                 dgArea.Columns[i].DefaultCellStyle.Format = "N2";
             }

@@ -194,6 +194,7 @@
           <Property Name="ThirdPartyCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Capital" Type="nvarchar" MaxLength="20" />
           <Property Name="Debit" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="Markup" Type="decimal" Precision="6" Scale="4" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -3519,6 +3520,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="month2" Type="int" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
+        <Function Name="prc_Area_Sales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
         <Function Name="prc_GetExtendedRangeWithArticleNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
@@ -3556,6 +3560,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="ArticleNumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="prc_GetWorkersAllForComboBox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="prc_Monthly_Sales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
         <Function Name="prc_RSInvoiceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ShipmentReference" Type="nvarchar" Mode="In" />
           <Parameter Name="BillingDocumentReference" Type="nvarchar" Mode="In" />
@@ -4721,6 +4728,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ThirdPartyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Capital" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Debit" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="Markup" Type="Decimal" Precision="6" Scale="4" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Customer__accoun__428DB49A" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__Customer__catego__4475FD0C" FromRole="Customer" ToRole="CustomerCategory" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Customer__custom__3CD4DB44" FromRole="Customer" ToRole="Notes" />
@@ -8759,6 +8767,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="month2" Mode="In" Type="Int32" />
             <Parameter Name="year" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="prc_Area_Sales" ReturnType="Collection(IMEModel.prc_Area_Sales_Result)">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetExtendedRangeWithArticleNumber" ReturnType="Collection(IMEModel.prc_GetExtendedRangeWithArticleNumber_Result)">
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
@@ -8796,6 +8807,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="ArticleNumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="prc_GetWorkersAllForComboBox" ReturnType="Collection(IMEModel.prc_GetWorkersAllForComboBox_Result)" />
+          <FunctionImport Name="prc_Monthly_Sales" ReturnType="Collection(IMEModel.prc_Monthly_Sales_Result)">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="prc_RSInvoiceAdd">
             <Parameter Name="ShipmentReference" Mode="In" Type="String" />
             <Parameter Name="BillingDocumentReference" Mode="In" Type="String" />
@@ -9239,6 +9253,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="Markup" Nullable="true" Precision="6" Scale="4" />
         </ComplexType>
         <ComplexType Name="Customer_CustomerName_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="15" />
@@ -9273,6 +9288,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="Markup" Nullable="true" Precision="6" Scale="4" />
         </ComplexType>
         <ComplexType Name="CustomerAll_Result">
           <Property Type="String" Name="ID" Nullable="false" MaxLength="15" />
@@ -9307,6 +9323,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="Markup" Nullable="true" Precision="6" Scale="4" />
         </ComplexType>
         <ComplexType Name="CustomersDebits_Result">
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
@@ -9538,6 +9555,22 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Int32" Name="QuotationQty" Nullable="true" />
           <Property Type="Int32" Name="SaleOrderQty" Nullable="true" />
           <Property Type="Decimal" Name="SaleOrderTotal" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="prc_Area_Sales_Result">
+          <Property Type="String" Name="City_name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Jan" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="FEB" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MAR" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="APR" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MAY" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="JUN" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="JUL" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AUG" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SEP" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="OCT" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="NOV" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="DEC" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
         <ComplexType Name="prc_GetExtendedRangeWithArticleNumber_Result">
           <Property Type="String" Name="ArticleNo" Nullable="false" MaxLength="50" />
@@ -9848,6 +9881,29 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Int32" Name="WorkerID" Nullable="false" />
           <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="prc_Monthly_Sales_Result">
+          <Property Type="String" Name="Customer_Code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rep_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CUST_ADDED_DATE" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Y1_Total" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="1" />
+          <Property Type="Decimal" Name="Jan" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="FEB" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MAR" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="APR" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MAY" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="JUN" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="JUL" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AUG" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SEP" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="OCT" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="NOV" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="DEC" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         <ComplexType Name="ProductViewWithID_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
@@ -10025,6 +10081,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="ThirdPartyCode" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Capital" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="Markup" Nullable="true" Precision="6" Scale="4" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -10226,6 +10283,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="Capital" ColumnName="Capital" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11938,6 +11996,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="Capital" ColumnName="Capital" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -11976,6 +12035,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="Capital" ColumnName="Capital" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -12014,6 +12074,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="Capital" ColumnName="Capital" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -12356,6 +12417,26 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="QuotationQty" ColumnName="QuotationQty" />
                 <ScalarProperty Name="SaleOrderQty" ColumnName="SaleOrderQty" />
                 <ScalarProperty Name="SaleOrderTotal" ColumnName="SaleOrderTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_Area_Sales" FunctionName="IMEModel.Store.prc_Area_Sales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_Area_Sales_Result">
+                <ScalarProperty Name="City_name" ColumnName="City_name" />
+                <ScalarProperty Name="Jan" ColumnName="Jan" />
+                <ScalarProperty Name="FEB" ColumnName="FEB" />
+                <ScalarProperty Name="MAR" ColumnName="MAR" />
+                <ScalarProperty Name="APR" ColumnName="APR" />
+                <ScalarProperty Name="MAY" ColumnName="MAY" />
+                <ScalarProperty Name="JUN" ColumnName="JUN" />
+                <ScalarProperty Name="JUL" ColumnName="JUL" />
+                <ScalarProperty Name="AUG" ColumnName="AUG" />
+                <ScalarProperty Name="SEP" ColumnName="SEP" />
+                <ScalarProperty Name="OCT" ColumnName="OCT" />
+                <ScalarProperty Name="NOV" ColumnName="NOV" />
+                <ScalarProperty Name="DEC" ColumnName="DEC" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -12724,6 +12805,33 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_Monthly_Sales" FunctionName="IMEModel.Store.prc_Monthly_Sales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_Monthly_Sales_Result">
+                <ScalarProperty Name="Customer_Code" ColumnName="Customer_Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rep_Name" ColumnName="Rep_Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CUST_ADDED_DATE" ColumnName="CUST_ADDED_DATE" />
+                <ScalarProperty Name="Y1_Total" ColumnName="Y1_Total" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Jan" ColumnName="Jan" />
+                <ScalarProperty Name="FEB" ColumnName="FEB" />
+                <ScalarProperty Name="MAR" ColumnName="MAR" />
+                <ScalarProperty Name="APR" ColumnName="APR" />
+                <ScalarProperty Name="MAY" ColumnName="MAY" />
+                <ScalarProperty Name="JUN" ColumnName="JUN" />
+                <ScalarProperty Name="JUL" ColumnName="JUL" />
+                <ScalarProperty Name="AUG" ColumnName="AUG" />
+                <ScalarProperty Name="SEP" ColumnName="SEP" />
+                <ScalarProperty Name="OCT" ColumnName="OCT" />
+                <ScalarProperty Name="NOV" ColumnName="NOV" />
+                <ScalarProperty Name="DEC" ColumnName="DEC" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prc_RSInvoiceAdd" FunctionName="IMEModel.Store.prc_RSInvoiceAdd" />
           <FunctionImportMapping FunctionImportName="prc_RSInvoiceDetailsAdd" FunctionName="IMEModel.Store.prc_RSInvoiceDetailsAdd" />
           <FunctionImportMapping FunctionImportName="ProductViewWithID" FunctionName="IMEModel.Store.ProductViewWithID">
@@ -12937,6 +13045,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="Capital" ColumnName="Capital" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

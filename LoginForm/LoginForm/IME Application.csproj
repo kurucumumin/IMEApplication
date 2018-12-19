@@ -468,6 +468,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_Area_Sales_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\prc_GetExtendedRangeWithArticleNumber_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -508,6 +511,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\prc_GetWorkersAllForComboBox_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\prc_Monthly_Sales_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PrintFormat.cs">

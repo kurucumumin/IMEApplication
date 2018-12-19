@@ -86,6 +86,8 @@
             this.TaxOffice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.groupAddresses = new System.Windows.Forms.GroupBox();
+            this.txtPoBox = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.CityAdd = new System.Windows.Forms.Button();
             this.TownAdd = new System.Windows.Forms.Button();
             this.cbDefaultInvoiceAdress = new System.Windows.Forms.CheckBox();
@@ -152,8 +154,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtPoBox = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
+            this.txtMarkup = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.groupCompany.SuspendLayout();
             this.groupAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.factor)).BeginInit();
@@ -546,6 +548,8 @@
             // 
             // groupAccount
             // 
+            this.groupAccount.Controls.Add(this.txtMarkup);
+            this.groupAccount.Controls.Add(this.label44);
             this.groupAccount.Controls.Add(this.factor);
             this.groupAccount.Controls.Add(this.DiscountRate);
             this.groupAccount.Controls.Add(this.AccountingNotes);
@@ -588,7 +592,7 @@
             0,
             0,
             65536});
-            this.factor.Location = new System.Drawing.Point(488, 28);
+            this.factor.Location = new System.Drawing.Point(488, 24);
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(174, 20);
             this.factor.TabIndex = 29;
@@ -599,7 +603,7 @@
             this.DiscountRate.DecimalPlaces = 4;
             this.DiscountRate.Enabled = false;
             this.DiscountRate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DiscountRate.Location = new System.Drawing.Point(488, 71);
+            this.DiscountRate.Location = new System.Drawing.Point(488, 60);
             this.DiscountRate.Maximum = new decimal(new int[] {
             30,
             0,
@@ -620,10 +624,10 @@
             this.AccountingNotes.AcceptsTab = true;
             this.AccountingNotes.Enabled = false;
             this.AccountingNotes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AccountingNotes.Location = new System.Drawing.Point(489, 198);
+            this.AccountingNotes.Location = new System.Drawing.Point(489, 211);
             this.AccountingNotes.Multiline = true;
             this.AccountingNotes.Name = "AccountingNotes";
-            this.AccountingNotes.Size = new System.Drawing.Size(178, 65);
+            this.AccountingNotes.Size = new System.Drawing.Size(178, 52);
             this.AccountingNotes.TabIndex = 37;
             // 
             // InvCurrencyName
@@ -631,7 +635,7 @@
             this.InvCurrencyName.Enabled = false;
             this.InvCurrencyName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.InvCurrencyName.FormattingEnabled = true;
-            this.InvCurrencyName.Location = new System.Drawing.Point(489, 156);
+            this.InvCurrencyName.Location = new System.Drawing.Point(491, 170);
             this.InvCurrencyName.Name = "InvCurrencyName";
             this.InvCurrencyName.Size = new System.Drawing.Size(178, 21);
             this.InvCurrencyName.TabIndex = 35;
@@ -641,16 +645,16 @@
             this.QuoCurrencyName.Enabled = false;
             this.QuoCurrencyName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.QuoCurrencyName.FormattingEnabled = true;
-            this.QuoCurrencyName.Location = new System.Drawing.Point(488, 115);
+            this.QuoCurrencyName.Location = new System.Drawing.Point(491, 128);
             this.QuoCurrencyName.Name = "QuoCurrencyName";
-            this.QuoCurrencyName.Size = new System.Drawing.Size(179, 21);
+            this.QuoCurrencyName.Size = new System.Drawing.Size(176, 21);
             this.QuoCurrencyName.TabIndex = 33;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(347, 158);
+            this.label14.Location = new System.Drawing.Point(349, 178);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 13);
             this.label14.TabIndex = 17;
@@ -670,7 +674,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(347, 122);
+            this.label13.Location = new System.Drawing.Point(347, 135);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(98, 13);
             this.label13.TabIndex = 18;
@@ -701,7 +705,7 @@
             this.AccountRepresentary.Enabled = false;
             this.AccountRepresentary.ForeColor = System.Drawing.SystemColors.ControlText;
             this.AccountRepresentary.FormattingEnabled = true;
-            this.AccountRepresentary.Location = new System.Drawing.Point(120, 32);
+            this.AccountRepresentary.Location = new System.Drawing.Point(120, 28);
             this.AccountRepresentary.Name = "AccountRepresentary";
             this.AccountRepresentary.Size = new System.Drawing.Size(174, 21);
             this.AccountRepresentary.TabIndex = 14;
@@ -710,7 +714,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(347, 222);
+            this.label16.Location = new System.Drawing.Point(349, 240);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(92, 13);
             this.label16.TabIndex = 20;
@@ -720,7 +724,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(347, 77);
+            this.label15.Location = new System.Drawing.Point(349, 60);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 13);
             this.label15.TabIndex = 22;
@@ -740,7 +744,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(6, 31);
+            this.label7.Location = new System.Drawing.Point(6, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 30;
@@ -760,7 +764,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(347, 31);
+            this.label22.Location = new System.Drawing.Point(349, 28);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(37, 13);
             this.label22.TabIndex = 28;
@@ -843,6 +847,22 @@
             this.groupAddresses.TabStop = false;
             this.groupAddresses.Text = "ADDRESSES";
             this.groupAddresses.Paint += new System.Windows.Forms.PaintEventHandler(this.groupAddresses_Paint);
+            // 
+            // txtPoBox
+            // 
+            this.txtPoBox.Location = new System.Drawing.Point(91, 232);
+            this.txtPoBox.Name = "txtPoBox";
+            this.txtPoBox.Size = new System.Drawing.Size(151, 20);
+            this.txtPoBox.TabIndex = 90;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(6, 239);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(49, 13);
+            this.label36.TabIndex = 89;
+            this.label36.Text = "P.O. Box";
             // 
             // CityAdd
             // 
@@ -1567,21 +1587,24 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
-            // txtPoBox
+            // txtMarkup
             // 
-            this.txtPoBox.Location = new System.Drawing.Point(91, 232);
-            this.txtPoBox.Name = "txtPoBox";
-            this.txtPoBox.Size = new System.Drawing.Size(151, 20);
-            this.txtPoBox.TabIndex = 90;
+            this.txtMarkup.Enabled = false;
+            this.txtMarkup.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtMarkup.Location = new System.Drawing.Point(491, 91);
+            this.txtMarkup.Name = "txtMarkup";
+            this.txtMarkup.Size = new System.Drawing.Size(174, 20);
+            this.txtMarkup.TabIndex = 38;
             // 
-            // label36
+            // label44
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(6, 239);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(49, 13);
-            this.label36.TabIndex = 89;
-            this.label36.Text = "P.O. Box";
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label44.Location = new System.Drawing.Point(349, 92);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(45, 13);
+            this.label44.TabIndex = 39;
+            this.label44.Text = "MarkUp";
             // 
             // FormCustomerAdd
             // 
@@ -1744,5 +1767,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.TextBox txtPoBox;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtMarkup;
+        private System.Windows.Forms.Label label44;
     }
 }

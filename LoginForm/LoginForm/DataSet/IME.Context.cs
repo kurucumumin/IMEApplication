@@ -1809,6 +1809,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrdersDate_Month_Result>("OrdersDate_Month", monthParameter, month2Parameter, yearParameter);
         }
     
+        public virtual ObjectResult<prc_Area_Sales_Result> prc_Area_Sales(Nullable<int> year)
+        {
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_Area_Sales_Result>("prc_Area_Sales", yearParameter);
+        }
+    
         public virtual ObjectResult<prc_GetExtendedRangeWithArticleNumber_Result> prc_GetExtendedRangeWithArticleNumber(string articleNumber)
         {
             var articleNumberParameter = articleNumber != null ?
@@ -1925,6 +1934,15 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<prc_GetWorkersAllForComboBox_Result> prc_GetWorkersAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetWorkersAllForComboBox_Result>("prc_GetWorkersAllForComboBox");
+        }
+    
+        public virtual ObjectResult<prc_Monthly_Sales_Result> prc_Monthly_Sales(Nullable<int> year)
+        {
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_Monthly_Sales_Result>("prc_Monthly_Sales", yearParameter);
         }
     
         public virtual int prc_RSInvoiceAdd(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber, Nullable<decimal> discount, Nullable<decimal> surcharge, string supplierID, Nullable<int> userID)

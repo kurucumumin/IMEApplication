@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f9964493e5be4b24821f10867aba93fc" Name="Diagram1">
+      <Diagram DiagramId="20f0c46202b14deca517ac7929b85b75" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.Account" Width="1.5" PointX="12" PointY="71.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountOperation" Width="1.5" PointX="17.25" PointY="54" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="6.75" PointY="65.625" IsExpanded="true" />
@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="IMEModel.Currency" Width="1.5" PointX="9.75" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Current" Width="1.5" PointX="15" PointY="76.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CurrentType" Width="1.5" PointX="12.75" PointY="76.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="3" PointY="55.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="3" PointY="55" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CustomerAddress" Width="1.5" PointX="11.25" PointY="56.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="0.75" PointY="49.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CustomerDepartment" Width="1.5" PointX="3" PointY="50.375" IsExpanded="true" />
@@ -39,7 +39,7 @@
         <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Item" Width="1.5" PointX="8.25" PointY="34.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ItemHistory" Width="1.5" PointX="5.25" PointY="74.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="71.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="3" PointY="67.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.LogRecord" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Mail" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />

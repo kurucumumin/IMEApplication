@@ -316,6 +316,7 @@ namespace LoginForm
             PaymentMethod.SelectedValue = (c.paymentmethodID != null) ? c.paymentmethodID : -1;
             factor.Text = c.factor.ToString() ?? factor.Text;
             DiscountRate.Text = c.discountrate.ToString() ?? DiscountRate.Text;
+            txtMarkup.Text = c.Markup.ToString();
         }
 
         private void EnableFalse()
@@ -576,6 +577,7 @@ namespace LoginForm
             Telephone.Enabled = true;
             AccountingNotes.Enabled = true;
             DiscountRate.Enabled = true;
+            txtMarkup.Enabled = true;
             PaymentMethod.Enabled = true;
             TermsofPayments.Enabled = true;
             TaxOffice.Enabled = true;
@@ -1045,6 +1047,7 @@ namespace LoginForm
                 if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
                 if (DiscountRate.Text != "") { c.discountrate = Decimal.Parse(DiscountRate.Text); }
                 c.taxoffice = TaxOffice.Text;
+                c.Markup = Decimal.Parse(txtMarkup.Text);
                 if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
                 if (MainCategory.SelectedValue != null)
                 { c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString()); }
