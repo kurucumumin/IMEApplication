@@ -2295,6 +2295,7 @@ namespace LoginForm.QuotationModule
             ExtendedRange er;
 
             var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+            string custStockCode = IME.QuotationDetails.Where(x=> x.ItemCode==ArticleNoSearch && x.CustomerDescription == txtCustomerName.Text).FirstOrDefault().CustomerStockCode;
             var rsf = IME.RsFileHistories.Where(a => a.FileType == "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
 
             if (ItemTabDetails != null)
@@ -2305,6 +2306,8 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
+                CurrentRow.Cells[dgCustDescription.Index].Value = txtCustomerName.Text;
+                CurrentRow.Cells[dgCustStkCode.Index].Value = custStockCode;
                 if (ItemTabDetails.Standard_Weight != null && ItemTabDetails.Standard_Weight != 0)
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
