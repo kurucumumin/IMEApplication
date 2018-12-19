@@ -115,7 +115,7 @@
     </Reference>
     <Reference Include="ImeLogoLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ImeLogoLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Proje\ProjeDosyalari17.09.2018\ImeLogoLibrary\ImeLogoLibrary\bin\Debug\ImeLogoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>

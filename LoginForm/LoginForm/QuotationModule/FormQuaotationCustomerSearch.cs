@@ -457,9 +457,9 @@ namespace LoginForm.QuotationModule
                         this.DialogResult = DialogResult.OK;
                         this.Close();
 
-                        FormQuotationAdd quotationForm = new FormQuotationAdd(this, customerName, customerID);
+                        FormQuotationAdd frm = new FormQuotationAdd(customerID);
                         Utils.LogKayit("Quotation", "Quotation new screen has been entered");
-                        quotationForm.Show();
+                        frm.ShowDialog();
                     }
                     else
                     {

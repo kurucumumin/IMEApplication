@@ -61,7 +61,7 @@ namespace LoginForm.QuotationModule
             dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
             dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+             typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
          System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
          dgQuotationAddedItems, new object[] { true });
 
@@ -70,7 +70,7 @@ namespace LoginForm.QuotationModule
             cID = customerId;
             dtpDate.Value = Utils.GetCurrentDateTime();
             dtpDate.Enabled = false;
-            this.parentCustomer = parent;
+            //this.parentCustomer = parent;
             txtQuotationNo.PasswordChar = ' ';
             btnCreateRev.Enabled = false;
             label68.Enabled = false;
@@ -109,6 +109,81 @@ namespace LoginForm.QuotationModule
                 btnContactAdd.Enabled = true;
                 #endregion
             }
+        }
+
+        public FormQuotationAdd(string customerId)
+        {
+            InitializeComponent();
+            dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+            dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+        dgQuotationAddedItems, new object[] { true });
+
+
+            cID = customerId;
+            dtpDate.Value = Utils.GetCurrentDateTime();
+            dtpDate.Enabled = false;
+            //this.parentCustomer = parent;
+            txtQuotationNo.PasswordChar = ' ';
+            btnCreateRev.Enabled = false;
+            label68.Enabled = false;
+
+            #region customer
+
+            var customerList = IME.Customers.Where(a => a.ID==cID).ToList();
+
+            this.Enabled = true;
+            customer = customerList.FirstOrDefault();
+            CustomerCode.Text = cID;
+            txtCustomerName.Text = customer.c_name;
+            cbWorkers.Items.AddRange(customer.CustomerWorkers.ToArray());
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            if (customer.paymentmethodID != null)
+            {
+                cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentTerm.term_name);
+            }
+            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            if (customer.Worker != null) cbRep.SelectedValue = customer.Worker.WorkerID;
+            if (this.Text != "Edit Quotation")
+            {
+                var CustomerCurr = IME.Currencies.Where(a => a.currencyName == customer.CurrNameQuo).FirstOrDefault();
+                if (CustomerCurr != null) cbCurrency.SelectedValue = CustomerCurr.currencyID;
+            }
+            if (customer.CustomerWorker != null)
+            {
+                cbWorkers.SelectedValue = customer.CustomerWorker.ID;
+                cbWorkers.SelectedItem = cbWorkers.FindStringExact(customer.CustomerWorker.cw_name);
+            }
+            btnContactAdd.Enabled = true;
+            #endregion
+
+            dtpDate.Value = Utils.GetCurrentDateTime();
+            cbPayment.DataSource = IME.PaymentTerms.ToList();
+            cbPayment.DisplayMember = "term_name";
+            cbPayment.ValueMember = "ID";
+            cbRep.DataSource = IME.Workers.ToList();
+            cbRep.ValueMember = "WorkerID";
+            cbRep.DisplayMember = "NameLastName";
+            cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
+            cbFactor.Text = Utils.getManagement().Factor.ToString();
+            cbCurrency.DataSource = IME.Currencies.ToList();
+            cbCurrency.DisplayMember = "currencyName";
+            cbCurrency.ValueMember = "currencyID";
+            cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
+
+            DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+            dgQuotationAddedItems.Rows.Add(dgRow);
+            //txtQuotationNo.Text = NewQuotationID();/*New 1*/
+            txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
+            dgQuotationAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString();
+            LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
+            vat = (decimal)Utils.getManagement().VAT;
+            lblVat.Text = vat.ToString();
         }
 
         public void FillCustomerFromSearch(string customerName, string customerId)
@@ -221,259 +296,259 @@ namespace LoginForm.QuotationModule
 
         }
 
-        public FormQuotationAdd(string item_code)
-        {
-            InitializeComponent();
-            dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
-            dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+        //public FormQuotationAdd(string item_code)
+        //{
+        //    InitializeComponent();
+        //    dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+        //    dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
-         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-         dgQuotationAddedItems, new object[] { true });
+        //    typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+        // System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+        // dgQuotationAddedItems, new object[] { true });
 
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            {
-                dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //    {
+        //        dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+        //        dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                GetMarginMark(i);
-            }
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            {
-                QuotataionModifyItemDetailsFiller(item_code, i);
+        //        GetMarginMark(i);
+        //    }
+        //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //    {
+        //        QuotataionModifyItemDetailsFiller(item_code, i);
 
-            }
-        }
+        //    }
+        //}
 
-        public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
-        {
-            InitializeComponent();
-            dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
-            dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+        //public FormQuotationAdd(Quotation quotation, FormQuotationMain parent)
+        //{
+        //    InitializeComponent();
+        //    dgQuotationAddedItems.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
+        //    dgQuotationDeleted.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 185, 194);
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
-         System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
-         dgQuotationAddedItems, new object[] { true });
+        //    typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+        // System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty, null,
+        // dgQuotationAddedItems, new object[] { true });
 
-            btnSave.Visible = false;
-            label67.Visible = false;
-            this.parent = parent;
-            dtpDate.Value = Utils.GetCurrentDateTime();
-            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
-            deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
-            deliveryColumn.DisplayMember = "DeliveryName";
-            deliveryColumn.ValueMember = "ID";
-            //Son versiyonu açmayı sağlıyor
+        //    btnSave.Visible = false;
+        //    label67.Visible = false;
+        //    this.parent = parent;
+        //    dtpDate.Value = Utils.GetCurrentDateTime();
+        //    DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
+        //    deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+        //    deliveryColumn.DisplayMember = "DeliveryName";
+        //    deliveryColumn.ValueMember = "ID";
+        //    //Son versiyonu açmayı sağlıyor
 
-            if (quotation.QuotationNo.Contains("v"))
-            {
-                //string q2 = (quotation.QuotationNo.Substring(0, quotation.QuotationNo.LastIndexOf('v') + 1)).ToString();
+        //    if (quotation.QuotationNo.Contains("v"))
+        //    {
+        //        //string q2 = (quotation.QuotationNo.Substring(0, quotation.QuotationNo.LastIndexOf('v') + 1)).ToString();
 
-                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-                mainQuo = q1;
-                this.Text = "Edit Quotation";
-                modifyMod = true;
-                cbCurrency.DataSource = IME.Currencies.ToList();
-                cbCurrency.DisplayMember = "currencyName";
-                cbCurrency.ValueMember = "currencyID";
+        //        Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+        //        mainQuo = q1;
+        //        this.Text = "Edit Quotation";
+        //        modifyMod = true;
+        //        cbCurrency.DataSource = IME.Currencies.ToList();
+        //        cbCurrency.DisplayMember = "currencyName";
+        //        cbCurrency.ValueMember = "currencyID";
 
-                var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
-                if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
+        //        var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
+        //        if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
 
-                cbPayment.DataSource = IME.PaymentTerms.ToList();
-                cbPayment.DisplayMember = "term_name";
-                cbPayment.ValueMember = "ID";
+        //        cbPayment.DataSource = IME.PaymentTerms.ToList();
+        //        cbPayment.DisplayMember = "term_name";
+        //        cbPayment.ValueMember = "ID";
 
-                cbRep.DataSource = IME.Workers.ToList();
-                cbRep.DisplayMember = "NameLastName";
-                cbRep.ValueMember = "WorkerID";
-                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToArray());
-                cbWorkers.DisplayMember = "cw_name";
-                cbWorkers.ValueMember = "ID";
-                if (q1.QuotationMainContact != null)
-                {
-                    cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
-                }
-                else
-                {
-                    cbWorkers.Text = q1.MainContactName;
+        //        cbRep.DataSource = IME.Workers.ToList();
+        //        cbRep.DisplayMember = "NameLastName";
+        //        cbRep.ValueMember = "WorkerID";
+        //        cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToArray());
+        //        cbWorkers.DisplayMember = "cw_name";
+        //        cbWorkers.ValueMember = "ID";
+        //        if (q1.QuotationMainContact != null)
+        //        {
+        //            cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+        //        }
+        //        else
+        //        {
+        //            cbWorkers.Text = q1.MainContactName;
 
-                }
+        //        }
 
 
-                CustomerCode.Enabled = false;
-                txtCustomerName.Enabled = false;
+        //        CustomerCode.Enabled = false;
+        //        txtCustomerName.Enabled = false;
 
-                LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
-                importFromQuotation = 0;
-                modifyQuotation(q1);
+        //        LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
+        //        importFromQuotation = 0;
+        //        modifyQuotation(q1);
 
-                cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
+        //        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //        {
+        //            dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    GetMarginMark(i);
-                }
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
+        //            GetMarginMark(i);
+        //        }
+        //        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //        {
+        //            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
-                }
-                if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
-                {
-                    dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
-                    {
-                        item.ReadOnly = true;
-                    }
-                    foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
-                    {
-                        item.ReadOnly = true;
-                    }
-                    gbCustomer.Enabled = false;
-                    btnCreateRev.Enabled = false;
-                    LandingCost.Enabled = false;
-                    gbShipment.Enabled = false;
-                    groupBox11.Enabled = false;
-                    groupBox7.Enabled = false;
-                    groupBox3.Enabled = false;
-                }
-                CalculateTotalMarge();
+        //        }
+        //        if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
+        //        {
+        //            dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        //            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+        //            {
+        //                item.ReadOnly = true;
+        //            }
+        //            foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
+        //            {
+        //                item.ReadOnly = true;
+        //            }
+        //            gbCustomer.Enabled = false;
+        //            btnCreateRev.Enabled = false;
+        //            LandingCost.Enabled = false;
+        //            gbShipment.Enabled = false;
+        //            groupBox11.Enabled = false;
+        //            groupBox7.Enabled = false;
+        //            groupBox3.Enabled = false;
+        //        }
+        //        CalculateTotalMarge();
 
-            }
-            else
-            {
-                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-                mainQuo = q1;
-                this.Text = "Edit Quotation";
-                modifyMod = true;
-                cbCurrency.DataSource = IME.Currencies.ToList();
-                cbCurrency.DisplayMember = "currencyName";
-                cbCurrency.ValueMember = "currencyID";
-                var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
-                if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
+        //    }
+        //    else
+        //    {
+        //        Quotation q1 = IME.Quotations.Where(a => a.QuotationNo == quotation.QuotationNo).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+        //        mainQuo = q1;
+        //        this.Text = "Edit Quotation";
+        //        modifyMod = true;
+        //        cbCurrency.DataSource = IME.Currencies.ToList();
+        //        cbCurrency.DisplayMember = "currencyName";
+        //        cbCurrency.ValueMember = "currencyID";
+        //        var QuoCurr = IME.Currencies.Where(a => a.currencyName == q1.CurrName).FirstOrDefault();
+        //        if (QuoCurr != null) cbCurrency.SelectedValue = QuoCurr.currencyID;
 
-                //dtpDate.Value = (DateTime)q1.StartDate;
-                //dtpDate.Value = DateTime.Today.Date;
-                //dtpDate.MaxDate = DateTime.Today.Date;
-                cbPayment.DataSource = IME.PaymentTerms.ToList();
-                cbPayment.DisplayMember = "term_name";
-                cbPayment.ValueMember = "ID";
-                cbRep.DataSource = IME.Workers.ToList();
-                cbRep.DisplayMember = "NameLastName";
-                cbRep.ValueMember = "WorkerID";
+        //        //dtpDate.Value = (DateTime)q1.StartDate;
+        //        //dtpDate.Value = DateTime.Today.Date;
+        //        //dtpDate.MaxDate = DateTime.Today.Date;
+        //        cbPayment.DataSource = IME.PaymentTerms.ToList();
+        //        cbPayment.DisplayMember = "term_name";
+        //        cbPayment.ValueMember = "ID";
+        //        cbRep.DataSource = IME.Workers.ToList();
+        //        cbRep.DisplayMember = "NameLastName";
+        //        cbRep.ValueMember = "WorkerID";
                 
-                cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(x => x.customerID == q1.CustomerID).ToArray());
-                cbWorkers.DisplayMember = "cw_name";
-                cbWorkers.ValueMember = "ID";
-                if (q1.QuotationMainContact != null)
-                {
-                    cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
-                }
-                else
-                {
-                    cbWorkers.Text = q1.MainContactName;
-                }
+        //        cbWorkers.Items.AddRange(IME.CustomerWorkers.Where(x => x.customerID == q1.CustomerID).ToArray());
+        //        cbWorkers.DisplayMember = "cw_name";
+        //        cbWorkers.ValueMember = "ID";
+        //        if (q1.QuotationMainContact != null)
+        //        {
+        //            cbWorkers.SelectedValue = (int)q1.QuotationMainContact;
+        //        }
+        //        else
+        //        {
+        //            cbWorkers.Text = q1.MainContactName;
+        //        }
          
-                LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
-                importFromQuotation = 0;
-                modifyQuotation(q1);
-                //txtQuotationNo.Text = q1.QuotationNo + "v1";
-                cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //        LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
+        //        importFromQuotation = 0;
+        //        modifyQuotation(q1);
+        //        //txtQuotationNo.Text = q1.QuotationNo + "v1";
+        //        cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
+        //        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //        {
+        //            dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                    dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+        //            dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                    GetMarginMark(i);
-                }
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
+        //            GetMarginMark(i);
+        //        }
+        //        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+        //        {
+        //            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
-                }
-                if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
-                {
-                    dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
-                    {
-                        item.ReadOnly = true;
-                    }
-                    foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
-                    {
-                        item.ReadOnly = true;
-                    }
-                    gbCustomer.Enabled = false;
-                    btnCreateRev.Enabled = false;
-                    LandingCost.Enabled = false;
-                    gbShipment.Enabled = false;
-                    groupBox11.Enabled = false;
-                    groupBox7.Enabled = false;
-                    groupBox3.Enabled = false;
-                }
-                CalculateTotalMarge();
-            }
+        //        }
+        //        if (!Utils.AuthorityCheck(IMEAuthority.EditanyQuotation))
+        //        {
+        //            dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        //            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+        //            {
+        //                item.ReadOnly = true;
+        //            }
+        //            foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
+        //            {
+        //                item.ReadOnly = true;
+        //            }
+        //            gbCustomer.Enabled = false;
+        //            btnCreateRev.Enabled = false;
+        //            LandingCost.Enabled = false;
+        //            gbShipment.Enabled = false;
+        //            groupBox11.Enabled = false;
+        //            groupBox7.Enabled = false;
+        //            groupBox3.Enabled = false;
+        //        }
+        //        CalculateTotalMarge();
+        //    }
 
-            dgQuotationAddedItems.Focus();
-            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+        //    dgQuotationAddedItems.Focus();
+        //    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
 
-        }
+        //}
 
         public FormQuotationAdd(Quotation quotation, FormQuotationMain parent, string mod2)
         {
@@ -869,29 +944,29 @@ namespace LoginForm.QuotationModule
             if (!modifyMod)
             {
 
-                DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                dgQuotationAddedItems.Rows.Add(dgRow);
-                txtQuotationNo.Text = NewQuotationID();/*New 1*/
-                //txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
-                dgQuotationAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString();
-                LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
-                vat = (decimal)Utils.getManagement().VAT;
-                lblVat.Text = vat.ToString();
-                #region ComboboxFiller.
-                dtpDate.Value = Utils.GetCurrentDateTime();
-                cbPayment.DataSource = IME.PaymentTerms.ToList();
-                cbPayment.DisplayMember = "term_name";
-                cbPayment.ValueMember = "ID";
-                cbRep.DataSource = IME.Workers.ToList();
-                cbRep.ValueMember = "WorkerID";
-                cbRep.DisplayMember = "NameLastName";
-                cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
-                cbFactor.Text = Utils.getManagement().Factor.ToString();
-                cbCurrency.DataSource = IME.Currencies.ToList();
-                cbCurrency.DisplayMember = "currencyName";
-                cbCurrency.ValueMember = "currencyID";
-                cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
-                #endregion
+                //DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                //dgQuotationAddedItems.Rows.Add(dgRow);
+                //txtQuotationNo.Text = NewQuotationID();/*New 1*/
+                ////txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
+                //dgQuotationAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString();
+                //LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
+                //vat = (decimal)Utils.getManagement().VAT;
+                //lblVat.Text = vat.ToString();
+                //#region ComboboxFiller.
+                //dtpDate.Value = Utils.GetCurrentDateTime();
+                //cbPayment.DataSource = IME.PaymentTerms.ToList();
+                //cbPayment.DisplayMember = "term_name";
+                //cbPayment.ValueMember = "ID";
+                //cbRep.DataSource = IME.Workers.ToList();
+                //cbRep.ValueMember = "WorkerID";
+                //cbRep.DisplayMember = "NameLastName";
+                //cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
+                //cbFactor.Text = Utils.getManagement().Factor.ToString();
+                //cbCurrency.DataSource = IME.Currencies.ToList();
+                //cbCurrency.DisplayMember = "currencyName";
+                //cbCurrency.ValueMember = "currencyID";
+                //cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
+                //#endregion
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
@@ -5618,9 +5693,17 @@ namespace LoginForm.QuotationModule
             switch (mod)
             {
                 case QuotationIdMod.New:
-                    Quotation q1 = db.Quotations.OrderByDescending(x => x.idYear).ThenByDescending(y => y.idNo).ThenByDescending(z => z.idVersion).FirstOrDefault();
-                    NewID = q1.idYear + "/" + (q1.idNo + 1);
-                    break;
+                    if (db.Quotations.Count() == 0)
+                    {
+                        NewID=2019 + "/" + 1;
+                        break;
+                    }
+                    else
+                    {
+                        Quotation q1 = db.Quotations.OrderByDescending(x => x.idYear).ThenByDescending(y => y.idNo).ThenByDescending(z => z.idVersion).FirstOrDefault();
+                        NewID = q1.idYear + "/" + (q1.idNo + 1);
+                        break;
+                    }
 
                 case QuotationIdMod.CreateVersion:
                     Quotation q2 = db.Quotations.Where(x => x.idYear == _q.idYear && x.idNo == _q.idNo).OrderByDescending(y => y.idVersion).FirstOrDefault();
@@ -5689,17 +5772,17 @@ namespace LoginForm.QuotationModule
         
         private void FormQuotationAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
-                if (quo != null)
-                {
-                    quo.ViewQuotation = true;
-                    IME.SaveChanges();
-                }
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+            //    if (quo != null)
+            //    {
+            //        quo.ViewQuotation = true;
+            //        IME.SaveChanges();
+            //    }
 
-               // this.Close();
-            }
+            //   // this.Close();
+            //}
         }
 
         private void txtStandartWeight_TextChanged(object sender, EventArgs e)

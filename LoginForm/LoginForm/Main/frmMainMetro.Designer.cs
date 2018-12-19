@@ -81,6 +81,7 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlReport = new System.Windows.Forms.Panel();
+            this.btnAreaSales = new AltoControls.AltoButton();
             this.btnMonthly = new AltoControls.AltoButton();
             this.btnItemMovement = new AltoControls.AltoButton();
             this.brnSalesOrderDetailReport = new AltoControls.AltoButton();
@@ -104,7 +105,6 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.btnAreaSales = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -959,6 +959,28 @@ namespace LoginForm.Main
             this.pnlReport.Size = new System.Drawing.Size(218, 0);
             this.pnlReport.TabIndex = 12;
             // 
+            // btnAreaSales
+            // 
+            this.btnAreaSales.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnAreaSales.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnAreaSales.BackColor = System.Drawing.Color.Transparent;
+            this.btnAreaSales.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAreaSales.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnAreaSales.ForeColor = System.Drawing.Color.Black;
+            this.btnAreaSales.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnAreaSales.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnAreaSales.Location = new System.Drawing.Point(2, 283);
+            this.btnAreaSales.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAreaSales.Name = "btnAreaSales";
+            this.btnAreaSales.Radius = 5;
+            this.btnAreaSales.Size = new System.Drawing.Size(194, 32);
+            this.btnAreaSales.Stroke = false;
+            this.btnAreaSales.StrokeColor = System.Drawing.Color.Gray;
+            this.btnAreaSales.TabIndex = 17;
+            this.btnAreaSales.Text = "Area Sales";
+            this.btnAreaSales.Transparency = true;
+            this.btnAreaSales.Click += new System.EventHandler(this.btnAreaSales_Click);
+            // 
             // btnMonthly
             // 
             this.btnMonthly.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
@@ -1342,28 +1364,6 @@ namespace LoginForm.Main
             this.lblTitleName.Size = new System.Drawing.Size(44, 15);
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
-            // 
-            // btnAreaSales
-            // 
-            this.btnAreaSales.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnAreaSales.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnAreaSales.BackColor = System.Drawing.Color.Transparent;
-            this.btnAreaSales.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAreaSales.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAreaSales.ForeColor = System.Drawing.Color.Black;
-            this.btnAreaSales.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnAreaSales.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnAreaSales.Location = new System.Drawing.Point(2, 283);
-            this.btnAreaSales.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAreaSales.Name = "btnAreaSales";
-            this.btnAreaSales.Radius = 5;
-            this.btnAreaSales.Size = new System.Drawing.Size(194, 32);
-            this.btnAreaSales.Stroke = false;
-            this.btnAreaSales.StrokeColor = System.Drawing.Color.Gray;
-            this.btnAreaSales.TabIndex = 17;
-            this.btnAreaSales.Text = "Area Sales";
-            this.btnAreaSales.Transparency = true;
-            this.btnAreaSales.Click += new System.EventHandler(this.btnAreaSales_Click);
             // 
             // frmMainMetro
             // 
