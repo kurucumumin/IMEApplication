@@ -5772,17 +5772,17 @@ namespace LoginForm.QuotationModule
         
         private void FormQuotationAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
-            //    if (quo != null)
-            //    {
-            //        quo.ViewQuotation = true;
-            //        IME.SaveChanges();
-            //    }
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
+                if (quo != null)
+                {
+                    quo.ViewQuotation = true;
+                    IME.SaveChanges();
+                }
 
-            //   // this.Close();
-            //}
+                // this.Close();
+            }
         }
 
         private void txtStandartWeight_TextChanged(object sender, EventArgs e)
