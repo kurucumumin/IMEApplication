@@ -5160,9 +5160,10 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUKPrice.Index].Value = item.UKPrice;
                     row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
+                    row.Cells[dgCustDescription.Index].Value = item.CustomerDesc;
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgMPN.Index].Value = item.MPN;
-                    row.Cells[dgDesc.Index].Value = item.CustomerDescription;
+                    row.Cells[dgDesc.Index].Value = item.ItemDescription;
                     dgSaleAddedItems.Rows.Add(row);
 
                 }

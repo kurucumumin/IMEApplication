@@ -3851,7 +3851,7 @@ namespace LoginForm
 
 
 
-                    IME.QuotationDetailsADD(q.dgNo, q.ItemCode, q.Qty, q.UCUPCurr, q.Disc, q.Total, q.TargetUP, q.Competitor, q.CustomerDescription, q.CustomerStockCode, q.IsDeleted, q.QuotationNo, q.UPIME, q.Marge, q.UnitOfMeasure, q.UC, q.SSM, q.UnitWeight, q.DependantTable, q.unitConversionId);
+                    IME.QuotationDetailsADD(q.dgNo, q.ItemCode, q.Qty, q.UCUPCurr, q.Disc, q.Total, q.TargetUP, q.Competitor, q.ItemDescription, q.CustomerStockCode, q.IsDeleted, q.QuotationNo, q.UPIME, q.Marge, q.UnitOfMeasure, q.UC, q.SSM, q.UnitWeight, q.DependantTable, q.unitConversionId);
                 }
 
             }
@@ -4153,7 +4153,7 @@ namespace LoginForm
             {
                 try { xlWorkSheet.Cells[i, 1] = item.dgNo; } catch { }
                 try { xlWorkSheet.Cells[i, 2] = item.ItemCode; } catch { }
-                try { xlWorkSheet.Cells[i, 10] = item.CustomerDescription; } catch { }
+                try { xlWorkSheet.Cells[i, 10] = item.ItemDescription; } catch { }
                 try { xlWorkSheet.Cells[i, 15] = item.MPN; } catch { }
                 //xlWorkSheet.Cells[i, 21] = item.Brand;
                 try { xlWorkSheet.Cells[i, 24] = item.SSM; } catch { }

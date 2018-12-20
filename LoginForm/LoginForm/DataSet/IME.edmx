@@ -857,7 +857,7 @@
           <Property Name="Total" Type="decimal" Precision="20" Scale="5" />
           <Property Name="TargetUP" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Competitor" Type="nvarchar" MaxLength="50" />
-          <Property Name="CustomerDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerStockCode" Type="nvarchar" MaxLength="20" />
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" />
           <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
@@ -875,6 +875,7 @@
           <Property Name="UKPrice" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Status" Type="nvarchar" MaxLength="10" />
           <Property Name="IsDeleted" Type="int" />
+          <Property Name="CustomerDesc" Type="nvarchar" MaxLength="80" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -5495,7 +5496,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
@@ -5513,6 +5514,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="UKPrice" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="CustomerDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -10986,7 +10988,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
                 <ScalarProperty Name="Competitor" ColumnName="Competitor" />
-                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
                 <ScalarProperty Name="UPIME" ColumnName="UPIME" />
@@ -11004,6 +11006,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="UKPrice" ColumnName="UKPrice" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CustomerDesc" ColumnName="CustomerDesc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
