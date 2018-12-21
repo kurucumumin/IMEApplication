@@ -6,8 +6,6 @@ using System.Windows.Forms;
 using LoginForm.Services;
 using static LoginForm.Services.MyClasses.MyAuthority;
 using LoginForm.DataSet;
-using System.Globalization;
-using System.Windows.Documents;
 using ImeLogoLibrary;
 using System.Data.SqlClient;
 
@@ -18,10 +16,8 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
         LogoSQL logosql = new LogoSQL();
-        ImeSQL imesql = new ImeSQL();
         string server = @"159.69.213.172";
         string logodatabase = "LOGO";
-        string imedatabase = "IME";
         string sqluser = "sa";
         string sqlpassword = "IME1453";
 
@@ -30,7 +26,6 @@ namespace LoginForm
 
         string hata = "Error";
         DataTable currencyList = new DataTable();
-        ImeLogoSalesOrder logoLibrary = new ImeLogoSalesOrder();
         public frmItemMovement()
         {
             InitializeComponent();

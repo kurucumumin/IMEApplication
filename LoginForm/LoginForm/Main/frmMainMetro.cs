@@ -648,5 +648,12 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("AreaSales Report", "Area Sales report screen has been entered");
         }
+
+        private void btnInvoiceIME_Click(object sender, EventArgs e)
+        {
+            frmInvoiceIME frm = new frmInvoiceIME();
+            frm.ShowDialog();
+            Utils.LogKayit("InvoiceIME Report", "Invoice IME report screen has been entered");
+        }
     }
 }

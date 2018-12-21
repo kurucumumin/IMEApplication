@@ -1380,7 +1380,7 @@ namespace LoginForm.QuotationModule
                     {
                         if (IME.QuotationDetails.Where(x => x.CustomerStockCode == cusStock).FirstOrDefault() != null)
                         {
-                            var stock = IME.QuotationDetails.Where(x => x.CustomerStockCode == cusStock).FirstOrDefault();
+                            var stock = IME.QuotationDetails.Where(x => x.CustomerStockCode == cusStock && x.CustomerDesc == txtCustomerName.Text).FirstOrDefault();
 
                             CurrentRow.Cells[dgProductCode.Index].Value = stock.ItemCode;
                             CurrentRow.Cells["dgDesc"].Value = stock.ItemDescription;
