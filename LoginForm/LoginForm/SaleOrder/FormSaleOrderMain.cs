@@ -128,18 +128,22 @@ namespace LoginForm
 
             foreach (DataGridViewRow row in dgSales.Rows)
             {
-                if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "LOGO")
+                if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to LOGO")
                 {
-                    row.DefaultCellStyle.BackColor = ImeSettings.GridSentToLogoRowColor ;
-                }else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "")
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 0);
+                }
+                else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to RS")
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(204, 237, 220);
+                }
+                else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to RS")
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
                 }
-
-                if (row.Cells[PurchaseID.Index].Value != null)
-                {
-                    row.DefaultCellStyle.BackColor = ImeSettings.GridPurchaseOrderCreatedRowColor ;
-                }
+                //if (row.Cells[PurchaseID.Index].Value != null)
+                //{
+                //    row.DefaultCellStyle.BackColor = ImeSettings.GridPurchaseOrderCreatedRowColor ;
+                //}
                 //else if (row.Cells[PurchaseID.Index].Value == null && row.Cells[PurchaseID.Index].Value.ToString() == "")
                 //{
                 //    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;

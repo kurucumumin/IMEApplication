@@ -2221,7 +2221,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, approvedParameter, saleOrderIDParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, deliveryDateParameter, grossTotalParameter);
         }
     
-        public virtual int QuotationDetailsADD(Nullable<decimal> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
+        public virtual int QuotationDetailsADD(Nullable<decimal> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string itemDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
         {
             var dgNoParameter = dgNo.HasValue ?
                 new ObjectParameter("dgNo", dgNo) :
@@ -2255,9 +2255,9 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Competitor", competitor) :
                 new ObjectParameter("Competitor", typeof(string));
     
-            var customerDescriptionParameter = customerDescription != null ?
-                new ObjectParameter("CustomerDescription", customerDescription) :
-                new ObjectParameter("CustomerDescription", typeof(string));
+            var itemDescriptionParameter = itemDescription != null ?
+                new ObjectParameter("ItemDescription", itemDescription) :
+                new ObjectParameter("ItemDescription", typeof(string));
     
             var customerStockCodeParameter = customerStockCode != null ?
                 new ObjectParameter("CustomerStockCode", customerStockCode) :
@@ -2303,7 +2303,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("unitConversionId", unitConversionId) :
                 new ObjectParameter("unitConversionId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, customerDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, itemDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
         }
     
         public virtual ObjectResult<QuotvsOrdersDetail_Result> QuotvsOrdersDetail(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)

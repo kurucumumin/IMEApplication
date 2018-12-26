@@ -48,6 +48,7 @@ namespace LoginForm.DataSet
         public string Status { get; set; }
         public Nullable<int> IsDeleted { get; set; }
         public string CustomerDesc { get; set; }
+        public Nullable<decimal> UnitNetWeight { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }

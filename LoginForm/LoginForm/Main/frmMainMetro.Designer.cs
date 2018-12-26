@@ -81,6 +81,7 @@ namespace LoginForm.Main
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlReport = new System.Windows.Forms.Panel();
+            this.btnInvoiceIME = new AltoControls.AltoButton();
             this.btnAreaSales = new AltoControls.AltoButton();
             this.btnMonthly = new AltoControls.AltoButton();
             this.btnItemMovement = new AltoControls.AltoButton();
@@ -105,7 +106,7 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.btnInvoiceIME = new AltoControls.AltoButton();
+            this.btnFactor = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -649,6 +650,7 @@ namespace LoginForm.Main
             // 
             this.pnlManagement.AutoScroll = true;
             this.pnlManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(233)))));
+            this.pnlManagement.Controls.Add(this.btnFactor);
             this.pnlManagement.Controls.Add(this.btnCurrency);
             this.pnlManagement.Controls.Add(this.btnLog);
             this.pnlManagement.Controls.Add(this.btnUser);
@@ -960,6 +962,28 @@ namespace LoginForm.Main
             this.pnlReport.Name = "pnlReport";
             this.pnlReport.Size = new System.Drawing.Size(218, 0);
             this.pnlReport.TabIndex = 12;
+            // 
+            // btnInvoiceIME
+            // 
+            this.btnInvoiceIME.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnInvoiceIME.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnInvoiceIME.BackColor = System.Drawing.Color.Transparent;
+            this.btnInvoiceIME.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnInvoiceIME.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnInvoiceIME.ForeColor = System.Drawing.Color.Black;
+            this.btnInvoiceIME.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnInvoiceIME.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnInvoiceIME.Location = new System.Drawing.Point(2, 319);
+            this.btnInvoiceIME.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInvoiceIME.Name = "btnInvoiceIME";
+            this.btnInvoiceIME.Radius = 5;
+            this.btnInvoiceIME.Size = new System.Drawing.Size(194, 32);
+            this.btnInvoiceIME.Stroke = false;
+            this.btnInvoiceIME.StrokeColor = System.Drawing.Color.Gray;
+            this.btnInvoiceIME.TabIndex = 18;
+            this.btnInvoiceIME.Text = "IME Invoice";
+            this.btnInvoiceIME.Transparency = true;
+            this.btnInvoiceIME.Click += new System.EventHandler(this.btnInvoiceIME_Click);
             // 
             // btnAreaSales
             // 
@@ -1367,27 +1391,27 @@ namespace LoginForm.Main
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
             // 
-            // btnInvoiceIME
+            // btnFactor
             // 
-            this.btnInvoiceIME.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnInvoiceIME.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnInvoiceIME.BackColor = System.Drawing.Color.Transparent;
-            this.btnInvoiceIME.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnInvoiceIME.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnInvoiceIME.ForeColor = System.Drawing.Color.Black;
-            this.btnInvoiceIME.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnInvoiceIME.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnInvoiceIME.Location = new System.Drawing.Point(2, 319);
-            this.btnInvoiceIME.Margin = new System.Windows.Forms.Padding(2);
-            this.btnInvoiceIME.Name = "btnInvoiceIME";
-            this.btnInvoiceIME.Radius = 5;
-            this.btnInvoiceIME.Size = new System.Drawing.Size(194, 32);
-            this.btnInvoiceIME.Stroke = false;
-            this.btnInvoiceIME.StrokeColor = System.Drawing.Color.Gray;
-            this.btnInvoiceIME.TabIndex = 18;
-            this.btnInvoiceIME.Text = "IME Invoice";
-            this.btnInvoiceIME.Transparency = true;
-            this.btnInvoiceIME.Click += new System.EventHandler(this.btnInvoiceIME_Click);
+            this.btnFactor.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnFactor.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnFactor.BackColor = System.Drawing.Color.Transparent;
+            this.btnFactor.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnFactor.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnFactor.ForeColor = System.Drawing.Color.Black;
+            this.btnFactor.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnFactor.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnFactor.Location = new System.Drawing.Point(5, 332);
+            this.btnFactor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFactor.Name = "btnFactor";
+            this.btnFactor.Radius = 5;
+            this.btnFactor.Size = new System.Drawing.Size(194, 32);
+            this.btnFactor.Stroke = false;
+            this.btnFactor.StrokeColor = System.Drawing.Color.Gray;
+            this.btnFactor.TabIndex = 19;
+            this.btnFactor.Text = "Factor";
+            this.btnFactor.Transparency = false;
+            this.btnFactor.Click += new System.EventHandler(this.btnFactor_Click);
             // 
             // frmMainMetro
             // 
@@ -1490,5 +1514,6 @@ namespace LoginForm.Main
         private AltoControls.AltoButton btnMonthly;
         private AltoControls.AltoButton btnAreaSales;
         private AltoControls.AltoButton btnInvoiceIME;
+        private AltoControls.AltoButton btnFactor;
     }
 }

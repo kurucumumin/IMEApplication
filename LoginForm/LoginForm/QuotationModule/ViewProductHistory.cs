@@ -72,8 +72,8 @@ namespace LoginForm.QuotationModule
                 row.Cells[dgcQuotationNo.Index].Value = item["QuotNo"];
                 row.Cells[dgcQuantity.Index].Value = item["QTY"];
                 row.Cells[dgcUP.Index].Value = item["UP"];
-                row.Cells[dgcCompetitor.Index].Value = item["Competitor"];
-                row.Cells[dgcTargetPrice.Index].Value = item["TargetPrice"];
+                row.Cells[dgLandingCost.Index].Value = item["LandingCost"];
+                row.Cells[dgMargin.Index].Value = item["Margin"];
                 row.Cells[dgcCurrency.Index].Value = item["Curr"];
                 row.Cells[dgcStatus.Index].Value = item["Status"];
             }

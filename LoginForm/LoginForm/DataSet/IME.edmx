@@ -591,6 +591,8 @@
           <Property Name="LogoCompanyNo" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="LogoTermNo" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="HSFactor" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="LIFactor" Type="decimal" Precision="6" Scale="3" />
         </EntityType>
         <EntityType Name="Master">
           <Key>
@@ -821,7 +823,7 @@
           <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="GrossTotal" Type="decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="status" Type="nvarchar" MaxLength="7" />
+          <Property Name="status" Type="nvarchar" MaxLength="15" />
           <Property Name="FirstNote" Type="nvarchar(max)" />
           <Property Name="NoteRep1" Type="nvarchar" MaxLength="30" />
           <Property Name="NoteDate1" Type="datetime" />
@@ -836,6 +838,8 @@
           <Property Name="TotalMargin" Type="decimal" Precision="5" Scale="2" />
           <Property Name="ViewQuotation" Type="bit" />
           <Property Name="TotalWeight" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="ViewQuotationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalNetWeight" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -876,6 +880,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="10" />
           <Property Name="IsDeleted" Type="int" />
           <Property Name="CustomerDesc" Type="nvarchar" MaxLength="80" />
+          <Property Name="UnitNetWeight" Type="decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -1023,7 +1028,7 @@
           <Property Name="exchangeRateID" Type="int" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="7" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" />
           <Property Name="TotalDiscount" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PurchaseOrderID" Type="int" />
           <Property Name="DistributeDiscount" Type="bit" />
@@ -1230,8 +1235,8 @@
           <Property Name="MPN" Type="nvarchar" MaxLength="50" />
           <Property Name="MH_Code_Level_1" Type="nvarchar" MaxLength="50" />
           <Property Name="Heigh" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Width" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Length" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Length" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -3645,7 +3650,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="Total" Type="decimal" Mode="In" />
           <Parameter Name="TargetUP" Type="decimal" Mode="In" />
           <Parameter Name="Competitor" Type="nvarchar" Mode="In" />
-          <Parameter Name="CustomerDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="ItemDescription" Type="nvarchar" Mode="In" />
           <Parameter Name="CustomerStockCode" Type="nvarchar" Mode="In" />
           <Parameter Name="IsDeleted" Type="int" Mode="In" />
           <Parameter Name="QuotationNo" Type="nvarchar" Mode="In" />
@@ -5182,6 +5187,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="LogoCompanyNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LogoTermNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HSFactor" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="LIFactor" Type="Decimal" Precision="6" Scale="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_ManagementCompany" FromRole="Management" ToRole="Company" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
@@ -5448,7 +5455,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="FirstNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NoteRep1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="NoteDate1" Type="DateTime" Precision="3" />
@@ -5463,6 +5470,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="TotalMargin" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="ViewQuotation" Type="Boolean" />
           <Property Name="TotalWeight" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="ViewQuotationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalNetWeight" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Quotation__Quota__597119F2" FromRole="Quotation" ToRole="CustomerWorker" />
@@ -5515,6 +5524,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Int32" />
           <Property Name="CustomerDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="UnitNetWeight" Type="Decimal" Precision="15" Scale="4" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -5677,7 +5687,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="exchangeRateID" Type="Int32" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="TotalDiscount" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="PurchaseOrderID" Type="Int32" />
           <Property Name="DistributeDiscount" Type="Boolean" />
@@ -5913,8 +5923,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MH_Code_Level_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Heigh" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Length" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Length" Type="Decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -8893,7 +8903,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Total" Mode="In" Type="Decimal" />
             <Parameter Name="TargetUP" Mode="In" Type="Decimal" />
             <Parameter Name="Competitor" Mode="In" Type="String" />
-            <Parameter Name="CustomerDescription" Mode="In" Type="String" />
+            <Parameter Name="ItemDescription" Mode="In" Type="String" />
             <Parameter Name="CustomerStockCode" Mode="In" Type="String" />
             <Parameter Name="IsDeleted" Mode="In" Type="Int32" />
             <Parameter Name="QuotationNo" Mode="In" Type="String" />
@@ -9642,10 +9652,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="QuotNo" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="QTY" Nullable="true" />
           <Property Type="Decimal" Name="UP" Nullable="true" Precision="20" Scale="5" />
-          <Property Type="String" Name="Competitor" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="TargetPrice" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LandingCost" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Margin" Nullable="true" Precision="20" Scale="5" />
           <Property Type="String" Name="Curr" Nullable="true" />
-          <Property Type="String" Name="Status" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
         </ComplexType>
         <ComplexType Name="prc_GetRsFileHistoryWithFileType_Result">
           <Property Type="String" Name="USER" Nullable="false" MaxLength="50" />
@@ -9876,8 +9886,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="MH_Code_Level_1" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="3" />
-          <Property Type="Decimal" Name="Width" Nullable="true" Precision="18" Scale="3" />
-          <Property Type="Decimal" Name="Length" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="Width" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Length" Nullable="true" Precision="18" Scale="4" />
         </ComplexType>
         <ComplexType Name="prc_GetWorkersAllForComboBox_Result">
           <Property Type="Int32" Name="WorkerID" Nullable="false" />
@@ -9913,7 +9923,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="QuotvsOrdersDetail_Result">
-          <Property Type="String" Name="QuotationStatus" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="QuotationStatus" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="QuotationNo" Nullable="false" MaxLength="20" />
           <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
           <Property Type="String" Name="ID" Nullable="true" MaxLength="15" />
@@ -9982,7 +9992,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Int32" Name="exchangeRateID" Nullable="true" />
           <Property Type="Decimal" Name="SaleOrderID" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="financialYearId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="Status" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
           <Property Type="Decimal" Name="TotalDiscount" Nullable="true" Precision="18" Scale="4" />
           <Property Type="Int32" Name="PurchaseOrderID" Nullable="true" />
           <Property Type="Boolean" Name="DistributeDiscount" Nullable="true" />
@@ -9993,7 +10003,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
         </ComplexType>
         <ComplexType Name="SalesOrdersDetail_Result">
-          <Property Type="String" Name="SaleOrderStatus" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="SaleOrderStatus" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="QuotationNo" Nullable="true" MaxLength="20" />
           <Property Type="DateTime" Name="SaleDate" Nullable="false" />
           <Property Type="String" Name="ID" Nullable="true" MaxLength="15" />
@@ -10706,6 +10716,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="LogoCompanyNo" ColumnName="LogoCompanyNo" />
                 <ScalarProperty Name="LogoTermNo" ColumnName="LogoTermNo" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="HSFactor" ColumnName="HSFactor" />
+                <ScalarProperty Name="LIFactor" ColumnName="LIFactor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10965,6 +10977,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="ViewQuotation" ColumnName="ViewQuotation" />
                 <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="ViewQuotationName" ColumnName="ViewQuotationName" />
+                <ScalarProperty Name="TotalNetWeight" ColumnName="TotalNetWeight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11007,6 +11021,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CustomerDesc" ColumnName="CustomerDesc" />
+                <ScalarProperty Name="UnitNetWeight" ColumnName="UnitNetWeight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12525,8 +12540,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="QuotNo" ColumnName="QuotNo" />
                 <ScalarProperty Name="QTY" ColumnName="QTY" />
                 <ScalarProperty Name="UP" ColumnName="UP" />
-                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
-                <ScalarProperty Name="TargetPrice" ColumnName="TargetPrice" />
+                <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
                 <ScalarProperty Name="Curr" ColumnName="Curr" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </ComplexTypeMapping>

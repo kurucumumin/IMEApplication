@@ -265,6 +265,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label68 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lblTotalNetWeight = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
             this.lblTotalWeight = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -273,7 +275,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
-            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.lblTotalExtra = new System.Windows.Forms.Label();
             this.lblTotalDis = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
@@ -302,6 +303,7 @@
             this.ckWeightCost = new System.Windows.Forms.CheckBox();
             this.ckItemCost = new System.Windows.Forms.CheckBox();
             this.cbSMethod = new System.Windows.Forms.ComboBox();
+            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
@@ -314,6 +316,7 @@
             this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -338,6 +341,8 @@
             this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitTotalNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -426,6 +431,7 @@
             this.LM,
             this.dgSupplier,
             this.dgProductCode,
+            this.dgStatus,
             this.dgBrand,
             this.dgMPN,
             this.dgDesc,
@@ -450,6 +456,8 @@
             this.dgDelivery,
             this.dgUnitWeigt,
             this.dgTotalWeight,
+            this.dgUnitNetWeight,
+            this.dgUnitTotalNetWeight,
             this.dgCustStkCode,
             this.dgCustDescription,
             this.dgCOO,
@@ -2458,6 +2466,7 @@
             this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Controls.Add(this.label67);
             this.panel1.Controls.Add(this.gbShipment);
+            this.panel1.Controls.Add(this.cbDeliverDiscount);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2501,6 +2510,8 @@
             // groupBox11
             // 
             this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.lblTotalNetWeight);
+            this.groupBox11.Controls.Add(this.label73);
             this.groupBox11.Controls.Add(this.lblTotalWeight);
             this.groupBox11.Controls.Add(this.panel9);
             this.groupBox11.Controls.Add(this.panel8);
@@ -2509,7 +2520,6 @@
             this.groupBox11.Controls.Add(this.panel5);
             this.groupBox11.Controls.Add(this.panel4);
             this.groupBox11.Controls.Add(this.label42);
-            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblTotalDis);
             this.groupBox11.Controls.Add(this.lblVat);
@@ -2532,6 +2542,25 @@
             this.groupBox11.Size = new System.Drawing.Size(269, 154);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
+            // 
+            // lblTotalNetWeight
+            // 
+            this.lblTotalNetWeight.Location = new System.Drawing.Point(160, 137);
+            this.lblTotalNetWeight.Name = "lblTotalNetWeight";
+            this.lblTotalNetWeight.Size = new System.Drawing.Size(73, 17);
+            this.lblTotalNetWeight.TabIndex = 75;
+            this.lblTotalNetWeight.Text = "0,00";
+            this.lblTotalNetWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(6, 138);
+            this.label73.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(88, 13);
+            this.label73.TabIndex = 74;
+            this.label73.Text = "Total Net Weight";
             // 
             // lblTotalWeight
             // 
@@ -2596,20 +2625,9 @@
             this.label42.Location = new System.Drawing.Point(6, 117);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(68, 13);
+            this.label42.Size = new System.Drawing.Size(98, 13);
             this.label42.TabIndex = 59;
-            this.label42.Text = "Total Weight";
-            // 
-            // cbDeliverDiscount
-            // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(6, 135);
-            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
-            this.cbDeliverDiscount.Size = new System.Drawing.Size(131, 25);
-            this.cbDeliverDiscount.TabIndex = 58;
-            this.cbDeliverDiscount.Text = "Distribute Discount";
-            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
-            this.cbDeliverDiscount.Visible = false;
-            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
+            this.label42.Text = "Total Gross Weight";
             // 
             // lblTotalExtra
             // 
@@ -2906,6 +2924,17 @@
             this.cbSMethod.TabIndex = 8;
             this.cbSMethod.Text = "Air Freight";
             // 
+            // cbDeliverDiscount
+            // 
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(944, 14);
+            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(131, 25);
+            this.cbDeliverDiscount.TabIndex = 58;
+            this.cbDeliverDiscount.Text = "Distribute Discount";
+            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
+            this.cbDeliverDiscount.Visible = false;
+            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
+            // 
             // btnClose
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -3029,6 +3058,16 @@
             this.dgProductCode.HeaderText = "Item Code";
             this.dgProductCode.Name = "dgProductCode";
             this.dgProductCode.Width = 82;
+            // 
+            // dgStatus
+            // 
+            this.dgStatus.Frozen = true;
+            this.dgStatus.HeaderText = "Status";
+            this.dgStatus.Items.AddRange(new object[] {
+            "R",
+            "O",
+            "D"});
+            this.dgStatus.Name = "dgStatus";
             // 
             // dgBrand
             // 
@@ -3268,10 +3307,10 @@
             dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
             this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle27;
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.HeaderText = "Gross Weigt (Kg)";
             this.dgUnitWeigt.Name = "dgUnitWeigt";
             this.dgUnitWeigt.ReadOnly = true;
-            this.dgUnitWeigt.Width = 96;
+            this.dgUnitWeigt.Width = 86;
             // 
             // dgTotalWeight
             // 
@@ -3281,10 +3320,20 @@
             dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
             this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle28;
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.HeaderText = "Total Gross Weight (Kg)";
             this.dgTotalWeight.Name = "dgTotalWeight";
             this.dgTotalWeight.ReadOnly = true;
-            this.dgTotalWeight.Width = 106;
+            this.dgTotalWeight.Width = 115;
+            // 
+            // dgUnitNetWeight
+            // 
+            this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
+            this.dgUnitNetWeight.Name = "dgUnitNetWeight";
+            // 
+            // dgUnitTotalNetWeight
+            // 
+            this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
+            this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
             // 
             // dgCustStkCode
             // 
@@ -3620,6 +3669,8 @@
         private System.Windows.Forms.MaskedTextBox txtTotalMargin;
         private System.Windows.Forms.TextBox txtTotalCost;
         private System.Windows.Forms.Label lblTotalWeight;
+        private System.Windows.Forms.Label lblTotalNetWeight;
+        private System.Windows.Forms.Label label73;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HS;
         private System.Windows.Forms.DataGridViewTextBoxColumn LI;
@@ -3628,6 +3679,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LM;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dgStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
@@ -3652,6 +3704,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dgDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitNetWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitTotalNetWeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;

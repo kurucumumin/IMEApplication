@@ -2,6 +2,7 @@
 using LoginForm.MyClasses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -67,7 +68,7 @@ namespace LoginForm.Services
                 else /*if(r.ErrorList.Count() == 0)*/
                 {
                     ReturnMessage LineError = CheckLinesForErrors(_Lines);
-                    _Timer.Stop();
+                   // _Timer.Stop();
                     //Satırlarda hata varsa
                     int maxShownErrorAmount = 15; /* MessageBox'ta gösterilen maksimum hata sayısını belirler*/
                     if (LineError.MessageList.Count > 0)
@@ -450,7 +451,7 @@ namespace LoginForm.Services
             SqlTransaction ImeSqlTransaction = ImeSqlConn.BeginTransaction();
             bool successfull = false;
 
-            int updatedItemCount = 0;
+            int ItemCount = 0;
             int newItemCount = 0;
             try
             {
@@ -635,119 +636,172 @@ namespace LoginForm.Services
                         }
                     }
 
-                    if (NewItem)
-                    {
-                        cmd = new SqlCommand();
-                        cmd.Connection = ImeSqlConn;
-                        cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"INSERT INTO [dbo].[SuperDiskP]
-                        ([Article_No], [Article_Desc] ,[Pack_Code] ,[Pack_Quantity] ,[Unit_Content] ,[Unit_Measure] ,[Uk_Col_1], [Standard_Weight], [Hazardous_Ind], [Calibration_Ind], [Obsolete_Flag], [MH1], [Low_Discount_Ind], [Licensed_Ind], [Shelf_Life], [CofO], [EUR1_Indicator], [CCCN_No], [Supercede_Date], [Current_Cat_page], [Uk_Intro_Date], [Filler], [Uk_Disc_Date], [Substitute_By], [BHC_Flag], [Filler1], [Future_Sell_Price], [Int_Cat], [New_Prod_Change_Ind], [Out_of_Stock_Prohibit_change_ind], [Disc_Change_Ind], [Superceded_Change_Ind], [Pack_Size_Change_Ind], [Rolled_Product_Change_Ind], [Expiring_Product_Change_Ind], [Manufacturer], [MPN], [MH_Code_Level_1], [Heigh], [Width], [Length])
-                    VALUES
-                        (@Article_No, @Article_Desc, @Pack_Code, @Pack_Quantity, @Unit_Content, @Unit_Measure, @Uk_Col_1, @Standard_Weight, @Hazardous_Ind, @Calibration_Ind, @Obsolete_Flag, @MH1, @Low_Discount_Ind, @Licensed_Ind, @Shelf_Life, @CofO, @EUR1_Indicator, @CCCN_No, @Supercede_Date, @Current_Cat_page, @Uk_Intro_Date, @Filler, @Uk_Disc_Date, @Substitute_By, @BHC_Flag, @Filler1, @Future_Sell_Price, @Int_Cat, @New_Prod_Change_Ind, @Out_of_Stock_Prohibit_change_ind, @Disc_Change_Ind, @Superceded_Change_Ind, @Pack_Size_Change_Ind, @Rolled_Product_Change_Ind, @Expiring_Product_Change_Ind, @Manufacturer, @MPN, @MH_Code_Level_1, @Heigh, @Width, @Length)";
-                        cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
-                        cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
-                        cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);
-                        cmd.Parameters.AddWithValue("@Pack_Quantity", item.Pack_Quantity);
-                        cmd.Parameters.AddWithValue("@Unit_Content", item.Unit_Content);
-                        cmd.Parameters.AddWithValue("@Unit_Measure", item.Unit_Measure);
-                        cmd.Parameters.AddWithValue("@Uk_Col_1", item.Uk_Col_1);
-                        cmd.Parameters.AddWithValue("@Standard_Weight", item.Standard_Weight);
-                        cmd.Parameters.AddWithValue("@Hazardous_Ind", item.Hazardous_Ind);
-                        cmd.Parameters.AddWithValue("@Calibration_Ind", item.Calibration_Ind);
-                        cmd.Parameters.AddWithValue("@Obsolete_Flag", item.Obsolete_Flag);
-                        cmd.Parameters.AddWithValue("@MH1", item.MH1);
-                        cmd.Parameters.AddWithValue("@Low_Discount_Ind", item.Low_Discount_Ind);
-                        cmd.Parameters.AddWithValue("@Licensed_Ind", item.Licensed_Ind);
-                        cmd.Parameters.AddWithValue("@Shelf_Life", item.Shelf_Life);
-                        cmd.Parameters.AddWithValue("@CofO", item.CofO);
-                        cmd.Parameters.AddWithValue("@EUR1_Indicator", item.EUR1_Indicator);
-                        cmd.Parameters.AddWithValue("@CCCN_No", item.CCCN_No);
-                        cmd.Parameters.AddWithValue("@Supercede_Date", item.Supercede_Date);
-                        cmd.Parameters.AddWithValue("@Current_Cat_page", item.Current_Cat_page);
-                        cmd.Parameters.AddWithValue("@Uk_Intro_Date", item.Uk_Intro_Date);
-                        cmd.Parameters.AddWithValue("@Filler", item.Filler);
-                        cmd.Parameters.AddWithValue("@Uk_Disc_Date", item.Uk_Disc_Date);
-                        cmd.Parameters.AddWithValue("@Substitute_By", item.Substitute_By);
-                        cmd.Parameters.AddWithValue("@BHC_Flag", item.BHC_Flag);
-                        cmd.Parameters.AddWithValue("@Filler1", item.Filler1);
-                        cmd.Parameters.AddWithValue("@Future_Sell_Price", item.Future_Sell_Price);
-                        cmd.Parameters.AddWithValue("@Int_Cat", item.Int_Cat);
-                        cmd.Parameters.AddWithValue("@New_Prod_Change_Ind", item.New_Prod_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Out_of_Stock_Prohibit_change_ind", item.Out_of_Stock_Prohibit_change_ind);
-                        cmd.Parameters.AddWithValue("@Disc_Change_Ind", item.Disc_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Superceded_Change_Ind", item.Superceded_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Pack_Size_Change_Ind", item.Pack_Size_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Rolled_Product_Change_Ind", item.Rolled_Product_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Expiring_Product_Change_Ind", item.Expiring_Product_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
-                        cmd.Parameters.AddWithValue("@MPN", item.MPN);
-                        cmd.Parameters.AddWithValue("@MH_Code_Level_1", item.MH_Code_Level_1);
-                        cmd.Parameters.AddWithValue("@Heigh", item.Heigh);
-                        cmd.Parameters.AddWithValue("@Width", item.Width);
-                        cmd.Parameters.AddWithValue("@Length", item.Length);
+                    //if (NewItem)
+                    //{
+                    //    cmd = new SqlCommand();
+                    //    cmd.Connection = ImeSqlConn;
+                    //    cmd.Transaction = ImeSqlTransaction;
+                    //    cmd.CommandText = @"INSERT INTO [dbo].[SuperDiskP]
+                    //    ([Article_No], [Article_Desc] ,[Pack_Code] ,[Pack_Quantity] ,[Unit_Content] ,[Unit_Measure] ,[Uk_Col_1], [Standard_Weight], [Hazardous_Ind], [Calibration_Ind], [Obsolete_Flag], [MH1], [Low_Discount_Ind], [Licensed_Ind], [Shelf_Life], [CofO], [EUR1_Indicator], [CCCN_No], [Supercede_Date], [Current_Cat_page], [Uk_Intro_Date], [Filler], [Uk_Disc_Date], [Substitute_By], [BHC_Flag], [Filler1], [Future_Sell_Price], [Int_Cat], [New_Prod_Change_Ind], [Out_of_Stock_Prohibit_change_ind], [Disc_Change_Ind], [Superceded_Change_Ind], [Pack_Size_Change_Ind], [Rolled_Product_Change_Ind], [Expiring_Product_Change_Ind], [Manufacturer], [MPN], [MH_Code_Level_1], [Heigh], [Width], [Length])
+                    //VALUES
+                    //    (@Article_No, @Article_Desc, @Pack_Code, @Pack_Quantity, @Unit_Content, @Unit_Measure, @Uk_Col_1, @Standard_Weight, @Hazardous_Ind, @Calibration_Ind, @Obsolete_Flag, @MH1, @Low_Discount_Ind, @Licensed_Ind, @Shelf_Life, @CofO, @EUR1_Indicator, @CCCN_No, @Supercede_Date, @Current_Cat_page, @Uk_Intro_Date, @Filler, @Uk_Disc_Date, @Substitute_By, @BHC_Flag, @Filler1, @Future_Sell_Price, @Int_Cat, @New_Prod_Change_Ind, @Out_of_Stock_Prohibit_change_ind, @Disc_Change_Ind, @Superceded_Change_Ind, @Pack_Size_Change_Ind, @Rolled_Product_Change_Ind, @Expiring_Product_Change_Ind, @Manufacturer, @MPN, @MH_Code_Level_1, @Heigh, @Width, @Length)";
+                    //    cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
+                    //    cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
+                    //    cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);
+                    //    cmd.Parameters.AddWithValue("@Pack_Quantity", item.Pack_Quantity);
+                    //    cmd.Parameters.AddWithValue("@Unit_Content", item.Unit_Content);
+                    //    cmd.Parameters.AddWithValue("@Unit_Measure", item.Unit_Measure);
+                    //    cmd.Parameters.AddWithValue("@Uk_Col_1", item.Uk_Col_1);
+                    //    cmd.Parameters.AddWithValue("@Standard_Weight", item.Standard_Weight);
+                    //    cmd.Parameters.AddWithValue("@Hazardous_Ind", item.Hazardous_Ind);
+                    //    cmd.Parameters.AddWithValue("@Calibration_Ind", item.Calibration_Ind);
+                    //    cmd.Parameters.AddWithValue("@Obsolete_Flag", item.Obsolete_Flag);
+                    //    cmd.Parameters.AddWithValue("@MH1", item.MH1);
+                    //    cmd.Parameters.AddWithValue("@Low_Discount_Ind", item.Low_Discount_Ind);
+                    //    cmd.Parameters.AddWithValue("@Licensed_Ind", item.Licensed_Ind);
+                    //    cmd.Parameters.AddWithValue("@Shelf_Life", item.Shelf_Life);
+                    //    cmd.Parameters.AddWithValue("@CofO", item.CofO);
+                    //    cmd.Parameters.AddWithValue("@EUR1_Indicator", item.EUR1_Indicator);
+                    //    cmd.Parameters.AddWithValue("@CCCN_No", item.CCCN_No);
+                    //    cmd.Parameters.AddWithValue("@Supercede_Date", item.Supercede_Date);
+                    //    cmd.Parameters.AddWithValue("@Current_Cat_page", item.Current_Cat_page);
+                    //    cmd.Parameters.AddWithValue("@Uk_Intro_Date", item.Uk_Intro_Date);
+                    //    cmd.Parameters.AddWithValue("@Filler", item.Filler);
+                    //    cmd.Parameters.AddWithValue("@Uk_Disc_Date", item.Uk_Disc_Date);
+                    //    cmd.Parameters.AddWithValue("@Substitute_By", item.Substitute_By);
+                    //    cmd.Parameters.AddWithValue("@BHC_Flag", item.BHC_Flag);
+                    //    cmd.Parameters.AddWithValue("@Filler1", item.Filler1);
+                    //    cmd.Parameters.AddWithValue("@Future_Sell_Price", item.Future_Sell_Price);
+                    //    cmd.Parameters.AddWithValue("@Int_Cat", item.Int_Cat);
+                    //    cmd.Parameters.AddWithValue("@New_Prod_Change_Ind", item.New_Prod_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Out_of_Stock_Prohibit_change_ind", item.Out_of_Stock_Prohibit_change_ind);
+                    //    cmd.Parameters.AddWithValue("@Disc_Change_Ind", item.Disc_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Superceded_Change_Ind", item.Superceded_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Pack_Size_Change_Ind", item.Pack_Size_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Rolled_Product_Change_Ind", item.Rolled_Product_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Expiring_Product_Change_Ind", item.Expiring_Product_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
+                    //    cmd.Parameters.AddWithValue("@MPN", item.MPN);
+                    //    cmd.Parameters.AddWithValue("@MH_Code_Level_1", item.MH_Code_Level_1);
+                    //    cmd.Parameters.AddWithValue("@Heigh", item.Heigh);
+                    //    cmd.Parameters.AddWithValue("@Width", item.Width);
+                    //    cmd.Parameters.AddWithValue("@Length", item.Length);
 
-                        cmd.ExecuteNonQuery();
-                        newItemCount++;
-                    }/* Adds a new item to SuperDiskP */
-                    else
-                    {
-                        cmd = new SqlCommand();
-                        cmd.Connection = ImeSqlConn;
-                        cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"UPDATE[dbo].[SuperDiskP] 
-                                            SET [Article_No] = @Article_No, [Article_Desc] = @Article_Desc, [Pack_Code] = @Pack_Code, [Pack_Quantity] = @Pack_Quantity, [Unit_Content] = @Unit_Content, [Unit_Measure] = @Unit_Measure, [Uk_Col_1] = @Uk_Col_1, [Standard_Weight] = @Standard_Weight, [Hazardous_Ind] = @Hazardous_Ind, [Calibration_Ind] = @Calibration_Ind, [Obsolete_Flag] = @Obsolete_Flag, [MH1] = @MH1, [Low_Discount_Ind] = @Low_Discount_Ind, [Licensed_Ind] = @Licensed_Ind, [Shelf_Life] = @Shelf_Life, [CofO] = @CofO, [EUR1_Indicator] = @EUR1_Indicator, [CCCN_No] = @CCCN_No, [Supercede_Date] = @Supercede_Date, [Current_Cat_page] = @Current_Cat_page, [Uk_Intro_Date] = @Uk_Intro_Date, [Filler] = @Filler, [Uk_Disc_Date] = @Uk_Disc_Date, [Substitute_By] = @Substitute_By, [BHC_Flag] = @BHC_Flag, [Filler1] = @Filler1, [Future_Sell_Price] = @Future_Sell_Price, [Int_Cat] = @Int_Cat, [New_Prod_Change_Ind] = @New_Prod_Change_Ind, [Out_of_Stock_Prohibit_change_ind] =@Out_of_Stock_Prohibit_change_ind, [Disc_Change_Ind] = @Disc_Change_Ind, [Superceded_Change_Ind] =@Superceded_Change_Ind, [Pack_Size_Change_Ind] = @Pack_Size_Change_Ind, [Rolled_Product_Change_Ind] = @Rolled_Product_Change_Ind, [Expiring_Product_Change_Ind] = @Expiring_Product_Change_Ind, [Manufacturer] = @Manufacturer, [MPN] =@MPN, [MH_Code_Level_1] = @MH_Code_Level_1, [Heigh] =@Heigh, [Width] = @Width, [Length] = @Length 
-                                        WHERE 
-                                            SuperDiskP.Article_No = @Article_No";
-                        cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
-                        cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
-                        cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);
-                        cmd.Parameters.AddWithValue("@Pack_Quantity", item.Pack_Quantity);
-                        cmd.Parameters.AddWithValue("@Unit_Content", item.Unit_Content);
-                        cmd.Parameters.AddWithValue("@Unit_Measure", item.Unit_Measure);
-                        cmd.Parameters.AddWithValue("@Uk_Col_1", item.Uk_Col_1);
-                        cmd.Parameters.AddWithValue("@Standard_Weight", item.Standard_Weight);
-                        cmd.Parameters.AddWithValue("@Hazardous_Ind", item.Hazardous_Ind);
-                        cmd.Parameters.AddWithValue("@Calibration_Ind", item.Calibration_Ind);
-                        cmd.Parameters.AddWithValue("@Obsolete_Flag", item.Obsolete_Flag);
-                        cmd.Parameters.AddWithValue("@MH1", item.MH1);
-                        cmd.Parameters.AddWithValue("@Low_Discount_Ind", item.Low_Discount_Ind);
-                        cmd.Parameters.AddWithValue("@Licensed_Ind", item.Licensed_Ind);
-                        cmd.Parameters.AddWithValue("@Shelf_Life", item.Shelf_Life);
-                        cmd.Parameters.AddWithValue("@CofO", item.CofO);
-                        cmd.Parameters.AddWithValue("@EUR1_Indicator", item.EUR1_Indicator);
-                        cmd.Parameters.AddWithValue("@CCCN_No", item.CCCN_No);
-                        cmd.Parameters.AddWithValue("@Supercede_Date", item.Supercede_Date);
-                        cmd.Parameters.AddWithValue("@Current_Cat_page", item.Current_Cat_page);
-                        cmd.Parameters.AddWithValue("@Uk_Intro_Date", item.Uk_Intro_Date);
-                        cmd.Parameters.AddWithValue("@Filler", item.Filler);
-                        cmd.Parameters.AddWithValue("@Uk_Disc_Date", item.Uk_Disc_Date);
-                        cmd.Parameters.AddWithValue("@Substitute_By", item.Substitute_By);
-                        cmd.Parameters.AddWithValue("@BHC_Flag", item.BHC_Flag);
-                        cmd.Parameters.AddWithValue("@Filler1", item.Filler1);
-                        cmd.Parameters.AddWithValue("@Future_Sell_Price", item.Future_Sell_Price);
-                        cmd.Parameters.AddWithValue("@Int_Cat", item.Int_Cat);
-                        cmd.Parameters.AddWithValue("@New_Prod_Change_Ind", item.New_Prod_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Out_of_Stock_Prohibit_change_ind", item.Out_of_Stock_Prohibit_change_ind);
-                        cmd.Parameters.AddWithValue("@Disc_Change_Ind", item.Disc_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Superceded_Change_Ind", item.Superceded_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Pack_Size_Change_Ind", item.Pack_Size_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Rolled_Product_Change_Ind", item.Rolled_Product_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Expiring_Product_Change_Ind", item.Expiring_Product_Change_Ind);
-                        cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
-                        cmd.Parameters.AddWithValue("@MPN", item.MPN);
-                        cmd.Parameters.AddWithValue("@MH_Code_Level_1", item.MH_Code_Level_1);
-                        cmd.Parameters.AddWithValue("@Heigh", item.Heigh);
-                        cmd.Parameters.AddWithValue("@Width", item.Width);
-                        cmd.Parameters.AddWithValue("@Length", item.Length);
+                    //    cmd.ExecuteNonQuery();
+                    //    newItemCount++;
+                    //}/* Adds a new item to SuperDiskP */
+                    //else
+                    //{
+                    //    cmd = new SqlCommand();
+                    //    cmd.Connection = ImeSqlConn;
+                    //    cmd.Transaction = ImeSqlTransaction;
+                    //    cmd.CommandText = @"UPDATE[dbo].[SuperDiskP] 
+                    //                        SET [Article_No] = @Article_No, [Article_Desc] = @Article_Desc, [Pack_Code] = @Pack_Code, [Pack_Quantity] = @Pack_Quantity, [Unit_Content] = @Unit_Content, [Unit_Measure] = @Unit_Measure, [Uk_Col_1] = @Uk_Col_1, [Standard_Weight] = @Standard_Weight, [Hazardous_Ind] = @Hazardous_Ind, [Calibration_Ind] = @Calibration_Ind, [Obsolete_Flag] = @Obsolete_Flag, [MH1] = @MH1, [Low_Discount_Ind] = @Low_Discount_Ind, [Licensed_Ind] = @Licensed_Ind, [Shelf_Life] = @Shelf_Life, [CofO] = @CofO, [EUR1_Indicator] = @EUR1_Indicator, [CCCN_No] = @CCCN_No, [Supercede_Date] = @Supercede_Date, [Current_Cat_page] = @Current_Cat_page, [Uk_Intro_Date] = @Uk_Intro_Date, [Filler] = @Filler, [Uk_Disc_Date] = @Uk_Disc_Date, [Substitute_By] = @Substitute_By, [BHC_Flag] = @BHC_Flag, [Filler1] = @Filler1, [Future_Sell_Price] = @Future_Sell_Price, [Int_Cat] = @Int_Cat, [New_Prod_Change_Ind] = @New_Prod_Change_Ind, [Out_of_Stock_Prohibit_change_ind] =@Out_of_Stock_Prohibit_change_ind, [Disc_Change_Ind] = @Disc_Change_Ind, [Superceded_Change_Ind] =@Superceded_Change_Ind, [Pack_Size_Change_Ind] = @Pack_Size_Change_Ind, [Rolled_Product_Change_Ind] = @Rolled_Product_Change_Ind, [Expiring_Product_Change_Ind] = @Expiring_Product_Change_Ind, [Manufacturer] = @Manufacturer, [MPN] =@MPN, [MH_Code_Level_1] = @MH_Code_Level_1, [Heigh] =@Heigh, [Width] = @Width, [Length] = @Length 
+                    //                    WHERE 
+                    //                        SuperDiskP.Article_No = @Article_No";
+                    //    cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
+                    //    cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
+                    //    cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);
+                    //    cmd.Parameters.AddWithValue("@Pack_Quantity", item.Pack_Quantity);
+                    //    cmd.Parameters.AddWithValue("@Unit_Content", item.Unit_Content);
+                    //    cmd.Parameters.AddWithValue("@Unit_Measure", item.Unit_Measure);
+                    //    cmd.Parameters.AddWithValue("@Uk_Col_1", item.Uk_Col_1);
+                    //    cmd.Parameters.AddWithValue("@Standard_Weight", item.Standard_Weight);
+                    //    cmd.Parameters.AddWithValue("@Hazardous_Ind", item.Hazardous_Ind);
+                    //    cmd.Parameters.AddWithValue("@Calibration_Ind", item.Calibration_Ind);
+                    //    cmd.Parameters.AddWithValue("@Obsolete_Flag", item.Obsolete_Flag);
+                    //    cmd.Parameters.AddWithValue("@MH1", item.MH1);
+                    //    cmd.Parameters.AddWithValue("@Low_Discount_Ind", item.Low_Discount_Ind);
+                    //    cmd.Parameters.AddWithValue("@Licensed_Ind", item.Licensed_Ind);
+                    //    cmd.Parameters.AddWithValue("@Shelf_Life", item.Shelf_Life);
+                    //    cmd.Parameters.AddWithValue("@CofO", item.CofO);
+                    //    cmd.Parameters.AddWithValue("@EUR1_Indicator", item.EUR1_Indicator);
+                    //    cmd.Parameters.AddWithValue("@CCCN_No", item.CCCN_No);
+                    //    cmd.Parameters.AddWithValue("@Supercede_Date", item.Supercede_Date);
+                    //    cmd.Parameters.AddWithValue("@Current_Cat_page", item.Current_Cat_page);
+                    //    cmd.Parameters.AddWithValue("@Uk_Intro_Date", item.Uk_Intro_Date);
+                    //    cmd.Parameters.AddWithValue("@Filler", item.Filler);
+                    //    cmd.Parameters.AddWithValue("@Uk_Disc_Date", item.Uk_Disc_Date);
+                    //    cmd.Parameters.AddWithValue("@Substitute_By", item.Substitute_By);
+                    //    cmd.Parameters.AddWithValue("@BHC_Flag", item.BHC_Flag);
+                    //    cmd.Parameters.AddWithValue("@Filler1", item.Filler1);
+                    //    cmd.Parameters.AddWithValue("@Future_Sell_Price", item.Future_Sell_Price);
+                    //    cmd.Parameters.AddWithValue("@Int_Cat", item.Int_Cat);
+                    //    cmd.Parameters.AddWithValue("@New_Prod_Change_Ind", item.New_Prod_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Out_of_Stock_Prohibit_change_ind", item.Out_of_Stock_Prohibit_change_ind);
+                    //    cmd.Parameters.AddWithValue("@Disc_Change_Ind", item.Disc_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Superceded_Change_Ind", item.Superceded_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Pack_Size_Change_Ind", item.Pack_Size_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Rolled_Product_Change_Ind", item.Rolled_Product_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Expiring_Product_Change_Ind", item.Expiring_Product_Change_Ind);
+                    //    cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
+                    //    cmd.Parameters.AddWithValue("@MPN", item.MPN);
+                    //    cmd.Parameters.AddWithValue("@MH_Code_Level_1", item.MH_Code_Level_1);
+                    //    cmd.Parameters.AddWithValue("@Heigh", item.Heigh);
+                    //    cmd.Parameters.AddWithValue("@Width", item.Width);
+                    //    cmd.Parameters.AddWithValue("@Length", item.Length);
 
-                        cmd.ExecuteNonQuery();
-                        updatedItemCount++;
-                    }/* Updates the item */
+                    //    cmd.ExecuteNonQuery();
+                    //    updatedItemCount++;
+                    //}/* Updates the item */
+
+                    cmd = new SqlCommand
+                    {
+                        Connection = ImeSqlConn,
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = ImeSqlTransaction,
+                        CommandText = @"[SuperDiskPAdd]"
+                    };
+
+                    cmd.Parameters.AddWithValue("@Article_No", item.Article_No);
+                    cmd.Parameters.AddWithValue("@Article_Desc", item.Article_Desc);
+                    cmd.Parameters.AddWithValue("@Pack_Code", item.Pack_Code);
+                    cmd.Parameters.AddWithValue("@Pack_Quantity", item.Pack_Quantity);
+                    cmd.Parameters.AddWithValue("@Unit_Content", item.Unit_Content);
+                    cmd.Parameters.AddWithValue("@Unit_Measure", item.Unit_Measure);
+                    cmd.Parameters.AddWithValue("@Uk_Col_1", item.Uk_Col_1);
+                    cmd.Parameters.AddWithValue("@Standard_Weight", item.Standard_Weight);
+                    cmd.Parameters.AddWithValue("@Hazardous_Ind", item.Hazardous_Ind);
+                    cmd.Parameters.AddWithValue("@Calibration_Ind", item.Calibration_Ind);
+                    cmd.Parameters.AddWithValue("@Obsolete_Flag", item.Obsolete_Flag);
+                    cmd.Parameters.AddWithValue("@MH1", item.MH1);
+                    cmd.Parameters.AddWithValue("@Low_Discount_Ind", item.Low_Discount_Ind);
+                    cmd.Parameters.AddWithValue("@Licensed_Ind", item.Licensed_Ind);
+                    cmd.Parameters.AddWithValue("@Shelf_Life", item.Shelf_Life);
+                    cmd.Parameters.AddWithValue("@CofO", item.CofO);
+                    cmd.Parameters.AddWithValue("@EUR1_Indicator", item.EUR1_Indicator);
+                    cmd.Parameters.AddWithValue("@CCCN_No", item.CCCN_No);
+                    cmd.Parameters.AddWithValue("@Supercede_Date", item.Supercede_Date);
+                    cmd.Parameters.AddWithValue("@Current_Cat_page", item.Current_Cat_page);
+                    cmd.Parameters.AddWithValue("@Uk_Intro_Date", item.Uk_Intro_Date);
+                    cmd.Parameters.AddWithValue("@Filler", item.Filler);
+                    cmd.Parameters.AddWithValue("@Uk_Disc_Date", item.Uk_Disc_Date);
+                    cmd.Parameters.AddWithValue("@Substitute_By", item.Substitute_By);
+                    cmd.Parameters.AddWithValue("@BHC_Flag", item.BHC_Flag);
+                    cmd.Parameters.AddWithValue("@Filler1", item.Filler1);
+                    cmd.Parameters.AddWithValue("@Future_Sell_Price", item.Future_Sell_Price);
+                    cmd.Parameters.AddWithValue("@Int_Cat", item.Int_Cat);
+                    cmd.Parameters.AddWithValue("@New_Prod_Change_Ind", item.New_Prod_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Out_of_Stock_Prohibit_change_ind", item.Out_of_Stock_Prohibit_change_ind);
+                    cmd.Parameters.AddWithValue("@Disc_Change_Ind", item.Disc_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Superceded_Change_Ind", item.Superceded_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Pack_Size_Change_Ind", item.Pack_Size_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Rolled_Product_Change_Ind", item.Rolled_Product_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Expiring_Product_Change_Ind", item.Expiring_Product_Change_Ind);
+                    cmd.Parameters.AddWithValue("@Manufacturer", item.Manufacturer);
+                    cmd.Parameters.AddWithValue("@MPN", item.MPN);
+                    cmd.Parameters.AddWithValue("@MH_Code_Level_1", item.MH_Code_Level_1);
+                    cmd.Parameters.AddWithValue("@Heigh", item.Heigh);
+                    cmd.Parameters.AddWithValue("@Width", item.Width);
+                    cmd.Parameters.AddWithValue("@Length", item.Length);
+
+                    cmd.ExecuteNonQuery();
+                    ItemCount++;
                 }
 
                 ImeSqlTransaction.Commit();
                 _Timer.Stop();
-                MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!" + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
+                MessageBox.Show(ItemCount + " item is added! " + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
                 successfull = true;
             }
             catch (Exception ex)

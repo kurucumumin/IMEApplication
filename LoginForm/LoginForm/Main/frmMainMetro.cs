@@ -655,5 +655,12 @@ namespace LoginForm.Main
             frm.ShowDialog();
             Utils.LogKayit("InvoiceIME Report", "Invoice IME report screen has been entered");
         }
+
+        private void btnFactor_Click(object sender, EventArgs e)
+        {
+            FormFactor frm = new FormFactor();
+            frm.ShowDialog();
+            Utils.LogKayit("Fcator", "Fcator screen has been entered");
+        }
     }
 }

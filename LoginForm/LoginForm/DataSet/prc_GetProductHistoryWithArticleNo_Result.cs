@@ -20,8 +20,8 @@ namespace LoginForm.DataSet
         public string QuotNo { get; set; }
         public Nullable<int> QTY { get; set; }
         public Nullable<decimal> UP { get; set; }
-        public string Competitor { get; set; }
-        public Nullable<decimal> TargetPrice { get; set; }
+        public Nullable<decimal> LandingCost { get; set; }
+        public Nullable<decimal> Margin { get; set; }
         public string Curr { get; set; }
         public string Status { get; set; }
     }

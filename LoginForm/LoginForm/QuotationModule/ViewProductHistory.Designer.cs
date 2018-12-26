@@ -38,9 +38,9 @@
             this.dgcQuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcTargetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcCurrency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductHistory)).BeginInit();
             this.SuspendLayout();
@@ -60,9 +60,9 @@
             this.dgcQuotationNo,
             this.dgcQuantity,
             this.dgcUP,
-            this.dgcCompetitor,
-            this.dgcTargetPrice,
             this.dgcCurrency,
+            this.dgLandingCost,
+            this.dgMargin,
             this.dgcStatus});
             this.dgProductHistory.Location = new System.Drawing.Point(12, 12);
             this.dgProductHistory.Name = "dgProductHistory";
@@ -131,23 +131,23 @@
             this.dgcUP.Name = "dgcUP";
             this.dgcUP.ReadOnly = true;
             // 
-            // dgcCompetitor
-            // 
-            this.dgcCompetitor.HeaderText = "COMPETITOR";
-            this.dgcCompetitor.Name = "dgcCompetitor";
-            this.dgcCompetitor.ReadOnly = true;
-            // 
-            // dgcTargetPrice
-            // 
-            this.dgcTargetPrice.HeaderText = "TARGET PRC";
-            this.dgcTargetPrice.Name = "dgcTargetPrice";
-            this.dgcTargetPrice.ReadOnly = true;
-            // 
             // dgcCurrency
             // 
             this.dgcCurrency.HeaderText = "CURR";
             this.dgcCurrency.Name = "dgcCurrency";
             this.dgcCurrency.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.HeaderText = "LandingCost";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
             // 
             // dgcStatus
             // 
@@ -185,9 +185,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcQuotationNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcUP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcCompetitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcTargetPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcCurrency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgcStatus;
     }
 }

@@ -9,15 +9,14 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-
-
+using LoginForm.Services;
+using System.Diagnostics;
 
 namespace LoginForm
 {
     class txtReader
     {
         public static string LoaderType;
-
         public static List<DataSet.BackOrder> BackOrderRead()
         {
             IMEEntities IME = new IMEEntities();
@@ -1628,9 +1627,14 @@ namespace LoginForm
         public static int SlidingPriceRead()
         {
             #region SlidingPrice
+
+            Stopwatch _Timer;
+            SqlCommand cmd;
+            SqlConnection ImeSqlConn = new Utils().ImeSqlConnection();
+            SqlTransaction ImeSqlTransaction = ImeSqlConn.BeginTransaction();
             IMEEntities IME = new IMEEntities();
             SlidingPrice Superdiskitems = new SlidingPrice();
-            int AddedCounter = 0;
+            int Counter = 0;
             int UptCounter = 0;
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -1638,6 +1642,8 @@ namespace LoginForm
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK) // Test result.
             {
+                _Timer = new Stopwatch();
+                _Timer.Start();
                 try
                 {
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
@@ -1804,46 +1810,96 @@ namespace LoginForm
                             }
                         }
 
-                        IME.SlidingPriceAdd(
-                            Superdiskitems.ArticleNo
-                           , Superdiskitems.ArticleDescription
-                           , Superdiskitems.ItemTypeCode
-                           , Superdiskitems.ItemTypeDesc
-                           , Superdiskitems.IntroductionDate
-                           , Superdiskitems.DiscontinuedDate
-                           , Superdiskitems.Quantity1
-                           , Superdiskitems.Col1Price
-                           , Superdiskitems.Col2Price
-                           , Superdiskitems.Col3Price
-                           , Superdiskitems.Col4Price
-                           , Superdiskitems.Col5Price
-                           , Superdiskitems.Col1Break
-                           , Superdiskitems.Col2Break
-                           , Superdiskitems.Col3Break
-                           , Superdiskitems.Col4Break
-                           , Superdiskitems.Col5Break
-                           , Superdiskitems.DiscountedPrice1
-                           , Superdiskitems.DiscountedPrice2
-                           , Superdiskitems.DiscountedPrice3
-                           , Superdiskitems.DiscountedPrice4
-                           , Superdiskitems.DiscountedPrice5
-                           , Superdiskitems.SuperSectionNo
-                           , Superdiskitems.SupersectionName
-                           , Superdiskitems.BrandID
-                           , Superdiskitems.Brandname
-                           , Superdiskitems.SectionID
-                           , Superdiskitems.SectionName
-                          );
+                        //IME.SlidingPriceAdd(
+                        //    Superdiskitems.ArticleNo
+                        //   , Superdiskitems.ArticleDescription
+                        //   , Superdiskitems.ItemTypeCode
+                        //   , Superdiskitems.ItemTypeDesc
+                        //   , Superdiskitems.IntroductionDate
+                        //   , Superdiskitems.DiscontinuedDate
+                        //   , Superdiskitems.Quantity1
+                        //   , Superdiskitems.Col1Price
+                        //   , Superdiskitems.Col2Price
+                        //   , Superdiskitems.Col3Price
+                        //   , Superdiskitems.Col4Price
+                        //   , Superdiskitems.Col5Price
+                        //   , Superdiskitems.Col1Break
+                        //   , Superdiskitems.Col2Break
+                        //   , Superdiskitems.Col3Break
+                        //   , Superdiskitems.Col4Break
+                        //   , Superdiskitems.Col5Break
+                        //   , Superdiskitems.DiscountedPrice1
+                        //   , Superdiskitems.DiscountedPrice2
+                        //   , Superdiskitems.DiscountedPrice3
+                        //   , Superdiskitems.DiscountedPrice4
+                        //   , Superdiskitems.DiscountedPrice5
+                        //   , Superdiskitems.SuperSectionNo
+                        //   , Superdiskitems.SupersectionName
+                        //   , Superdiskitems.BrandID
+                        //   , Superdiskitems.Brandname
+                        //   , Superdiskitems.SectionID
+                        //   , Superdiskitems.SectionName
+                        //  );
 
 
-                        a++;
-                        Superdiskitems = new SlidingPrice();
+                        //a++;
+                        //Superdiskitems = new SlidingPrice();
+                       
+                        cmd = new SqlCommand
+                        {
+                            Connection = ImeSqlConn,
+                            CommandTimeout = 50,
+                            CommandType = CommandType.StoredProcedure,
+                            Transaction = ImeSqlTransaction,
+                            CommandText = @"[SlidingPriceAdd]"
+                        };
+                        cmd.Parameters.AddWithValue("@ArticleNo", Superdiskitems.ArticleNo);
+                        cmd.Parameters.AddWithValue("@ArticleDescription", Superdiskitems.ArticleDescription);
+                        cmd.Parameters.AddWithValue("@ItemTypeCode", Superdiskitems.ItemTypeCode);
+                        cmd.Parameters.AddWithValue("@ItemTypeDesc", Superdiskitems.ItemTypeDesc);
+                        cmd.Parameters.AddWithValue("@IntroductionDate", Superdiskitems.IntroductionDate);
+                        cmd.Parameters.AddWithValue("@DiscontinuedDate", Superdiskitems.DiscontinuedDate);
+                        cmd.Parameters.AddWithValue("@Quantity1", Superdiskitems.Quantity1);
+                        cmd.Parameters.AddWithValue("@Col1Price", Superdiskitems.Col1Price);
+                        cmd.Parameters.AddWithValue("@Col2Price", Superdiskitems.Col2Price);
+                        cmd.Parameters.AddWithValue("@Col3Price", Superdiskitems.Col3Price);
+                        cmd.Parameters.AddWithValue("@Col4Price", Superdiskitems.Col4Price);
+                        cmd.Parameters.AddWithValue("@Col5Price", Superdiskitems.Col5Price);
+                        cmd.Parameters.AddWithValue("@Col1Break", Superdiskitems.Col1Break);
+                        cmd.Parameters.AddWithValue("@Col2Break", Superdiskitems.Col2Break);
+                        cmd.Parameters.AddWithValue("@Col3Break", Superdiskitems.Col3Break);
+                        cmd.Parameters.AddWithValue("@Col4Break", Superdiskitems.Col4Break);
+                        cmd.Parameters.AddWithValue("@Col5Break", Superdiskitems.Col5Break);
+                        cmd.Parameters.AddWithValue("@DiscountedPrice1", Superdiskitems.DiscountedPrice1);
+                        cmd.Parameters.AddWithValue("@DiscountedPrice2", Superdiskitems.DiscountedPrice2);
+                        cmd.Parameters.AddWithValue("@DiscountedPrice3", Superdiskitems.DiscountedPrice3);
+                        cmd.Parameters.AddWithValue("@DiscountedPrice4", Superdiskitems.DiscountedPrice4);
+                        cmd.Parameters.AddWithValue("@DiscountedPrice5", Superdiskitems.DiscountedPrice5);
+                        cmd.Parameters.AddWithValue("@SuperSectionNo", Superdiskitems.SuperSectionNo);
+                        cmd.Parameters.AddWithValue("@SupersectionName", Superdiskitems.SupersectionName);
+                        cmd.Parameters.AddWithValue("@BrandID", Superdiskitems.BrandID);
+                        cmd.Parameters.AddWithValue("@Brandname", Superdiskitems.Brandname);
+                        cmd.Parameters.AddWithValue("@SectionID", Superdiskitems.SectionID);
+                        cmd.Parameters.AddWithValue("@SectionName", Superdiskitems.SectionName);
+
+                        cmd.ExecuteNonQuery();
+                        Counter++;
                     }
 
-                    MessageBox.Show("Upload Completed");
+                    //ImeSqlTransaction.Commit();
+                    _Timer.Stop();
+                    MessageBox.Show(Counter + " item is added! " + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
                     return 1;
                 }
-                catch { MessageBox.Show("Please Choose Correct File"); return 0; }
+                catch (Exception ex)
+                {
+                    //ImeSqlTransaction.Rollback();
+                    MessageBox.Show("Please Choose Correct File" + ex.ToString(), "Error"); return 0;
+                }
+                finally
+                {
+                    ImeSqlConn.Close();
+                }
 
                 #endregion
             }

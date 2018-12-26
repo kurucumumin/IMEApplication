@@ -844,7 +844,15 @@ namespace LoginForm.QuotationModule
 
             foreach (DataGridViewRow row in dgQuotation.Rows)
             {
-                if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
+                if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Ordered")
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 0);
+                }
+                else if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Not Ordered")
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
+                }
+                else if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
                 {
                     row.DefaultCellStyle.BackColor = ImeSettings.GridDeletedRowColor ;
                 }
@@ -1218,6 +1226,7 @@ namespace LoginForm.QuotationModule
                 if (quo.ViewQuotation != false)
                 {
                     quo.ViewQuotation = false;
+                    quo.ViewQuotationName = Utils.getCurrentUser().UserName;
                     IME.SaveChanges();
 
                     if (quo != null && quo.SaleOrder == null)
@@ -1229,11 +1238,11 @@ namespace LoginForm.QuotationModule
                     else
                     {
 
-                        DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.OKCancel);
-                        if (result == DialogResult.OK)
+                        DialogResult result = MessageBox.Show("Quotation is locked to Sales Order Number:" + quo.SaleOrder.SaleOrderNo, "Warning", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
                         {
-                            DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.OKCancel);
-                            if (result2 == DialogResult.OK)
+                            DialogResult result2 = MessageBox.Show("Do you want to create revision", "Informaion", MessageBoxButtons.YesNo);
+                            if (result2 == DialogResult.Yes)
                             {
                                 CreateRevision();
                             }
@@ -1242,7 +1251,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    MessageBox.Show(Utils.getCurrentUser().UserName + "is working on this Quotation");
+                    MessageBox.Show(quo.ViewQuotationName + "is working on this Quotation");
                 }
             }
             else
@@ -1272,6 +1281,7 @@ namespace LoginForm.QuotationModule
                 if (quo.ViewQuotation != false)
                 {
                     quo.ViewQuotation = false;
+                    quo.ViewQuotationName = Utils.getCurrentUser().UserName;
                     IME.SaveChanges();
 
                     if (quo != null && quo.SaleOrder == null)
@@ -1295,7 +1305,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    MessageBox.Show(Utils.getCurrentUser().UserName + "is working on this Quotation");
+                    MessageBox.Show(quo.ViewQuotationName + "is working on this Quotation");
                 }
             }
             else
@@ -1322,7 +1332,7 @@ namespace LoginForm.QuotationModule
 
                             Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
-                            quo.status = "Pending";
+                            quo.status = "Not Ordered";
 
                             IME.SaveChanges();
                         }
@@ -1494,7 +1504,7 @@ namespace LoginForm.QuotationModule
 
                     foreach (DataGridViewRow row in SelectedRows)
                     {
-                        if (row.Cells[OrderStatus.Index].Value.ToString() != "Pending")
+                        if (row.Cells[OrderStatus.Index].Value.ToString() != "Ordered")
                         {
                             OnlyPendingQuotations = false;
                             MessageBox.Show("You can only choose the pending quotations!", "Warning");

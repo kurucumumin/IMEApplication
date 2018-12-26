@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IME Application", "LoginFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printer_Settings", "Printer\Printer_Settings.csproj", "{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IMESetup", "IMESetup\IMESetup.vdproj", "{1C793E04-76FE-4C15-A32C-DEED409E0950}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|Any CPU.ActiveCfg = Release|x86
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|x86.ActiveCfg = Release|x86
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|x86.Build.0 = Release|x86
+		{1C793E04-76FE-4C15-A32C-DEED409E0950}.Debug|Any CPU.ActiveCfg = Debug
+		{1C793E04-76FE-4C15-A32C-DEED409E0950}.Debug|x86.ActiveCfg = Debug
+		{1C793E04-76FE-4C15-A32C-DEED409E0950}.Release|Any CPU.ActiveCfg = Release
+		{1C793E04-76FE-4C15-A32C-DEED409E0950}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

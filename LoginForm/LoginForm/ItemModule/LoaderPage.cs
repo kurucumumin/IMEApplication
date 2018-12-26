@@ -75,7 +75,7 @@ namespace LoginForm.ItemModule
                     bool NoErrorPrice = PriceFileHelper.ErrorCheck();
                     if (NoErrorPrice)
                     {
-                        if (txtReader.SlidingPriceRead() == 1)
+                        if (txtReader.SlidingPriceRead()==1)
                         {
                             RsFileHistory h = new RsFileHistory();
                             h.FileType = txtReader.LoaderType;

@@ -38,27 +38,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDataSeperator = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericFactor = new System.Windows.Forms.NumericUpDown();
-            this.lblFactor = new System.Windows.Forms.Label();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.txtVAT = new System.Windows.Forms.TextBox();
             this.lblVAT = new System.Windows.Forms.Label();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.chkCustomer = new System.Windows.Forms.CheckBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(210, 434);
+            this.btnSave.Location = new System.Drawing.Point(210, 375);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(51, 41);
             this.btnSave.TabIndex = 78;
@@ -69,7 +65,7 @@
             // 
             this.label67.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(218, 478);
+            this.label67.Location = new System.Drawing.Point(218, 419);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(32, 13);
             this.label67.TabIndex = 77;
@@ -85,7 +81,7 @@
             0,
             0,
             65536});
-            this.CustomsRateUpDown.Location = new System.Drawing.Point(134, 299);
+            this.CustomsRateUpDown.Location = new System.Drawing.Point(134, 240);
             this.CustomsRateUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.CustomsRateUpDown.Name = "CustomsRateUpDown";
             this.CustomsRateUpDown.Size = new System.Drawing.Size(296, 20);
@@ -94,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 300);
+            this.label4.Location = new System.Drawing.Point(3, 241);
             this.label4.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
@@ -111,7 +107,7 @@
             0,
             0,
             65536});
-            this.FreightChargeUpDown.Location = new System.Drawing.Point(134, 263);
+            this.FreightChargeUpDown.Location = new System.Drawing.Point(134, 204);
             this.FreightChargeUpDown.Margin = new System.Windows.Forms.Padding(2);
             this.FreightChargeUpDown.Name = "FreightChargeUpDown";
             this.FreightChargeUpDown.Size = new System.Drawing.Size(296, 20);
@@ -120,7 +116,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 263);
+            this.label3.Location = new System.Drawing.Point(3, 204);
             this.label3.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
@@ -132,7 +128,7 @@
             this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBranchCode.Enabled = false;
-            this.txtBranchCode.Location = new System.Drawing.Point(134, 225);
+            this.txtBranchCode.Location = new System.Drawing.Point(134, 166);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtBranchCode.Name = "txtBranchCode";
             this.txtBranchCode.Size = new System.Drawing.Size(297, 20);
@@ -142,7 +138,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(3, 228);
+            this.label2.Location = new System.Drawing.Point(3, 169);
             this.label2.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
@@ -153,7 +149,7 @@
             // 
             this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDataSeperator.Location = new System.Drawing.Point(134, 186);
+            this.txtDataSeperator.Location = new System.Drawing.Point(134, 127);
             this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtDataSeperator.Name = "txtDataSeperator";
             this.txtDataSeperator.Size = new System.Drawing.Size(297, 20);
@@ -161,39 +157,12 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 180);
+            this.label1.Location = new System.Drawing.Point(3, 121);
             this.label1.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 34);
             this.label1.TabIndex = 69;
             this.label1.Text = "Data Seperator For Purchase Order";
-            // 
-            // numericFactor
-            // 
-            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericFactor.DecimalPlaces = 1;
-            this.numericFactor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericFactor.Location = new System.Drawing.Point(134, 128);
-            this.numericFactor.Margin = new System.Windows.Forms.Padding(2);
-            this.numericFactor.Name = "numericFactor";
-            this.numericFactor.Size = new System.Drawing.Size(296, 20);
-            this.numericFactor.TabIndex = 68;
-            this.numericFactor.ThousandsSeparator = true;
-            // 
-            // lblFactor
-            // 
-            this.lblFactor.AutoSize = true;
-            this.lblFactor.Location = new System.Drawing.Point(3, 129);
-            this.lblFactor.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
-            this.lblFactor.Name = "lblFactor";
-            this.lblFactor.Size = new System.Drawing.Size(37, 13);
-            this.lblFactor.TabIndex = 67;
-            this.lblFactor.Text = "Factor";
             // 
             // cbCurrency
             // 
@@ -258,21 +227,11 @@
             this.lblLowMarginLimit.TabIndex = 61;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // chkCustomer
-            // 
-            this.chkCustomer.AutoSize = true;
-            this.chkCustomer.Location = new System.Drawing.Point(136, 156);
-            this.chkCustomer.Name = "chkCustomer";
-            this.chkCustomer.Size = new System.Drawing.Size(129, 17);
-            this.chkCustomer.TabIndex = 81;
-            this.chkCustomer.Text = "Apply to all Customers";
-            this.chkCustomer.UseVisualStyleBackColor = true;
-            // 
             // txtNote
             // 
             this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(133, 333);
+            this.txtNote.Location = new System.Drawing.Point(133, 274);
             this.txtNote.Margin = new System.Windows.Forms.Padding(2, 2, 12, 2);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -282,7 +241,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 336);
+            this.label5.Location = new System.Drawing.Point(2, 277);
             this.label5.Margin = new System.Windows.Forms.Padding(12, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 13);
@@ -297,7 +256,6 @@
             this.ClientSize = new System.Drawing.Size(437, 507);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.chkCustomer);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.CustomsRateUpDown);
@@ -308,8 +266,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDataSeperator);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericFactor);
-            this.Controls.Add(this.lblFactor);
             this.Controls.Add(this.cbCurrency);
             this.Controls.Add(this.lblDefaultCurrency);
             this.Controls.Add(this.txtVAT);
@@ -321,7 +277,6 @@
             this.Load += new System.EventHandler(this.FormManagmentControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomsRateUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreightChargeUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,15 +294,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDataSeperator;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericFactor;
-        private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.ComboBox cbCurrency;
         private System.Windows.Forms.Label lblDefaultCurrency;
         private System.Windows.Forms.TextBox txtVAT;
         private System.Windows.Forms.Label lblVAT;
         private System.Windows.Forms.TextBox txtLowMarginLimit;
         private System.Windows.Forms.Label lblLowMarginLimit;
-        private System.Windows.Forms.CheckBox chkCustomer;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label5;
     }

@@ -68,7 +68,7 @@ namespace LoginForm.Services
                 else /*if(r.ErrorList.Count() == 0)*/
                 {
                     ReturnMessage LineError = CheckLinesForErrors(_Lines);
-                    _Timer.Stop();
+                    //_Timer.Stop();
                     //Satırlarda hata varsa
                     int maxShownErrorAmount = 15; /* MessageBox'ta gösterilen maksimum hata sayısını belirler*/
                     if (LineError.MessageList.Count > 0)
@@ -450,7 +450,7 @@ namespace LoginForm.Services
             bool successfull = false;
 
             int updatedItemCount = 0;
-            int newItemCount = 0;
+            int ItemCount = 0;
             try
             {
                 IMEEntities db = new IMEEntities();
@@ -611,100 +611,140 @@ namespace LoginForm.Services
                         }
                     }
 
-                    if (NewItem)
+                    //                    if (NewItem)
+                    //                    {
+                    //                        cmd = new SqlCommand();
+                    //                        cmd.Connection = ImeSqlConn;
+                    //                        cmd.Transaction = ImeSqlTransaction;
+                    //                        cmd.CommandText = @"INSERT INTO [dbo].[SlidingPrice]
+                    //([ArticleNo],[ArticleDescription],[ItemTypeCode],[ItemTypeDesc],[IntroductionDate],[DiscontinuedDate],[Quantity1],[Col1Price],[Col2Price],[Col3Price],[Col4Price],[Col5Price],[Col1Break],[Col2Break],[Col3Break],[Col4Break],[Col5Break],[DiscountedPrice1],[DiscountedPrice2],[DiscountedPrice3],[DiscountedPrice4],[DiscountedPrice5],[SuperSectionNo],[SupersectionName],[BrandID],[Brandname],[SectionID] ,[SectionName])
+                    //                    VALUES
+                    //                        (@ArticleNo, @ArticleDescription, @ItemTypeCode, @ItemTypeDesc, @IntroductionDate, @DiscontinuedDate, @Quantity1, @Col1Price, @Col2Price, @Col3Price, @Col4Price, @Col5Price, @Col1Break, @Col2Break, @Col3Break, @Col4Break, @Col5Break, @DiscountedPrice1, @DiscountedPrice2, @DiscountedPrice3, @DiscountedPrice4, @DiscountedPrice5, @SuperSectionNo, @SupersectionName, @BrandID, @Brandname, @SectionID, @SectionName)";
+
+                    //                        cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
+                    //                        cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
+                    //                        cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
+                    //                        cmd.Parameters.AddWithValue("@ItemTypeDesc", item.ItemTypeDesc);
+                    //                        cmd.Parameters.AddWithValue("@IntroductionDate", item.IntroductionDate);
+                    //                        cmd.Parameters.AddWithValue("@DiscontinuedDate", item.DiscontinuedDate);
+                    //                        cmd.Parameters.AddWithValue("@Quantity1", item.Quantity1);
+                    //                        cmd.Parameters.AddWithValue("@Col1Price", item.Col1Price);
+                    //                        cmd.Parameters.AddWithValue("@Col2Price", item.Col2Price);
+                    //                        cmd.Parameters.AddWithValue("@Col3Price", item.Col3Price);
+                    //                        cmd.Parameters.AddWithValue("@Col4Price", item.Col4Price);
+                    //                        cmd.Parameters.AddWithValue("@Col5Price", item.Col5Price);
+                    //                        cmd.Parameters.AddWithValue("@Col1Break", item.Col1Break);
+                    //                        cmd.Parameters.AddWithValue("@Col2Break", item.Col2Break);
+                    //                        cmd.Parameters.AddWithValue("@Col3Break", item.Col3Break);
+                    //                        cmd.Parameters.AddWithValue("@Col4Break", item.Col4Break);
+                    //                        cmd.Parameters.AddWithValue("@Col5Break", item.Col5Break);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice1", item.DiscountedPrice1);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice2", item.DiscountedPrice2);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice3", item.DiscountedPrice3);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice4", item.DiscountedPrice4);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice5", item.DiscountedPrice5);
+                    //                        cmd.Parameters.AddWithValue("@SuperSectionNo", item.SuperSectionNo);
+                    //                        cmd.Parameters.AddWithValue("@SupersectionName", item.SupersectionName);
+                    //                        cmd.Parameters.AddWithValue("@BrandID", item.BrandID);
+                    //                        cmd.Parameters.AddWithValue("@Brandname", item.Brandname);
+                    //                        cmd.Parameters.AddWithValue("@SectionID", item.SectionID);
+                    //                        cmd.Parameters.AddWithValue("@SectionName", item.SectionName);
+
+                    //                        cmd.ExecuteNonQuery();
+                    //                        newItemCount++;
+                    //                    }/* Adds a new item to SlidingPrice */
+                    //                    else
+                    //                    {
+                    //                        cmd = new SqlCommand();
+                    //                        cmd.Connection = ImeSqlConn;
+                    //                        cmd.Transaction = ImeSqlTransaction;
+                    //                        cmd.CommandText = @"UPDATE[dbo].[SlidingPrice] 
+                    //                                            SET [ArticleNo] = @ArticleNo, [ArticleDescription] = @ArticleDescription, [ItemTypeCode] = @ItemTypeCode, [ItemTypeDesc] = @ItemTypeDesc, [IntroductionDate] = @IntroductionDate, [DiscontinuedDate] = @DiscontinuedDate, [Quantity1] = @Quantity1, [Col1Price] = @Col1Price, [Col2Price] = @Col2Price, [Col3Price] = @Col3Price, [Col4Price] = @Col4Price, [Col5Price] = @Col5Price, [Col1Break] = @Col1Break, [Col2Break] = @Col2Break, [Col3Break] = @Col3Break, [Col4Break] = @Col4Break, [Col5Break] = @Col5Break, [DiscountedPrice1] = @DiscountedPrice1, [DiscountedPrice2] = @DiscountedPrice2, [DiscountedPrice3] = @DiscountedPrice3, [DiscountedPrice4] = @DiscountedPrice4, [DiscountedPrice5] = @DiscountedPrice5, [SuperSectionNo] = @SuperSectionNo, [SupersectionName] = @SupersectionName, [BrandID] = @BrandID, [Brandname] = @Brandname, [SectionID] = @SectionID, [SectionName] = @SectionName
+                    //                                        WHERE 
+                    //                                            SlidingPrice.ArticleNo = @ArticleNo";
+
+                    //                        cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
+                    //                        cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
+                    //                        cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
+                    //                        cmd.Parameters.AddWithValue("@ItemTypeDesc", item.ItemTypeDesc);
+                    //                        cmd.Parameters.AddWithValue("@IntroductionDate", item.IntroductionDate);
+                    //                        cmd.Parameters.AddWithValue("@DiscontinuedDate", item.DiscontinuedDate);
+                    //                        cmd.Parameters.AddWithValue("@Quantity1", item.Quantity1);
+                    //                        cmd.Parameters.AddWithValue("@Col1Price", item.Col1Price);
+                    //                        cmd.Parameters.AddWithValue("@Col2Price", item.Col2Price);
+                    //                        cmd.Parameters.AddWithValue("@Col3Price", item.Col3Price);
+                    //                        cmd.Parameters.AddWithValue("@Col4Price", item.Col4Price);
+                    //                        cmd.Parameters.AddWithValue("@Col5Price", item.Col5Price);
+                    //                        cmd.Parameters.AddWithValue("@Col1Break", item.Col1Break);
+                    //                        cmd.Parameters.AddWithValue("@Col2Break", item.Col2Break);
+                    //                        cmd.Parameters.AddWithValue("@Col3Break", item.Col3Break);
+                    //                        cmd.Parameters.AddWithValue("@Col4Break", item.Col4Break);
+                    //                        cmd.Parameters.AddWithValue("@Col5Break", item.Col5Break);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice1", item.DiscountedPrice1);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice2", item.DiscountedPrice2);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice3", item.DiscountedPrice3);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice4", item.DiscountedPrice4);
+                    //                        cmd.Parameters.AddWithValue("@DiscountedPrice5", item.DiscountedPrice5);
+                    //                        cmd.Parameters.AddWithValue("@SuperSectionNo", item.SuperSectionNo);
+                    //                        cmd.Parameters.AddWithValue("@SupersectionName", item.SupersectionName);
+                    //                        cmd.Parameters.AddWithValue("@BrandID", item.BrandID);
+                    //                        cmd.Parameters.AddWithValue("@Brandname", item.Brandname);
+                    //                        cmd.Parameters.AddWithValue("@SectionID", item.SectionID);
+                    //                        cmd.Parameters.AddWithValue("@SectionName", item.SectionName);
+
+                    //                        cmd.ExecuteNonQuery();
+                    //                        updatedItemCount++;
+                    //                    }/* Updates the item */
+
+                    cmd = new SqlCommand
                     {
-                        cmd = new SqlCommand();
-                        cmd.Connection = ImeSqlConn;
-                        cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"INSERT INTO [dbo].[SlidingPrice]
-([ArticleNo],[ArticleDescription],[ItemTypeCode],[ItemTypeDesc],[IntroductionDate],[DiscontinuedDate],[Quantity1],[Col1Price],[Col2Price],[Col3Price],[Col4Price],[Col5Price],[Col1Break],[Col2Break],[Col3Break],[Col4Break],[Col5Break],[DiscountedPrice1],[DiscountedPrice2],[DiscountedPrice3],[DiscountedPrice4],[DiscountedPrice5],[SuperSectionNo],[SupersectionName],[BrandID],[Brandname],[SectionID] ,[SectionName])
-                    VALUES
-                        (@ArticleNo, @ArticleDescription, @ItemTypeCode, @ItemTypeDesc, @IntroductionDate, @DiscontinuedDate, @Quantity1, @Col1Price, @Col2Price, @Col3Price, @Col4Price, @Col5Price, @Col1Break, @Col2Break, @Col3Break, @Col4Break, @Col5Break, @DiscountedPrice1, @DiscountedPrice2, @DiscountedPrice3, @DiscountedPrice4, @DiscountedPrice5, @SuperSectionNo, @SupersectionName, @BrandID, @Brandname, @SectionID, @SectionName)";
+                        Connection = ImeSqlConn,
+                        CommandTimeout = 50,
+                        CommandType = CommandType.StoredProcedure,
+                        Transaction = ImeSqlTransaction,
+                        CommandText = @"[SlidingPriceAdd]"
+                    };
+                    cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
+                    cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
+                    cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
+                    cmd.Parameters.AddWithValue("@ItemTypeDesc", item.ItemTypeDesc);
+                    cmd.Parameters.AddWithValue("@IntroductionDate", item.IntroductionDate);
+                    cmd.Parameters.AddWithValue("@DiscontinuedDate", item.DiscontinuedDate);
+                    cmd.Parameters.AddWithValue("@Quantity1", item.Quantity1);
+                    cmd.Parameters.AddWithValue("@Col1Price", item.Col1Price);
+                    cmd.Parameters.AddWithValue("@Col2Price", item.Col2Price);
+                    cmd.Parameters.AddWithValue("@Col3Price", item.Col3Price);
+                    cmd.Parameters.AddWithValue("@Col4Price", item.Col4Price);
+                    cmd.Parameters.AddWithValue("@Col5Price", item.Col5Price);
+                    cmd.Parameters.AddWithValue("@Col1Break", item.Col1Break);
+                    cmd.Parameters.AddWithValue("@Col2Break", item.Col2Break);
+                    cmd.Parameters.AddWithValue("@Col3Break", item.Col3Break);
+                    cmd.Parameters.AddWithValue("@Col4Break", item.Col4Break);
+                    cmd.Parameters.AddWithValue("@Col5Break", item.Col5Break);
+                    cmd.Parameters.AddWithValue("@DiscountedPrice1", item.DiscountedPrice1);
+                    cmd.Parameters.AddWithValue("@DiscountedPrice2", item.DiscountedPrice2);
+                    cmd.Parameters.AddWithValue("@DiscountedPrice3", item.DiscountedPrice3);
+                    cmd.Parameters.AddWithValue("@DiscountedPrice4", item.DiscountedPrice4);
+                    cmd.Parameters.AddWithValue("@DiscountedPrice5", item.DiscountedPrice5);
+                    cmd.Parameters.AddWithValue("@SuperSectionNo", item.SuperSectionNo);
+                    cmd.Parameters.AddWithValue("@SupersectionName", item.SupersectionName);
+                    cmd.Parameters.AddWithValue("@BrandID", item.BrandID);
+                    cmd.Parameters.AddWithValue("@Brandname", item.Brandname);
+                    cmd.Parameters.AddWithValue("@SectionID", item.SectionID);
+                    cmd.Parameters.AddWithValue("@SectionName", item.SectionName);
 
-                        cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
-                        cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
-                        cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
-                        cmd.Parameters.AddWithValue("@ItemTypeDesc", item.ItemTypeDesc);
-                        cmd.Parameters.AddWithValue("@IntroductionDate", item.IntroductionDate);
-                        cmd.Parameters.AddWithValue("@DiscontinuedDate", item.DiscontinuedDate);
-                        cmd.Parameters.AddWithValue("@Quantity1", item.Quantity1);
-                        cmd.Parameters.AddWithValue("@Col1Price", item.Col1Price);
-                        cmd.Parameters.AddWithValue("@Col2Price", item.Col2Price);
-                        cmd.Parameters.AddWithValue("@Col3Price", item.Col3Price);
-                        cmd.Parameters.AddWithValue("@Col4Price", item.Col4Price);
-                        cmd.Parameters.AddWithValue("@Col5Price", item.Col5Price);
-                        cmd.Parameters.AddWithValue("@Col1Break", item.Col1Break);
-                        cmd.Parameters.AddWithValue("@Col2Break", item.Col2Break);
-                        cmd.Parameters.AddWithValue("@Col3Break", item.Col3Break);
-                        cmd.Parameters.AddWithValue("@Col4Break", item.Col4Break);
-                        cmd.Parameters.AddWithValue("@Col5Break", item.Col5Break);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice1", item.DiscountedPrice1);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice2", item.DiscountedPrice2);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice3", item.DiscountedPrice3);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice4", item.DiscountedPrice4);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice5", item.DiscountedPrice5);
-                        cmd.Parameters.AddWithValue("@SuperSectionNo", item.SuperSectionNo);
-                        cmd.Parameters.AddWithValue("@SupersectionName", item.SupersectionName);
-                        cmd.Parameters.AddWithValue("@BrandID", item.BrandID);
-                        cmd.Parameters.AddWithValue("@Brandname", item.Brandname);
-                        cmd.Parameters.AddWithValue("@SectionID", item.SectionID);
-                        cmd.Parameters.AddWithValue("@SectionName", item.SectionName);
-
-                        cmd.ExecuteNonQuery();
-                        newItemCount++;
-                    }/* Adds a new item to SlidingPrice */
-                    else
-                    {
-                        cmd = new SqlCommand();
-                        cmd.Connection = ImeSqlConn;
-                        cmd.Transaction = ImeSqlTransaction;
-                        cmd.CommandText = @"UPDATE[dbo].[SlidingPrice] 
-                                            SET [ArticleNo] = @ArticleNo, [ArticleDescription] = @ArticleDescription, [ItemTypeCode] = @ItemTypeCode, [ItemTypeDesc] = @ItemTypeDesc, [IntroductionDate] = @IntroductionDate, [DiscontinuedDate] = @DiscontinuedDate, [Quantity1] = @Quantity1, [Col1Price] = @Col1Price, [Col2Price] = @Col2Price, [Col3Price] = @Col3Price, [Col4Price] = @Col4Price, [Col5Price] = @Col5Price, [Col1Break] = @Col1Break, [Col2Break] = @Col2Break, [Col3Break] = @Col3Break, [Col4Break] = @Col4Break, [Col5Break] = @Col5Break, [DiscountedPrice1] = @DiscountedPrice1, [DiscountedPrice2] = @DiscountedPrice2, [DiscountedPrice3] = @DiscountedPrice3, [DiscountedPrice4] = @DiscountedPrice4, [DiscountedPrice5] = @DiscountedPrice5, [SuperSectionNo] = @SuperSectionNo, [SupersectionName] = @SupersectionName, [BrandID] = @BrandID, [Brandname] = @Brandname, [SectionID] = @SectionID, [SectionName] = @SectionName
-                                        WHERE 
-                                            SlidingPrice.ArticleNo = @ArticleNo";
-
-                        cmd.Parameters.AddWithValue("@ArticleNo", item.ArticleNo);
-                        cmd.Parameters.AddWithValue("@ArticleDescription", item.ArticleDescription);
-                        cmd.Parameters.AddWithValue("@ItemTypeCode", item.ItemTypeCode);
-                        cmd.Parameters.AddWithValue("@ItemTypeDesc", item.ItemTypeDesc);
-                        cmd.Parameters.AddWithValue("@IntroductionDate", item.IntroductionDate);
-                        cmd.Parameters.AddWithValue("@DiscontinuedDate", item.DiscontinuedDate);
-                        cmd.Parameters.AddWithValue("@Quantity1", item.Quantity1);
-                        cmd.Parameters.AddWithValue("@Col1Price", item.Col1Price);
-                        cmd.Parameters.AddWithValue("@Col2Price", item.Col2Price);
-                        cmd.Parameters.AddWithValue("@Col3Price", item.Col3Price);
-                        cmd.Parameters.AddWithValue("@Col4Price", item.Col4Price);
-                        cmd.Parameters.AddWithValue("@Col5Price", item.Col5Price);
-                        cmd.Parameters.AddWithValue("@Col1Break", item.Col1Break);
-                        cmd.Parameters.AddWithValue("@Col2Break", item.Col2Break);
-                        cmd.Parameters.AddWithValue("@Col3Break", item.Col3Break);
-                        cmd.Parameters.AddWithValue("@Col4Break", item.Col4Break);
-                        cmd.Parameters.AddWithValue("@Col5Break", item.Col5Break);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice1", item.DiscountedPrice1);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice2", item.DiscountedPrice2);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice3", item.DiscountedPrice3);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice4", item.DiscountedPrice4);
-                        cmd.Parameters.AddWithValue("@DiscountedPrice5", item.DiscountedPrice5);
-                        cmd.Parameters.AddWithValue("@SuperSectionNo", item.SuperSectionNo);
-                        cmd.Parameters.AddWithValue("@SupersectionName", item.SupersectionName);
-                        cmd.Parameters.AddWithValue("@BrandID", item.BrandID);
-                        cmd.Parameters.AddWithValue("@Brandname", item.Brandname);
-                        cmd.Parameters.AddWithValue("@SectionID", item.SectionID);
-                        cmd.Parameters.AddWithValue("@SectionName", item.SectionName);
-
-                        cmd.ExecuteNonQuery();
-                        updatedItemCount++;
-                    }/* Updates the item */
+                    cmd.ExecuteNonQuery();
+                    ItemCount++;
                 }
 
-                ImeSqlTransaction.Commit();
+                //ImeSqlTransaction.Commit();
                 _Timer.Stop();
-                MessageBox.Show(newItemCount + " item is added! " + updatedItemCount + " item is updated!" + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
+                MessageBox.Show(ItemCount + " item is added! " + "\n\n" + "Passed Time: " + _Timer.Elapsed.ToString(@"hh\:mm\:ss") + " sn", "Success");
                 successfull = true;
             }
             catch (Exception ex)
             {
-                ImeSqlTransaction.Rollback();
+                //ImeSqlTransaction.Rollback();
                 MessageBox.Show("An error occured while loading PriceFile! Try again later\n\n" + ex.ToString(), "Error");
                 successfull = false;
             }
