@@ -648,6 +648,9 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
+                dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                 dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
@@ -766,6 +769,9 @@ namespace LoginForm.QuotationModule
 
                 dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
 
                 dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
@@ -1354,6 +1360,7 @@ namespace LoginForm.QuotationModule
                                 MessageBox.Show("Low Price ! Ask for authorization");
                                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
                                 CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                                CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString())* decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
                                 CurrentRow.Cells["dgDisc"].Value = 0;
                             }
                             else
@@ -1381,12 +1388,14 @@ namespace LoginForm.QuotationModule
                         else if (txtHazardousInd.Text == "Y")
                         {
                             dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
+
+                            dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUC.Index].Value.ToString());
                             MessageBox.Show("Hazardous Item - Discount not allowed");
                         }
                     }
                     #endregion
                     break;
-                case 36://Cust Stock Kodu
+                case 37://Cust Stock Kodu
 
                     #region UCUP Curr
                      string cusStock = dgQuotationAddedItems.CurrentCell.Value.ToString();
@@ -1445,6 +1454,9 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
+                dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                 dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
@@ -1454,8 +1466,8 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
 
                 dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
                 dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
@@ -1560,8 +1572,15 @@ namespace LoginForm.QuotationModule
                         {
                             if (this.Text == "Modify Quotation" || this.Text == "Edit Quotation" || this.Text == "View Quotation" || this.Text == "Copy Quotation")
                             {
-                            
-                                price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
+
+                                if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault().Lithium == "1")
+                                {
+                                    price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().LIFactor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
+                                }
+                                else if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault().Shipping == "1")
+                                {
+                                    price = Decimal.Parse((QuotationUtils.GetPrice(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())) * (Utils.getManagement().HSFactor) / Currrate * Decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29"));
+                                }
                             }
                             else
                             {
@@ -1639,6 +1658,7 @@ namespace LoginForm.QuotationModule
                                 }
                                 CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
 
+                                CurrentRow.Cells[dgPacketUP.Index].Value = String.Format("{0:0.0000}", decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString())* decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString())* decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())).ToString();
                                 //Change lblsubtotal
 
                                 CalculateSubTotal();
@@ -2999,6 +3019,8 @@ namespace LoginForm.QuotationModule
                                     qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value?.ToString()))
                                     qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value?.ToString()))
+                                    qd.PacketUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value?.ToString()))
                                     qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value?.ToString()))
@@ -3400,6 +3422,8 @@ namespace LoginForm.QuotationModule
                         qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value?.ToString()))
                         qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                    if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value?.ToString()))
+                        qd.PacketUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value.ToString());
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value?.ToString()))
                         qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
                     if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value?.ToString()))
@@ -3506,6 +3530,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null) qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value != null) qd.UnitOfMeasure = dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value.ToString();
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null) qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value != null) qd.PacketUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value != null) qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() != "") qd.Disc = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()), 2);
                     if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null) qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
@@ -3662,6 +3687,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUC.Index].Value = item.UC;
                     row.Cells[dgUPIME.Index].Value = Math.Round((decimal)item.UPIME, 4);
                     row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                    row.Cells[dgPacketUP.Index].Value = item.PacketUP;
                     row.Cells[dgDisc.Index].Value = item.Disc;
                     row.Cells[dgDelivery.Index].Value = item.quotationDeliveryID;
                     row.Cells[dgStatus.Index].Value = item.DubaiStatus;
@@ -3811,6 +3837,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUC.Index].Value = item.UC;
                     row.Cells[dgUPIME.Index].Value = Math.Round((decimal)item.UPIME, 4);
                     row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                    row.Cells[dgPacketUP.Index].Value = item.PacketUP;
                     row.Cells[dgDisc.Index].Value = item.Disc;
                     row.Cells[dgDelivery.Index].Value = item.quotationDeliveryID;
                     row.Cells[dgStatus.Index].Value = item.DubaiStatus;
@@ -4446,6 +4473,7 @@ namespace LoginForm.QuotationModule
                 {
                     CurrentRow = dgQuotationAddedItems.Rows[i];
                     CurrentRow.Cells["dgUCUPCurr"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())) / Currfactor), 4).ToString();
+                    CurrentRow.Cells[dgPacketUP.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgPacketUP.Index].Value.ToString())) / Currfactor), 4).ToString();
                     CurrentRow.Cells["dgUPIME"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString())) / Currfactor), 4).ToString();
                     CurrentRow.Cells["dgTotal"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString())) / Currfactor), 4).ToString();
 
@@ -5370,7 +5398,7 @@ namespace LoginForm.QuotationModule
                         decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
                         item.Cells[dgDisc.Index].Value = Math.Round((100 - ((UCUPCurr * 100) / UPIME)), 2).ToString();
                         item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
-                        
+                        item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                         decimal quantity = 0;
                         quantity = decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
                         item.Cells[dgTotal.Index].Value = UCUPCurr * quantity;
@@ -5413,6 +5441,7 @@ namespace LoginForm.QuotationModule
                             item.Cells[dgDisc.Index].Value = Math.Round(datagriddisc, 2).ToString();
                             UCUPCurr = (UPIME * (100 - datagriddisc)) / 100;
                             item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
+                            item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                             item.Cells[dgTotal.Index].Value = Math.Round((UCUPCurr * quantity), 4);
                             subtotal = subtotal + (UCUPCurr * quantity);
                         }
@@ -5631,6 +5660,7 @@ namespace LoginForm.QuotationModule
                         if (QuotationUtils.IsWithItems == true)
                         {
                             row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            row.Cells[dgPacketUP.Index].Value = item.PacketUP;
                             row.Cells[dgDisc.Index].Value = item.Disc;
                         }
                         dgQuotationAddedItems.Rows.Add(row);
@@ -5651,6 +5681,7 @@ namespace LoginForm.QuotationModule
                         if (QuotationUtils.IsWithItems == true)
                         {
                             dgQuotationAddedItems.Rows[0].Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
+                            dgQuotationAddedItems.Rows[0].Cells[dgPacketUP.Index].Value = item.PacketUP;
                             dgQuotationAddedItems.Rows[0].Cells[dgDisc.Index].Value = item.Disc;
                         }
                     }

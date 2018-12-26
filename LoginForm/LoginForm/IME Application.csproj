@@ -708,6 +708,12 @@
     <Compile Include="Management\FormCurrencyValue.Designer.cs">
       <DependentUpon>FormCurrencyValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\FormFactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\FormFactor.Designer.cs">
+      <DependentUpon>FormFactor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\FormLogKayit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1394,6 +1400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormCurrencyValue.resx">
       <DependentUpon>FormCurrencyValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\FormFactor.resx">
+      <DependentUpon>FormFactor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormLogKayit.resx">
       <DependentUpon>FormLogKayit.cs</DependentUpon>

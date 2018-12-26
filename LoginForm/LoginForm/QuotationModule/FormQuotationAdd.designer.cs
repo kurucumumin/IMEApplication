@@ -332,6 +332,7 @@
             this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgPacketUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -447,6 +448,7 @@
             this.dgUPIME,
             this.dgDisc,
             this.dgUCUPCurr,
+            this.dgPacketUP,
             this.dgTotal,
             this.dgTargetUP,
             this.dgCompetitor,
@@ -3226,6 +3228,11 @@
             this.dgUCUPCurr.ReadOnly = true;
             this.dgUCUPCurr.Width = 97;
             // 
+            // dgPacketUP
+            // 
+            this.dgPacketUP.HeaderText = "Packet U/P";
+            this.dgPacketUP.Name = "dgPacketUP";
+            // 
             // dgTotal
             // 
             this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -3695,6 +3702,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgPacketUP;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
