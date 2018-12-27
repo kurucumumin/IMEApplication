@@ -128,17 +128,22 @@ namespace LoginForm
 
             foreach (DataGridViewRow row in dgSales.Rows)
             {
-                if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to LOGO")
+                if (row.Cells[Status.Index].Value != null)
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 0);
-                }
-                else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to RS")
-                {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(204, 237, 220);
-                }
-                else if (row.Cells[Status.Index].Value != null && row.Cells[Status.Index].Value.ToString() == "Sent to RS")
-                {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
+
+                    if (row.Cells[Status.Index].Value.ToString() == "Sent to LOGO")
+                    {
+                        row.Cells[Status.Index].Style.BackColor = Color.FromArgb(140, 255, 195);
+                    }
+                    else if (row.Cells[Status.Index].Value.ToString() == "Sent to RS")
+                    {
+                        row.Cells[Status.Index].Style.BackColor = Color.FromArgb(255, 190, 130);
+                    }
+                    else if (row.Cells[Status.Index].Value.ToString() == "")
+                    {
+                        row.Cells[Status.Index].Style.BackColor = System.Drawing.Color.Empty;
+                    }
+
                 }
                 //if (row.Cells[PurchaseID.Index].Value != null)
                 //{

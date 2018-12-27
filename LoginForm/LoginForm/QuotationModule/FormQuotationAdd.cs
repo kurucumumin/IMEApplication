@@ -1329,7 +1329,8 @@ namespace LoginForm.QuotationModule
 
                             if (new Sp_Item().GetProductHistoryWithArticleNo(articleNo) != null)
                             {
-                                btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
+                                //btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
+                                btnProductHistory.BackColor = Color.FromArgb(38, 38, 255);
                             }
                         }
                         else
@@ -1363,7 +1364,7 @@ namespace LoginForm.QuotationModule
                         CalculateTotalNetWeight();
                     }
                     break;
-                case 23://UCUP Curr
+                case 23://UCUP Curr*
                     {
                         #region UCUP Curr
                         if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
@@ -1391,7 +1392,7 @@ namespace LoginForm.QuotationModule
                                 MessageBox.Show("Low Price ! Ask for authorization");
                                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
                                 CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
-                                if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                                if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                                 {
                                     CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
                                 }
@@ -1422,7 +1423,7 @@ namespace LoginForm.QuotationModule
                         else if (txtHazardousInd.Text == "Y")
                         {
                             dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
-                            if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                            if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                             {
                                 dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUC.Index].Value.ToString());
                             }
@@ -1693,7 +1694,7 @@ namespace LoginForm.QuotationModule
                                     discResult = (discResult - (discResult * decimal.Parse(CurrentRow.Cells[dgDisc.Index].Value.ToString()) / 100));
                                 }
                                 CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
-                                if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                                if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                                 {
                                     CurrentRow.Cells[dgPacketUP.Index].Value = String.Format("{0:0.0000}", decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())).ToString();
                                 }
@@ -4520,7 +4521,7 @@ namespace LoginForm.QuotationModule
                 {
                     CurrentRow = dgQuotationAddedItems.Rows[i];
                     CurrentRow.Cells["dgUCUPCurr"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())) / Currfactor), 4).ToString();
-                    if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                    if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                     {
                         CurrentRow.Cells[dgPacketUP.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgPacketUP.Index].Value.ToString())) / Currfactor), 4).ToString();
                     }
@@ -5452,7 +5453,7 @@ namespace LoginForm.QuotationModule
                         decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
                         item.Cells[dgDisc.Index].Value = Math.Round((100 - ((UCUPCurr * 100) / UPIME)), 2).ToString();
                         item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
-                        if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                        if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                         {
                             item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                         }
@@ -5498,7 +5499,7 @@ namespace LoginForm.QuotationModule
                             item.Cells[dgDisc.Index].Value = Math.Round(datagriddisc, 2).ToString();
                             UCUPCurr = (UPIME * (100 - datagriddisc)) / 100;
                             item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
-                            if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                            if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                             {
                                 item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                             }
@@ -6020,114 +6021,170 @@ namespace LoginForm.QuotationModule
 
         private void chkCustomerFactor_CheckedChanged(object sender, EventArgs e)
         {
+            decimal CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+
             if (chkCustomerFactor.Checked == true)
             {
                 chkCustomerMarkup.Checked = false;
+                if (dgQuotationAddedItems.RowCount > 0)
+                {
+                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    {
+                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        {
+                            item.Cells[dgUPIME.Index].Value = "";
+                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                chkCustomerMarkup.Checked = true;
+                if (dgQuotationAddedItems.RowCount > 0)
+                {
+                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    {
+                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        {
+                            item.Cells[dgUPIME.Index].Value = "";
+                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                        }
+                    }
+                }
             }
         }
 
         private void chkCustomerMarkup_CheckedChanged(object sender, EventArgs e)
         {
+            decimal CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+
             if (chkCustomerMarkup.Checked == true)
             {
                 chkCustomerFactor.Checked = false;
+                if (dgQuotationAddedItems.RowCount > 0)
+                {
+                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    {
+                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        {
+                            item.Cells[dgUPIME.Index].Value = "";
+                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                chkCustomerFactor.Checked = true;
+                if (dgQuotationAddedItems.RowCount > 0)
+                {
+                    foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    {
+                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        {
+                            item.Cells[dgUPIME.Index].Value = "";
+                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                        }
+                    }
+                }
             }
         }
 
         private void chkCustomerDiscount_CheckedChanged(object sender, EventArgs e)
         {
-            decimal subtotal = 0;
-            if (cbDeliverDiscount.Checked)
+            if (dgQuotationAddedItems.RowCount > 0)
             {
-                txtTotalDis.Enabled = false;
-                txtTotalDis2.Enabled = false;
-                cbDeliverDiscount.Enabled = false;
-
-                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                if (chkCustomerDiscount.Checked)
                 {
-                    if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                    txtTotalDis.Enabled = false;
+                    txtTotalDis2.Enabled = false;
+                    txtTotalDis.Text = lblCustomerDiscountValue.Text;
+
+                    decimal hztotal = 0;
+
+                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                     {
-                        decimal UCUPCurr = 0;
-                        decimal DiscountedUCUPCurr = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString());
-                        decimal disc = 0;
-                        if (lblCustomerDiscountValue.Text != null && lblCustomerDiscountValue.Text != string.Empty)
+                        if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
                         {
-                            disc = Decimal.Parse(lblCustomerDiscountValue.Text);
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
-                        UCUPCurr = DiscountedUCUPCurr * ((100 - disc) / 100);
-                        decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
-                        item.Cells[dgDisc.Index].Value = Math.Round((100 - ((UCUPCurr * 100) / UPIME)), 2).ToString();
-                        item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
-                        if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
+                        else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
                         {
-                            item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
-                        decimal quantity = 0;
-                        quantity = decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
-                        item.Cells[dgTotal.Index].Value = UCUPCurr * quantity;
-                        subtotal += (UCUPCurr * quantity);
+                    }
+
+                    int workerID = Utils.getCurrentUser().WorkerID;
+                    decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                    if (Convert.ToDecimal(txtTotalDis.Text) > Minmarge)
+                    {
+                        MessageBox.Show("Low Price ! Ask for authorization");
+                        txtTotalDis.Text = "0";
+                        txtTotalDis2.Text = "0";
                     }
                     else
                     {
-                        decimal quantity = 0;
-                        quantity = decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
-                        decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
-                        subtotal = subtotal + (UPIME * quantity);
+                        decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 4);
+                        decimal dis2 = Math.Round(((subtotal * Decimal.Parse(txtTotalDis.Text)) / 100), 3);
+                        txtTotalDis2.Text = dis2.ToString();
+                        lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
                     }
-                }
-                totallbl = subtotal;
-                lbltotal.Text = subtotal.ToString();
-            }
-            else
-            {
-                txtTotalDis.Enabled = true;
-                txtTotalDis2.Enabled = true;
-                cbDeliverDiscount.Enabled = true;
 
-                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                    Disc();
+                }
+                else
                 {
-                    if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                    txtTotalDis.Enabled = true;
+                    txtTotalDis2.Enabled = true;
+                    txtTotalDis.Text = "0";
+
+                    decimal hztotal = 0;
+
+                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                     {
-                        if (!String.IsNullOrEmpty(item.Cells["dgTotal"].Value.ToString()))
+                        if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
                         {
-                            decimal UPIME = 0;
-                            decimal total = 0;
-                            decimal txtdisc = 0;
-                            decimal UCUPCurr = 0;
-                            decimal datagriddisc = 0;
-                            decimal quantity = 0;
-                            quantity = decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
-                            if (lblCustomerDiscountValue.Text != null && lblCustomerDiscountValue.Text != "") txtdisc = decimal.Parse(lblCustomerDiscountValue.Text);
-                            total = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString());
-                            total = total / quantity;
-                            UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
-                            datagriddisc = 100 - (100 * (total * 100 / (100 - txtdisc)) / UPIME);
-                            item.Cells[dgDisc.Index].Value = Math.Round(datagriddisc, 2).ToString();
-                            UCUPCurr = (UPIME * (100 - datagriddisc)) / 100;
-                            item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 4)).ToString();
-                            if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 && Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
-                            {
-                                item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
-                            }
-                            item.Cells[dgTotal.Index].Value = Math.Round((UCUPCurr * quantity), 4);
-                            subtotal = subtotal + (UCUPCurr * quantity);
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
+                        else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                        {
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                        }
+                    }
+
+                    int workerID = Utils.getCurrentUser().WorkerID;
+                    decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                    if (Convert.ToDecimal(txtTotalDis.Text) > Minmarge)
+                    {
+                        MessageBox.Show("Low Price ! Ask for authorization");
+                        txtTotalDis.Text = "0";
+                        txtTotalDis2.Text = "0";
                     }
                     else
                     {
-                        decimal quantity = 0;
-                        quantity = decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
-                        decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
-                        subtotal = subtotal + (UPIME * quantity);
+                        decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 4);
+                        decimal dis2 = Math.Round(((subtotal * Decimal.Parse(txtTotalDis.Text)) / 100), 3);
+                        txtTotalDis2.Text = dis2.ToString();
+                        lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
                     }
+
+                    Disc();
                 }
             }
+        }
 
-            lblsubtotal.Text = subtotal.ToString();
-            lbltotal.Text = totallbl.ToString();
-            GetAllMargin();
-
-            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+        private void dgQuotationAddedItems_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.Exception.Message == "DataGridViewComboBox value is not valid.")
+            {
+                object value = dgQuotationAddedItems.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (!((DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[e.ColumnIndex]).Items.Contains(value))
+                {
+                    ((DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[e.ColumnIndex]).Items.Add(value);
+                    e.ThrowException = false;
+                }
+            }
         }
 
 

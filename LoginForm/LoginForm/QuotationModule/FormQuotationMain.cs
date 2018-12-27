@@ -844,20 +844,24 @@ namespace LoginForm.QuotationModule
 
             foreach (DataGridViewRow row in dgQuotation.Rows)
             {
-                if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Ordered")
+
+                if (row.Cells[OrderStatus.Index].Value != null)
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 0);
-                }
-                else if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Not Ordered")
-                {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
-                }
-                else if (row.Cells[OrderStatus.Index].Value != null && row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
-                {
-                    row.DefaultCellStyle.BackColor = ImeSettings.GridDeletedRowColor ;
+
+                    if (row.Cells[OrderStatus.Index].Value.ToString() == "Ordered")
+                    {
+                        row.Cells[OrderStatus.Index].Style.BackColor = Color.FromArgb(140, 255, 195);
+                    }
+                    else if (row.Cells[OrderStatus.Index].Value.ToString() == "Not Ordered")
+                    {
+                        row.Cells[OrderStatus.Index].Style.BackColor = Color.FromArgb(255, 190, 130);
+                    }
+                    else if (row.Cells[OrderStatus.Index].Value.ToString() == "Deleted")
+                    {
+                        row.Cells[OrderStatus.Index].Style.BackColor = ImeSettings.GridDeletedRowColor;
+                    }
                 }
             }
-
 
         }
 

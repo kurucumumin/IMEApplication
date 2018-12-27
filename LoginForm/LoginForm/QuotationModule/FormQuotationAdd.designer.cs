@@ -481,6 +481,7 @@
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
+            this.dgQuotationAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgQuotationAddedItems_DataError);
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
             this.dgQuotationAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgQuotationAddedItems_RowsRemoved);
             this.dgQuotationAddedItems.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgQuotationAddedItems_SortCompare);
@@ -1549,7 +1550,6 @@
             this.label71.Size = new System.Drawing.Size(66, 13);
             this.label71.TabIndex = 80;
             this.label71.Text = "Exch Rate";
-            this.label71.Visible = false;
             // 
             // label70
             // 
@@ -1569,7 +1569,6 @@
             this.lblCurrValue.Size = new System.Drawing.Size(62, 13);
             this.lblCurrValue.TabIndex = 78;
             this.lblCurrValue.Text = "CurrValue";
-            this.lblCurrValue.Visible = false;
             // 
             // dtpDate
             // 
