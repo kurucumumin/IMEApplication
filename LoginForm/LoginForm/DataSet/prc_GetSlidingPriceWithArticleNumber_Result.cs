@@ -21,7 +21,6 @@ namespace LoginForm.DataSet
         public string DiscontinuedDate { get; set; }
         public Nullable<int> Quantity1 { get; set; }
         public Nullable<decimal> Col1Price { get; set; }
-        public Nullable<decimal> Col2Price { get; set; }
         public Nullable<decimal> Col3Price { get; set; }
         public Nullable<decimal> Col4Price { get; set; }
         public Nullable<decimal> Col5Price { get; set; }
@@ -41,5 +40,6 @@ namespace LoginForm.DataSet
         public string Brandname { get; set; }
         public string SectionID { get; set; }
         public string SectionName { get; set; }
+        public Nullable<decimal> Col2Price { get; set; }
     }
 }

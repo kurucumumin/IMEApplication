@@ -1099,7 +1099,6 @@
           <Property Name="DiscontinuedDate" Type="nvarchar" MaxLength="15" />
           <Property Name="Quantity1" Type="int" />
           <Property Name="Col1Price" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="Col3Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="Col4Price" Type="decimal" Precision="18" Scale="3" />
           <Property Name="Col5Price" Type="decimal" Precision="18" Scale="3" />
@@ -1119,6 +1118,7 @@
           <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
           <Property Name="SectionID" Type="nvarchar" MaxLength="20" />
           <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Col2Price" Type="decimal" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -5783,7 +5783,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DiscontinuedDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Quantity1" Type="Int32" />
           <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
@@ -5803,6 +5802,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
           <NavigationProperty Name="DiscountValues" Relationship="Self.FK__DiscountV__Arcti__6D6238AF" FromRole="SlidingPrice" ToRole="DiscountValues" />
         </EntityType>
         <EntityType Name="Stock">
@@ -9786,7 +9786,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="DiscontinuedDate" Nullable="true" MaxLength="15" />
           <Property Type="Int32" Name="Quantity1" Nullable="true" />
           <Property Type="Decimal" Name="Col1Price" Nullable="true" Precision="18" Scale="3" />
-          <Property Type="Decimal" Name="Col2Price" Nullable="true" Precision="18" Scale="3" />
           <Property Type="Decimal" Name="Col3Price" Nullable="true" Precision="18" Scale="3" />
           <Property Type="Decimal" Name="Col4Price" Nullable="true" Precision="18" Scale="3" />
           <Property Type="Decimal" Name="Col5Price" Nullable="true" Precision="18" Scale="3" />
@@ -9806,6 +9805,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="SectionID" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="SectionName" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Col2Price" Nullable="true" Precision="18" Scale="3" />
         </ComplexType>
         <ComplexType Name="prc_GetSuperDiskItemWithArticleNumber_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -11256,7 +11256,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
                 <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
                 <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
                 <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
                 <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
@@ -11276,6 +11275,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12704,7 +12704,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
                 <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
                 <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
                 <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
                 <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
                 <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
@@ -12724,6 +12723,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
