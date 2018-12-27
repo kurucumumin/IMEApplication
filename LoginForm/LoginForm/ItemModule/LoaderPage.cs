@@ -57,7 +57,7 @@ namespace LoginForm.ItemModule
                     bool NoErrorP = SuperDiskPHelper.ErrorCheck();
                     if (NoErrorP)
                     {
-                        if (SuperDiskPHelper.LoadSuperDiskPItems())
+                        if (txtReader.SuperDiskPRead() == 1)
                         {
                             RsFileHistory h = new RsFileHistory();
                             h.FileType = txtReader.LoaderType;
