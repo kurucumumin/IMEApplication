@@ -51,6 +51,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UnitNetWeight { get; set; }
         public string DubaiStatus { get; set; }
         public Nullable<decimal> PacketUP { get; set; }
+        public Nullable<decimal> FirstUPIME { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }

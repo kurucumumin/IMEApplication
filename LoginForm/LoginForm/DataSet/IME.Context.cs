@@ -1080,6 +1080,31 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FormViewAll_Result>("FormViewAll");
         }
     
+        public virtual int HazardouseAdd(string articleNo, Nullable<int> occurrences, Nullable<int> environment, string shipping, string lithium)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(string));
+    
+            var occurrencesParameter = occurrences.HasValue ?
+                new ObjectParameter("Occurrences", occurrences) :
+                new ObjectParameter("Occurrences", typeof(int));
+    
+            var environmentParameter = environment.HasValue ?
+                new ObjectParameter("Environment", environment) :
+                new ObjectParameter("Environment", typeof(int));
+    
+            var shippingParameter = shipping != null ?
+                new ObjectParameter("Shipping", shipping) :
+                new ObjectParameter("Shipping", typeof(string));
+    
+            var lithiumParameter = lithium != null ?
+                new ObjectParameter("Lithium", lithium) :
+                new ObjectParameter("Lithium", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HazardouseAdd", articleNoParameter, occurrencesParameter, environmentParameter, shippingParameter, lithiumParameter);
+        }
+    
         public virtual int ItemAdd(string articleNo, string articleDesc, Nullable<int> packCode, Nullable<int> packQuantity, Nullable<int> unitContent, string unitMeasure, Nullable<decimal> ukCol1, Nullable<decimal> standardWeight, string hazardousInd, string calibrationInd, string obsoleteFlag, string mH1, string lowDiscountInd, string licensedInd, string shelfLife, string cofO, string eUR1Indicator, string cCCNNo, string supercedeDate, string currentCatpage, string ukIntroDate, string filler, string ukDiscDate, string substituteBy, string bHCFlag, string filler1, Nullable<decimal> futureSellPrice, string intCat, string newProdChangeInd, string outofStockProhibitchangeind, string discChangeInd, string supercededChangeInd, string packSizeChangeInd, string rolledProductChangeInd, string expiringProductChangeInd, string manufacturer, string mPN, string mHCodeLevel1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var articleNoParameter = articleNo != null ?

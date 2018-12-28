@@ -883,6 +883,7 @@
           <Property Name="UnitNetWeight" Type="decimal" Precision="15" Scale="4" />
           <Property Name="DubaiStatus" Type="nvarchar" MaxLength="1" />
           <Property Name="PacketUP" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="FirstUPIME" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -3328,6 +3329,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="formId" Type="int" Mode="In" />
         </Function>
         <Function Name="FormViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="HazardouseAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Occurrences" Type="int" Mode="In" />
+          <Parameter Name="Environment" Type="int" Mode="In" />
+          <Parameter Name="Shipping" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lithium" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="ItemAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDesc" Type="nvarchar" Mode="In" />
@@ -5529,6 +5537,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="UnitNetWeight" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="DubaiStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="PacketUP" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FirstUPIME" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -8583,6 +8592,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="formId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="FormViewAll" ReturnType="Collection(IMEModel.FormViewAll_Result)" />
+          <FunctionImport Name="HazardouseAdd">
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+            <Parameter Name="Occurrences" Mode="In" Type="Int32" />
+            <Parameter Name="Environment" Mode="In" Type="Int32" />
+            <Parameter Name="Shipping" Mode="In" Type="String" />
+            <Parameter Name="Lithium" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ItemAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
             <Parameter Name="ArticleDesc" Mode="In" Type="String" />
@@ -11028,6 +11044,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="UnitNetWeight" ColumnName="UnitNetWeight" />
                 <ScalarProperty Name="DubaiStatus" ColumnName="DubaiStatus" />
                 <ScalarProperty Name="PacketUP" ColumnName="PacketUP" />
+                <ScalarProperty Name="FirstUPIME" ColumnName="FirstUPIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12187,6 +12204,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HazardouseAdd" FunctionName="IMEModel.Store.HazardouseAdd" />
           <FunctionImportMapping FunctionImportName="ItemAdd" FunctionName="IMEModel.Store.ItemAdd" />
           <FunctionImportMapping FunctionImportName="ItemDetailTabFiller" FunctionName="IMEModel.Store.ItemDetailTabFiller">
             <ResultMapping>

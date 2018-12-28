@@ -397,9 +397,18 @@ namespace LoginForm.Main
 
         private void GoToLoaderPage()
         {
-            LoaderPage form = new LoaderPage();
-            form.ShowDialog();
-            Utils.LogKayit(txtReader.LoaderType, txtReader.LoaderType +"main screen has been entered");
+            if (txtReader.LoaderType == "Hazardous")
+            {
+                LoaderPageExcel frm = new LoaderPageExcel();
+                frm.ShowDialog();
+                Utils.LogKayit(txtReader.LoaderType, txtReader.LoaderType + "main screen has been entered");
+            }
+            else
+            {
+                LoaderPage form = new LoaderPage();
+                form.ShowDialog();
+                Utils.LogKayit(txtReader.LoaderType, txtReader.LoaderType + "main screen has been entered");
+            }
 
         }
 
@@ -442,6 +451,8 @@ namespace LoginForm.Main
             txtReader.LoaderType = "";
             txtReader.LoaderType = "Hazardous";
             GoToLoaderPage();
+
+
         }
 
         private void btnExtendedRangePrice_Click(object sender, EventArgs e)

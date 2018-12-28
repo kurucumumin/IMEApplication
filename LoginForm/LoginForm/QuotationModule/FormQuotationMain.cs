@@ -1255,7 +1255,11 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    MessageBox.Show(quo.ViewQuotationName + "is working on this Quotation");
+                    DialogResult result2 = MessageBox.Show(quo.ViewQuotationName + " is working on this Quotation", "Informaion", MessageBoxButtons.YesNo);
+                    if (result2 == DialogResult.Yes)
+                    {
+                        ViewQuotation();
+                    }
                 }
             }
             else

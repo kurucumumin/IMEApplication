@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using LoginForm.Services;
 using System.Diagnostics;
+
 
 namespace LoginForm
 {
@@ -2225,6 +2225,7 @@ namespace LoginForm
                 }
                 catch { MessageBox.Show("This document does not proper to load here"); return 0; }
             }
+
             return 0;
         }
 

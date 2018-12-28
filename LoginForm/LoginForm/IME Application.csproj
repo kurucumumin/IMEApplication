@@ -696,6 +696,12 @@
     <Compile Include="ItemModule\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemModule\LoaderPageExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemModule\LoaderPageExcel.Designer.cs">
+      <DependentUpon>LoaderPageExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\frmMainMetro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1394,6 +1400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemModule\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemModule\LoaderPageExcel.resx">
+      <DependentUpon>LoaderPageExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\frmMainMetro.resx">
       <DependentUpon>frmMainMetro.cs</DependentUpon>
