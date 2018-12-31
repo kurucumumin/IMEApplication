@@ -47,11 +47,12 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UKPrice { get; set; }
         public string Status { get; set; }
         public Nullable<int> IsDeleted { get; set; }
-        public string CustomerDesc { get; set; }
+        public string CustomerName { get; set; }
         public Nullable<decimal> UnitNetWeight { get; set; }
         public string DubaiStatus { get; set; }
         public Nullable<decimal> PacketUP { get; set; }
         public Nullable<decimal> FirstUPIME { get; set; }
+        public string CustomerDesc { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }

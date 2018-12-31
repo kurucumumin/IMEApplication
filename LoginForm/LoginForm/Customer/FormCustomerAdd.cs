@@ -1123,6 +1123,7 @@ namespace LoginForm
                 }
                 IME.SaveChanges();
                 MessageBox.Show("Customer save succesfully");
+                label69.Text = "Close";
                 Utils.LogKayit("Customer", "Customer update");
                 this.Close();
 

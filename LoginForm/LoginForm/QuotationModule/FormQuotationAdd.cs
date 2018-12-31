@@ -1361,16 +1361,19 @@ namespace LoginForm.QuotationModule
                     calculateTotalCost();
                     if (CurrentRow.Cells["dgQty"].Value != null && CurrentRow.Cells["dgQty"].Value.ToString() != "")
                     {
-                        if (Decimal.Parse(txtStandartWeight.Text) < (Decimal.Parse(txtGrossWeight.Text)))
+                        if (txtStandartWeight.Text != "" && txtGrossWeight.Text != "")
                         {
-                            CurrentRow.Cells["dgUnitWeigt"].Value = (Decimal.Parse(txtGrossWeight.Text)).ToString();
+                            if (Decimal.Parse(txtStandartWeight.Text) < (Decimal.Parse(txtGrossWeight.Text)))
+                            {
+                                CurrentRow.Cells["dgUnitWeigt"].Value = (Decimal.Parse(txtGrossWeight.Text)).ToString();
+                            }
+                            else
+                            {
+                                CurrentRow.Cells["dgUnitWeigt"].Value = (Decimal.Parse(txtStandartWeight.Text)).ToString();
+                            }
+                            CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
+                            CalculateTotalWeight();
                         }
-                        else
-                        {
-                            CurrentRow.Cells["dgUnitWeigt"].Value = (Decimal.Parse(txtStandartWeight.Text)).ToString();
-                        }
-                        CurrentRow.Cells["dgTotalWeight"].Value = (Decimal.Parse(CurrentRow.Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString();
-                        CalculateTotalWeight();
                     }
 
                     if (CurrentRow.Cells["dgQty"].Value != null && CurrentRow.Cells["dgQty"].Value.ToString() != "")
@@ -1450,38 +1453,51 @@ namespace LoginForm.QuotationModule
                     }
                     #endregion
                     break;
-                case 39://Cust Stock Kodu
+                case 38://Cust Stock Kodu
 
                     #region UCUP Curr
                      string cusStock = dgQuotationAddedItems.CurrentCell.Value.ToString();
-                    var stock = IME.QuotationDetails.Where(x => x.CustomerDesc == txtCustomerName.Text).FirstOrDefault();
+                    var stock = IME.QuotationDetails.Where(x => x.CustomerName == txtCustomerName.Text).FirstOrDefault();
 
-                    if (CurrentRow.Cells[dgProductCode.Index].Value != null)
+                    if (stock != null)
                     {
-                        
-                    }
-                    else
-                    {
-                        if (stock.CustomerStockCode == cusStock)
+                        if (CurrentRow.Cells[dgProductCode.Index].Value != null)
                         {
-                           
-                            CurrentRow.Cells[dgProductCode.Index].Value = stock.ItemCode;
-                            CurrentRow.Cells["dgDesc"].Value = stock.ItemDescription;
-                            CurrentRow.Cells["dgSSM"].Value = stock.SSM.ToString() ?? ""; ;
-                            CurrentRow.Cells["dgUC"].Value = stock.UC.ToString() ?? ""; ;
-                            CurrentRow.Cells["dgUOM"].Value = stock.UnitOfMeasure;
-                            CurrentRow.Cells["dgMPN"].Value = stock.MPN;
-                            CurrentRow.Cells[dgCustDescription.Index].Value = stock.CustomerDesc;
-                            CurrentRow.Cells[dgCustStkCode.Index].Value = stock.CustomerStockCode;
 
-                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
                         }
                         else
                         {
-                            MessageBox.Show("Customer Stock Code entered wrong");
-                            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                            if (stock.CustomerStockCode == cusStock)
+                            {
+
+                                CurrentRow.Cells[dgProductCode.Index].Value = stock.ItemCode;
+                                CurrentRow.Cells["dgDesc"].Value = stock.ItemDescription;
+                                CurrentRow.Cells["dgSSM"].Value = stock.SSM.ToString() ?? ""; ;
+                                CurrentRow.Cells["dgUC"].Value = stock.UC.ToString() ?? ""; ;
+                                CurrentRow.Cells["dgUOM"].Value = stock.UnitOfMeasure;
+                                CurrentRow.Cells["dgMPN"].Value = stock.MPN;
+                                CurrentRow.Cells[dgCustDescription.Index].Value = stock.CustomerDesc;
+                                CurrentRow.Cells[dgCustStkCode.Index].Value = stock.CustomerStockCode;
+
+                                ItemDetailsFiller(CurrentRow.Cells[dgProductCode.Index].Value.ToString());//tekrar bakılacak
+                                FillProductCodeItem();
+                                if (txtWeb1.Text == "0" || txtWeb1.Text == "")
+                                {
+                                    DialogResult dialogResult = MessageBox.Show("Item is not available in Price File, please check website and Enter price from ItemCard");
+                                    ItemsClear();
+                                }
+
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index];
+                            }
+                            else
+                            {
+                                MessageBox.Show("Customer Stock Code entered wrong");
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                            }
                         }
                     }
+
+                    
                     #endregion
                     break;
             }
@@ -2441,15 +2457,18 @@ namespace LoginForm.QuotationModule
             decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
+            string supplier = "SC0001";
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
             SuperDisk sd;
             SuperDiskP sdP;
             ExtendedRange er;
             string custStockCode = "";
+            string custStockDesc = "";
             var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
             if (IME.QuotationDetails.Where(x => x.ItemCode == ArticleNoSearch && x.CustomerDesc == txtCustomerName.Text).FirstOrDefault() != null)
             {
               custStockCode = IME.QuotationDetails.Where(x=> x.ItemCode==ArticleNoSearch && x.CustomerDesc == txtCustomerName.Text).FirstOrDefault().CustomerStockCode;
+              custStockDesc = IME.QuotationDetails.Where(x => x.ItemCode == ArticleNoSearch && x.CustomerDesc == txtCustomerName.Text).FirstOrDefault().CustomerDesc;
             }
            
             var rsf = IME.RsFileHistories.Where(a => a.FileType == "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
@@ -2462,8 +2481,10 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
-                CurrentRow.Cells[dgCustDescription.Index].Value = txtCustomerName.Text;
+                CurrentRow.Cells[dgCustDescription.Index].Value = custStockDesc;
                 CurrentRow.Cells[dgCustStkCode.Index].Value = custStockCode;
+                CurrentRow.Cells[dgBrand.Index].Value = ItemTabDetails.Manufacturer;
+                CurrentRow.Cells[dgSupplier.Index].Value = IME.Suppliers.Where(x=> x.ID == supplier).FirstOrDefault().s_name;
                 if (ItemTabDetails.Standard_Weight != null && ItemTabDetails.Standard_Weight != 0)
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
