@@ -1344,7 +1344,7 @@ namespace LoginForm.QuotationModule
                             {
                                 dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Red;
                             }
-                            else if (Convert.ToDecimal(txtGrossWeight.Text) > 5)
+                            else if (Convert.ToDecimal(dgQuotationAddedItems.CurrentRow.Cells[dgTotalWeight.Index].ToString()) > 5)
                             {
                                 dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
                             }
@@ -2478,7 +2478,21 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
                 CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+                if (ItemTabDetails.Unit_Measure == "")
+                {
+                    if ((int)CurrentRow.Cells[dgUC.Index].Value == 1 && (int)CurrentRow.Cells[dgSSM.Index].Value == 1)
+                    {
+                        CurrentRow.Cells["dgUOM"].Value = "EACH";
+                    }
+                    else
+                    {
+                        CurrentRow.Cells["dgUOM"].Value = "PACKET OF";
+                    }
+                }
+                else
+                {
+                    CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+                }
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
                 CurrentRow.Cells[dgCustDescription.Index].Value = custStockDesc;
@@ -4040,7 +4054,21 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
                 CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
-                CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+                if (ItemTabDetails.Unit_Measure == "")
+                {
+                    if ((int)CurrentRow.Cells[dgUC.Index].Value == 1 && (int)CurrentRow.Cells[dgSSM.Index].Value == 1)
+                    {
+                        CurrentRow.Cells["dgUOM"].Value = "EACH";
+                    }
+                    else
+                    {
+                        CurrentRow.Cells["dgUOM"].Value = "PACKET OF";
+                    }
+                }
+                else
+                {
+                    CurrentRow.Cells["dgUOM"].Value = ItemTabDetails.Unit_Measure;
+                }
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
                 if (ItemTabDetails.Standard_Weight != 0 && ItemTabDetails.Standard_Weight != null)

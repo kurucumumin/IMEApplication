@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -60,6 +60,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
@@ -848,9 +850,9 @@
             // 
             // dgQty1
             // 
-            dataGridViewCellStyle31.Format = "N0";
-            dataGridViewCellStyle31.NullValue = null;
-            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle33.Format = "N0";
+            dataGridViewCellStyle33.NullValue = null;
+            this.dgQty1.DefaultCellStyle = dataGridViewCellStyle33;
             this.dgQty1.HeaderText = "Qty";
             this.dgQty1.Name = "dgQty1";
             this.dgQty1.ReadOnly = true;
@@ -3459,11 +3461,15 @@
             // 
             // dgUnitNetWeight
             // 
+            dataGridViewCellStyle29.Format = "N4";
+            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
             this.dgUnitNetWeight.Name = "dgUnitNetWeight";
             // 
             // dgUnitTotalNetWeight
             // 
+            dataGridViewCellStyle30.Format = "N4";
+            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle30;
             this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
             this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
             // 
@@ -3486,9 +3492,9 @@
             // dgCOO
             // 
             this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle31;
             this.dgCOO.HeaderText = "COO";
             this.dgCOO.Name = "dgCOO";
             this.dgCOO.ReadOnly = true;
@@ -3497,9 +3503,9 @@
             // dgCCCNO
             // 
             this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle32;
             this.dgCCCNO.HeaderText = "CCCNO";
             this.dgCCCNO.Name = "dgCCCNO";
             this.dgCCCNO.ReadOnly = true;
