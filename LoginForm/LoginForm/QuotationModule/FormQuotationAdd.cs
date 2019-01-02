@@ -1339,15 +1339,6 @@ namespace LoginForm.QuotationModule
                                 //btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
                                 btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                             }
-
-                            if (txtGrossWeight.Text == "" && Convert.ToDecimal(txtGrossWeight.Text) == 0)
-                            {
-                                dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Red;
-                            }
-                            else if (Convert.ToDecimal(dgQuotationAddedItems.CurrentRow.Cells[dgTotalWeight.Index].ToString()) > 5)
-                            {
-                                dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
-                            }
                         }
                         else
                         {
@@ -1383,6 +1374,17 @@ namespace LoginForm.QuotationModule
                         CalculateTotalNetWeight();
                     }
                     CurrentRow.Cells[dgFirstUPIME.Index].Value = (Decimal.Parse(txtWeb1.Text)).ToString();
+
+
+                    if (txtGrossWeight.Text == "" && Convert.ToDecimal(txtGrossWeight.Text) == 0)
+                    {
+                        dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Red;
+                    }
+                    else if (Convert.ToDecimal(txtGrossWeight.Text) * Convert.ToDecimal(dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value.ToString()) > 5)
+                    {
+                        dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
+                    }
+
                     break;
                 case 25://UCUP Curr*
                     {
@@ -2480,7 +2482,7 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
                 if (ItemTabDetails.Unit_Measure == "")
                 {
-                    if ((int)CurrentRow.Cells[dgUC.Index].Value == 1 && (int)CurrentRow.Cells[dgSSM.Index].Value == 1)
+                    if (CurrentRow.Cells[dgUC.Index].Value.ToString() == "1" && CurrentRow.Cells[dgSSM.Index].Value.ToString() == "1")
                     {
                         CurrentRow.Cells["dgUOM"].Value = "EACH";
                     }
@@ -2850,6 +2852,29 @@ namespace LoginForm.QuotationModule
             {
                 decimal rowTotal = 0;
                 try { rowTotal = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()); } catch { }
+                subtotal += rowTotal;
+            }
+            lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
+            decimal dectotaldisc = 0;
+
+            if (txtTotalDis2.Text != "" && txtTotalDis2.Text != null)
+            {
+                decimal totaldis = 0;
+                totaldis = decimal.Parse(txtTotalDis.Text);
+                txtTotalDis2.Text = (subtotal * totaldis / 100).ToString();
+                dectotaldisc = decimal.Parse(txtTotalDis2.Text);
+            }
+
+            lbltotal.Text = (subtotal - dectotaldisc).ToString();
+        }
+
+        private void CalculateSubTotalActivate()
+        {
+            decimal subtotal = 0;
+            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+            {
+                decimal rowTotal = 0;
+                try { rowTotal = decimal.Parse(item.Cells[dgFirstUPIME.Index].Value.ToString())* decimal.Parse(item.Cells[dgQty.Index].Value.ToString()); } catch { }
                 subtotal += rowTotal;
             }
             lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
@@ -4056,7 +4081,7 @@ namespace LoginForm.QuotationModule
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
                 if (ItemTabDetails.Unit_Measure == "")
                 {
-                    if ((int)CurrentRow.Cells[dgUC.Index].Value == 1 && (int)CurrentRow.Cells[dgSSM.Index].Value == 1)
+                    if (CurrentRow.Cells[dgUC.Index].Value.ToString() == "1" && CurrentRow.Cells[dgSSM.Index].Value.ToString() == "1")
                     {
                         CurrentRow.Cells["dgUOM"].Value = "EACH";
                     }
@@ -6301,10 +6326,14 @@ namespace LoginForm.QuotationModule
             if (chkFirstUPIME.Checked)
             {
                 dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = false;
+                lblsubtotal.Text = "0";
+                CalculateSubTotalActivate();
             }
             else
             {
                 dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = true;
+                lblsubtotal.Text = "0";
+                CalculateSubTotal();
             }
 
         }
