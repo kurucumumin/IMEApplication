@@ -3197,7 +3197,7 @@ namespace LoginForm.QuotationModule
 
                                 qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
                                 qd.DubaiStatus = ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString();
-
+                                qd.Manufacturer = dgQuotationAddedItems.Rows[i].Cells[dgBrand.Index].Value.ToString();
                                 if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
                                 {
                                     qd.Status = "NCNR";
@@ -3603,7 +3603,7 @@ namespace LoginForm.QuotationModule
 
                     qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
                     qd.DubaiStatus = ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString();
-
+                    qd.Manufacturer = dgQuotationAddedItems.Rows[i].Cells[dgBrand.Index].Value.ToString();
                     if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
                     {
                         qd.Status = "NCNR";
@@ -3850,6 +3850,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitNetWeight * item.Qty;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     row.Cells[dgMargin.Index].Value = item.Marge;
+                    row.Cells[dgBrand.Index].Value = item.Manufacturer;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
@@ -4004,6 +4005,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitNetWeight * item.Qty;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     row.Cells[dgMargin.Index].Value = item.Marge;
+                    row.Cells[dgBrand.Index].Value = item.Manufacturer;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }

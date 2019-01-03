@@ -885,6 +885,7 @@
           <Property Name="PacketUP" Type="decimal" Precision="20" Scale="5" />
           <Property Name="FirstUPIME" Type="decimal" Precision="20" Scale="5" />
           <Property Name="CustomerDesc" Type="nvarchar" MaxLength="80" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -5540,6 +5541,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="PacketUP" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="FirstUPIME" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="CustomerDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -11048,6 +11050,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="PacketUP" ColumnName="PacketUP" />
                 <ScalarProperty Name="FirstUPIME" ColumnName="FirstUPIME" />
                 <ScalarProperty Name="CustomerDesc" ColumnName="CustomerDesc" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
