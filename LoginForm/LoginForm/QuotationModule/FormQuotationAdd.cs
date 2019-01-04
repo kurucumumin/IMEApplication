@@ -1327,6 +1327,9 @@ namespace LoginForm.QuotationModule
                                     DialogResult dialogResult = MessageBox.Show("Item is not available in Price File, please check website and Enter price from ItemCard");
                                     ItemsClear();
                                 }
+
+                                (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
+                                (dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index] as DataGridViewComboBoxCell).Value = 1;
                             }
                             else
                             {
@@ -2722,8 +2725,6 @@ namespace LoginForm.QuotationModule
                 #endregion
 
             }
-        //(dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
-        //    (dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index] as DataGridViewComboBoxCell).Value = 1;
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
@@ -2766,6 +2767,7 @@ namespace LoginForm.QuotationModule
             if (sayac == 1)
             {
                 if (dgQuotationAddedItems.RowCount > 1) dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+
             }
         }
 
@@ -6391,16 +6393,19 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+            if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
             {
-                //btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
-                btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
-                btnProductHistory.Enabled = true;
-            }
-            else
-            {
-                btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
-                btnProductHistory.Enabled = false;
+                if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                {
+                    //btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
+                    btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
+                    btnProductHistory.Enabled = true;
+                }
+                else
+                {
+                    btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
+                    btnProductHistory.Enabled = false;
+                }
             }
         }
 
