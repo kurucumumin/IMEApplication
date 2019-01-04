@@ -1328,8 +1328,6 @@ namespace LoginForm.QuotationModule
                                     ItemsClear();
                                 }
 
-                                (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
-                                (dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index] as DataGridViewComboBoxCell).Value = 1;
                             }
                             else
                             {
@@ -1339,7 +1337,8 @@ namespace LoginForm.QuotationModule
                                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
                             }
                             //if (!String.IsNullOrEmpty(dgQuotationAddedItems.CurrentRow.Cells[dgDesc.Index].Value.ToString())) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-
+                            (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
+                            (dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index] as DataGridViewComboBoxCell).Value = 1;
                         }
                         else
                         {
@@ -6187,13 +6186,16 @@ namespace LoginForm.QuotationModule
                 {
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                     {
-                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        if (item.Cells[dgProductCode.Index].Value != null)
                         {
-                            item.Cells[dgUPIME.Index].Value = "";
-                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                            if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                            {
+                                item.Cells[dgUPIME.Index].Value = "";
+                                item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
 
-                            item.Cells[dgTotal.Index].Value = "";
-                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = "";
+                                item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                            }
                         }
                     }
                 }
@@ -6207,13 +6209,16 @@ namespace LoginForm.QuotationModule
                 {
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                     {
-                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        if (item.Cells[dgProductCode.Index].Value != null)
                         {
-                            item.Cells[dgUPIME.Index].Value = "";
-                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                            if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                            {
+                                item.Cells[dgUPIME.Index].Value = "";
+                                item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
 
-                            item.Cells[dgTotal.Index].Value = "";
-                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = "";
+                                item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                            }
                         }
                     }
                 }
@@ -6233,15 +6238,18 @@ namespace LoginForm.QuotationModule
                 {
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                     {
-                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        if (item.Cells[dgProductCode.Index].Value != null)
                         {
-                            item.Cells[dgUPIME.Index].Value = "";
-                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                            if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                            {
+                                item.Cells[dgUPIME.Index].Value = "";
+                                item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
 
-                            item.Cells[dgTotal.Index].Value = "";
-                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = "";
+                                item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                            }
+                            item.Cells[dgMarkup.Index].Value = (decimal.Parse(lblCustomerMarkupValue.Text) - decimal.Parse("1.0000")) * 100;
                         }
-                        item.Cells[dgMarkup.Index].Value = (decimal.Parse(lblCustomerMarkupValue.Text) - decimal.Parse("1.0000")) * 100;
                     }
                 }
             }
@@ -6254,15 +6262,18 @@ namespace LoginForm.QuotationModule
                 {
                     foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
                     {
-                        if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                        if (item.Cells[dgProductCode.Index].Value != null)
                         {
-                            item.Cells[dgUPIME.Index].Value = "";
-                            item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                            if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
+                            {
+                                item.Cells[dgUPIME.Index].Value = "";
+                                item.Cells[dgUPIME.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
 
-                            item.Cells[dgTotal.Index].Value = "";
-                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = "";
+                                item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                            }
+
                         }
-
                     }
                 }
             }
@@ -6381,12 +6392,41 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = false;
                 lblsubtotal.Text = "0";
                 CalculateSubTotalActivate();
+                ActivateFirstMargin();
             }
             else
             {
                 dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = true;
                 lblsubtotal.Text = "0";
                 CalculateSubTotal();
+                PassiveFirstMargin();
+            }
+        }
+
+        private void ActivateFirstMargin()
+        {
+            decimal CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+
+            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+            {
+                if (item.Cells[dgProductCode.Index].Value != null)
+                {
+                    item.Cells[dgMargin.Index].Value = (1 - (decimal.Parse(item.Cells[dgLandingCost.Index].Value?.ToString()) / decimal.Parse(item.Cells[dgFirstUPIME.Index].Value?.ToString())) * CurrentRate) * 100;
+                }
+            }
+            
+        }
+
+        private void PassiveFirstMargin()
+        {
+            decimal CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
+
+            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+            {
+                if (item.Cells[dgProductCode.Index].Value != null)
+                {
+                    item.Cells[dgMargin.Index].Value = (1 - (decimal.Parse(item.Cells[dgLandingCost.Index].Value?.ToString()) / decimal.Parse(item.Cells[dgUCUPCurr.Index].Value?.ToString())) * CurrentRate) * 100;
+                }
             }
 
         }
