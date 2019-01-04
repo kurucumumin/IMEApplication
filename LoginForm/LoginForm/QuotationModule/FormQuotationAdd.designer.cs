@@ -335,6 +335,7 @@
             this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMarkup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -424,7 +425,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 0;
             this.splitContainer1.Size = new System.Drawing.Size(1294, 245);
-            this.splitContainer1.SplitterDistance = 99;
+            this.splitContainer1.SplitterDistance = 174;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 57;
             // 
@@ -454,6 +455,7 @@
             this.dgCost,
             this.dgLandingCost,
             this.dgMargin,
+            this.dgMarkup,
             this.dgQty,
             this.dgStock,
             this.dgUOM,
@@ -484,8 +486,9 @@
             this.dgQuotationAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgQuotationAddedItems.MultiSelect = false;
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
-            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1290, 95);
+            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1290, 170);
             this.dgQuotationAddedItems.TabIndex = 9;
+            this.dgQuotationAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellClick);
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
             this.dgQuotationAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgQuotationAddedItems_DataError);
@@ -526,9 +529,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1290, 137);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1290, 62);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel2
@@ -551,7 +554,7 @@
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1286, 44);
+            this.panel2.Size = new System.Drawing.Size(1286, 45);
             this.panel2.TabIndex = 0;
             // 
             // lblPara
@@ -734,9 +737,9 @@
             this.dataGridViewTextBoxColumn35,
             this.dataGridViewTextBoxColumn36});
             this.dgQuotationDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotationDeleted.Location = new System.Drawing.Point(3, 51);
+            this.dgQuotationDeleted.Location = new System.Drawing.Point(3, 52);
             this.dgQuotationDeleted.Name = "dgQuotationDeleted";
-            this.dgQuotationDeleted.Size = new System.Drawing.Size(1284, 83);
+            this.dgQuotationDeleted.Size = new System.Drawing.Size(1284, 7);
             this.dgQuotationDeleted.TabIndex = 10;
             this.dgQuotationDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationDeleted_CellValidating);
             this.dgQuotationDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -3265,6 +3268,13 @@
             this.dgMargin.ReadOnly = true;
             this.dgMargin.Width = 79;
             // 
+            // dgMarkup
+            // 
+            this.dgMarkup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMarkup.HeaderText = "Markup (%)";
+            this.dgMarkup.Name = "dgMarkup";
+            this.dgMarkup.Width = 82;
+            // 
             // dgQty
             // 
             this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -3836,6 +3846,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMarkup;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;

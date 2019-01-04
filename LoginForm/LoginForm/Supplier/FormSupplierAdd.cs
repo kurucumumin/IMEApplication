@@ -82,7 +82,7 @@ namespace LoginForm
 
             btnBankDelete.Visible = false;
 
-           // BankMode = "Add";
+            BankMode = "Add";
 
             #endregion
 
@@ -722,14 +722,14 @@ namespace LoginForm
             list.RemoveAt(0);
             string CountryName = list.Cast<Country>().Where(x => x.ID == address.CountryID).FirstOrDefault().Country_name;
             cmbCountry.SelectedIndex = cmbCountry.FindStringExact(CountryName);
-
+            list = null;
 
             list = cmbCity.Items.Cast<object>().ToList();
             list.RemoveAt(0);
             string CityName = list.Cast<City>().Where(x => x.ID == address.CityID).FirstOrDefault().City_name;
             cmbCity.SelectedIndex = cmbCity.FindStringExact(CityName);
             cmbCity.Enabled = txtAddressTitle.Enabled;
-
+            list = null;
 
             list = cmbTown.Items.Cast<object>().ToList();
             list.RemoveAt(0);
@@ -1223,6 +1223,7 @@ namespace LoginForm
                             AccountNumber = txtBankAccountNumber.Text,
                             IBAN = txtBankIban.Text
                         };
+
                         IME.SupplierBankAccounts.Add(bank);
                         IME.SaveChanges();
                     }
@@ -1237,7 +1238,6 @@ namespace LoginForm
 
                         IME.SaveChanges();
                     }
-
 
                     lbBankList.DataSource = null;
                     lbBankList.DataSource = IME.SupplierBankAccounts.Where(x => x.SupplierID == txtSupplierCode.Text).ToList(); ;
