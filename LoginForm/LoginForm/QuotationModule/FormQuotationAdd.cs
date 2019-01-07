@@ -6223,6 +6223,16 @@ namespace LoginForm.QuotationModule
                     }
                 }
             }
+
+            //dgQuotationAddedItems.Columns[dgMarkup.Index].DefaultCellStyle.Format = "N0";
+            if (chkFirstUPIME.Checked == true)
+            {
+                CalculateSubTotalActivate();
+            }
+            else
+            {
+                CalculateSubTotal();
+            }
         }
 
         private void chkCustomerMarkup_CheckedChanged(object sender, EventArgs e)
@@ -6389,14 +6399,14 @@ namespace LoginForm.QuotationModule
         {
             if (chkFirstUPIME.Checked)
             {
-                dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = false;
+                dgQuotationAddedItems.Columns[dgFirstUPIME.Index].Visible = true;
                 lblsubtotal.Text = "0";
                 CalculateSubTotalActivate();
                 ActivateFirstMargin();
             }
             else
             {
-                dgQuotationAddedItems.Columns[dgFirstUPIME.Index].ReadOnly = true;
+                dgQuotationAddedItems.Columns[dgFirstUPIME.Index].Visible = false;
                 lblsubtotal.Text = "0";
                 CalculateSubTotal();
                 PassiveFirstMargin();
