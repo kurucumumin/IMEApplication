@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dgProductHistory = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgcRsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +40,8 @@
             this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductHistory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,29 +65,12 @@
             this.dgMargin,
             this.dgcStatus});
             this.dgProductHistory.Location = new System.Drawing.Point(12, 12);
+            this.dgProductHistory.MaximumSize = new System.Drawing.Size(1123, 394);
+            this.dgProductHistory.MinimumSize = new System.Drawing.Size(1123, 394);
             this.dgProductHistory.Name = "dgProductHistory";
             this.dgProductHistory.ReadOnly = true;
-            this.dgProductHistory.Size = new System.Drawing.Size(986, 387);
+            this.dgProductHistory.Size = new System.Drawing.Size(1123, 394);
             this.dgProductHistory.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(946, 414);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 52);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(957, 469);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Close";
             // 
             // dgcRsCode
             // 
@@ -155,15 +138,38 @@
             this.dgcStatus.Name = "dgcStatus";
             this.dgcStatus.ReadOnly = true;
             // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+            this.btnClose.Location = new System.Drawing.Point(1074, 412);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(52, 52);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1085, 467);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Close";
+            // 
             // ViewProductHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1010, 485);
+            this.ClientSize = new System.Drawing.Size(1138, 485);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgProductHistory);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1154, 524);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1154, 524);
             this.Name = "ViewProductHistory";
             this.Text = "ViewProductHistory";
             this.Load += new System.EventHandler(this.ViewProductHistory_Load);
