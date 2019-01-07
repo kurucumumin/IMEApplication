@@ -45,9 +45,10 @@ namespace LoginForm.ItemModule
             //Seçilen txt grid e yansıyacak
 
             //Article no ile search
+            lblNew.Text = "Update";
             txtSelected = txtSearchBox.Text;
             string ArticleNoSearch = "";
-            label46.Text = "Save Note";
+            //lblEdit.Text = "Save Note";
             txtNote.ReadOnly = false;
             txtQuantitiy.ReadOnly = false;
             //
@@ -283,7 +284,7 @@ namespace LoginForm.ItemModule
                 else
                 {
                     MessageBox.Show("There is no such a data");
-                    label46.Text = "Edit Note";
+                    //lblEdit.Text = "Edit Note";
                     txtNote.ReadOnly = true;
                 }
 
@@ -763,137 +764,152 @@ namespace LoginForm.ItemModule
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (label43.Text == "Save")
+            if (txtStockNo.Text == "")
             {
-                    #region Item tablosu
-                    var i = IME.tbl_Item.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
-
-                    if (i != null)
-                    {
-                        i.StockNo = txtStockNo.Text;
-                        i.SupplierID = txtSupplierID.Text;
-                        if (cmbSupplierName.SelectedItem != null)
-                        {
-                            i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
-                        }
-                        i.ArticleDescription = txtDesc.Text;
-                        i.MPN = txtMPN.Text;
-                        i.MFR = txtManufacturer.Text;
-                        i.Brandname = txtBrand.Text;
-                        i.SupersectionName = txtSupersectionName.Text;
-                        i.SectionName = txtSection.Text;
-                        i.MH = txtMHCodeLevel1.Text;
-                        i.CoO = txtCoO.Text;
-                        i.CCCN = txtCCCN.Text;
-                        i.SSM = txtSSM.Text;
-                        i.UC = txtUC.Text;
-                        i.UM = txtUM.Text;
-                        if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
-                        if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
-                        if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
-                        if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
-                        if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
-                        if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
-                        if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
-                        if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
-                        if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
-                        if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
-                        if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
-                        if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
-                        if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
-                        if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
-                        i.Uk_Disc_Date = txtUKDiscDate.Text;
-                        i.DiscontinuationDate = txtDiscontinuationDate.Text;
-                        if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
-                        if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = txtReferral.Text; }
-                        if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
-                        if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
-                        if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
-                        if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
-                        if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
-                        if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
-                        if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
-                        if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
-                        if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
-                        if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
-                        if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
-                        if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
-                        if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
-                        if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
-                        if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
-                        i.notes = txtNote.Text;
-
-                    IME.SaveChanges();
-                    MessageBox.Show("Item updated successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card update");
-                    label43.Text = "Update Item";
-                }      
-                    #endregion
-
-                    #region Superdisk
-                    var sd = IME.SuperDisks.Where(a => a.Article_No == txtStockNo.Text).FirstOrDefault();
-
-                    if (sd != null)
-                    {
-                        txtStockNo.Text = sd.Article_No;
-                        txtDesc.Text = sd.Article_Desc;
-
-                        txtUC.Text = sd.Unit_Content.ToString();
-                        if (sd.Unit_Measure != null && sd.Unit_Measure != "")
-                        { txtUM.Text = sd.Unit_Measure; }
-                        else
-                        {
-                            txtUM.Text = "Each";
-                            SuppliedIn.Text = "";
-                        }
-                        txtSSM.Text = sd.Pack_Quantity.ToString();
-                        if (sd.Standard_Weight != 0)
-                        {
-                            txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}", ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
-                            txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
-                        }
-                        else { }
-                        txtHazardousInd.Text = sd.Hazardous_Ind;
-                        txtCalibrationInd.Text = sd.Calibration_Ind;
-                        //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
-                        //LowDiscontInd.Text = sd.Low_Discount_Ind;
-                        //LicensedInd.Text = sd.Licensed_Ind.ToString();
-                        //ShelfLife.Text = sd.Shelf_Life;
-                        txtCoO.Text = sd.CofO;
-                        txtCCCN.Text = sd.CCCN_No.ToString();
-                        //UKIntroDate.Text = sd.Uk_Intro_Date;
-                        txtUKDiscDate.Text = sd.Uk_Disc_Date;
-                        //BHCFlag.Text = sd.BHC_Flag.ToString();
-                        txtDiscCharge.Text = sd.Disc_Change_Ind;
-                        txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
-                        txtManufacturer.Text = sd.Manufacturer.ToString();
-                        txtMPN.Text = sd.MPN;
-                        txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
-                        txtCCCN.Text = sd.CCCN_No.ToString();
-                        txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
-                        txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
-                        txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
-                        txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
-                        txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
-                        txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
-
-                    IME.SaveChanges();
-                    MessageBox.Show("Item updated successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card update");
-                    label43.Text = "Update Item";
-                }
-                    #endregion
-
-                    
+                //ClearAll(this);
+                AddScreen();
+                btnUpdate.Enabled = false;
+                btnAdd.Enabled = true;
             }
             else
             {
                 ReadOnlyAll(false);
-                btnAdd.Enabled = false;
-                btnUpdate.Enabled = true;
-                label43.Text = "Save";
-                label42.Text = "Cancel";
+                btnUpdate.Enabled = false;
+                btnAdd.Enabled = true;
+                lblExit.Text = "Cancel";
             }
+
+            //if (lblNew.Text == "Save")
+            //{
+            //        #region Item tablosu
+            //        var i = IME.tbl_Item.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
+
+            //        if (i != null)
+            //        {
+            //            i.StockNo = txtStockNo.Text;
+            //            i.SupplierID = txtSupplierID.Text;
+            //            if (cmbSupplierName.SelectedItem != null)
+            //            {
+            //                i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
+            //            }
+            //            i.ArticleDescription = txtDesc.Text;
+            //            i.MPN = txtMPN.Text;
+            //            i.MFR = txtManufacturer.Text;
+            //            i.Brandname = txtBrand.Text;
+            //            i.SupersectionName = txtSupersectionName.Text;
+            //            i.SectionName = txtSection.Text;
+            //            i.MH = txtMHCodeLevel1.Text;
+            //            i.CoO = txtCoO.Text;
+            //            i.CCCN = txtCCCN.Text;
+            //            i.SSM = txtSSM.Text;
+            //            i.UC = txtUC.Text;
+            //            i.UM = txtUM.Text;
+            //            if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
+            //            if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
+            //            if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
+            //            if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
+            //            if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
+            //            if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+            //            if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
+            //            if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
+            //            if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
+            //            if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
+            //            if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
+            //            if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
+            //            if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
+            //            if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
+            //            i.Uk_Disc_Date = txtUKDiscDate.Text;
+            //            i.DiscontinuationDate = txtDiscontinuationDate.Text;
+            //            if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
+            //            if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = txtReferral.Text; }
+            //            if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
+            //            if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
+            //            if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
+            //            if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
+            //            if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
+            //            if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
+            //            if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
+            //            if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
+            //            if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
+            //            if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
+            //            if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
+            //            if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
+            //            if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
+            //            if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
+            //            if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
+            //            i.notes = txtNote.Text;
+
+            //        IME.SaveChanges();
+            //        MessageBox.Show("Item updated successfully");
+            //        Utils.LogKayit("Item Card Main", "Item Card update");
+            //        lblNew.Text = "Update Item";
+            //    }      
+            //        #endregion
+
+            //        #region Superdisk
+            //        var sd = IME.SuperDisks.Where(a => a.Article_No == txtStockNo.Text).FirstOrDefault();
+
+            //        if (sd != null)
+            //        {
+            //            txtStockNo.Text = sd.Article_No;
+            //            txtDesc.Text = sd.Article_Desc;
+
+            //            txtUC.Text = sd.Unit_Content.ToString();
+            //            if (sd.Unit_Measure != null && sd.Unit_Measure != "")
+            //            { txtUM.Text = sd.Unit_Measure; }
+            //            else
+            //            {
+            //                txtUM.Text = "Each";
+            //                SuppliedIn.Text = "";
+            //            }
+            //            txtSSM.Text = sd.Pack_Quantity.ToString();
+            //            if (sd.Standard_Weight != 0)
+            //            {
+            //                txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}", ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
+            //                txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
+            //            }
+            //            else { }
+            //            txtHazardousInd.Text = sd.Hazardous_Ind;
+            //            txtCalibrationInd.Text = sd.Calibration_Ind;
+            //            //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
+            //            //LowDiscontInd.Text = sd.Low_Discount_Ind;
+            //            //LicensedInd.Text = sd.Licensed_Ind.ToString();
+            //            //ShelfLife.Text = sd.Shelf_Life;
+            //            txtCoO.Text = sd.CofO;
+            //            txtCCCN.Text = sd.CCCN_No.ToString();
+            //            //UKIntroDate.Text = sd.Uk_Intro_Date;
+            //            txtUKDiscDate.Text = sd.Uk_Disc_Date;
+            //            //BHCFlag.Text = sd.BHC_Flag.ToString();
+            //            txtDiscCharge.Text = sd.Disc_Change_Ind;
+            //            txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
+            //            txtManufacturer.Text = sd.Manufacturer.ToString();
+            //            txtMPN.Text = sd.MPN;
+            //            txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
+            //            txtCCCN.Text = sd.CCCN_No.ToString();
+            //            txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
+            //            txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
+            //            txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
+            //            txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
+            //            txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
+            //            txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
+
+            //        IME.SaveChanges();
+            //        MessageBox.Show("Item updated successfully");
+            //        Utils.LogKayit("Item Card Main", "Item Card update");
+            //        lblNew.Text = "Update Item";
+            //    }
+            //        #endregion
+
+                    
+            //}
+            //else
+            //{
+            //    ReadOnlyAll(false);
+            //    btnAdd.Enabled = false;
+            //    btnUpdate.Enabled = true;
+            //    lblNew.Text = "Save";
+            //    lblExit.Text = "Cancel";
+            //}
             
         }
 
@@ -976,7 +992,171 @@ namespace LoginForm.ItemModule
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (label45.Text == "Save")
+
+            if (txtDesc.Text != "")
+            {
+                #region Item tablosu
+                var i = IME.tbl_Item.Where(a => a.StockNo == txtStockNo.Text).FirstOrDefault();
+
+                if (i != null)
+                {
+                    i.StockNo = txtStockNo.Text;
+                    i.SupplierID = txtSupplierID.Text;
+                    if (cmbSupplierName.SelectedItem != null)
+                    {
+                        i.SupplierName = ((Supplier)cmbSupplierName.SelectedItem).s_name;
+                    }
+                    i.ArticleDescription = txtDesc.Text;
+                    i.MPN = txtMPN.Text;
+                    i.MFR = txtManufacturer.Text;
+                    i.Brandname = txtBrand.Text;
+                    i.SupersectionName = txtSupersectionName.Text;
+                    i.SectionName = txtSection.Text;
+                    i.MH = txtMHCodeLevel1.Text;
+                    i.CoO = txtCoO.Text;
+                    i.CCCN = txtCCCN.Text;
+                    i.SSM = txtSSM.Text;
+                    i.UC = txtUC.Text;
+                    i.UM = txtUM.Text;
+                    if (txtIMEDXB.Text != null && txtIMEDXB.Text != "") { i.DXB = Convert.ToInt32(txtIMEDXB.Text); }
+                    if (txtIMEADH.Text != null && txtIMEADH.Text != "") { i.ADH = Convert.ToInt32(txtIMEADH.Text); }
+                    if (txtIMEMCT.Text != null && txtIMEMCT.Text != "") { i.MCT = Convert.ToInt32(txtIMEMCT.Text); }
+                    if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
+                    if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
+                    if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
+                    if (txtHazardousInd.Text != null && txtHazardousInd.Text != "") { i.HZ = Convert.ToBoolean(txtHazardousInd.Text); }
+                    if (txtEnvironment.Text != null && txtEnvironment.Text != "") { i.HE = Convert.ToBoolean(txtEnvironment.Text); }
+                    if (txtShipping.Text != null && txtShipping.Text != "") { i.HS = Convert.ToBoolean(txtShipping.Text); }
+                    if (txtLithium.Text != null && txtLithium.Text != "") { i.Li = Convert.ToBoolean(txtLithium.Text); }
+                    if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "") { i.CL = Convert.ToBoolean(txtCalibrationInd.Text); }
+                    if (txtLicenceType.Text != null && txtLicenceType.Text != "") { i.LC = Convert.ToBoolean(txtLicenceType.Text); }
+                    if (txtDiscCharge.Text != null && txtDiscCharge.Text != "") { i.DC = Convert.ToBoolean(txtDiscCharge.Text); }
+                    if (txtExpiringPro.Text != null && txtExpiringPro.Text != "") { i.EC = Convert.ToBoolean(txtExpiringPro.Text); }
+                    i.Uk_Disc_Date = txtUKDiscDate.Text;
+                    i.DiscontinuationDate = txtDiscontinuationDate.Text;
+                    if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
+                    if (txtReferral.Text != null && txtReferral.Text != "") { i.Referral = txtReferral.Text; }
+                    if (txtHeight.Text != null && txtHeight.Text != "") { i.Heigh = Convert.ToDecimal(txtHeight.Text); }
+                    if (txtWidth.Text != null && txtWidth.Text != "") { i.Width = Convert.ToDecimal(txtWidth.Text); }
+                    if (txtLength.Text != null && txtLength.Text != "") { i.Length = Convert.ToDecimal(txtLength.Text); }
+                    if (txtStandartWeight.Text != null && txtStandartWeight.Text != "") { i.Standard_Weight = Convert.ToDecimal(txtStandartWeight.Text); }
+                    if (txtGrossWeight.Text != null && txtGrossWeight.Text != "") { i.Gross_Weight = Convert.ToDecimal(txtGrossWeight.Text); }
+                    if (txtUnitCount1.Text != null && txtUnitCount1.Text != "") { i.Col1Break = Convert.ToInt32(txtUnitCount1.Text); }
+                    if (txtUnitCount2.Text != null && txtUnitCount2.Text != "") { i.Col2Break = Convert.ToInt32(txtUnitCount2.Text); }
+                    if (txtUnitCount3.Text != null && txtUnitCount3.Text != "") { i.Col3Break = Convert.ToInt32(txtUnitCount3.Text); }
+                    if (txtUnitCount4.Text != null && txtUnitCount4.Text != "") { i.Col4Break = Convert.ToInt32(txtUnitCount4.Text); }
+                    if (txtUnitCount5.Text != null && txtUnitCount5.Text != "") { i.Col5Break = Convert.ToInt32(txtUnitCount5.Text); }
+                    if (txtCost1.Text != null && txtCost1.Text != "") { i.DiscountedPrice1 = Convert.ToInt32(txtCost1.Text); }
+                    if (txtCost2.Text != null && txtCost2.Text != "") { i.DiscountedPrice2 = Convert.ToInt32(txtCost2.Text); }
+                    if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
+                    if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
+                    if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
+                    i.notes = txtNote.Text;
+
+                    IME.SaveChanges();
+                    MessageBox.Show("Item updated successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card update");
+                    lblNew.Text = "Update Item";
+                }
+                #endregion
+
+                #region Superdisk
+                var sd = IME.SuperDisks.Where(a => a.Article_No == txtStockNo.Text).FirstOrDefault();
+
+                if (sd != null)
+                {
+                    txtStockNo.Text = sd.Article_No;
+                    txtDesc.Text = sd.Article_Desc;
+
+                    txtUC.Text = sd.Unit_Content.ToString();
+                    if (sd.Unit_Measure != null && sd.Unit_Measure != "")
+                    { txtUM.Text = sd.Unit_Measure; }
+                    else
+                    {
+                        txtUM.Text = "Each";
+                        SuppliedIn.Text = "";
+                    }
+                    txtSSM.Text = sd.Pack_Quantity.ToString();
+                    if (sd.Standard_Weight != 0)
+                    {
+                        txtStandartWeight.Text = Decimal.Parse(String.Format("{0:0.0000}", ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"))).ToString();
+                        txtStandartWeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtStandartWeight.Text)).ToString();
+                    }
+                    else { }
+                    txtHazardousInd.Text = sd.Hazardous_Ind;
+                    txtCalibrationInd.Text = sd.Calibration_Ind;
+                    //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
+                    //LowDiscontInd.Text = sd.Low_Discount_Ind;
+                    //LicensedInd.Text = sd.Licensed_Ind.ToString();
+                    //ShelfLife.Text = sd.Shelf_Life;
+                    txtCoO.Text = sd.CofO;
+                    txtCCCN.Text = sd.CCCN_No.ToString();
+                    //UKIntroDate.Text = sd.Uk_Intro_Date;
+                    txtUKDiscDate.Text = sd.Uk_Disc_Date;
+                    //BHCFlag.Text = sd.BHC_Flag.ToString();
+                    txtDiscCharge.Text = sd.Disc_Change_Ind;
+                    txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
+                    txtManufacturer.Text = sd.Manufacturer.ToString();
+                    txtMPN.Text = sd.MPN;
+                    txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
+                    txtCCCN.Text = sd.CCCN_No.ToString();
+                    txtHeight.Text = String.Format("{0:0.0000}", ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29"));
+                    txtHeight.Text = String.Format("{0:0.0000}", Decimal.Parse(txtHeight.Text)).ToString();
+                    txtWidth.Text = String.Format("{0:0.0000}", ((decimal)(sd.Width * ((Decimal)100))).ToString("G29"));
+                    txtWidth.Text = String.Format("{0:0.0000}", Decimal.Parse(txtWidth.Text)).ToString();
+                    txtLength.Text = String.Format("{0:0.0000}", ((decimal)(sd.Length * ((Decimal)100))).ToString("G29"));
+                    txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
+
+                    IME.SaveChanges();
+                    MessageBox.Show("Item updated successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card update");
+                    lblNew.Text = "Update Item";
+                }
+                #endregion
+
+                ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+
+
+                if (note == null)
+                {
+                    ItemNote inot = new ItemNote();
+
+                    inot.ArticleNo = txtStockNo.Text;
+
+                    Note n = new Note();
+
+                    n.Note_name = txtNote.Text;
+
+                    IME.Notes.Add(n);
+                    IME.SaveChanges();
+
+                    inot.NoteID = n.ID;
+
+                    IME.ItemNotes.Add(inot);
+                    IME.SaveChanges();
+                    MessageBox.Show("Item note edit successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card added note");
+                    //lblEdit.Text = "Edit Note";
+                }
+                else
+                {
+
+
+                    note.ArticleNo = txtStockNo.Text;
+
+                    Note n = IME.Notes.Where(a => a.ID == note.NoteID).FirstOrDefault();
+
+                    n.Note_name = txtNote.Text;
+                    note.NoteID = n.ID;
+
+                    IME.SaveChanges();
+                    MessageBox.Show("Item note modify successfully");
+                    Utils.LogKayit("Item Card Main", "Item Card modify note");
+                    //lblEdit.Text = "Edit Note";
+                }
+                IME.SaveChanges();
+            }
+            else
             {
                 if (NullControl())
                 {
@@ -985,7 +1165,7 @@ namespace LoginForm.ItemModule
                         if (txtShipping.Text.ToLower() != "y" && txtEnvironment.Text.ToLower() != "y")
                         {
                             MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
-                            
+
                         }
                         else
                         {
@@ -997,12 +1177,36 @@ namespace LoginForm.ItemModule
                         Save();
                     }
 
-                }    
+                }
             }
-            else
-            {
-                AddScreen();
-            }
+
+            //if (lblSave.Text == "Save")
+            //{
+            //    if (NullControl())
+            //    {
+            //        if (txtHazardousInd.Text.ToLower() == "y")
+            //        {
+            //            if (txtShipping.Text.ToLower() != "y" && txtEnvironment.Text.ToLower() != "y")
+            //            {
+            //                MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
+                            
+            //            }
+            //            else
+            //            {
+            //                Save();
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Save();
+            //        }
+
+            //    }    
+            //}
+            //else
+            //{
+            //    AddScreen();
+            //}
         }
 
         private void Save()
@@ -1064,6 +1268,49 @@ namespace LoginForm.ItemModule
 
             IME.tbl_Item.Add(i);
             IME.SaveChanges();
+
+            ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+
+
+            if (note == null)
+            {
+                ItemNote inot = new ItemNote();
+
+                inot.ArticleNo = txtStockNo.Text;
+
+                Note n = new Note();
+
+                n.Note_name = txtNote.Text;
+
+                IME.Notes.Add(n);
+                IME.SaveChanges();
+
+                inot.NoteID = n.ID;
+
+                IME.ItemNotes.Add(inot);
+                IME.SaveChanges();
+                MessageBox.Show("Item note edit successfully");
+                Utils.LogKayit("Item Card Main", "Item Card added note");
+                //lblEdit.Text = "Edit Note";
+            }
+            else
+            {
+
+
+                note.ArticleNo = txtStockNo.Text;
+
+                Note n = IME.Notes.Where(a => a.ID == note.NoteID).FirstOrDefault();
+
+                n.Note_name = txtNote.Text;
+                note.NoteID = n.ID;
+
+                IME.SaveChanges();
+                MessageBox.Show("Item note modify successfully");
+                Utils.LogKayit("Item Card Main", "Item Card modify note");
+                //lblEdit.Text = "Edit Note";
+            }
+            IME.SaveChanges();
+
             MessageBox.Show("Item added!", "Success");
             Utils.LogKayit("Item Card Main", "Item Card added");
             ClearAll(this);
@@ -1091,9 +1338,9 @@ namespace LoginForm.ItemModule
             groupBox7.Enabled = true;
             panel1.Enabled = true;
             btnAdd.Enabled = true;
-            label45.Text = "Add Item";
-            label43.Text = "Update Item";
-            label42.Text = "Close";
+            //lblSave.Text = "Add Item";
+            //lblNew.Text = "Update Item";
+            lblExit.Text = "Close";
             label1.Font = new Font(label1.Font, FontStyle.Regular);
             label1.ForeColor = Color.Black;
             label39.Font = new Font(label39.Font, FontStyle.Regular);
@@ -1121,8 +1368,8 @@ namespace LoginForm.ItemModule
             dgItemList.Enabled = false;
             groupBox7.Enabled = false;
             panel1.Enabled = false;
-            label45.Text = "Save";
-            label42.Text = "Cancel";
+            lblSave.Text = "Save";
+            lblExit.Text = "Cancel";
             label1.Font = new Font(label1.Font, FontStyle.Bold);
             label1.ForeColor = Color.Red;
             label39.Font = new Font(label39.Font, FontStyle.Bold);
@@ -1153,7 +1400,8 @@ namespace LoginForm.ItemModule
                     ClearAll(c);
                 }
             }
-            cmbSupplierName.Text = "";
+            cmbSupplierName.SelectedIndex = -1;
+            //cmbSupplierName.Text = "";
             SuppliedIn.Text = "";
         }
 
@@ -1244,18 +1492,20 @@ namespace LoginForm.ItemModule
                 cmbSupplierName.Enabled = true;
                 btnSupplierAdd.Visible = true;
             }
-            btnUpdate.Enabled = false;
+            //btnUpdate.Enabled = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (label42.Text != "Cancel")
+            if (lblExit.Text != "Cancel")
             {
                 this.Close();
             }
             else
             {
                 CancelScreen();
+                btnUpdate.Enabled = true;
+                btnAdd.Enabled = false;
             }
         }
 
@@ -1302,58 +1552,75 @@ namespace LoginForm.ItemModule
 
         private void btnEditNote_Click(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
-            //label46.Text = "Save Note";
 
-            if (txtStockNo.Text != null && txtStockNo.Text != "" && label46.Text == "Save Note")
+            if (txtStockNo.Text != "")
             {
-                ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
-                
-
-                if (note == null)
-                {
-                    ItemNote inot = new ItemNote();
-
-                    inot.ArticleNo = txtStockNo.Text;
-
-                    Note n = new Note();
-
-                    n.Note_name = txtNote.Text;
-
-                    IME.Notes.Add(n);
-                    IME.SaveChanges();
-
-                    inot.NoteID = n.ID;
-
-                    IME.ItemNotes.Add(inot);
-                    IME.SaveChanges();
-                    MessageBox.Show("Item note edit successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card added note");
-                    label46.Text = "Edit Note";
-                }
-                else
-                {
-                    
-
-                    note.ArticleNo = txtStockNo.Text;
-
-                    Note n = IME.Notes.Where(a => a.ID == note.NoteID).FirstOrDefault();
-
-                    n.Note_name = txtNote.Text;
-                    note.NoteID = n.ID;
-
-                    IME.SaveChanges();
-                    MessageBox.Show("Item note modify successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card modify note");
-                    label46.Text = "Edit Note";
-                }
-                IME.SaveChanges();
+                ReadOnlyAll(false);
+                txtNote.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Please selected item");
-                label46.Text = "Edit Note";
+                //ReadOnlyAll(false);
+                //btnUpdate.Enabled = false;
+                ////lblNew.Text = "Save";
+                //lblExit.Text = "Cancel";
             }
+
+
+
+            //IMEEntities IME = new IMEEntities();
+            ////label46.Text = "Save Note";
+
+            //if (txtStockNo.Text != null && txtStockNo.Text != "" && lblEdit.Text == "Save Note")
+            //{
+            //    ItemNote note = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
+                
+
+            //    if (note == null)
+            //    {
+            //        ItemNote inot = new ItemNote();
+
+            //        inot.ArticleNo = txtStockNo.Text;
+
+            //        Note n = new Note();
+
+            //        n.Note_name = txtNote.Text;
+
+            //        IME.Notes.Add(n);
+            //        IME.SaveChanges();
+
+            //        inot.NoteID = n.ID;
+
+            //        IME.ItemNotes.Add(inot);
+            //        IME.SaveChanges();
+            //        MessageBox.Show("Item note edit successfully");
+            //        Utils.LogKayit("Item Card Main", "Item Card added note");
+            //        lblEdit.Text = "Edit Note";
+            //    }
+            //    else
+            //    {
+                    
+
+            //        note.ArticleNo = txtStockNo.Text;
+
+            //        Note n = IME.Notes.Where(a => a.ID == note.NoteID).FirstOrDefault();
+
+            //        n.Note_name = txtNote.Text;
+            //        note.NoteID = n.ID;
+
+            //        IME.SaveChanges();
+            //        MessageBox.Show("Item note modify successfully");
+            //        Utils.LogKayit("Item Card Main", "Item Card modify note");
+            //        lblEdit.Text = "Edit Note";
+            //    }
+            //    IME.SaveChanges();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please selected item");
+            //    lblEdit.Text = "Edit Note";
+            //}
         }
 
         public void checkAuthorities()
@@ -1362,7 +1629,7 @@ namespace LoginForm.ItemModule
 
             if (!Utils.AuthorityCheck(IMEAuthority.AddNoteinItemCard))
             {
-                btnEditNote.Visible = false;
+                //btnEditNote.Visible = false;
             }
             if (!Utils.AuthorityCheck(IMEAuthority.ViewMargine) && !Utils.AuthorityCheck(IMEAuthority.ViewCost))
             {

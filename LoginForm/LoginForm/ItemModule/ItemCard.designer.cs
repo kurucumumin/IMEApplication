@@ -170,11 +170,12 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label46 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblEdit = new System.Windows.Forms.Label();
             this.btnEditNote = new System.Windows.Forms.Button();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.lblSave = new System.Windows.Forms.Label();
+            this.lblNew = new System.Windows.Forms.Label();
+            this.lblExit = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -1946,11 +1947,12 @@ namespace LoginForm.ItemModule
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label46);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.lblEdit);
             this.panel4.Controls.Add(this.btnEditNote);
-            this.panel4.Controls.Add(this.label45);
-            this.panel4.Controls.Add(this.label43);
-            this.panel4.Controls.Add(this.label42);
+            this.panel4.Controls.Add(this.lblSave);
+            this.panel4.Controls.Add(this.lblNew);
+            this.panel4.Controls.Add(this.lblExit);
             this.panel4.Controls.Add(this.btnAdd);
             this.panel4.Controls.Add(this.btnUpdate);
             this.panel4.Controls.Add(this.btnClose);
@@ -1958,21 +1960,31 @@ namespace LoginForm.ItemModule
             this.panel4.Location = new System.Drawing.Point(657, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(164, 145);
-            this.panel4.TabIndex = 67;
+            this.panel4.TabIndex = 68;
             // 
-            // label46
+            // panel5
             // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(109, 58);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(51, 13);
-            this.label46.TabIndex = 280;
-            this.label46.Text = "Edit Note";
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel5.Location = new System.Drawing.Point(83, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(2, 137);
+            this.panel5.TabIndex = 281;
+            // 
+            // lblEdit
+            // 
+            this.lblEdit.AutoSize = true;
+            this.lblEdit.Location = new System.Drawing.Point(109, 58);
+            this.lblEdit.Name = "lblEdit";
+            this.lblEdit.Size = new System.Drawing.Size(51, 13);
+            this.lblEdit.TabIndex = 280;
+            this.lblEdit.Text = "Edit Note";
+            this.lblEdit.Visible = false;
             // 
             // btnEditNote
             // 
             this.btnEditNote.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnEditNote.Enabled = false;
             this.btnEditNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnEditNote.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnEditNote.Location = new System.Drawing.Point(104, 1);
@@ -1982,38 +1994,40 @@ namespace LoginForm.ItemModule
             this.btnEditNote.TabIndex = 279;
             this.btnEditNote.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditNote.UseVisualStyleBackColor = true;
+            this.btnEditNote.Visible = false;
             this.btnEditNote.Click += new System.EventHandler(this.btnEditNote_Click);
             // 
-            // label45
+            // lblSave
             // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(25, 131);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(32, 13);
-            this.label45.TabIndex = 278;
-            this.label45.Text = "Save";
+            this.lblSave.AutoSize = true;
+            this.lblSave.Location = new System.Drawing.Point(25, 131);
+            this.lblSave.Name = "lblSave";
+            this.lblSave.Size = new System.Drawing.Size(32, 13);
+            this.lblSave.TabIndex = 278;
+            this.lblSave.Text = "Save";
             // 
-            // label43
+            // lblNew
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(19, 58);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(42, 13);
-            this.label43.TabIndex = 277;
-            this.label43.Text = "Update";
+            this.lblNew.AutoSize = true;
+            this.lblNew.Location = new System.Drawing.Point(26, 58);
+            this.lblNew.Name = "lblNew";
+            this.lblNew.Size = new System.Drawing.Size(29, 13);
+            this.lblNew.TabIndex = 277;
+            this.lblNew.Text = "New";
             // 
-            // label42
+            // lblExit
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(115, 131);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(24, 13);
-            this.label42.TabIndex = 276;
-            this.label42.Text = "Exit";
+            this.lblExit.AutoSize = true;
+            this.lblExit.Location = new System.Drawing.Point(115, 131);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(24, 13);
+            this.lblExit.TabIndex = 276;
+            this.lblExit.Text = "Exit";
             // 
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAdd.Enabled = false;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAdd.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
             this.btnAdd.Location = new System.Drawing.Point(15, 74);
@@ -2029,7 +2043,6 @@ namespace LoginForm.ItemModule
             // 
             this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnUpdate.Location = new System.Drawing.Point(15, 1);
@@ -2589,7 +2602,6 @@ namespace LoginForm.ItemModule
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TextBox txtNote;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -2611,22 +2623,24 @@ namespace LoginForm.ItemModule
         private System.Windows.Forms.TableLayoutPanel tblTop;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.TableLayoutPanel tblMain;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox SuppliedIn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtIMETUR;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSupplierAdd;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Button btnEditNote;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label lblCurrency;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblEdit;
+        private System.Windows.Forms.Button btnEditNote;
+        private System.Windows.Forms.Label lblSave;
+        private System.Windows.Forms.Label lblNew;
+        private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panel5;
     }
 }
