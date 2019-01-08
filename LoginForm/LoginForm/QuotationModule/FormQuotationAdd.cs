@@ -20,7 +20,7 @@ namespace LoginForm.QuotationModule
     {
         SqlHelper sqlHelper = new SqlHelper();
         string manuelSelection = string.Empty;
-        private static string QuoStatusActive = "Pending";
+        private static string QuoStatusActive = "Not Ordered";
         FormQuaotationCustomerSearch parentCustomer;
         FormQuotationMain parent;
         List<int> enabledColumns = new List<int>(new int[] { 0, 7, 14, 21, 28, 35 });

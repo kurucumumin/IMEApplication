@@ -1512,7 +1512,7 @@ namespace LoginForm.QuotationModule
 
                     foreach (DataGridViewRow row in SelectedRows)
                     {
-                        if (row.Cells[OrderStatus.Index].Value.ToString() != "Ordered")
+                        if (row.Cells[OrderStatus.Index].Value.ToString() != "Not Ordered")
                         {
                             OnlyPendingQuotations = false;
                             MessageBox.Show("You can only choose the pending quotations!", "Warning");
