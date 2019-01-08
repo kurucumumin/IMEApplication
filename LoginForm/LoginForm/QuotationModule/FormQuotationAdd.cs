@@ -3086,9 +3086,15 @@ namespace LoginForm.QuotationModule
             }
             for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
             {
-                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString()) && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value.ToString() == "" && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value == null && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString() == "")
+                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgProductCode.Index].Value.ToString()) && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value == null && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value.ToString() == "" && ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value == null)
                 {
-                    MessageBox.Show("Delivery part or Status cannot be left blank. Please check Delivery Parts or Status of Items");
+                    MessageBox.Show("Delivery part cannot be left blank. Please check Delivery Parts of Items");
+                    return false;
+                }
+
+                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index].Value.ToString()))
+                {
+                    MessageBox.Show("Status cannot be left blank. Please check Status of Items");
                     return false;
                 }
             }
