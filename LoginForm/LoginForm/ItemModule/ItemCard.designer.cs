@@ -170,7 +170,6 @@ namespace LoginForm.ItemModule
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.lblEdit = new System.Windows.Forms.Label();
             this.btnEditNote = new System.Windows.Forms.Button();
             this.lblSave = new System.Windows.Forms.Label();
@@ -1947,7 +1946,6 @@ namespace LoginForm.ItemModule
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.lblEdit);
             this.panel4.Controls.Add(this.btnEditNote);
             this.panel4.Controls.Add(this.lblSave);
@@ -1961,14 +1959,6 @@ namespace LoginForm.ItemModule
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(164, 145);
             this.panel4.TabIndex = 68;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Location = new System.Drawing.Point(83, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(2, 137);
-            this.panel5.TabIndex = 281;
             // 
             // lblEdit
             // 
@@ -2000,7 +1990,7 @@ namespace LoginForm.ItemModule
             // lblSave
             // 
             this.lblSave.AutoSize = true;
-            this.lblSave.Location = new System.Drawing.Point(25, 131);
+            this.lblSave.Location = new System.Drawing.Point(11, 131);
             this.lblSave.Name = "lblSave";
             this.lblSave.Size = new System.Drawing.Size(32, 13);
             this.lblSave.TabIndex = 278;
@@ -2009,7 +1999,7 @@ namespace LoginForm.ItemModule
             // lblNew
             // 
             this.lblNew.AutoSize = true;
-            this.lblNew.Location = new System.Drawing.Point(26, 58);
+            this.lblNew.Location = new System.Drawing.Point(66, 131);
             this.lblNew.Name = "lblNew";
             this.lblNew.Size = new System.Drawing.Size(29, 13);
             this.lblNew.TabIndex = 277;
@@ -2018,7 +2008,7 @@ namespace LoginForm.ItemModule
             // lblExit
             // 
             this.lblExit.AutoSize = true;
-            this.lblExit.Location = new System.Drawing.Point(115, 131);
+            this.lblExit.Location = new System.Drawing.Point(121, 131);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(24, 13);
             this.lblExit.TabIndex = 276;
@@ -2030,7 +2020,7 @@ namespace LoginForm.ItemModule
             this.btnAdd.Enabled = false;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAdd.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnAdd.Location = new System.Drawing.Point(15, 74);
+            this.btnAdd.Location = new System.Drawing.Point(1, 74);
             this.btnAdd.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(52, 52);
@@ -2045,7 +2035,7 @@ namespace LoginForm.ItemModule
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
-            this.btnUpdate.Location = new System.Drawing.Point(15, 1);
+            this.btnUpdate.Location = new System.Drawing.Point(55, 74);
             this.btnUpdate.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(52, 52);
@@ -2059,7 +2049,7 @@ namespace LoginForm.ItemModule
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(104, 74);
+            this.btnClose.Location = new System.Drawing.Point(110, 74);
             this.btnClose.MaximumSize = new System.Drawing.Size(135, 81);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
@@ -2641,6 +2631,5 @@ namespace LoginForm.ItemModule
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Panel panel5;
     }
 }

@@ -604,6 +604,8 @@ namespace LoginForm.ItemModule
                     dgItemList.ClearSelection();
                     dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
                 }
+
+                lblNew.Text = "Update";
             }
 
         }
@@ -1051,12 +1053,9 @@ namespace LoginForm.ItemModule
                     if (txtCost3.Text != null && txtCost3.Text != "") { i.DiscountedPrice3 = Convert.ToInt32(txtCost3.Text); }
                     if (txtCost4.Text != null && txtCost4.Text != "") { i.DiscountedPrice4 = Convert.ToInt32(txtCost4.Text); }
                     if (txtCost5.Text != null && txtCost5.Text != "") { i.DiscountedPrice5 = Convert.ToInt32(txtCost5.Text); }
-                    i.notes = txtNote.Text;
+                    //i.notes = txtNote.Text;
 
                     IME.SaveChanges();
-                    MessageBox.Show("Item updated successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card update");
-                    lblNew.Text = "Update Item";
                 }
                 #endregion
 
@@ -1108,9 +1107,6 @@ namespace LoginForm.ItemModule
                     txtLength.Text = String.Format("{0:0.0000}", Decimal.Parse(txtLength.Text)).ToString();
 
                     IME.SaveChanges();
-                    MessageBox.Show("Item updated successfully");
-                    Utils.LogKayit("Item Card Main", "Item Card update");
-                    lblNew.Text = "Update Item";
                 }
                 #endregion
 
@@ -1134,7 +1130,7 @@ namespace LoginForm.ItemModule
 
                     IME.ItemNotes.Add(inot);
                     IME.SaveChanges();
-                    MessageBox.Show("Item note edit successfully");
+                    //MessageBox.Show("Item note edit successfully");
                     Utils.LogKayit("Item Card Main", "Item Card added note");
                     //lblEdit.Text = "Edit Note";
                 }
@@ -1150,11 +1146,19 @@ namespace LoginForm.ItemModule
                     note.NoteID = n.ID;
 
                     IME.SaveChanges();
-                    MessageBox.Show("Item note modify successfully");
+                    //MessageBox.Show("Item note modify successfully");
                     Utils.LogKayit("Item Card Main", "Item Card modify note");
                     //lblEdit.Text = "Edit Note";
                 }
                 IME.SaveChanges();
+
+                MessageBox.Show("Item modify!", "Success");
+                Utils.LogKayit("Item Card Main", "Item Card added");
+                ClearAll(this);
+                CancelScreen();
+                btnUpdate.Enabled = true;
+                lblNew.Text = "New";
+                btnAdd.Enabled = false;
             }
             else
             {
@@ -1178,6 +1182,10 @@ namespace LoginForm.ItemModule
                     }
 
                 }
+
+                btnUpdate.Enabled = true;
+                btnAdd.Enabled = false;
+                lblNew.Text = "New";
             }
 
             //if (lblSave.Text == "Save")
