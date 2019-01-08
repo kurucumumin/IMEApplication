@@ -493,6 +493,7 @@
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
             this.dgQuotationAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgQuotationAddedItems_DataError);
+            this.dgQuotationAddedItems.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgQuotationAddedItems_EditingControlShowing);
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
             this.dgQuotationAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgQuotationAddedItems_RowsRemoved);
             this.dgQuotationAddedItems.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgQuotationAddedItems_SortCompare);

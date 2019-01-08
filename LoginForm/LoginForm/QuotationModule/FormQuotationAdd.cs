@@ -1441,6 +1441,71 @@ namespace LoginForm.QuotationModule
                     }
 
                     break;
+                case 24://First Colon
+                    {
+                        #region First Curr
+                        if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
+                        {
+
+                        }
+                        else
+                        {
+                            dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Index);
+                            dgQuotationAddedItems.Refresh();
+                        }
+                        //TO DO depends on authority
+                        //if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
+                        CurrentRow = dgQuotationAddedItems.CurrentRow;
+                        if (txtHazardousInd.Text == "N")
+                        {
+                            #region Total
+                            decimal ucupcurr = decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString());
+                            decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
+                            decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 4);
+                            int workerID = Utils.getCurrentUser().WorkerID;
+                            decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                            if (disc > Minmarge)
+                            {
+                                MessageBox.Show("Low Price ! Ask for authorization");
+                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index];
+                                CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                              
+                                CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
+                                CurrentRow.Cells["dgDisc"].Value = 0;
+                            }
+                            else
+                            {
+                                CurrentRow.Cells["dgDisc"].Value = disc;
+                            }
+
+
+                            GetMarginFirst();
+                            GetMarginMark();
+                            #region Calculate Total Margin
+                            try
+                            {
+                                txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
+                            }
+                            catch (Exception ex)
+                            {
+                                txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
+                            }
+
+                            #endregion
+                            CalculateSubTotal();
+                            #endregion
+                        }
+                        else if (txtHazardousInd.Text == "Y")
+                        {
+                            dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
+
+                            
+                            dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUC.Index].Value.ToString());
+                            MessageBox.Show("Hazardous Item - Discount not allowed");
+                        }
+                    }
+                    #endregion
+                    break;
                 case 26://UCUP Curr*
                     {
                         #region UCUP Curr
@@ -2093,6 +2158,56 @@ namespace LoginForm.QuotationModule
             if (CurrentRow.Cells[dgUCUPCurr.Index].Value != null && CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString() != "" && CurrentRow.Cells[dgQty.Index].Value != null && CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
             {
                 CurrentRow.Cells[dgTotal.Index].Value = (decimal.Parse(CurrentRow.Cells[dgUCUPCurr.Index].Value.ToString()) *
+                decimal.Parse(CurrentRow.Cells[dgQty.Index].Value.ToString())).ToString();
+            }
+            #endregion
+
+        }
+
+        private void GetMarginFirst()
+        {
+            #region Get Margin
+            DateTime today = DateTime.Today;
+            CurrentRow = dgQuotationAddedItems.CurrentRow;
+            #region Kur Hesaplama
+            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+            decimal gbpPrice = 0;
+            if (CurrentRow.Cells[dgFirstUPIME.Index].Value != null && CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString() != "")
+            {
+                gbpPrice = ((Decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString())) * CurrValue) / currentGbpValue;
+            }
+            #endregion
+            if (CurrentRow.Cells["dgQty"].Value != null && CurrentRow.Cells["dgQty"].Value.ToString() != "")
+            {
+                if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+                {
+                    if (Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1 && (!(CurrentRow.Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                    {
+                        CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
+                        {
+                            if (!String.IsNullOrEmpty(CurrentRow.Cells["dgLandingCost"].Value.ToString()))
+                            {
+                                CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                            }
+                        }
+                        else
+                        {
+                            CurrentRow.Cells["dgMargin"].Value = (((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString())) / (gbpPrice/* * decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())*/))) * 100).ToString("G29");
+                        }
+                    }
+                }
+                else
+                {
+                    CurrentRow.Cells["dgMargin"].Value = ((1 - (Decimal.Parse(CurrentRow.Cells["dgLandingCost"].Value.ToString()) / gbpPrice)) * 100).ToString("G29");
+                }
+            }
+            if (CurrentRow.Cells[dgFirstUPIME.Index].Value != null && CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString() != "" && CurrentRow.Cells[dgQty.Index].Value != null && CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
+            {
+                CurrentRow.Cells[dgTotal.Index].Value = (decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString()) *
                 decimal.Parse(CurrentRow.Cells[dgQty.Index].Value.ToString())).ToString();
             }
             #endregion
@@ -5450,6 +5565,49 @@ namespace LoginForm.QuotationModule
             }
         }
 
+        private decimal calculateTotalMarginFirst()
+        {
+            DateTime today = DateTime.Today;
+            CurrentRow = dgQuotationAddedItems.CurrentRow;
+            #region Kur Hesaplama
+            decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
+
+            #endregion
+
+            decimal totalCost = 0;
+            decimal totalPrice = 0;
+
+            foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+            {
+                decimal gbpPrice = 0;
+                if (item.Cells[dgTotal.Index].Value != null && item.Cells[dgTotal.Index].Value.ToString() != "" && item.Cells[dgFirstUPIME.Index].Value != null && item.Cells[dgFirstUPIME.Index].Value.ToString() != "")
+                {
+                    gbpPrice = ((Convert.ToDecimal(item.Cells[dgTotal.Index].Value.ToString())) * CurrValue) / currentGbpValue;
+                }
+                if (item.Cells[dgLandingCost.Index].Value != null && item.Cells[dgLandingCost.Index].Value.ToString() != "" && item.Cells[dgQty.Index].Value != null && item.Cells[dgQty.Index].Value.ToString() != "" && item.Cells[dgQty.Index].Value.ToString() != "0")
+                {
+                    totalCost += Convert.ToDecimal(item.Cells[dgLandingCost.Index].Value) * Convert.ToDecimal(item.Cells[dgQty.Index].Value);
+                    totalPrice += gbpPrice;
+                }
+            }
+
+            if (cbDeliverDiscount.Checked)
+            {
+                return ((1 - (totalCost / totalPrice)) * 100);
+            }
+            else
+            {
+                decimal Disc = 0;
+                decimal gbpDisc = 0;
+                if (!String.IsNullOrEmpty(txtTotalDis2.Text) && txtTotalDis2.Text != 0.ToString())
+                {
+                    Disc = Convert.ToDecimal(txtTotalDis2.Text);
+                    gbpDisc = (Disc * CurrValue) / currentGbpValue;
+                }
+                return ((1 - (totalCost / (totalPrice - gbpDisc))) * 100);
+            }
+        }
+
         private void txtExtraChanges_TextChanged(object sender, EventArgs e)
         {
             decimal ExtraCharge = 0;
@@ -6534,6 +6692,36 @@ namespace LoginForm.QuotationModule
                 {
                     btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
                     btnProductHistory.Enabled = false;
+                }
+            }
+        }
+
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
+                {
+                    MessageBox.Show("Please enter value !");
+                }
+                else
+                {
+                    dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value = "";
+                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                }
+            }
+        }
+
+        private void dgQuotationAddedItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgQuotationAddedItems.CurrentCell.ColumnIndex == 8) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
                 }
             }
         }
