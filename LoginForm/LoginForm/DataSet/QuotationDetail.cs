@@ -54,6 +54,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> FirstUPIME { get; set; }
         public string CustomerDesc { get; set; }
         public string Manufacturer { get; set; }
+        public string SupplierName { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }

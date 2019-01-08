@@ -3268,6 +3268,7 @@ namespace LoginForm.QuotationModule
                                 qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
                                 qd.DubaiStatus = ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString();
                                 qd.Manufacturer = dgQuotationAddedItems.Rows[i].Cells[dgBrand.Index].Value.ToString();
+                                qd.SupplierName = dgQuotationAddedItems.Rows[i].Cells[dgSupplier.Index].Value.ToString();
                                 if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
                                 {
                                     qd.Status = "NCNR";
@@ -3674,6 +3675,7 @@ namespace LoginForm.QuotationModule
                     qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
                     qd.DubaiStatus = ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString();
                     qd.Manufacturer = dgQuotationAddedItems.Rows[i].Cells[dgBrand.Index].Value.ToString();
+                    qd.SupplierName = dgQuotationAddedItems.Rows[i].Cells[dgSupplier.Index].Value.ToString();
                     if (qd.ItemCode.Contains("P") || qd.ItemCode.Count() == 10)
                     {
                         qd.Status = "NCNR";
@@ -3761,6 +3763,7 @@ namespace LoginForm.QuotationModule
 
                     qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
                     qd.DubaiStatus = ((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index]).Value.ToString();
+                    qd.SupplierName = dgQuotationAddedItems.Rows[i].Cells[dgSupplier.Index].Value.ToString();
 
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
@@ -3921,6 +3924,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgBrand.Index].Value = item.Manufacturer;
+                    row.Cells[dgSupplier.Index].Value = item.SupplierName;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
@@ -4076,6 +4080,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgBrand.Index].Value = item.Manufacturer;
+                    row.Cells[dgSupplier.Index].Value = item.SupplierName;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
