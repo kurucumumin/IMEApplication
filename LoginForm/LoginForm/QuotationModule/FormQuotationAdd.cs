@@ -3092,7 +3092,7 @@ namespace LoginForm.QuotationModule
                     return false;
                 }
 
-                if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index].Value.ToString()))
+                if (dgQuotationAddedItems.Rows[i].Cells[dgStatus.Index].Value == null)
                 {
                     MessageBox.Show("Status cannot be left blank. Please check Status of Items");
                     return false;
