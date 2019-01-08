@@ -54,6 +54,7 @@ namespace LoginForm.QuotationModule
         string cID = "";
         DataTable table = new DataTable();
         int sayac = 0;
+        DataGridViewCellStyle boldStyle = new DataGridViewCellStyle();
         #endregion
 
         public FormQuotationAdd(FormQuaotationCustomerSearch parent, string customerName, string customerId)
@@ -955,6 +956,11 @@ namespace LoginForm.QuotationModule
 
             #endregion
 
+            foreach (DataGridViewRow row in dgQuotationAddedItems.Rows)
+            {
+                row.Cells[dgUCUPCurr.Index].Style.BackColor = Color.FromArgb(140, 255, 195);
+            }
+
             checkAuthorities();
             //ControlAutorization();
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
@@ -1429,6 +1435,7 @@ namespace LoginForm.QuotationModule
                         {
                             dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
                         }
+                       
                     }
                     else
                     {
@@ -1444,69 +1451,69 @@ namespace LoginForm.QuotationModule
                 case 24://First Colon
                     {
                         #region First Curr
-                        if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
-                        {
+                    //    if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
+                    //    {
 
-                        }
-                        else
-                        {
-                            dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Index);
-                            dgQuotationAddedItems.Refresh();
-                        }
-                        //TO DO depends on authority
-                        //if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
-                        CurrentRow = dgQuotationAddedItems.CurrentRow;
-                        if (txtHazardousInd.Text == "N")
-                        {
-                            #region Total
-                            decimal ucupcurr = decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString());
-                            decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                            decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 4);
-                            int workerID = Utils.getCurrentUser().WorkerID;
-                            decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
-                            if (disc > Minmarge)
-                            {
-                                MessageBox.Show("Low Price ! Ask for authorization");
-                                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index];
-                                CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                    //    }
+                    //    else
+                    //    {
+                    //        dgQuotationAddedItems.Rows.RemoveAt(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Index);
+                    //        dgQuotationAddedItems.Refresh();
+                    //    }
+                    //    //TO DO depends on authority
+                    //    //if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
+                    //    CurrentRow = dgQuotationAddedItems.CurrentRow;
+                    //    if (txtHazardousInd.Text == "N")
+                    //    {
+                    //        #region Total
+                    //        decimal ucupcurr = decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString());
+                    //        decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
+                    //        decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 4);
+                    //        int workerID = Utils.getCurrentUser().WorkerID;
+                    //        decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
+                    //        if (disc > Minmarge)
+                    //        {
+                    //            MessageBox.Show("Low Price ! Ask for authorization");
+                    //            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index];
+                    //            CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
                               
-                                CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
-                                CurrentRow.Cells["dgDisc"].Value = 0;
-                            }
-                            else
-                            {
-                                CurrentRow.Cells["dgDisc"].Value = disc;
-                            }
+                    //            CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
+                    //            CurrentRow.Cells["dgDisc"].Value = 0;
+                    //        }
+                    //        else
+                    //        {
+                    //            CurrentRow.Cells["dgDisc"].Value = disc;
+                    //        }
 
 
-                            GetMarginFirst();
-                            GetMarginMark();
-                            #region Calculate Total Margin
-                            try
-                            {
-                                txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
-                            }
-                            catch (Exception ex)
-                            {
-                                txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
-                            }
+                    //        GetMarginFirst();
+                    //        GetMarginMark();
+                    //        #region Calculate Total Margin
+                    //        try
+                    //        {
+                    //            txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
+                    //        }
+                    //        catch (Exception ex)
+                    //        {
+                    //            txtTotalMargin.Text = Math.Round(calculateTotalMarginFirst(), 4).ToString();
+                    //        }
 
-                            #endregion
-                            CalculateSubTotal();
-                            #endregion
-                        }
-                        else if (txtHazardousInd.Text == "Y")
-                        {
-                            dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
+                    //        #endregion
+                    //        CalculateSubTotal();
+                    //        #endregion
+                    //    }
+                    //    else if (txtHazardousInd.Text == "Y")
+                    //    {
+                    //        dgQuotationAddedItems.CurrentRow.Cells[dgFirstUPIME.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
 
                             
-                            dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUC.Index].Value.ToString());
-                            MessageBox.Show("Hazardous Item - Discount not allowed");
-                        }
+                    //        dgQuotationAddedItems.CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells[dgUC.Index].Value.ToString());
+                    //        MessageBox.Show("Hazardous Item - Discount not allowed");
+                    //    }
                     }
                     #endregion
                     break;
-                case 26://UCUP Curr*
+                        case 26://UCUP Curr*
                     {
                         #region UCUP Curr
                         if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")

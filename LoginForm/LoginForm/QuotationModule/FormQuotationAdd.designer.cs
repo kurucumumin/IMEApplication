@@ -275,6 +275,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label68 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label72 = new System.Windows.Forms.Label();
             this.lblTotalNetWeight = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
             this.lblTotalWeight = new System.Windows.Forms.Label();
@@ -283,6 +284,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
             this.lblTotalExtra = new System.Windows.Forms.Label();
@@ -313,12 +315,10 @@
             this.ckWeightCost = new System.Windows.Forms.CheckBox();
             this.ckItemCost = new System.Windows.Forms.CheckBox();
             this.cbSMethod = new System.Windows.Forms.ComboBox();
-            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.label72 = new System.Windows.Forms.Label();
             this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -2657,6 +2657,15 @@
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(23, 17);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(97, 13);
+            this.label72.TabIndex = 76;
+            this.label72.Text = "Distribute Discount";
+            // 
             // lblTotalNetWeight
             // 
             this.lblTotalNetWeight.Location = new System.Drawing.Point(172, 149);
@@ -2724,6 +2733,16 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(240, 2);
             this.panel5.TabIndex = 68;
+            // 
+            // cbDeliverDiscount
+            // 
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(5, 17);
+            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(19, 18);
+            this.cbDeliverDiscount.TabIndex = 58;
+            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
+            this.cbDeliverDiscount.Visible = false;
+            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
             // 
             // panel4
             // 
@@ -3038,16 +3057,6 @@
             this.cbSMethod.TabIndex = 8;
             this.cbSMethod.Text = "Air Freight";
             // 
-            // cbDeliverDiscount
-            // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(5, 17);
-            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
-            this.cbDeliverDiscount.Size = new System.Drawing.Size(19, 18);
-            this.cbDeliverDiscount.TabIndex = 58;
-            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
-            this.cbDeliverDiscount.Visible = false;
-            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -3077,15 +3086,6 @@
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(23, 17);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(97, 13);
-            this.label72.TabIndex = 76;
-            this.label72.Text = "Distribute Discount";
             // 
             // dgNo
             // 
@@ -3374,7 +3374,10 @@
             // dgUCUPCurr
             // 
             this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle22.NullValue = null;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
             this.dgUCUPCurr.DefaultCellStyle = dataGridViewCellStyle22;
             this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
             this.dgUCUPCurr.Name = "dgUCUPCurr";
@@ -3391,6 +3394,7 @@
             // dgTotal
             // 
             this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle23.NullValue = null;
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
