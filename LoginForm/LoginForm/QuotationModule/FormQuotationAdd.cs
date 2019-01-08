@@ -1134,7 +1134,7 @@ namespace LoginForm.QuotationModule
             if (quo != null)
             {
                 quo.ViewQuotation = true;
-                quo.ViewQuotationName = "";
+                quo.ViewQuotationName = null;
                 IME.SaveChanges();
             }
 
@@ -1391,7 +1391,7 @@ namespace LoginForm.QuotationModule
                     break;
                 case 18://QAUANTITY
                     
-                    if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())) == 0)
+                    if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())) == 0 && (Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())) == 0)
                     {
                         DgQuantityFiller();
                         calculateTotalCost();
@@ -1748,7 +1748,7 @@ namespace LoginForm.QuotationModule
                             //SuperdiskP değilse
                             if (!(articleNo.ToUpper().Contains('P')) && Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
-                                if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())) != 0)
+                                if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString())) != 0 && (Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())) != 0)
                                 {
                                     MessageBox.Show("Please enter a number that is a multiple of Unit Content");
                                     CurrentRow.Cells["dgQty"].Value = "";
@@ -1764,7 +1764,7 @@ namespace LoginForm.QuotationModule
                                 }
 
                             }
-                            else if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())) != 0)
+                            else if ((Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString())) != 0 && (Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString()) % Int32.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())) != 0)
                             {
                                 MessageBox.Show("Please enter a number that is a multiple of SSM");
                                 CurrentRow.Cells["dgQty"].Value = "";
@@ -3299,6 +3299,7 @@ namespace LoginForm.QuotationModule
                         //parent.BringQuotationList();
                         
                         q.ViewQuotation = true;
+                        q.ViewQuotationName = null;
                         IME.SaveChanges();
                         this.Close();
                     }
@@ -3311,7 +3312,7 @@ namespace LoginForm.QuotationModule
 
                     Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
                     quo.ViewQuotation = true;
-                    quo.ViewQuotationName = "";
+                    quo.ViewQuotationName = null;
                     IME.SaveChanges();
 
                     this.Close();
@@ -3324,7 +3325,7 @@ namespace LoginForm.QuotationModule
 
                     Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
                     quo.ViewQuotation = true;
-                    quo.ViewQuotationName = "";
+                    quo.ViewQuotationName = null;
                     IME.SaveChanges();
 
                     this.Close();
@@ -4845,7 +4846,7 @@ namespace LoginForm.QuotationModule
 
                     Quotation quo = IME.Quotations.Where(q => q.QuotationNo == txtQuotationNo.Text).FirstOrDefault();
                     quo.ViewQuotation = true;
-                    quo.ViewQuotationName = "";
+                    quo.ViewQuotationName = null;
                     IME.SaveChanges();
                 }
             }
@@ -6207,7 +6208,7 @@ namespace LoginForm.QuotationModule
                 if (quo != null)
                 {
                     quo.ViewQuotation = true;
-                    quo.ViewQuotationName = "";
+                    quo.ViewQuotationName = null;
                     IME.SaveChanges();
 
                 }

@@ -478,7 +478,7 @@ namespace LoginForm.QuotationModule
                                              SaleOrderID = q.SaleOrderID,
                                              SaleOrderNo = (q.SaleOrder != null) ? q.SaleOrder.SaleOrderNo.ToString() : "",
                                              OrderStatus = q.status,
-                                             FirFirstNote = q.FirstNote,
+                                             FirstNote = q.FirstNote,
                                              Date1 = q.NoteDate1,
                                              Rep1 = q.NoteRep1,
                                              SecondNote = q.SecondNote,
@@ -1093,7 +1093,7 @@ namespace LoginForm.QuotationModule
 
             switch (dgQuotation.CurrentCell.ColumnIndex)
             {
-                case 13:
+                case 14:
                     if (dgQuotation.CurrentRow != null)
                     {
                         DialogResult result = MessageBox.Show("Note is added, please confirm", "Quotation Note", MessageBoxButtons.OKCancel);
@@ -1130,7 +1130,7 @@ namespace LoginForm.QuotationModule
                     }
 
                     break;
-                case 16:
+                case 17:
                     if (dgQuotation.CurrentRow != null)
                     {
                         DialogResult result = MessageBox.Show("Note is added, please confirm", "Quotation Note", MessageBoxButtons.OKCancel);
