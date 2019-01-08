@@ -2023,8 +2023,8 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.FromArgb(235, 236, 239);
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Style.BackColor = Color.FromArgb(235, 236, 239);
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.FromArgb(90, 185, 194);
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Style.BackColor = Color.FromArgb(90, 185, 194);
                 }
             }
             catch { }
@@ -2042,8 +2042,8 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.FromArgb(235, 236, 239);
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Style.BackColor = Color.FromArgb(235, 236, 239);
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.FromArgb(90, 185, 194);
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Style.BackColor = Color.FromArgb(90, 185, 194);
                 }
             }
             catch { }
@@ -3932,6 +3932,14 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgBrand.Index].Value = item.Manufacturer;
                     row.Cells[dgSupplier.Index].Value = item.SupplierName;
+                    if (Convert.ToDecimal(row.Cells[dgTotalWeight.Index].Value) == 0)
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Red;
+                    }
+                    else if (Convert.ToDecimal(row.Cells[dgTotalWeight.Index].Value) > 5)
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Orange;
+                    }
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
@@ -4088,6 +4096,14 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgMargin.Index].Value = item.Marge;
                     row.Cells[dgBrand.Index].Value = item.Manufacturer;
                     row.Cells[dgSupplier.Index].Value = item.SupplierName;
+                    if (Convert.ToDecimal(row.Cells[dgTotalWeight.Index].Value) == 0)
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Red;
+                    }
+                    else if (Convert.ToDecimal(row.Cells[dgTotalWeight.Index].Value) > 5)
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Orange;
+                    }
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
@@ -4768,7 +4784,7 @@ namespace LoginForm.QuotationModule
                 row.Cells[4].Style.BackColor = Color.Ivory;
                 row.Cells[5].Style.BackColor = Color.Ivory;
                 row.Cells[6].Style.BackColor = Color.Ivory;
-                for (int i = 7; i < row.Cells.Count; i++)
+                for (int i = 9; i < row.Cells.Count; i++)
                 {
                     row.Cells[i].Value = "";
                 }
