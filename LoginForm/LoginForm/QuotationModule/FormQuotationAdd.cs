@@ -959,6 +959,7 @@ namespace LoginForm.QuotationModule
             foreach (DataGridViewRow row in dgQuotationAddedItems.Rows)
             {
                 row.Cells[dgUCUPCurr.Index].Style.BackColor = Color.FromArgb(140, 255, 195);
+                row.Cells[dgQty.Index].Style.BackColor = Color.FromArgb(140, 255, 195);
             }
 
             checkAuthorities();
