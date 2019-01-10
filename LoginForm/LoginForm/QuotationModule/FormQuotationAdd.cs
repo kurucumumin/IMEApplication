@@ -1855,6 +1855,7 @@ namespace LoginForm.QuotationModule
                             if (CurrentRow.Cells[dgQty.Index].Value.ToString() != "")
                             {
                                 //TOTAL ve UPIME belirleniyor
+                                ItemDetailsFiller(CurrentRow.Cells[dgProductCode.Index].Value.ToString());
                                 FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
                                 CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 4);
@@ -2658,7 +2659,7 @@ namespace LoginForm.QuotationModule
 
             if (ItemTabDetails != null)
             {
-                CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
+                dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value = ItemTabDetails.Article_Desc;
                 CurrentRow.Cells["dgSSM"].Value = ItemTabDetails.Pack_Quantity.ToString() ?? ""; ;
                 CurrentRow.Cells["dgUC"].Value = ItemTabDetails.Unit_Content.ToString() ?? ""; ;
                 if (ItemTabDetails.Unit_Measure == "")
@@ -4235,7 +4236,7 @@ namespace LoginForm.QuotationModule
             {
 
                 GetLandingCost(i);
-               // dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[dgNo.Index];
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[dgNo.Index];
                 GetQuotationQuantity(i);
 
             }
