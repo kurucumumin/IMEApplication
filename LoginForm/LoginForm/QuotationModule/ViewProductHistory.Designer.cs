@@ -71,6 +71,7 @@
             this.dgProductHistory.ReadOnly = true;
             this.dgProductHistory.Size = new System.Drawing.Size(1123, 394);
             this.dgProductHistory.TabIndex = 0;
+            this.dgProductHistory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgProductHistory_KeyDown);
             // 
             // dgcRsCode
             // 

@@ -84,8 +84,13 @@ namespace LoginForm.QuotationModule
             this.Close();
         }
 
-        
 
-      
+        private void dgProductHistory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Close();
+            }
+        }
     }
 }

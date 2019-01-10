@@ -3356,7 +3356,7 @@
             // dgUPIME
             // 
             this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.NullValue = "N4";
+            dataGridViewCellStyle20.Format = "N4";
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
             this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle20;
@@ -3368,7 +3368,7 @@
             // dgFirstUPIME
             // 
             this.dgFirstUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.NullValue = "N4";
+            dataGridViewCellStyle21.Format = "N4";
             this.dgFirstUPIME.DefaultCellStyle = dataGridViewCellStyle21;
             this.dgFirstUPIME.HeaderText = "1st U/P";
             this.dgFirstUPIME.Name = "dgFirstUPIME";
@@ -3392,7 +3392,7 @@
             this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
             dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle23.NullValue = "N4";
+            dataGridViewCellStyle23.Format = "N4";
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
             this.dgUCUPCurr.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
