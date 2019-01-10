@@ -6436,9 +6436,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                         }
                     }
@@ -6459,9 +6461,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                         }
                     }
@@ -6498,9 +6502,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                             item.Cells[dgMarkup.Index].Value = (decimal.Parse(lblCustomerMarkupValue.Text) - decimal.Parse("1.0000")) * 100;
                         }
@@ -6522,9 +6528,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
 
                         }
@@ -6754,9 +6762,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                         }
                     }
@@ -6777,9 +6787,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                         }
                     }
@@ -6816,9 +6828,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
                             item.Cells[dgMarkup.Index].Value = (decimal.Parse(lblCustomerMarkupValue.Text) - decimal.Parse("1.0000")) * 100;
                         }
@@ -6840,9 +6854,11 @@ namespace LoginForm.QuotationModule
                             {
                                 item.Cells[dgUCUPCurr.Index].Value = "";
                                 item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                 item.Cells[dgTotal.Index].Value = "";
                                 item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                             }
 
                         }
@@ -6882,9 +6898,11 @@ namespace LoginForm.QuotationModule
                                 {
                                     item.Cells[dgUCUPCurr.Index].Value = "";
                                     item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                    item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                     item.Cells[dgTotal.Index].Value = "";
                                     item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                    item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                                 }
                             }
                         }
@@ -6905,9 +6923,11 @@ namespace LoginForm.QuotationModule
                                 {
                                     item.Cells[dgUCUPCurr.Index].Value = "";
                                     item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                    item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                     item.Cells[dgTotal.Index].Value = "";
                                     item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                    item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                                 }
                             }
                         }
@@ -6947,9 +6967,11 @@ namespace LoginForm.QuotationModule
                                 {
                                     item.Cells[dgUCUPCurr.Index].Value = "";
                                     item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
+                                    item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                     item.Cells[dgTotal.Index].Value = "";
                                     item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
+                                    item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                                 }
                                 item.Cells[dgMarkup.Index].Value = (decimal.Parse(lblCustomerMarkupValue.Text) - decimal.Parse("1.0000")) * 100;
                             }
@@ -6971,9 +6993,11 @@ namespace LoginForm.QuotationModule
                                 {
                                     item.Cells[dgUCUPCurr.Index].Value = "";
                                     item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
+                                    item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 4).ToString();
 
                                     item.Cells[dgTotal.Index].Value = "";
                                     item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
+                                    item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 4).ToString();
                                 }
 
                             }
