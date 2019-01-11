@@ -65,6 +65,7 @@ namespace LoginForm.Main
             this.btnRsInvoice = new AltoControls.AltoButton();
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnlManagement = new System.Windows.Forms.Panel();
+            this.btnFactor = new AltoControls.AltoButton();
             this.btnCurrency = new AltoControls.AltoButton();
             this.btnLog = new AltoControls.AltoButton();
             this.btnUser = new AltoControls.AltoButton();
@@ -106,7 +107,6 @@ namespace LoginForm.Main
             this.lblTitleEmail = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.btnFactor = new AltoControls.AltoButton();
             this.pnlMain.SuspendLayout();
             this.pnlImportFiles.SuspendLayout();
             this.pnlManagement.SuspendLayout();
@@ -666,6 +666,28 @@ namespace LoginForm.Main
             this.pnlManagement.Name = "pnlManagement";
             this.pnlManagement.Size = new System.Drawing.Size(218, 0);
             this.pnlManagement.TabIndex = 8;
+            // 
+            // btnFactor
+            // 
+            this.btnFactor.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
+            this.btnFactor.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
+            this.btnFactor.BackColor = System.Drawing.Color.Transparent;
+            this.btnFactor.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnFactor.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
+            this.btnFactor.ForeColor = System.Drawing.Color.Black;
+            this.btnFactor.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
+            this.btnFactor.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
+            this.btnFactor.Location = new System.Drawing.Point(5, 332);
+            this.btnFactor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFactor.Name = "btnFactor";
+            this.btnFactor.Radius = 5;
+            this.btnFactor.Size = new System.Drawing.Size(194, 32);
+            this.btnFactor.Stroke = false;
+            this.btnFactor.StrokeColor = System.Drawing.Color.Gray;
+            this.btnFactor.TabIndex = 19;
+            this.btnFactor.Text = "Factor";
+            this.btnFactor.Transparency = false;
+            this.btnFactor.Click += new System.EventHandler(this.btnFactor_Click);
             // 
             // btnCurrency
             // 
@@ -1390,28 +1412,6 @@ namespace LoginForm.Main
             this.lblTitleName.Size = new System.Drawing.Size(44, 15);
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Name:";
-            // 
-            // btnFactor
-            // 
-            this.btnFactor.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(220)))), ((int)(((byte)(176)))));
-            this.btnFactor.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(171)))), ((int)(((byte)(101)))));
-            this.btnFactor.BackColor = System.Drawing.Color.Transparent;
-            this.btnFactor.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnFactor.Font = new System.Drawing.Font("Sitka Text", 11F, System.Drawing.FontStyle.Bold);
-            this.btnFactor.ForeColor = System.Drawing.Color.Black;
-            this.btnFactor.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(227)))), ((int)(((byte)(245)))));
-            this.btnFactor.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(176)))), ((int)(((byte)(204)))));
-            this.btnFactor.Location = new System.Drawing.Point(5, 332);
-            this.btnFactor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFactor.Name = "btnFactor";
-            this.btnFactor.Radius = 5;
-            this.btnFactor.Size = new System.Drawing.Size(194, 32);
-            this.btnFactor.Stroke = false;
-            this.btnFactor.StrokeColor = System.Drawing.Color.Gray;
-            this.btnFactor.TabIndex = 19;
-            this.btnFactor.Text = "Factor";
-            this.btnFactor.Transparency = false;
-            this.btnFactor.Click += new System.EventHandler(this.btnFactor_Click);
             // 
             // frmMainMetro
             // 

@@ -398,5 +398,11 @@ namespace LoginForm.f_RSInvoice
                 label4.Visible = false;
             }
         }
+
+        private void btnCostAnalyst_Click(object sender, EventArgs e)
+        {
+            frmCostAnalyst f = new frmCostAnalyst(dgvRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString());
+            f.Show();
+        }
     }
 }

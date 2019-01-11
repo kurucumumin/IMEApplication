@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnCostAnalyst = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -51,6 +54,19 @@
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvRSInvoice = new System.Windows.Forms.DataGridView();
+            this.ctx_dgRSInvoice = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewInvoicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtStockCode = new System.Windows.Forms.TextBox();
+            this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bgw_RSInvoiceGetter = new System.ComponentModel.BackgroundWorker();
+            this.dgChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgShipmentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgBillingDocumentReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,18 +88,6 @@
             this.dgCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ctx_dgRSInvoice = new System.Windows.Forms.ContextMenuStrip();
-            this.viewInvoicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendToLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backFromLogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtStockCode = new System.Windows.Forms.TextBox();
-            this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.bgw_RSInvoiceGetter = new System.ComponentModel.BackgroundWorker();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,6 +100,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.btnCostAnalyst);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.btnPrint);
@@ -110,9 +116,35 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(283, 91);
+            this.groupBox2.Size = new System.Drawing.Size(372, 91);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(278, 60);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Cost Analyst";
+            // 
+            // btnCostAnalyst
+            // 
+            this.btnCostAnalyst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
+            this.btnCostAnalyst.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnCostAnalyst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCostAnalyst.Image = global::LoginForm.Properties.Resources.if_filter_173013;
+            this.btnCostAnalyst.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCostAnalyst.Location = new System.Drawing.Point(288, 15);
+            this.btnCostAnalyst.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCostAnalyst.Name = "btnCostAnalyst";
+            this.btnCostAnalyst.Padding = new System.Windows.Forms.Padding(6, 13, 6, 0);
+            this.btnCostAnalyst.Size = new System.Drawing.Size(39, 42);
+            this.btnCostAnalyst.TabIndex = 31;
+            this.btnCostAnalyst.UseVisualStyleBackColor = true;
+            this.btnCostAnalyst.Click += new System.EventHandler(this.btnCostAnalyst_Click);
             // 
             // label8
             // 
@@ -369,7 +401,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(933, 530);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1019, 530);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dgvRSInvoice
@@ -381,6 +413,7 @@
             this.dgvRSInvoice.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvRSInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRSInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgChk,
             this.dgID,
             this.dgShipmentReference,
             this.dgBillingDocumentReference,
@@ -403,156 +436,26 @@
             this.dgSupplierID,
             this.dgUserID});
             this.dgvRSInvoice.ContextMenuStrip = this.ctx_dgRSInvoice;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRSInvoice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRSInvoice.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRSInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvRSInvoice.Location = new System.Drawing.Point(6, 104);
             this.dgvRSInvoice.Margin = new System.Windows.Forms.Padding(6);
             this.dgvRSInvoice.Name = "dgvRSInvoice";
-            this.dgvRSInvoice.ReadOnly = true;
             this.dgvRSInvoice.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvRSInvoice.RowTemplate.Height = 24;
             this.dgvRSInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRSInvoice.Size = new System.Drawing.Size(921, 413);
+            this.dgvRSInvoice.Size = new System.Drawing.Size(1007, 413);
             this.dgvRSInvoice.TabIndex = 0;
             this.dgvRSInvoice.TabStop = false;
             this.dgvRSInvoice.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgRSInvoice_MouseDown);
-            // 
-            // dgID
-            // 
-            this.dgID.HeaderText = "ID";
-            this.dgID.Name = "dgID";
-            this.dgID.ReadOnly = true;
-            this.dgID.Visible = false;
-            // 
-            // dgShipmentReference
-            // 
-            this.dgShipmentReference.HeaderText = "Shipment Reference";
-            this.dgShipmentReference.Name = "dgShipmentReference";
-            this.dgShipmentReference.ReadOnly = true;
-            // 
-            // dgBillingDocumentReference
-            // 
-            this.dgBillingDocumentReference.HeaderText = "Billing Document Reference";
-            this.dgBillingDocumentReference.Name = "dgBillingDocumentReference";
-            this.dgBillingDocumentReference.ReadOnly = true;
-            // 
-            // dgShippingCondition
-            // 
-            this.dgShippingCondition.HeaderText = "Shipping Condition";
-            this.dgShippingCondition.Name = "dgShippingCondition";
-            this.dgShippingCondition.ReadOnly = true;
-            // 
-            // dgBillingDocumentDate
-            // 
-            this.dgBillingDocumentDate.HeaderText = "Billing Document Date";
-            this.dgBillingDocumentDate.Name = "dgBillingDocumentDate";
-            this.dgBillingDocumentDate.ReadOnly = true;
-            // 
-            // dgSupplyingECCompany
-            // 
-            this.dgSupplyingECCompany.HeaderText = "Supplying EC Company";
-            this.dgSupplyingECCompany.Name = "dgSupplyingECCompany";
-            this.dgSupplyingECCompany.ReadOnly = true;
-            // 
-            // dgCustomerReference
-            // 
-            this.dgCustomerReference.HeaderText = "Customer Reference";
-            this.dgCustomerReference.Name = "dgCustomerReference";
-            this.dgCustomerReference.ReadOnly = true;
-            // 
-            // dgInvoiceTaxValue
-            // 
-            this.dgInvoiceTaxValue.HeaderText = "Invoice Tax Value";
-            this.dgInvoiceTaxValue.Name = "dgInvoiceTaxValue";
-            this.dgInvoiceTaxValue.ReadOnly = true;
-            // 
-            // dgInvoiceGoodsValue
-            // 
-            this.dgInvoiceGoodsValue.HeaderText = "Invoice Goods Value";
-            this.dgInvoiceGoodsValue.Name = "dgInvoiceGoodsValue";
-            this.dgInvoiceGoodsValue.ReadOnly = true;
-            // 
-            // dgInvoiceNettValue
-            // 
-            this.dgInvoiceNettValue.HeaderText = "Invoice Nett Value";
-            this.dgInvoiceNettValue.Name = "dgInvoiceNettValue";
-            this.dgInvoiceNettValue.ReadOnly = true;
-            // 
-            // dgCurrency
-            // 
-            this.dgCurrency.HeaderText = "Currency";
-            this.dgCurrency.Name = "dgCurrency";
-            this.dgCurrency.ReadOnly = true;
-            // 
-            // dgAirwayBillNumber
-            // 
-            this.dgAirwayBillNumber.HeaderText = "Airway Bill Number";
-            this.dgAirwayBillNumber.Name = "dgAirwayBillNumber";
-            this.dgAirwayBillNumber.ReadOnly = true;
-            // 
-            // dgDiscount
-            // 
-            this.dgDiscount.HeaderText = "Discount";
-            this.dgDiscount.Name = "dgDiscount";
-            this.dgDiscount.ReadOnly = true;
-            // 
-            // dgSurcharge
-            // 
-            this.dgSurcharge.HeaderText = "Surcharge";
-            this.dgSurcharge.Name = "dgSurcharge";
-            this.dgSurcharge.ReadOnly = true;
-            // 
-            // dgStatus
-            // 
-            this.dgStatus.HeaderText = "Status";
-            this.dgStatus.Name = "dgStatus";
-            this.dgStatus.ReadOnly = true;
-            // 
-            // dgDeleted
-            // 
-            this.dgDeleted.HeaderText = "Deleted";
-            this.dgDeleted.Name = "dgDeleted";
-            this.dgDeleted.ReadOnly = true;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            // 
-            // dgUser
-            // 
-            this.dgUser.HeaderText = "User";
-            this.dgUser.Name = "dgUser";
-            this.dgUser.ReadOnly = true;
-            // 
-            // dgCreateDate
-            // 
-            this.dgCreateDate.HeaderText = "CreateDate";
-            this.dgCreateDate.Name = "dgCreateDate";
-            this.dgCreateDate.ReadOnly = true;
-            // 
-            // dgSupplierID
-            // 
-            this.dgSupplierID.HeaderText = "SupplierID";
-            this.dgSupplierID.Name = "dgSupplierID";
-            this.dgSupplierID.ReadOnly = true;
-            this.dgSupplierID.Visible = false;
-            // 
-            // dgUserID
-            // 
-            this.dgUserID.HeaderText = "UserID";
-            this.dgUserID.Name = "dgUserID";
-            this.dgUserID.ReadOnly = true;
-            this.dgUserID.Visible = false;
             // 
             // ctx_dgRSInvoice
             // 
@@ -595,7 +498,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(929, 94);
+            this.panel1.Size = new System.Drawing.Size(1015, 94);
             this.panel1.TabIndex = 1;
             // 
             // groupBox4
@@ -604,7 +507,7 @@
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtStockCode);
             this.groupBox4.Controls.Add(this.chcCustStockNumber);
-            this.groupBox4.Location = new System.Drawing.Point(704, 2);
+            this.groupBox4.Location = new System.Drawing.Point(793, 2);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
@@ -661,7 +564,7 @@
             // 
             this.groupBox3.Controls.Add(this.cbSearch);
             this.groupBox3.Controls.Add(this.txtSearchText);
-            this.groupBox3.Location = new System.Drawing.Point(523, 2);
+            this.groupBox3.Location = new System.Drawing.Point(612, 3);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -674,12 +577,127 @@
             this.bgw_RSInvoiceGetter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgw_RSInvoiceGetter_DoWork);
             this.bgw_RSInvoiceGetter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RSInvoiceGetter_RunWorkerCompleted);
             // 
+            // dgChk
+            // 
+            this.dgChk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dgChk.HeaderText = "Choose";
+            this.dgChk.Name = "dgChk";
+            this.dgChk.Width = 5;
+            // 
+            // dgID
+            // 
+            this.dgID.HeaderText = "ID";
+            this.dgID.Name = "dgID";
+            this.dgID.Visible = false;
+            // 
+            // dgShipmentReference
+            // 
+            this.dgShipmentReference.HeaderText = "Shipment Reference";
+            this.dgShipmentReference.Name = "dgShipmentReference";
+            // 
+            // dgBillingDocumentReference
+            // 
+            this.dgBillingDocumentReference.HeaderText = "Billing Document Reference";
+            this.dgBillingDocumentReference.Name = "dgBillingDocumentReference";
+            // 
+            // dgShippingCondition
+            // 
+            this.dgShippingCondition.HeaderText = "Shipping Condition";
+            this.dgShippingCondition.Name = "dgShippingCondition";
+            // 
+            // dgBillingDocumentDate
+            // 
+            this.dgBillingDocumentDate.HeaderText = "Billing Document Date";
+            this.dgBillingDocumentDate.Name = "dgBillingDocumentDate";
+            // 
+            // dgSupplyingECCompany
+            // 
+            this.dgSupplyingECCompany.HeaderText = "Supplying EC Company";
+            this.dgSupplyingECCompany.Name = "dgSupplyingECCompany";
+            // 
+            // dgCustomerReference
+            // 
+            this.dgCustomerReference.HeaderText = "Customer Reference";
+            this.dgCustomerReference.Name = "dgCustomerReference";
+            // 
+            // dgInvoiceTaxValue
+            // 
+            this.dgInvoiceTaxValue.HeaderText = "Invoice Tax Value";
+            this.dgInvoiceTaxValue.Name = "dgInvoiceTaxValue";
+            // 
+            // dgInvoiceGoodsValue
+            // 
+            this.dgInvoiceGoodsValue.HeaderText = "Invoice Goods Value";
+            this.dgInvoiceGoodsValue.Name = "dgInvoiceGoodsValue";
+            // 
+            // dgInvoiceNettValue
+            // 
+            this.dgInvoiceNettValue.HeaderText = "Invoice Nett Value";
+            this.dgInvoiceNettValue.Name = "dgInvoiceNettValue";
+            // 
+            // dgCurrency
+            // 
+            this.dgCurrency.HeaderText = "Currency";
+            this.dgCurrency.Name = "dgCurrency";
+            // 
+            // dgAirwayBillNumber
+            // 
+            this.dgAirwayBillNumber.HeaderText = "Airway Bill Number";
+            this.dgAirwayBillNumber.Name = "dgAirwayBillNumber";
+            // 
+            // dgDiscount
+            // 
+            this.dgDiscount.HeaderText = "Discount";
+            this.dgDiscount.Name = "dgDiscount";
+            // 
+            // dgSurcharge
+            // 
+            this.dgSurcharge.HeaderText = "Surcharge";
+            this.dgSurcharge.Name = "dgSurcharge";
+            // 
+            // dgStatus
+            // 
+            this.dgStatus.HeaderText = "Status";
+            this.dgStatus.Name = "dgStatus";
+            // 
+            // dgDeleted
+            // 
+            this.dgDeleted.HeaderText = "Deleted";
+            this.dgDeleted.Name = "dgDeleted";
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            // 
+            // dgUser
+            // 
+            this.dgUser.HeaderText = "User";
+            this.dgUser.Name = "dgUser";
+            // 
+            // dgCreateDate
+            // 
+            this.dgCreateDate.HeaderText = "CreateDate";
+            this.dgCreateDate.Name = "dgCreateDate";
+            // 
+            // dgSupplierID
+            // 
+            this.dgSupplierID.HeaderText = "SupplierID";
+            this.dgSupplierID.Name = "dgSupplierID";
+            this.dgSupplierID.Visible = false;
+            // 
+            // dgUserID
+            // 
+            this.dgUserID.HeaderText = "UserID";
+            this.dgUserID.Name = "dgUserID";
+            this.dgUserID.Visible = false;
+            // 
             // frm_RSInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(933, 530);
+            this.ClientSize = new System.Drawing.Size(1019, 530);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(949, 569);
@@ -738,6 +756,9 @@
         private System.Windows.Forms.ToolStripMenuItem sendToLogoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backFromLogoToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker bgw_RSInvoiceGetter;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCostAnalyst;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgChk;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgShipmentReference;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgBillingDocumentReference;
