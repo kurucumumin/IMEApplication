@@ -34,10 +34,13 @@
             // 
             // dgCost
             // 
+            this.dgCost.AllowUserToAddRows = false;
+            this.dgCost.AllowUserToDeleteRows = false;
             this.dgCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCost.Location = new System.Drawing.Point(0, 0);
             this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
             this.dgCost.Size = new System.Drawing.Size(1068, 511);
             this.dgCost.TabIndex = 0;
             // 
