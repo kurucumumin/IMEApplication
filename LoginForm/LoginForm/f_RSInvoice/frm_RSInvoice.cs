@@ -401,8 +401,16 @@ namespace LoginForm.f_RSInvoice
 
         private void btnCostAnalyst_Click(object sender, EventArgs e)
         {
-            frmCostAnalyst f = new frmCostAnalyst(dgvRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString());
-            f.Show();
+            if (Convert.ToBoolean(dgvRSInvoice.CurrentRow.Cells[dgChk.Index].Value) == true)
+            {
+                frmCostAnalyst f = new frmCostAnalyst(dgvRSInvoice.SelectedRows[0].Cells[dgBillingDocumentReference.Index].Value.ToString());
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please choose");
+            }
+            
         }
     }
 }
