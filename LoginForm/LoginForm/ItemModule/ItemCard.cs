@@ -483,9 +483,9 @@ namespace LoginForm.ItemModule
             if (h != null)
             {
                 txtStockNo.Text = h.ArticleNo;
-                if (h.Environment != null && h.Environment.ToString() != "" && h.Environment.ToString() != "0") { txtEnvironment.Text = "y"; } else { txtEnvironment.Text = ""; }
-                if (h.Lithium != null && h.Lithium != "" && h.Lithium != "0") { txtLithium.Text = "y"; } else { txtLithium.Text = ""; }
-                if (h.Shipping != null && h.Shipping != "" && h.Shipping != "0") { txtShipping.Text = "y"; } else { txtShipping.Text = ""; }
+                if (h.Environment != null && h.Environment.ToString() != "" && h.Environment.ToString() != "0") { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+                if (h.Lithium != null && h.Lithium != "" && h.Lithium != "0") { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
+                if (h.Shipping != null && h.Shipping != "" && h.Shipping != "0") { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
             }
             if (os != null)
             {
@@ -532,9 +532,9 @@ namespace LoginForm.ItemModule
                 if (i.TUR != null && i.TUR.ToString() != "") { txtIMETUR.Text = i.TUR.ToString(); }
                 if (i.Reserved != null && i.Reserved.ToString() != "") { txtIMEReserved.Text = i.Reserved.ToString(); }
                 if (i.HZ != null && i.HZ.ToString() != "") { txtHazardousInd.Text = i.HZ.ToString(); }
-                if (i.HE != null && i.HE.ToString() != "" && i.HE.ToString() != "0") { txtEnvironment.Text = "y"; } else { txtEnvironment.Text = ""; }
-                if (i.Li != null && i.Li.ToString() != "" && i.Li.ToString() != "0") { txtLithium.Text = "y"; } else { txtLithium.Text = ""; }
-                if (i.HS != null && i.HS.ToString() != "" && i.HS.ToString() != "0") { txtShipping.Text = "y"; } else { txtShipping.Text = ""; }
+                if (i.HE != null && i.HE.ToString() != "" && i.HE.ToString() != "0") { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+                if (i.Li != null && i.Li.ToString() != "" && i.Li.ToString() != "0") { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
+                if (i.HS != null && i.HS.ToString() != "" && i.HS.ToString() != "0") { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
                 if (i.CL != null && i.CL.ToString() != "") { txtCalibrationInd.Text = i.CL.ToString(); }
                 if (i.LC != null && i.LC.ToString() != "") { txtLicenceType.Text = i.LC.ToString(); }
                 if (i.DC != null && i.DC.ToString() != "") { txtDiscCharge.Text = i.DC.ToString(); }
@@ -568,6 +568,7 @@ namespace LoginForm.ItemModule
                 if (txtLithium.Text != "" && txtLithium.Text != "0") { label64.BackColor = Color.Red; }
                 if (txtShipping.Text != "" && txtShipping.Text != "0") { label63.BackColor = Color.Red; }
                 if (txtEnvironment.Text != "" && txtEnvironment.Text != "0") { label53.BackColor = Color.Red; }
+                if (txtHazardousInd.Text != "" && txtHazardousInd.Text != "0") { label53.BackColor = Color.Red; }
             }
         }
 
@@ -1164,9 +1165,9 @@ namespace LoginForm.ItemModule
             {
                 if (NullControl())
                 {
-                    if (txtHazardousInd.Text.ToLower() == "y")
+                    if (txtHazardousInd.Text.ToLower() == "Y")
                     {
-                        if (txtShipping.Text.ToLower() != "y" && txtEnvironment.Text.ToLower() != "y")
+                        if (txtShipping.Text.ToLower() != "Y" && txtEnvironment.Text.ToLower() != "Y")
                         {
                             MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
 
@@ -1192,9 +1193,9 @@ namespace LoginForm.ItemModule
             //{
             //    if (NullControl())
             //    {
-            //        if (txtHazardousInd.Text.ToLower() == "y")
+            //        if (txtHazardousInd.Text.ToLower() == "Y")
             //        {
-            //            if (txtShipping.Text.ToLower() != "y" && txtEnvironment.Text.ToLower() != "y")
+            //            if (txtShipping.Text.ToLower() != "Y" && txtEnvironment.Text.ToLower() != "Y")
             //            {
             //                MessageBox.Show("Hazarduse ürün, Environment(HE) yada Shipping(HS) olmalı");
                             
@@ -1245,14 +1246,14 @@ namespace LoginForm.ItemModule
             if (txtIMEBHH.Text != null && txtIMEBHH.Text != "") { i.BHH = Convert.ToInt32(txtIMEBHH.Text); }
             if (txtIMETUR.Text != null && txtIMETUR.Text != "") { i.TUR = Convert.ToInt32(txtIMETUR.Text); }
             if (txtIMEReserved.Text != null && txtIMEReserved.Text != "") { i.Reserved = Convert.ToInt32(txtIMEReserved.Text); }
-            if (txtHazardousInd.Text != null && txtHazardousInd.Text != "" && txtHazardousInd.Text.ToLower() != "y") { i.HZ = false; } else { i.HZ =true; }
-            if (txtEnvironment.Text != null && txtEnvironment.Text != "" && txtEnvironment.Text.ToLower() != "y") { i.HE = false; } else { i.HE = true; }
-            if (txtShipping.Text != null && txtShipping.Text != "" && txtShipping.Text.ToLower() != "y") { i.HS = false; } else { i.HS = true; }
-            if (txtLithium.Text != null && txtLithium.Text != "" && txtLithium.Text.ToLower() != "y") { i.Li = false; } else { i.Li = true; }
-            if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "" && txtCalibrationInd.Text.ToLower() != "y") { i.CL = false; } else { i.CL = true; }
-            if (txtLicenceType.Text != null && txtLicenceType.Text != "" && txtLicenceType.Text.ToLower() != "y") { i.LC = false; } else { i.LC = true; }
-            if (txtDiscCharge.Text != null && txtDiscCharge.Text != "" && txtDiscCharge.Text.ToLower() != "y") { i.DC = false; } else { i.DC = true; }
-            if (txtExpiringPro.Text != null && txtExpiringPro.Text != "" && txtExpiringPro.Text.ToLower() != "y") { i.EC = false; } else { i.EC = true; }
+            if (txtHazardousInd.Text != null && txtHazardousInd.Text != "" && txtHazardousInd.Text.ToLower() != "Y") { i.HZ = false; } else { i.HZ =true; }
+            if (txtEnvironment.Text != null && txtEnvironment.Text != "" && txtEnvironment.Text.ToLower() != "Y") { i.HE = false; } else { i.HE = true; }
+            if (txtShipping.Text != null && txtShipping.Text != "" && txtShipping.Text.ToLower() != "Y") { i.HS = false; } else { i.HS = true; }
+            if (txtLithium.Text != null && txtLithium.Text != "" && txtLithium.Text.ToLower() != "Y") { i.Li = false; } else { i.Li = true; }
+            if (txtCalibrationInd.Text != null && txtCalibrationInd.Text != "" && txtCalibrationInd.Text.ToLower() != "Y") { i.CL = false; } else { i.CL = true; }
+            if (txtLicenceType.Text != null && txtLicenceType.Text != "" && txtLicenceType.Text.ToLower() != "Y") { i.LC = false; } else { i.LC = true; }
+            if (txtDiscCharge.Text != null && txtDiscCharge.Text != "" && txtDiscCharge.Text.ToLower() != "Y") { i.DC = false; } else { i.DC = true; }
+            if (txtExpiringPro.Text != null && txtExpiringPro.Text != "" && txtExpiringPro.Text.ToLower() != "Y") { i.EC = false; } else { i.EC = true; }
             i.Uk_Disc_Date = txtUKDiscDate.Text;
             i.DiscontinuationDate = txtDiscontinuationDate.Text;
             if (txtRunOn.Text != null && txtRunOn.Text != "") { i.Runon = txtRunOn.Text; }
@@ -1659,6 +1660,11 @@ namespace LoginForm.ItemModule
                 btnAdd.Visible = false;
                 btnUpdate.Visible = false;
             }
+        }
+
+        private void txtHazardousInd_TextChanged(object sender, EventArgs e)
+        {
+            if (txtHazardousInd.Text != "" && txtHazardousInd.Text != "N") { label10.BackColor = Color.Red; } else { label10.BackColor = Color.FromArgb(235, 236, 239); }
         }
     }
 }

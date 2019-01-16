@@ -627,6 +627,7 @@ namespace LoginForm.ItemModule
             this.txtHazardousInd.ReadOnly = true;
             this.txtHazardousInd.Size = new System.Drawing.Size(21, 23);
             this.txtHazardousInd.TabIndex = 22;
+            this.txtHazardousInd.TextChanged += new System.EventHandler(this.txtHazardousInd_TextChanged);
             // 
             // txtDiscCharge
             // 
