@@ -69,8 +69,8 @@ namespace LoginForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            frmInvoiceIME frm = new frmInvoiceIME();
-            frm.ShowDialog();
+            //frmInvoiceIME frm = new frmInvoiceIME();
+            //frm.ShowDialog();
             this.Close();
         }
 

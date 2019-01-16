@@ -60,7 +60,6 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.btnExportToExcel.Enabled = false;
             this.btnExportToExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportToExcel.Image = global::LoginForm.Properties.Resources.if_Document_file_export_sending_exit_send_1886950;
