@@ -2737,9 +2737,9 @@ namespace LoginForm.QuotationModule
                 txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = ItemTabDetails.SupersectionName;
-                if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
-                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
-                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
+                txtEnvironment.Text = (ItemTabDetails.Environment != null && ItemTabDetails.Environment != 0) ? "Y" : "";
+                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty && ItemTabDetails.Lithium != "0") ? "Y" : "";
+                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty && ItemTabDetails.Shipping != "0") ? "Y" : "";
                 txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
                 textBox23.Text = rsf.Date.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
@@ -4396,9 +4396,9 @@ namespace LoginForm.QuotationModule
                 txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = ItemTabDetails.SupersectionName;
-                if (ItemTabDetails.Environment != null) { txtEnvironment.Text = "Y"; isEnvironment = true; } else { txtEnvironment.Text = ""; }
-                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
-                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
+                txtEnvironment.Text = (ItemTabDetails.Environment != null && ItemTabDetails.Environment != 0) ? "Y" : "";
+                txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty && ItemTabDetails.Lithium != "0") ? "Y" : "";
+                txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty && ItemTabDetails.Shipping != "0") ? "Y" : "";
 
                 if (txtLithium.Text == "Y") isLithum = true;
                 if (txtShipping.Text == "Y") isShipping = true;
