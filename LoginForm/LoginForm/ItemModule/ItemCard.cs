@@ -483,9 +483,9 @@ namespace LoginForm.ItemModule
             if (h != null)
             {
                 txtStockNo.Text = h.ArticleNo;
-                txtEnvironment.Text = h.Environment.ToString();
-                txtLithium.Text = h.Lithium;
-                txtShipping.Text = h.Shipping;
+                if (h.Environment != null && h.Environment.ToString() != "" && h.Environment.ToString() != "0") { txtEnvironment.Text = "y"; } else { txtEnvironment.Text = ""; }
+                if (h.Lithium != null && h.Lithium != "" && h.Lithium != "0") { txtLithium.Text = "y"; } else { txtLithium.Text = ""; }
+                if (h.Shipping != null && h.Shipping != "" && h.Shipping != "0") { txtShipping.Text = "y"; } else { txtShipping.Text = ""; }
             }
             if (os != null)
             {
@@ -532,9 +532,9 @@ namespace LoginForm.ItemModule
                 if (i.TUR != null && i.TUR.ToString() != "") { txtIMETUR.Text = i.TUR.ToString(); }
                 if (i.Reserved != null && i.Reserved.ToString() != "") { txtIMEReserved.Text = i.Reserved.ToString(); }
                 if (i.HZ != null && i.HZ.ToString() != "") { txtHazardousInd.Text = i.HZ.ToString(); }
-                if (i.HE != null && i.HE.ToString() != "") { txtEnvironment.Text = i.HE.ToString(); }
-                if (i.HS != null && i.HS.ToString() != "") { txtShipping.Text = i.HS.ToString(); }
-                if (i.Li != null && i.Li.ToString() != "") { txtLithium.Text = i.Li.ToString(); }
+                if (i.HE != null && i.HE.ToString() != "" && i.HE.ToString() != "0") { txtEnvironment.Text = "y"; } else { txtEnvironment.Text = ""; }
+                if (i.Li != null && i.Li.ToString() != "" && i.Li.ToString() != "0") { txtLithium.Text = "y"; } else { txtLithium.Text = ""; }
+                if (i.HS != null && i.HS.ToString() != "" && i.HS.ToString() != "0") { txtShipping.Text = "y"; } else { txtShipping.Text = ""; }
                 if (i.CL != null && i.CL.ToString() != "") { txtCalibrationInd.Text = i.CL.ToString(); }
                 if (i.LC != null && i.LC.ToString() != "") { txtLicenceType.Text = i.LC.ToString(); }
                 if (i.DC != null && i.DC.ToString() != "") { txtDiscCharge.Text = i.DC.ToString(); }
@@ -565,9 +565,9 @@ namespace LoginForm.ItemModule
 
                 //
                 #endregion
-                if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
-                if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
-                if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; }
+                if (txtLithium.Text != "" && txtLithium.Text != "0") { label64.BackColor = Color.Red; }
+                if (txtShipping.Text != "" && txtShipping.Text != "0") { label63.BackColor = Color.Red; }
+                if (txtEnvironment.Text != "" && txtEnvironment.Text != "0") { label53.BackColor = Color.Red; }
             }
         }
 
@@ -720,18 +720,18 @@ namespace LoginForm.ItemModule
 
         private void Environment_TextChanged(object sender, EventArgs e)
         {
-            if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; } else { label53.BackColor = Color.White; }
+            if (txtEnvironment.Text != "" && txtEnvironment.Text != "0") { label53.BackColor = Color.Red; } else { label53.BackColor = Color.FromArgb(235, 236, 239); }
         }
 
         private void Lithium_TextChanged(object sender, EventArgs e)
         {
-            if (txtLithium.Text != "") { label64.BackColor = Color.Red; } else { label64.BackColor = Color.White; }
+            if (txtLithium.Text != "" && txtLithium.Text != "0") { label64.BackColor = Color.Red; } else { label64.BackColor = Color.FromArgb(235, 236, 239); }
 
         }
 
         private void Shipping_TextChanged(object sender, EventArgs e)
         {
-            if (txtShipping.Text != "") { label63.BackColor = Color.Red; } else { label63.BackColor = Color.White; }
+            if (txtShipping.Text != "" && txtShipping.Text != "0") { label63.BackColor = Color.Red; } else { label63.BackColor = Color.FromArgb(235, 236, 239); }
         }
 
         private void Length_TextChanged(object sender, EventArgs e)
