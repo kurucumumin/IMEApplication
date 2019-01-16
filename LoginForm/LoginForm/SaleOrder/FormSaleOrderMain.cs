@@ -741,6 +741,7 @@ namespace LoginForm
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
+            QuotationExcelExport.ReportQuotvsSale(dgSales);
             Utils.LogKayit("Sale Order", "Sale Order excel");
         }
 

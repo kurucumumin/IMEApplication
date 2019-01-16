@@ -66,5 +66,18 @@ namespace LoginForm
             ListCost = CostReport(Document);
             dgCost.DataSource = ListCost;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            frmInvoiceIME frm = new frmInvoiceIME();
+            frm.ShowDialog();
+            this.Close();
+        }
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            QuotationExcelExport.ReportQuotvsSale(dgCost);
+            Utils.LogKayit("CostAnalyst", "Cost Analyst excel");
+        }
     }
 }
