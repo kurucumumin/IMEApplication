@@ -56,7 +56,14 @@ namespace LoginForm.QuotationModule
 
         public void ProductHistory()
         {
-            FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo(ItemCode));
+            if (ItemCode.Substring(ItemCode.Length - 1, 1) == "P")
+            {
+                FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo_P(ItemCode));
+            }
+            else
+            {
+                FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo(ItemCode));
+            }   
         }
 
         private void FillDataGridWithDataTable(DataTable dataTable)

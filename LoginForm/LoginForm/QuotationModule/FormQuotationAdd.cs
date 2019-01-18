@@ -1352,21 +1352,44 @@ namespace LoginForm.QuotationModule
                             (dgQuotationAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
                             (dgQuotationAddedItems.CurrentRow.Cells[dgStatus.Index] as DataGridViewComboBoxCell).Value = 1;
 
-                            if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                            if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Substring(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Length-1,1)=="P")
                             {
-                                if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
+                                if (new Sp_Item().GetProductHistoryWithArticleNo_P(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                                 {
-                                    btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
-                                    btnProductHistory.Enabled = true;
+                                    if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
+                                    {
+                                        btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
+                                        btnProductHistory.Enabled = true;
 
-                                    ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
 
-                                    try { f.ShowDialog(); } catch { }
+                                        try { f.ShowDialog(); } catch { }
+                                    }
+                                    else
+                                    {
+                                        btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
+                                        btnProductHistory.Enabled = false;
+                                    }
                                 }
-                                else
+                            }
+                            else
+                            {
+                                if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                                 {
-                                    btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
-                                    btnProductHistory.Enabled = false;
+                                    if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
+                                    {
+                                        btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
+                                        btnProductHistory.Enabled = true;
+
+                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+
+                                        try { f.ShowDialog(); } catch { }
+                                    }
+                                    else
+                                    {
+                                        btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
+                                        btnProductHistory.Enabled = false;
+                                    }
                                 }
                             }
 
@@ -6734,17 +6757,35 @@ namespace LoginForm.QuotationModule
         {
             if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
             {
-                if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+
+                if (dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Substring(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Length - 1, 1) == "P")
                 {
-                    //btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
-                    btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
-                    btnProductHistory.Enabled = true;
+                    if (new Sp_Item().GetProductHistoryWithArticleNo_P(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                    {
+                        btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
+                        btnProductHistory.Enabled = true;
+                    }
+                    else
+                    {
+                        btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
+                        btnProductHistory.Enabled = false;
+                    }
                 }
                 else
                 {
-                    btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
-                    btnProductHistory.Enabled = false;
+                    if (new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                    {
+                        
+                        btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
+                        btnProductHistory.Enabled = true;
+                    }
+                    else
+                    {
+                        btnProductHistory.ForeColor = Color.FromArgb(32, 31, 53);
+                        btnProductHistory.Enabled = false;
+                    }
                 }
+
             }
         }
 
