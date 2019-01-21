@@ -150,6 +150,7 @@
             this.dgCustomer.Location = new System.Drawing.Point(8, 129);
             this.dgCustomer.Margin = new System.Windows.Forms.Padding(8);
             this.dgCustomer.Name = "dgCustomer";
+            this.dgCustomer.ReadOnly = true;
             this.dgCustomer.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgCustomer.RowTemplate.Height = 24;
             this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -162,53 +163,63 @@
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             this.Date.Visible = false;
             // 
             // CustomerNo
             // 
             this.CustomerNo.HeaderText = "CustomerNo";
             this.CustomerNo.Name = "CustomerNo";
+            this.CustomerNo.ReadOnly = true;
             // 
             // CustomerName
             // 
             this.CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CustomerName.HeaderText = "Customer Name";
             this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
             // 
             // WebAddress
             // 
             this.WebAddress.HeaderText = "Web Address";
             this.WebAddress.Name = "WebAddress";
+            this.WebAddress.ReadOnly = true;
             // 
             // Telephone
             // 
             this.Telephone.HeaderText = "Telephone";
             this.Telephone.Name = "Telephone";
+            this.Telephone.ReadOnly = true;
             // 
             // Fax
             // 
             this.Fax.HeaderText = "Fax";
             this.Fax.Name = "Fax";
+            this.Fax.ReadOnly = true;
             // 
             // Representative
             // 
             this.Representative.HeaderText = "Representative";
             this.Representative.Name = "Representative";
+            this.Representative.ReadOnly = true;
             // 
             // Factor
             // 
             this.Factor.HeaderText = "Factor";
             this.Factor.Name = "Factor";
+            this.Factor.ReadOnly = true;
             // 
             // CreditDays
             // 
             this.CreditDays.HeaderText = "Credit Days";
             this.CreditDays.Name = "CreditDays";
+            this.CreditDays.ReadOnly = true;
             // 
             // CustomerNote
             // 
             this.CustomerNote.HeaderText = "Customer Note";
             this.CustomerNote.Name = "CustomerNote";
+            this.CustomerNote.ReadOnly = true;
             // 
             // panel1
             // 
