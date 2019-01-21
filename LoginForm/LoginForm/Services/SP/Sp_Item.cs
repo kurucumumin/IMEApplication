@@ -39,7 +39,7 @@ namespace LoginForm.Services.SP
             catch (Exception ex)
             {
                 imeTransaction.Rollback();
-                //MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
                 return null;
             }
             finally

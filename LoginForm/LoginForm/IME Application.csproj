@@ -485,6 +485,9 @@
     <Compile Include="DataSet\prc_GetManagement_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_P_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -495,6 +498,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\prc_GetRSInvoiceBetweenDates_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\prc_GetRSInvoiceCostAnaliz_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\prc_GetRSInvoiceDetailWithInvoiceID_Result.cs">

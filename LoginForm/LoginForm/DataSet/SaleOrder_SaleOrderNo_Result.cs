@@ -52,5 +52,7 @@ namespace LoginForm.DataSet
         public Nullable<int> BillTo { get; set; }
         public Nullable<int> ShipTo { get; set; }
         public string CurrName { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
+        public Nullable<decimal> TotalNetWeight { get; set; }
     }
 }

@@ -1866,13 +1866,22 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetManagement_Result>("prc_GetManagement");
         }
     
-        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_Result> prc_GetProductHistoryWithArticleNo(Nullable<int> articleNo)
+        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_Result> prc_GetProductHistoryWithArticleNo(string articleNo)
         {
-            var articleNoParameter = articleNo.HasValue ?
+            var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
-                new ObjectParameter("ArticleNo", typeof(int));
+                new ObjectParameter("ArticleNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_Result>("prc_GetProductHistoryWithArticleNo", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_P_Result> prc_GetProductHistoryWithArticleNo_P(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_P_Result>("prc_GetProductHistoryWithArticleNo_P", articleNoParameter);
         }
     
         public virtual ObjectResult<prc_GetRsFileHistoryWithFileType_Result> prc_GetRsFileHistoryWithFileType(string fileType)
@@ -1900,6 +1909,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ToDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceBetweenDates_Result>("prc_GetRSInvoiceBetweenDates", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetRSInvoiceCostAnaliz_Result> prc_GetRSInvoiceCostAnaliz(string billingDocumentReference)
+        {
+            var billingDocumentReferenceParameter = billingDocumentReference != null ?
+                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+                new ObjectParameter("BillingDocumentReference", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetRSInvoiceCostAnaliz_Result>("prc_GetRSInvoiceCostAnaliz", billingDocumentReferenceParameter);
         }
     
         public virtual ObjectResult<prc_GetRSInvoiceDetailWithInvoiceID_Result> prc_GetRSInvoiceDetailWithInvoiceID(Nullable<int> invoiceID)

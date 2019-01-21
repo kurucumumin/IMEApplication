@@ -56,47 +56,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgSaleAddedItems = new System.Windows.Forms.DataGridView();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuoDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgSaleDeleted = new System.Windows.Forms.DataGridView();
             this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -320,6 +284,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lblTotalNetWeight = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
             this.lblTotalWeight = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -327,9 +293,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label74 = new System.Windows.Forms.Label();
-            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.lblTotalExtra = new System.Windows.Forms.Label();
             this.lblTotalDis = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
@@ -359,6 +325,47 @@
             this.gbShipment = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSMethod = new System.Windows.Forms.ComboBox();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitTotalNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuoDetailNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -397,7 +404,7 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 186F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1322, 749);
@@ -422,8 +429,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(1310, 386);
-            this.splitContainer1.SplitterDistance = 288;
+            this.splitContainer1.Size = new System.Drawing.Size(1310, 371);
+            this.splitContainer1.SplitterDistance = 307;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 57;
             // 
@@ -442,6 +449,7 @@
             this.CL,
             this.LC,
             this.LM,
+            this.WT,
             this.dgSupplier,
             this.dgProductCode,
             this.dgBrand,
@@ -468,6 +476,8 @@
             this.dgDelivery,
             this.dgUnitWeigt,
             this.dgTotalWeight,
+            this.dgUnitNetWeight,
+            this.dgUnitTotalNetWeight,
             this.dgCustStkCode,
             this.dgCustDescription,
             this.dgCOO,
@@ -478,369 +488,18 @@
             this.dgSaleAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgSaleAddedItems.MultiSelect = false;
             this.dgSaleAddedItems.Name = "dgSaleAddedItems";
-            this.dgSaleAddedItems.Size = new System.Drawing.Size(1306, 284);
+            this.dgSaleAddedItems.Size = new System.Drawing.Size(1306, 303);
             this.dgSaleAddedItems.TabIndex = 9;
             this.dgSaleAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaleAddedItems_CellClick);
             this.dgSaleAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaleAddedItems_CellEndEdit);
             this.dgSaleAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSaleAddedItems_CellValidating);
+            this.dgSaleAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgSaleAddedItems_DataError);
+            this.dgSaleAddedItems.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgSaleAddedItems_EditingControlShowing);
             this.dgSaleAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgSaleAddedItems_RowsAdded);
             this.dgSaleAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgSaleAddedItems_RowsRemoved);
             this.dgSaleAddedItems.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgSaleAddedItems_SortCompare);
             this.dgSaleAddedItems.Click += new System.EventHandler(this.dgSaleAddedItems_Click);
             this.dgSaleAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgSaleAddedItems_KeyDown);
-            // 
-            // dgNo
-            // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N1";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgNo.Frozen = true;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.Width = 30;
-            // 
-            // HS
-            // 
-            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
-            this.HS.Frozen = true;
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 25;
-            // 
-            // LI
-            // 
-            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
-            this.LI.Frozen = true;
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 25;
-            // 
-            // CL
-            // 
-            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CL.Frozen = true;
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 25;
-            // 
-            // LC
-            // 
-            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
-            this.LC.Frozen = true;
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 25;
-            // 
-            // LM
-            // 
-            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
-            this.LM.Frozen = true;
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 25;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgSupplier.Frozen = true;
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.Width = 70;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgProductCode.Frozen = true;
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            this.dgProductCode.Width = 74;
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgBrand.Frozen = true;
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.Width = 60;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgMPN.Frozen = true;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.Width = 56;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgDesc.Frozen = true;
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.Width = 85;
-            // 
-            // dgUKPrice
-            // 
-            this.dgUKPrice.HeaderText = "UK Price";
-            this.dgUKPrice.Name = "dgUKPrice";
-            // 
-            // dgCost
-            // 
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle13.Format = "N3";
-            dataGridViewCellStyle13.NullValue = null;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.Width = 89;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgMargin.HeaderText = "Margin";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.Width = 64;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.Width = 48;
-            // 
-            // dgStock
-            // 
-            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.Width = 60;
-            // 
-            // dgUOM
-            // 
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.Width = 57;
-            // 
-            // dgSSM
-            // 
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            // 
-            // dgUC
-            // 
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.Width = 90;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            this.dgDisc.Width = 68;
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            this.dgUCUPCurr.Width = 97;
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.Width = 67;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            this.dgTargetUP.Width = 79;
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            this.dgCompetitor.Width = 82;
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.Visible = false;
-            // 
-            // dgCL
-            // 
-            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.Visible = false;
-            // 
-            // dgCR
-            // 
-            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.Visible = false;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDelivery.DataPropertyName = "6 Weeks";
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgDelivery.Width = 70;
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle25;
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.Width = 96;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.Width = 88;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            this.dgCustStkCode.Width = 92;
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            this.dgCustDescription.Width = 103;
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle27;
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.Width = 55;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle28;
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.Width = 69;
-            // 
-            // dgDependantTable
-            // 
-            this.dgDependantTable.HeaderText = "dgDependantTable";
-            this.dgDependantTable.Name = "dgDependantTable";
-            this.dgDependantTable.Visible = false;
-            // 
-            // QuoDetailNo
-            // 
-            this.QuoDetailNo.HeaderText = "QuoDetailNo";
-            this.QuoDetailNo.Name = "QuoDetailNo";
-            this.QuoDetailNo.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -854,7 +513,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1306, 89);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1306, 55);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgSaleDeleted
@@ -902,7 +561,7 @@
             this.dgSaleDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSaleDeleted.Location = new System.Drawing.Point(3, 48);
             this.dgSaleDeleted.Name = "dgSaleDeleted";
-            this.dgSaleDeleted.Size = new System.Drawing.Size(1300, 38);
+            this.dgSaleDeleted.Size = new System.Drawing.Size(1300, 4);
             this.dgSaleDeleted.TabIndex = 10;
             this.dgSaleDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSaleDeleted_CellValidating);
             this.dgSaleDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -1638,7 +1297,6 @@
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.Size = new System.Drawing.Size(267, 20);
             this.txtCustomerName.TabIndex = 75;
-            this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // CustomerCode
             // 
@@ -2965,17 +2623,17 @@
             this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Controls.Add(this.gbShipment);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 580);
+            this.panel1.Location = new System.Drawing.Point(2, 565);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1318, 167);
+            this.panel1.Size = new System.Drawing.Size(1318, 182);
             this.panel1.TabIndex = 58;
             // 
             // label75
             // 
             this.label75.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(1222, 144);
+            this.label75.Location = new System.Drawing.Point(1222, 159);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(32, 13);
             this.label75.TabIndex = 61;
@@ -2985,7 +2643,7 @@
             // 
             this.label76.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(1272, 143);
+            this.label76.Location = new System.Drawing.Point(1272, 158);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(33, 13);
             this.label76.TabIndex = 62;
@@ -2996,7 +2654,7 @@
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.label67);
             this.groupBox4.Controls.Add(this.cbPaymentTerm);
-            this.groupBox4.Location = new System.Drawing.Point(515, 70);
+            this.groupBox4.Location = new System.Drawing.Point(515, 78);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(256, 43);
             this.groupBox4.TabIndex = 53;
@@ -3026,7 +2684,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.label69);
             this.groupBox2.Controls.Add(this.cbOrderNature);
-            this.groupBox2.Location = new System.Drawing.Point(660, 11);
+            this.groupBox2.Location = new System.Drawing.Point(660, 19);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(111, 53);
             this.groupBox2.TabIndex = 52;
@@ -3058,7 +2716,7 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.ForeColor = System.Drawing.Color.Transparent;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(1208, 92);
+            this.btnSave.Location = new System.Drawing.Point(1208, 107);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 8;
@@ -3070,7 +2728,7 @@
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(1260, 91);
+            this.btnClose.Location = new System.Drawing.Point(1260, 106);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 9;
@@ -3080,6 +2738,8 @@
             // groupBox11
             // 
             this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.lblTotalNetWeight);
+            this.groupBox11.Controls.Add(this.label81);
             this.groupBox11.Controls.Add(this.lblTotalWeight);
             this.groupBox11.Controls.Add(this.label42);
             this.groupBox11.Controls.Add(this.panel8);
@@ -3087,9 +2747,9 @@
             this.groupBox11.Controls.Add(this.panel6);
             this.groupBox11.Controls.Add(this.panel5);
             this.groupBox11.Controls.Add(this.panel3);
+            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.panel4);
             this.groupBox11.Controls.Add(this.label74);
-            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblTotalDis);
             this.groupBox11.Controls.Add(this.lblVat);
@@ -3106,15 +2766,34 @@
             this.groupBox11.Controls.Add(this.label39);
             this.groupBox11.Controls.Add(this.label34);
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
-            this.groupBox11.Location = new System.Drawing.Point(777, 4);
+            this.groupBox11.Location = new System.Drawing.Point(777, 3);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(336, 155);
+            this.groupBox11.Size = new System.Drawing.Size(336, 172);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
+            // lblTotalNetWeight
+            // 
+            this.lblTotalNetWeight.Location = new System.Drawing.Point(170, 149);
+            this.lblTotalNetWeight.Name = "lblTotalNetWeight";
+            this.lblTotalNetWeight.Size = new System.Drawing.Size(73, 17);
+            this.lblTotalNetWeight.TabIndex = 77;
+            this.lblTotalNetWeight.Text = "0,00";
+            this.lblTotalNetWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(5, 152);
+            this.label81.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(88, 13);
+            this.label81.TabIndex = 76;
+            this.label81.Text = "Total Net Weight";
+            // 
             // lblTotalWeight
             // 
-            this.lblTotalWeight.Location = new System.Drawing.Point(153, 115);
+            this.lblTotalWeight.Location = new System.Drawing.Point(170, 127);
             this.lblTotalWeight.Name = "lblTotalWeight";
             this.lblTotalWeight.Size = new System.Drawing.Size(73, 17);
             this.lblTotalWeight.TabIndex = 75;
@@ -3124,17 +2803,17 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(5, 117);
+            this.label42.Location = new System.Drawing.Point(5, 129);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(68, 13);
+            this.label42.Size = new System.Drawing.Size(98, 13);
             this.label42.TabIndex = 74;
-            this.label42.Text = "Total Weight";
+            this.label42.Text = "Total Gross Weight";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.DarkGray;
-            this.panel8.Location = new System.Drawing.Point(3, 134);
+            this.panel8.Location = new System.Drawing.Point(3, 146);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(240, 2);
             this.panel8.TabIndex = 73;
@@ -3142,7 +2821,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.DarkGray;
-            this.panel7.Location = new System.Drawing.Point(3, 113);
+            this.panel7.Location = new System.Drawing.Point(3, 125);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(240, 2);
             this.panel7.TabIndex = 72;
@@ -3150,7 +2829,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DarkGray;
-            this.panel6.Location = new System.Drawing.Point(3, 87);
+            this.panel6.Location = new System.Drawing.Point(3, 99);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(240, 2);
             this.panel6.TabIndex = 71;
@@ -3158,7 +2837,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Location = new System.Drawing.Point(3, 66);
+            this.panel5.Location = new System.Drawing.Point(3, 78);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(240, 2);
             this.panel5.TabIndex = 70;
@@ -3166,15 +2845,26 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(3, 43);
+            this.panel3.Location = new System.Drawing.Point(3, 55);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(240, 2);
             this.panel3.TabIndex = 69;
             // 
+            // cbDeliverDiscount
+            // 
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(3, 13);
+            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(115, 15);
+            this.cbDeliverDiscount.TabIndex = 58;
+            this.cbDeliverDiscount.Text = "Distribute Discount";
+            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
+            this.cbDeliverDiscount.Visible = false;
+            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkGray;
-            this.panel4.Location = new System.Drawing.Point(3, 22);
+            this.panel4.Location = new System.Drawing.Point(3, 34);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(240, 2);
             this.panel4.TabIndex = 68;
@@ -3182,28 +2872,17 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(2, 49);
+            this.label74.Location = new System.Drawing.Point(2, 61);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(73, 13);
             this.label74.TabIndex = 60;
             this.label74.Text = "Extra Charges";
             // 
-            // cbDeliverDiscount
-            // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(9, 133);
-            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
-            this.cbDeliverDiscount.Size = new System.Drawing.Size(126, 27);
-            this.cbDeliverDiscount.TabIndex = 58;
-            this.cbDeliverDiscount.Text = "Distribute Discount";
-            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
-            this.cbDeliverDiscount.Visible = false;
-            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
-            // 
             // lblTotalExtra
             // 
-            this.lblTotalExtra.Location = new System.Drawing.Point(147, 49);
+            this.lblTotalExtra.Location = new System.Drawing.Point(173, 60);
             this.lblTotalExtra.Name = "lblTotalExtra";
-            this.lblTotalExtra.Size = new System.Drawing.Size(78, 14);
+            this.lblTotalExtra.Size = new System.Drawing.Size(70, 14);
             this.lblTotalExtra.TabIndex = 57;
             this.lblTotalExtra.Text = "0,00";
             this.lblTotalExtra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3212,7 +2891,7 @@
             // lblTotalDis
             // 
             this.lblTotalDis.AutoSize = true;
-            this.lblTotalDis.Location = new System.Drawing.Point(204, 18);
+            this.lblTotalDis.Location = new System.Drawing.Point(204, 30);
             this.lblTotalDis.Name = "lblTotalDis";
             this.lblTotalDis.Size = new System.Drawing.Size(0, 13);
             this.lblTotalDis.TabIndex = 56;
@@ -3221,7 +2900,7 @@
             // 
             this.lblVat.AutoSize = true;
             this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblVat.Location = new System.Drawing.Point(89, 69);
+            this.lblVat.Location = new System.Drawing.Point(118, 83);
             this.lblVat.Name = "lblVat";
             this.lblVat.Size = new System.Drawing.Size(24, 16);
             this.lblVat.TabIndex = 55;
@@ -3231,7 +2910,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label40.Location = new System.Drawing.Point(124, 69);
+            this.label40.Location = new System.Drawing.Point(153, 83);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(20, 16);
             this.label40.TabIndex = 54;
@@ -3239,7 +2918,7 @@
             // 
             // lbltotal
             // 
-            this.lbltotal.Location = new System.Drawing.Point(147, 26);
+            this.lbltotal.Location = new System.Drawing.Point(165, 38);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(78, 14);
             this.lbltotal.TabIndex = 53;
@@ -3250,7 +2929,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(2, 26);
+            this.label52.Location = new System.Drawing.Point(6, 39);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(31, 13);
             this.label52.TabIndex = 52;
@@ -3260,7 +2939,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(144, 2);
+            this.label4.Location = new System.Drawing.Point(176, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 16);
             this.label4.TabIndex = 23;
@@ -3268,7 +2947,7 @@
             // 
             // txtExtraCharges
             // 
-            this.txtExtraCharges.Location = new System.Drawing.Point(89, 46);
+            this.txtExtraCharges.Location = new System.Drawing.Point(119, 58);
             this.txtExtraCharges.Name = "txtExtraCharges";
             this.txtExtraCharges.Size = new System.Drawing.Size(54, 20);
             this.txtExtraCharges.TabIndex = 20;
@@ -3279,7 +2958,7 @@
             // 
             // lblVatTotal
             // 
-            this.lblVatTotal.Location = new System.Drawing.Point(147, 71);
+            this.lblVatTotal.Location = new System.Drawing.Point(165, 83);
             this.lblVatTotal.Name = "lblVatTotal";
             this.lblVatTotal.Size = new System.Drawing.Size(78, 14);
             this.lblVatTotal.TabIndex = 18;
@@ -3289,7 +2968,7 @@
             // 
             // txtTotalDis2
             // 
-            this.txtTotalDis2.Location = new System.Drawing.Point(172, 1);
+            this.txtTotalDis2.Location = new System.Drawing.Point(200, 10);
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
@@ -3301,7 +2980,7 @@
             this.chkVat.AutoSize = true;
             this.chkVat.Checked = true;
             this.chkVat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVat.Location = new System.Drawing.Point(8, 69);
+            this.chkVat.Location = new System.Drawing.Point(8, 81);
             this.chkVat.Name = "chkVat";
             this.chkVat.Size = new System.Drawing.Size(47, 17);
             this.chkVat.TabIndex = 17;
@@ -3311,7 +2990,7 @@
             // 
             // txtTotalDis
             // 
-            this.txtTotalDis.Location = new System.Drawing.Point(89, 1);
+            this.txtTotalDis.Location = new System.Drawing.Point(121, 10);
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis.TabIndex = 13;
@@ -3320,7 +2999,7 @@
             // 
             // lblGrossTotal
             // 
-            this.lblGrossTotal.Location = new System.Drawing.Point(147, 95);
+            this.lblGrossTotal.Location = new System.Drawing.Point(165, 107);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(78, 14);
             this.lblGrossTotal.TabIndex = 12;
@@ -3331,7 +3010,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(5, 95);
+            this.label39.Location = new System.Drawing.Point(5, 107);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(61, 13);
             this.label39.TabIndex = 5;
@@ -3340,7 +3019,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(3, 3);
+            this.label34.Location = new System.Drawing.Point(2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(85, 13);
             this.label34.TabIndex = 0;
@@ -3353,9 +3032,9 @@
             this.groupBox7.Controls.Add(this.grpBillTo);
             this.groupBox7.Controls.Add(this.chkbForFinance);
             this.groupBox7.Controls.Add(this.txtNoteForUs);
-            this.groupBox7.Location = new System.Drawing.Point(9, 10);
+            this.groupBox7.Location = new System.Drawing.Point(9, 18);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(500, 146);
+            this.groupBox7.Size = new System.Drawing.Size(500, 161);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Notes For Us";
@@ -3366,7 +3045,7 @@
             this.grpShipto.Controls.Add(this.btnShipTo);
             this.grpShipto.Controls.Add(this.txtShipTo);
             this.grpShipto.Controls.Add(this.label78);
-            this.grpShipto.Location = new System.Drawing.Point(240, 87);
+            this.grpShipto.Location = new System.Drawing.Point(240, 114);
             this.grpShipto.Name = "grpShipto";
             this.grpShipto.Size = new System.Drawing.Size(233, 43);
             this.grpShipto.TabIndex = 56;
@@ -3406,7 +3085,7 @@
             this.grpBillTo.Controls.Add(this.btnBillTo);
             this.grpBillTo.Controls.Add(this.label79);
             this.grpBillTo.Controls.Add(this.txtBillTo);
-            this.grpBillTo.Location = new System.Drawing.Point(7, 87);
+            this.grpBillTo.Location = new System.Drawing.Point(7, 114);
             this.grpBillTo.Name = "grpBillTo";
             this.grpBillTo.Size = new System.Drawing.Size(227, 43);
             this.grpBillTo.TabIndex = 55;
@@ -3455,7 +3134,7 @@
             this.txtNoteForUs.Location = new System.Drawing.Point(6, 18);
             this.txtNoteForUs.Multiline = true;
             this.txtNoteForUs.Name = "txtNoteForUs";
-            this.txtNoteForUs.Size = new System.Drawing.Size(404, 44);
+            this.txtNoteForUs.Size = new System.Drawing.Size(404, 82);
             this.txtNoteForUs.TabIndex = 0;
             // 
             // gbShipment
@@ -3463,7 +3142,7 @@
             this.gbShipment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbShipment.Controls.Add(this.label7);
             this.gbShipment.Controls.Add(this.cbSMethod);
-            this.gbShipment.Location = new System.Drawing.Point(515, 10);
+            this.gbShipment.Location = new System.Drawing.Point(515, 18);
             this.gbShipment.Name = "gbShipment";
             this.gbShipment.Size = new System.Drawing.Size(139, 54);
             this.gbShipment.TabIndex = 46;
@@ -3491,6 +3170,388 @@
             this.cbSMethod.Size = new System.Drawing.Size(121, 21);
             this.cbSMethod.TabIndex = 8;
             this.cbSMethod.Text = "Air Freight";
+            // 
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Format = "N1";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgNo.Frozen = true;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.Width = 30;
+            // 
+            // HS
+            // 
+            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
+            this.HS.Frozen = true;
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 25;
+            // 
+            // LI
+            // 
+            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LI.Frozen = true;
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 25;
+            // 
+            // CL
+            // 
+            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CL.Frozen = true;
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 25;
+            // 
+            // LC
+            // 
+            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
+            this.LC.Frozen = true;
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 25;
+            // 
+            // LM
+            // 
+            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
+            this.LM.Frozen = true;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 25;
+            // 
+            // WT
+            // 
+            this.WT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.WT.Frozen = true;
+            this.WT.HeaderText = "WT";
+            this.WT.Name = "WT";
+            this.WT.ReadOnly = true;
+            this.WT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.WT.Width = 25;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgSupplier.Frozen = true;
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.Width = 70;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgProductCode.Frozen = true;
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            this.dgProductCode.Width = 80;
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgBrand.Frozen = true;
+            this.dgBrand.HeaderText = "Manuf.";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.Width = 65;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgMPN.Frozen = true;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.Width = 56;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgDesc.Frozen = true;
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.Width = 85;
+            // 
+            // dgUKPrice
+            // 
+            this.dgUKPrice.HeaderText = "UK Price";
+            this.dgUKPrice.Name = "dgUKPrice";
+            // 
+            // dgCost
+            // 
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle13.Format = "N3";
+            dataGridViewCellStyle13.NullValue = null;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.Width = 89;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.Width = 64;
+            // 
+            // dgQty
+            // 
+            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            this.dgQty.Width = 48;
+            // 
+            // dgStock
+            // 
+            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.Width = 60;
+            // 
+            // dgUOM
+            // 
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.Width = 57;
+            // 
+            // dgSSM
+            // 
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            // 
+            // dgUC
+            // 
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.Width = 90;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.Width = 68;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            this.dgUCUPCurr.Width = 97;
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.Width = 67;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            this.dgTargetUP.Width = 79;
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            this.dgCompetitor.Width = 82;
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.Visible = false;
+            this.dgHZ.Width = 47;
+            // 
+            // dgCL
+            // 
+            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.Visible = false;
+            this.dgCL.Width = 45;
+            // 
+            // dgCR
+            // 
+            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.Visible = false;
+            this.dgCR.Width = 47;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDelivery.DataPropertyName = "6 Weeks";
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgDelivery.Width = 70;
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle25.Format = "N4";
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle25;
+            this.dgUnitWeigt.HeaderText = "Gross Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.Width = 86;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle26.Format = "N4";
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dgTotalWeight.HeaderText = "Total Gross Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.Width = 115;
+            // 
+            // dgUnitNetWeight
+            // 
+            dataGridViewCellStyle27.Format = "N4";
+            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle27;
+            this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
+            this.dgUnitNetWeight.Name = "dgUnitNetWeight";
+            // 
+            // dgUnitTotalNetWeight
+            // 
+            dataGridViewCellStyle28.Format = "N4";
+            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle28;
+            this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
+            this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            this.dgCustStkCode.Width = 92;
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            this.dgCustDescription.Width = 103;
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle29;
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.Width = 55;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle30;
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.Width = 69;
+            // 
+            // dgDependantTable
+            // 
+            this.dgDependantTable.HeaderText = "dgDependantTable";
+            this.dgDependantTable.Name = "dgDependantTable";
+            this.dgDependantTable.Visible = false;
+            // 
+            // QuoDetailNo
+            // 
+            this.QuoDetailNo.HeaderText = "QuoDetailNo";
+            this.QuoDetailNo.Name = "QuoDetailNo";
+            this.QuoDetailNo.Visible = false;
             // 
             // FormSaleOrderAdd
             // 
@@ -3809,6 +3870,8 @@
         private System.Windows.Forms.Button btnShipTo;
         private System.Windows.Forms.TextBox txtShipTo;
         private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label lblTotalNetWeight;
+        private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label lblTotalWeight;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
@@ -3817,6 +3880,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CL;
         private System.Windows.Forms.DataGridViewTextBoxColumn LC;
         private System.Windows.Forms.DataGridViewTextBoxColumn LM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WT;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
@@ -3843,6 +3907,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dgDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitNetWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitTotalNetWeight;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;

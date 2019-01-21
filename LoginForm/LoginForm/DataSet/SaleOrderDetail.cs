@@ -45,6 +45,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UKPrice { get; set; }
         public string MPN { get; set; }
         public Nullable<decimal> Cost { get; set; }
+        public Nullable<decimal> UnitNetWeight { get; set; }
+        public string Manufacturer { get; set; }
+        public string SupplierName { get; set; }
     
         public virtual QuotationDelivery QuotationDelivery { get; set; }
         public virtual QuotationDetail QuotationDetail { get; set; }
