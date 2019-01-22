@@ -1190,6 +1190,10 @@ namespace LoginForm.QuotationModule
                         {
                             dgSaleAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
                         }
+                        else
+                        {
+                            dgSaleAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Ivory;
+                        }
 
                     }
                     else
@@ -2695,7 +2699,7 @@ namespace LoginForm.QuotationModule
                                 if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value.ToString();
                                 if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
                                 if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value.ToString());
-                                if (row.Cells[dgDisc.Index].Value != null)
+                                if (row.Cells[dgDisc.Index].Value != null && row.Cells[dgDisc.Index].Value.ToString() != "")
                                 {
                                     sdi.Discount = Decimal.Parse(row.Cells[dgDisc.Index].Value.ToString());
                                 }
@@ -4809,6 +4813,11 @@ namespace LoginForm.QuotationModule
                 //cbInvoiceAdress.Items.AddRange(IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text).Where(x=> x.isInvoiceAddress==true).ToArray());
                 cbInvoiceAdress.DisplayMember = "AdressTitle";
                 cbInvoiceAdress.ValueMember = "ID";
+
+                cbDeliveryAddress.DataSource = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text && a.isDeliveryAddress == true).ToList();
+                // cbDeliveryAddress.Items.AddRange(IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text).ToArray());
+                cbDeliveryAddress.DisplayMember = "AdressTitle";
+                cbDeliveryAddress.ValueMember = "ID";
             }
         }
 
@@ -4878,6 +4887,11 @@ namespace LoginForm.QuotationModule
                 // cbDeliveryAddress.Items.AddRange(IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text).ToArray());
                 cbDeliveryAddress.DisplayMember = "AdressTitle";
                 cbDeliveryAddress.ValueMember = "ID";
+
+                cbInvoiceAdress.DataSource = IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text && a.isInvoiceAddress == true).ToList();
+                //cbInvoiceAdress.Items.AddRange(IME.CustomerAddresses.Where(a => a.CustomerID == CustomerCode.Text).Where(x=> x.isInvoiceAddress==true).ToArray());
+                cbInvoiceAdress.DisplayMember = "AdressTitle";
+                cbInvoiceAdress.ValueMember = "ID";
             }
         }
 
@@ -5074,7 +5088,7 @@ namespace LoginForm.QuotationModule
                     if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value?.ToString();
                     if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
                     if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value?.ToString());
-                    if (row.Cells[dgDisc.Index].Value != null)
+                    if (row.Cells[dgDisc.Index].Value != null && row.Cells[dgDisc.Index].Value.ToString() != "")
                     {
                         sdi.Discount = Decimal.Parse(row.Cells[dgDisc.Index].Value.ToString());
                     }
@@ -5309,7 +5323,20 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                CustomerMain f = new CustomerMain(true, CustomerCode.Text);
+                Customer c;
+
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    c = IME.Customers.Where(q => q.ID == CustomerCode.Text).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                FormCustomerAdd f = new FormCustomerAdd(c, "Quotation");
                 f.ShowDialog();
             }
         }
