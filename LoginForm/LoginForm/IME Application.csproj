@@ -488,7 +488,13 @@
     <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_P_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\prc_GetProductHistoryWithArticleNo_SaleOrder_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\prc_GetRsFileHistoryWithFileType_Result.cs">

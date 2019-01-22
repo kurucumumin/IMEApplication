@@ -18,7 +18,7 @@ namespace LoginForm.QuotationModule
         SqlDataAdapter da;
         System.Data.DataSet ds=new System.Data.DataSet();
         string ItemCode;
-
+        string mod;
         public ViewProductHistory()
         {
             InitializeComponent();
@@ -42,31 +42,71 @@ namespace LoginForm.QuotationModule
             dgProductHistory.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        public ViewProductHistory(string item_code)
+        public ViewProductHistory(string item_code, string mod)
         {
             InitializeComponent();
             this.ItemCode = item_code;
+            this.mod = mod;
             SetDataGridSettings();
         }
 
         private void ViewProductHistory_Load(object sender, EventArgs e)
         {
-            ProductHistory();
-        }
-
-        public void ProductHistory()
-        {
-            if (ItemCode.Substring(ItemCode.Length - 1, 1) == "P")
+            if (mod=="Quotation")
             {
-                FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo_P(ItemCode));
+                ProductHistoryQuotation();
             }
             else
             {
-                FillDataGridWithDataTable(new Sp_Item().GetProductHistoryWithArticleNo(ItemCode));
+                ProductHistorySaleOrder();
+            }
+        }
+
+        public void ProductHistoryQuotation()
+        {
+            if (ItemCode.Substring(ItemCode.Length - 1, 1) == "P")
+            {
+                FillDataGridWithDataTableQuotation(new Sp_Item().GetProductHistoryWithArticleNo_P(ItemCode));
+            }
+            else
+            {
+                FillDataGridWithDataTableQuotation(new Sp_Item().GetProductHistoryWithArticleNo(ItemCode));
             }   
         }
 
-        private void FillDataGridWithDataTable(DataTable dataTable)
+        public void ProductHistorySaleOrder()
+        {
+            if (ItemCode.Substring(ItemCode.Length - 1, 1) == "P")
+            {
+                FillDataGridWithDataTableSaleOrder(new Sp_Item().GetProductHistoryWithArticleNo_P_SaleOrder(ItemCode));
+            }
+            else
+            {
+                FillDataGridWithDataTableSaleOrder(new Sp_Item().GetProductHistoryWithArticleNo_SaleOrder(ItemCode));
+            }
+        }
+
+        private void FillDataGridWithDataTableQuotation(DataTable dataTable)
+        {
+            foreach (DataRow item in dataTable.Rows)
+            {
+                DataGridViewRow row = dgProductHistory.Rows[dgProductHistory.Rows.Add()];
+
+                row.Cells[dgcRsCode.Index].Value = item["RSCode"];
+                row.Cells[dgcCustomerCode.Index].Value = item["CustomerCode"];
+                row.Cells[dgcCustomerName.Index].Value = item["CustomerName"];
+                row.Cells[dgcDate.Index].Value = item["Date"];
+                row.Cells[dgcQuotationNo.Index].Value = item["QuotNo"];
+                row.Cells[dgcQuantity.Index].Value = item["QTY"];
+                row.Cells[dgcUP.Index].Value = item["UP"];
+                row.Cells[dgLandingCost.Index].Value = item["LandingCost"];
+                row.Cells[dgMargin.Index].Value = item["Margin"];
+                row.Cells[dgcCurrency.Index].Value = item["Curr"];
+                row.Cells[dgcStatus.Index].Value = item["Status"];
+            }
+        }
+
+        private void FillDataGridWithDataTableSaleOrder(DataTable dataTable)
         {
             foreach (DataRow item in dataTable.Rows)
             {

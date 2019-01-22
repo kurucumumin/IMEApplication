@@ -1361,7 +1361,7 @@ namespace LoginForm.QuotationModule
                                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                                         btnProductHistory.Enabled = true;
 
-                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString(), "Quotation");
 
                                         try { f.ShowDialog(); } catch { }
                                     }
@@ -1381,7 +1381,7 @@ namespace LoginForm.QuotationModule
                                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                                         btnProductHistory.Enabled = true;
 
-                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+                                        ViewProductHistory f = new ViewProductHistory(dgQuotationAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString(), "Quotation");
 
                                         try { f.ShowDialog(); } catch { }
                                     }
@@ -5744,7 +5744,7 @@ namespace LoginForm.QuotationModule
                 DialogResult dialogResult = MessageBox.Show("Item quoted before", "", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
-                    ViewProductHistory f = new ViewProductHistory(item_code);
+                    ViewProductHistory f = new ViewProductHistory(item_code, "Quotation");
                     try { f.ShowDialog(); } catch { }
                 }
             }

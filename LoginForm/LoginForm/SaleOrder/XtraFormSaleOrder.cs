@@ -3928,7 +3928,7 @@ namespace LoginForm
                 MessageBox.Show("Please Enter an Item Code", "Error!");
             else
             {
-                ViewProductHistory f = new ViewProductHistory(item_code);
+                ViewProductHistory f = new ViewProductHistory(item_code, "SaleOrder");
                 try { f.ShowDialog(); } catch { }
             }
             #endregion

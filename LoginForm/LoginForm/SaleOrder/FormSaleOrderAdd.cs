@@ -15,7 +15,7 @@ using LoginForm.Services.SP;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormSaleOrderAdd : MyForm
+    public partial class FormSaleOrderAdd : DevExpress.XtraEditors.XtraForm
     {
         private string sptr = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
         private List<clsBidL> liste = new List<clsBidL>();
@@ -479,8 +479,8 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgTotal.Index].Value = item.Total;
                     row.Cells[dgTargetUP.Index].Value = item.TargetUP;
                     row.Cells[dgCompetitor.Index].Value = item.Competitor;
+                    row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
                     row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Quantity;
-                    row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitWeight * item.Quantity;
                     row.Cells[dgUnitNetWeight.Index].Value = item.UnitNetWeight;
                     row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitNetWeight * item.Quantity;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
@@ -1101,14 +1101,14 @@ namespace LoginForm.QuotationModule
                             (dgSaleAddedItems.CurrentRow.Cells[dgDelivery.Index] as DataGridViewComboBoxCell).Value = 3;
                             if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Substring(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Length - 1, 1) == "P")
                             {
-                                if (new Sp_Item().GetProductHistoryWithArticleNo_P(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                                if (new Sp_Item().GetProductHistoryWithArticleNo_P_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                                 {
                                     if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
                                     {
                                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                                         btnProductHistory.Enabled = true;
 
-                                        ViewProductHistory f = new ViewProductHistory(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+                                        ViewProductHistory f = new ViewProductHistory(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString(), "SaleOrder");
 
                                         try { f.ShowDialog(); } catch { }
                                     }
@@ -1121,14 +1121,14 @@ namespace LoginForm.QuotationModule
                             }
                             else
                             {
-                                if (new Sp_Item().GetProductHistoryWithArticleNo(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                                if (new Sp_Item().GetProductHistoryWithArticleNo_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                                 {
                                     if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value != null)
                                     {
                                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                                         btnProductHistory.Enabled = true;
 
-                                        ViewProductHistory f = new ViewProductHistory(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString());
+                                        ViewProductHistory f = new ViewProductHistory(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString(), "SaleOrder");
 
                                         try { f.ShowDialog(); } catch { }
                                     }
@@ -2730,6 +2730,7 @@ namespace LoginForm.QuotationModule
                                 if (row.Cells[dgUC.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC.Index].Value?.ToString());
                                 if (row.Cells[dgSSM.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM.Index].Value?.ToString());
                                 if (row.Cells[dgUnitWeigt.Index].Value != null) try { sdi.UnitWeight = Decimal.Parse(row.Cells["dgUnitWeigt"].Value?.ToString()); } catch { }
+                                if (row.Cells[dgUnitNetWeight.Index].Value != null) try { sdi.UnitNetWeight = Decimal.Parse(row.Cells[dgUnitNetWeight.Index].Value?.ToString()); } catch { }
                                 if (row.Cells[dgDependantTable.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable.Index].Value?.ToString();
                                 if (row.Cells[dgHZ.Index].Value != null)
                                 {
@@ -4284,7 +4285,7 @@ namespace LoginForm.QuotationModule
                 DialogResult dialogResult = MessageBox.Show("Item quoted before", "", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
-                    ViewProductHistory f = new ViewProductHistory(item_code);
+                    ViewProductHistory f = new ViewProductHistory(item_code, "SaleOrder");
                     try { f.ShowDialog(); } catch { }
                 }
             }
@@ -5100,6 +5101,7 @@ namespace LoginForm.QuotationModule
                     if (row.Cells[dgUC.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC.Index].Value?.ToString());
                     if (row.Cells[dgSSM.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM.Index].Value?.ToString());
                     if (row.Cells[dgUnitWeigt.Index].Value != null) try { sdi.UnitWeight = Decimal.Parse(row.Cells["dgUnitWeigt"].Value?.ToString()); } catch { }
+                    if (row.Cells[dgUnitNetWeight.Index].Value != null) try { sdi.UnitNetWeight = Decimal.Parse(row.Cells[dgUnitNetWeight.Index].Value?.ToString()); } catch { }
                     if (row.Cells[dgDependantTable.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable.Index].Value?.ToString();
                     if (row.Cells[dgHZ.Index].Value != null)
                     {
@@ -5470,12 +5472,11 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgTotal.Index].Value = item.Total;
                     row.Cells[dgTargetUP.Index].Value = item.TargetUP;
                     row.Cells[dgCompetitor.Index].Value = item.Competitor;
+                    row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
                     row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
-                    row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitWeight * item.Qty;
                     row.Cells[dgUnitNetWeight.Index].Value = item.UnitNetWeight;
                     row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitNetWeight * item.Qty;
                     row.Cells[dgUKPrice.Index].Value = item.UKPrice;
-                    row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Qty;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
                     row.Cells[dgCustDescription.Index].Value = item.CustomerDesc;
                     row.Cells[dgMargin.Index].Value = item.Marge;
@@ -5622,8 +5623,8 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgTargetUP.Index].Value = item.TargetUP;
                     row.Cells[dgCompetitor.Index].Value = item.Competitor;
                     row.Cells[dgUKPrice.Index].Value = item.UKPrice;
+                    row.Cells[dgUnitWeigt.Index].Value = item.UnitWeight;
                     row.Cells[dgTotalWeight.Index].Value = item.UnitWeight * item.Quantity;
-                    row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitWeight * item.Quantity;
                     row.Cells[dgUnitNetWeight.Index].Value = item.UnitNetWeight;
                     row.Cells[dgUnitTotalNetWeight.Index].Value = item.UnitNetWeight * item.Quantity;
                     row.Cells[dgCustStkCode.Index].Value = item.CustomerStockCode;
@@ -5691,7 +5692,7 @@ namespace LoginForm.QuotationModule
 
                 if (dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Substring(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString().Length - 1, 1) == "P")
                 {
-                    if (new Sp_Item().GetProductHistoryWithArticleNo_P(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                    if (new Sp_Item().GetProductHistoryWithArticleNo_P_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_P_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                     {
                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);
                         btnProductHistory.Enabled = true;
@@ -5704,7 +5705,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    if (new Sp_Item().GetProductHistoryWithArticleNo(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
+                    if (new Sp_Item().GetProductHistoryWithArticleNo_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()) != null && new Sp_Item().GetProductHistoryWithArticleNo_SaleOrder(dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index].Value.ToString()).Rows.Count > 0)
                     {
 
                         btnProductHistory.ForeColor = Color.FromArgb(255, 68, 68);

@@ -2434,7 +2434,7 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
             {
-                ViewProductHistory f = new ViewProductHistory(item_code);
+                ViewProductHistory f = new ViewProductHistory(item_code,"Quotation");
                 try { f.ShowDialog(); } catch { }
             }
             #endregion

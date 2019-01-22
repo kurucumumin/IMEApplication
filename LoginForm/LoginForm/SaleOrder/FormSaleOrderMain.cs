@@ -16,7 +16,7 @@ using LoginForm.Services.SP;
 
 namespace LoginForm
 {
-    public partial class FormSalesOrderMain : MyForm
+    public partial class FormSalesOrderMain : DevExpress.XtraEditors.XtraForm
     {
         //List<SalesOrder> list = new List<SalesOrder>
         ContextMenu PurchaseOrderMenu = new ContextMenu();

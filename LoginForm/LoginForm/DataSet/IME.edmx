@@ -3562,6 +3562,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="prc_GetProductHistoryWithArticleNo_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="prc_GetProductHistoryWithArticleNo_P_SaleOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="prc_GetProductHistoryWithArticleNo_SaleOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="prc_GetRsFileHistoryWithFileType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FileType" Type="nvarchar" Mode="In" />
         </Function>
@@ -8841,6 +8847,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="prc_GetProductHistoryWithArticleNo_P" ReturnType="Collection(IMEModel.prc_GetProductHistoryWithArticleNo_P_Result)">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="prc_GetProductHistoryWithArticleNo_P_SaleOrder" ReturnType="Collection(IMEModel.prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result)">
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prc_GetProductHistoryWithArticleNo_SaleOrder" ReturnType="Collection(IMEModel.prc_GetProductHistoryWithArticleNo_SaleOrder_Result)">
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="prc_GetRsFileHistoryWithFileType" ReturnType="Collection(IMEModel.prc_GetRsFileHistoryWithFileType_Result)">
             <Parameter Name="FileType" Mode="In" Type="String" />
           </FunctionImport>
@@ -9717,6 +9729,32 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="QuotNo" Nullable="false" MaxLength="20" />
           <Property Type="Int32" Name="QTY" Nullable="true" />
           <Property Type="Decimal" Name="UP" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LandingCost" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Margin" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="String" Name="Curr" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result">
+          <Property Type="String" Name="RSCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CustomerCode" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Decimal" Name="QuotNo" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="QTY" Nullable="false" />
+          <Property Type="Decimal" Name="UP" Nullable="false" Precision="20" Scale="5" />
+          <Property Type="Decimal" Name="LandingCost" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="Margin" Nullable="true" Precision="20" Scale="5" />
+          <Property Type="String" Name="Curr" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="prc_GetProductHistoryWithArticleNo_SaleOrder_Result">
+          <Property Type="String" Name="RSCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CustomerCode" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Decimal" Name="QuotNo" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="QTY" Nullable="false" />
+          <Property Type="Decimal" Name="UP" Nullable="false" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="LandingCost" Nullable="true" Precision="18" Scale="4" />
           <Property Type="Decimal" Name="Margin" Nullable="true" Precision="20" Scale="5" />
           <Property Type="String" Name="Curr" Nullable="true" />
@@ -12647,6 +12685,40 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImportMapping FunctionImportName="prc_GetProductHistoryWithArticleNo_P" FunctionName="IMEModel.Store.prc_GetProductHistoryWithArticleNo_P">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.prc_GetProductHistoryWithArticleNo_P_Result">
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="QuotNo" ColumnName="QuotNo" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="UP" ColumnName="UP" />
+                <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="Curr" ColumnName="Curr" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetProductHistoryWithArticleNo_P_SaleOrder" FunctionName="IMEModel.Store.prc_GetProductHistoryWithArticleNo_P_SaleOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result">
+                <ScalarProperty Name="RSCode" ColumnName="RSCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="QuotNo" ColumnName="QuotNo" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="UP" ColumnName="UP" />
+                <ScalarProperty Name="LandingCost" ColumnName="LandingCost" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="Curr" ColumnName="Curr" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prc_GetProductHistoryWithArticleNo_SaleOrder" FunctionName="IMEModel.Store.prc_GetProductHistoryWithArticleNo_SaleOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.prc_GetProductHistoryWithArticleNo_SaleOrder_Result">
                 <ScalarProperty Name="RSCode" ColumnName="RSCode" />
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />

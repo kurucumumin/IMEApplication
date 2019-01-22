@@ -75,7 +75,79 @@ namespace LoginForm.Services.SP
             catch (Exception ex)
             {
                 imeTransaction.Rollback();
-                //MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tableProductHistory;
+        }
+
+        public DataTable GetProductHistoryWithArticleNo_SaleOrder(string ArticleNo)
+        {
+            SqlConnection conn = new Utils().ImeSqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction imeTransaction = null;
+            DataTable tableProductHistory = new DataTable();
+
+            try
+            {
+                imeTransaction = conn.BeginTransaction();
+                cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    Transaction = imeTransaction,
+                    CommandText = @"[prc_GetProductHistoryWithArticleNo_SaleOrder]"
+                };
+                cmd.Parameters.AddWithValue("@ArticleNo", ArticleNo);
+
+                SqlDataAdapter daRsInvoice = new SqlDataAdapter(cmd);
+                daRsInvoice.Fill(tableProductHistory);
+                imeTransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                imeTransaction.Rollback();
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return tableProductHistory;
+        }
+
+        public DataTable GetProductHistoryWithArticleNo_P_SaleOrder(string ArticleNo)
+        {
+            SqlConnection conn = new Utils().ImeSqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            SqlTransaction imeTransaction = null;
+            DataTable tableProductHistory = new DataTable();
+
+            try
+            {
+                imeTransaction = conn.BeginTransaction();
+                cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    Transaction = imeTransaction,
+                    CommandText = @"[prc_GetProductHistoryWithArticleNo_P_SaleOrder]"
+                };
+                cmd.Parameters.AddWithValue("@ArticleNo", ArticleNo);
+
+                SqlDataAdapter daRsInvoice = new SqlDataAdapter(cmd);
+                daRsInvoice.Fill(tableProductHistory);
+                imeTransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                imeTransaction.Rollback();
+                MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
                 return null;
             }
             finally

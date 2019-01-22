@@ -1884,6 +1884,24 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_P_Result>("prc_GetProductHistoryWithArticleNo_P", articleNoParameter);
         }
     
+        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result> prc_GetProductHistoryWithArticleNo_P_SaleOrder(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_P_SaleOrder_Result>("prc_GetProductHistoryWithArticleNo_P_SaleOrder", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<prc_GetProductHistoryWithArticleNo_SaleOrder_Result> prc_GetProductHistoryWithArticleNo_SaleOrder(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("ArticleNo", articleNo) :
+                new ObjectParameter("ArticleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<prc_GetProductHistoryWithArticleNo_SaleOrder_Result>("prc_GetProductHistoryWithArticleNo_SaleOrder", articleNoParameter);
+        }
+    
         public virtual ObjectResult<prc_GetRsFileHistoryWithFileType_Result> prc_GetRsFileHistoryWithFileType(string fileType)
         {
             var fileTypeParameter = fileType != null ?
