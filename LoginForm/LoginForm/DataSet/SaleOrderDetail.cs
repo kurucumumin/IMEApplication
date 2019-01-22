@@ -48,6 +48,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UnitNetWeight { get; set; }
         public string Manufacturer { get; set; }
         public string SupplierName { get; set; }
+        public string CustomerName { get; set; }
     
         public virtual QuotationDelivery QuotationDelivery { get; set; }
         public virtual QuotationDetail QuotationDetail { get; set; }

@@ -1085,6 +1085,7 @@
           <Property Name="UnitNetWeight" Type="decimal" Precision="15" Scale="4" />
           <Property Name="Manufacturer" Type="nvarchar" MaxLength="40" />
           <Property Name="SupplierName" Type="nvarchar" MaxLength="40" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="80" />
         </EntityType>
         <EntityType Name="SalesOperation">
           <Key>
@@ -5785,6 +5786,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="UnitNetWeight" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Manufacturer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="SupplierName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__SaleOrder__Deliv__57BDDBAA" FromRole="SaleOrderDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="QuotationDetail" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="SaleOrderDetail" ToRole="QuotationDetail" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK_SaleOrderDetail_SaleOrder" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
@@ -11317,6 +11319,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="UnitNetWeight" ColumnName="UnitNetWeight" />
                 <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

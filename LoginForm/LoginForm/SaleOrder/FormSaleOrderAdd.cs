@@ -110,25 +110,25 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 GetMarginMark(i);
             }
@@ -248,25 +248,25 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 GetMarginMark(i);
             }
@@ -332,25 +332,25 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 GetMarginMark(i);
             }
@@ -542,25 +542,25 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
+                //dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
             }
             //for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             //{
@@ -971,7 +971,7 @@ namespace LoginForm.QuotationModule
                 case 8://PRODUCT CODE
                     {
                         #region MyRegion
-                        if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null)
+                        if (dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value != null && dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[dgProductCode.Index].Value.ToString() != "")
                         {
 
                         }
@@ -1264,11 +1264,57 @@ namespace LoginForm.QuotationModule
                     }
                     #endregion
                     break;
+
+                case 35://Cust Stock Kodu
+
+                    #region UCUP Curr
+                    string cusStock = dgSaleAddedItems.CurrentCell.Value.ToString();
+                    var stock = IME.SaleOrderDetails.Where(x => x.CustomerName == txtCustomerName.Text && x.CustomerStockCode == cusStock).FirstOrDefault();
+
+                    if (stock != null)
+                    {
+                        if (CurrentRow.Cells[dgProductCode.Index].Value != null)
+                        {
+
+                        }
+                        else
+                        {
+                            if (stock.CustomerStockCode == cusStock)
+                            {
+
+                                CurrentRow.Cells[dgProductCode.Index].Value = stock.ItemCode;
+                                CurrentRow.Cells["dgDesc"].Value = stock.ItemDescription;
+                                CurrentRow.Cells["dgSSM"].Value = stock.SSM.ToString() ?? ""; ;
+                                CurrentRow.Cells["dgUC"].Value = stock.UnitContent.ToString() ?? ""; ;
+                                CurrentRow.Cells["dgUOM"].Value = stock.UnitOfMeasure;
+                                CurrentRow.Cells["dgMPN"].Value = stock.MPN;
+                                CurrentRow.Cells[dgCustDescription.Index].Value = stock.CustomerDescription;
+                                CurrentRow.Cells[dgCustStkCode.Index].Value = stock.CustomerStockCode;
+
+                                ItemDetailsFiller(CurrentRow.Cells[dgProductCode.Index].Value.ToString());//tekrar bakılacak
+                                FillProductCodeItem();
+                                if (txtWeb1.Text == "0" || txtWeb1.Text == "")
+                                {
+                                    DialogResult dialogResult = MessageBox.Show("Item is not available in Price File, please check website and Enter price from ItemCard");
+                                    ItemsClear();
+                                }
+
+                                dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgQty.Index];
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer Stock Code entered wrong");
+                        dgSaleAddedItems.CurrentCell = dgSaleAddedItems.CurrentRow.Cells[dgProductCode.Index];
+                    }
+
+
+                    #endregion
+                    break;
             }
             #endregion
-
-
-
             //cellEndEdit();
         }
 
@@ -2043,8 +2089,17 @@ namespace LoginForm.QuotationModule
             SuperDisk sd;
             SuperDiskP sdP;
             ExtendedRange er;
-
+            string custStockCode = "";
+            string custStockDesc = "";
             var ItemTabDetails = IME.ItemDetailTabFiller(ArticleNoSearch).FirstOrDefault();
+
+            if (IME.SaleOrderDetails.Where(x => x.ItemCode == ArticleNoSearch && x.CustomerDescription == txtCustomerName.Text).FirstOrDefault() != null)
+            {
+                custStockCode = IME.SaleOrderDetails.Where(x => x.ItemCode == ArticleNoSearch && x.CustomerDescription == txtCustomerName.Text).FirstOrDefault().CustomerStockCode;
+                custStockDesc = IME.SaleOrderDetails.Where(x => x.ItemCode == ArticleNoSearch && x.CustomerDescription == txtCustomerName.Text).FirstOrDefault().CustomerDescription;
+            }
+
+            var rsf = IME.RsFileHistories.Where(a => a.FileType == "OnSale").OrderByDescending(x => x.Date).FirstOrDefault();
 
             if (ItemTabDetails != null)
             {
@@ -2069,6 +2124,8 @@ namespace LoginForm.QuotationModule
                 }
                 CurrentRow.Cells["dgMPN"].Value = ItemTabDetails.MPN;
                 CurrentRow.Cells["dgCL"].Value = ItemTabDetails.Calibration_Ind;
+                CurrentRow.Cells[dgCustDescription.Index].Value = custStockDesc;
+                CurrentRow.Cells[dgCustStkCode.Index].Value = custStockCode;
                 CurrentRow.Cells[dgBrand.Index].Value = ItemTabDetails.Manufacturer;
                 CurrentRow.Cells[dgSupplier.Index].Value = IME.Suppliers.Where(x => x.ID == supplier).FirstOrDefault().s_name;
                 if (ItemTabDetails.Standard_Weight != null && ItemTabDetails.Standard_Weight != 0)
@@ -2125,6 +2182,7 @@ namespace LoginForm.QuotationModule
                 txtLithium.Text = (ItemTabDetails.Lithium != null && ItemTabDetails.Lithium != String.Empty) ? "Y" : "";
                 txtShipping.Text = (ItemTabDetails.Shipping != null && ItemTabDetails.Shipping != String.Empty) ? "Y" : "";
                 txtRSStock.Text = ItemTabDetails.OnhandStockBalance.ToString();
+                textBox23.Text = rsf.Date.ToString();
                 txtRSOnOrder.Text = ItemTabDetails.QuantityonOrder.ToString();
                 txtDiscontinuationDate.Text = ItemTabDetails.DiscontinuationDate;
                 txtRunOn.Text = ItemTabDetails.Runon?.ToString();
@@ -2657,6 +2715,7 @@ namespace LoginForm.QuotationModule
                                 if (row.Cells[dgDesc.Index].Value != null) sdi.ItemDescription = row.Cells[dgDesc.Index].Value?.ToString();
                                 if (row.Cells[dgCustDescription.Index].Value != null) sdi.CustomerDescription = row.Cells[dgCustDescription.Index].Value?.ToString();
                                 if (row.Cells[dgCustStkCode.Index].Value != null) sdi.CustomerStockCode = row.Cells[dgCustStkCode.Index].Value?.ToString();
+                                if (row.Cells[dgCustStkCode.Index].Value != null) sdi.CustomerName = txtCustomerName.Text;
                                 sdi.IsDeleted = false;
                                 if (row.Cells[dgUPIME.Index].Value != null) sdi.UPIME = Decimal.Parse(row.Cells[dgUPIME.Index].Value?.ToString());
                                 if (row.Cells[dgMargin.Index].Value != null) sdi.Margin = Decimal.Parse(row.Cells[dgMargin.Index].Value?.ToString());
@@ -5034,6 +5093,7 @@ namespace LoginForm.QuotationModule
                     if (row.Cells[dgDesc.Index].Value != null) sdi.ItemDescription = row.Cells[dgDesc.Index].Value?.ToString();
                     if (row.Cells[dgCustDescription.Index].Value != null) sdi.CustomerDescription = row.Cells[dgCustDescription.Index].Value?.ToString();
                     if (row.Cells[dgCustStkCode.Index].Value != null) sdi.CustomerStockCode = row.Cells[dgCustStkCode.Index].Value?.ToString();
+                    if (row.Cells[dgCustStkCode.Index].Value != null) sdi.CustomerName = txtCustomerName.Text;
                     sdi.IsDeleted = false;
                     if (row.Cells[dgUPIME.Index].Value != null) sdi.UPIME = Decimal.Parse(row.Cells[dgUPIME.Index].Value?.ToString());
                     if (row.Cells[dgMargin.Index].Value != null) sdi.Margin = Decimal.Parse(row.Cells[dgMargin.Index].Value?.ToString());
