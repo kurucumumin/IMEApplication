@@ -1466,7 +1466,11 @@ namespace LoginForm.QuotationModule
                         {
                             dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Orange;
                         }
-                       
+                        else
+                        {
+                            dgQuotationAddedItems.CurrentRow.Cells[WT.Index].Style.BackColor = Color.Ivory;
+                        }
+
                     }
                     else
                     {
@@ -4102,6 +4106,10 @@ namespace LoginForm.QuotationModule
                     {
                         row.Cells[WT.Index].Style.BackColor = Color.Orange;
                     }
+                    else
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Ivory;
+                    }
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
@@ -4265,6 +4273,10 @@ namespace LoginForm.QuotationModule
                     else if (Convert.ToDecimal(row.Cells[dgTotalWeight.Index].Value) > 5)
                     {
                         row.Cells[WT.Index].Style.BackColor = Color.Orange;
+                    }
+                    else
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Ivory;
                     }
                     dgQuotationAddedItems.Rows.Add(row);
 

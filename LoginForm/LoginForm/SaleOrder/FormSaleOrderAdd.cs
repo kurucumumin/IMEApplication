@@ -5519,6 +5519,10 @@ namespace LoginForm.QuotationModule
                     {
                         row.Cells[WT.Index].Style.BackColor = Color.Orange;
                     }
+                    else
+                    {
+                        row.Cells[WT.Index].Style.BackColor = Color.Ivory;
+                    }
                     dgSaleAddedItems.Rows.Add(row);
 
                 }
