@@ -146,7 +146,7 @@
             this.txtPassWord.Font = new System.Drawing.Font("Dubai", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassWord.ForeColor = System.Drawing.Color.White;
             this.txtPassWord.Location = new System.Drawing.Point(56, 267);
-            this.txtPassWord.Multiline = true;
+            this.txtPassWord.Multiline = false;
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
             this.txtPassWord.Size = new System.Drawing.Size(209, 22);
@@ -170,11 +170,12 @@
             this.txtID.Font = new System.Drawing.Font("Dubai", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.White;
             this.txtID.Location = new System.Drawing.Point(55, 215);
-            this.txtID.Multiline = true;
+            this.txtID.Multiline = false;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(209, 22);
             this.txtID.TabIndex = 1;
             this.txtID.Text = "User Name";
+            this.txtID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtID_KeyDown);
             // 
             // btnLogin
             // 

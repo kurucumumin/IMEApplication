@@ -1470,7 +1470,7 @@
           <Property Name="country" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.CariHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IMEBAHREYN.dbo.CariHareket' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CariHareket">
           <Key>
             <PropertyRef Name="Current Type" />
@@ -1488,7 +1488,7 @@ warning 6002: The table/view 'IME.dbo.CariHareket' does not have a primary key d
           <Property Name="Account Name" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IMEBAHREYN.dbo.CompleteItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CompleteItems">
           <Key>
             <PropertyRef Name="Article_No" />
@@ -1549,7 +1549,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems' does not have a primary key
           <Property Name="dependantTable" Type="varchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IMEBAHREYN.dbo.CompleteItems_v2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CompleteItems_v2">
           <Key>
             <PropertyRef Name="Article_No" />
@@ -1578,7 +1578,7 @@ warning 6002: The table/view 'IME.dbo.CompleteItems_v2' does not have a primary 
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.MPN_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IMEBAHREYN.dbo.MPN_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MPN_List">
           <Key>
             <PropertyRef Name="table" />
@@ -1587,7 +1587,7 @@ warning 6002: The table/view 'IME.dbo.MPN_List' does not have a primary key defi
           <Property Name="table" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'IMEBAHREYN.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Product">
           <Key>
             <PropertyRef Name="productId" />
