@@ -50,52 +50,56 @@ namespace LoginForm.Services
 
         public static string dbFrmNo()
         {
-            if (Name == "Dubai")
-            {
-                return "002";
-            }
-            if (Name == "Bahrain")
-            {
-                return "001";
-            }
-            if (Name == "Abudhabi")
-            {
-                return "003";
-            }
-            if (Name == "Oman")
-            {
-                return "004";
-            }
-            if (Name == "Turkey")
-            {
-                return "005";
-            }
-            return "";
+            //if (Name == "Dubai")
+            //{
+            //    return "002";
+            //}
+            //if (Name == "Bahrain")
+            //{
+            //    return "001";
+            //}
+            //if (Name == "Abudhabi")
+            //{
+            //    return "003";
+            //}
+            //if (Name == "Oman")
+            //{
+            //    return "004";
+            //}
+            //if (Name == "Turkey")
+            //{
+            //    return "005";
+            //}
+            //return "";
+
+            return "002";
         }
 
         public static string dbDnmNo()
         {
-            if (Name == "Dubai")
-            {
-                return "01";
-            }
-            if (Name == "Bahrain")
-            {
-                return "01";
-            }
-            if (Name == "Abudhabi")
-            {
-                return "01";
-            }
-            if (Name == "Oman")
-            {
-                return "01";
-            }
-            if (Name == "Turkey")
-            {
-                return "01";
-            }
-            return "";
+            //if (Name == "Dubai")
+            //{
+            //    return "01";
+            //}
+            //if (Name == "Bahrain")
+            //{
+            //    return "01";
+            //}
+            //if (Name == "Abudhabi")
+            //{
+            //    return "01";
+            //}
+            //if (Name == "Oman")
+            //{
+            //    return "01";
+            //}
+            //if (Name == "Turkey")
+            //{
+            //    return "01";
+            //}
+            //return "";
+
+            return "01";
         }
 
         public static string MD5Hash(string input)

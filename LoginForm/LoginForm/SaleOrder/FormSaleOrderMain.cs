@@ -307,7 +307,7 @@ namespace LoginForm
 
             SaleOrder so = db.SaleOrders.Where(x => x.SaleOrderNo == SoNO).FirstOrDefault();
 
-            if (so.Status == "LOGO")
+            if (so.Status == "Sent to LOGO")
             {
                 MessageBox.Show("Sent To Logo Successfully");
             }
@@ -316,7 +316,7 @@ namespace LoginForm
                 if (resultMessage == LogoLibrary.AddSuccessful)
                 {
 
-                    so.Status = "LOGO";
+                    so.Status = "Sent to LOGO";
                     db.SaveChanges();
 
                     BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);

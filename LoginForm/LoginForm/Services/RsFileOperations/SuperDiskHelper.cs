@@ -290,6 +290,10 @@ namespace LoginForm.Services
             ReturnMessage error = new ReturnMessage();
 
             int columnCount = 0;
+
+            Columns.Any(x => x.Equals("Length"));
+
+
             for (int i = 0; i < Columns.Count; i++)
             {
                 switch (Columns[i])

@@ -100,7 +100,9 @@ namespace LoginForm.MyClasses
             ImeLogoPurchaseInvoice invoice = new ImeLogoPurchaseInvoice();
             ImeSQL imesql = new ImeSQL();
             LogoSQL logosql = new LogoSQL();
-            return invoice.deletePurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), "001", "01");
+            string dnmNo = Utils.dbDnmNo();
+            string frmNo = Utils.dbFrmNo();
+            return invoice.deletePurchaseInvoice(imesql.ImeSqlConnect(server, imedatabase, sqluser, sqlpassword), RSInvoiceID, logosql.LogoSqlConnect(server, logodatabase, sqluser, sqlpassword), frmNo, dnmNo);
         }
 
 
