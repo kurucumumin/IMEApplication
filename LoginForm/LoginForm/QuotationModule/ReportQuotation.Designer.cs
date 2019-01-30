@@ -255,7 +255,7 @@ namespace LoginForm
             // xrTableCell19
             // 
             this.xrTableCell19.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomerDescription")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ItemDescription")});
             this.xrTableCell19.Dpi = 254F;
             this.xrTableCell19.Name = "xrTableCell19";
             this.xrTableCell19.Padding = new DevExpress.XtraPrinting.PaddingInfo(13, 0, 0, 0, 254F);

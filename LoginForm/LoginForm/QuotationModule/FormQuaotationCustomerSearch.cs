@@ -240,27 +240,27 @@ namespace LoginForm.QuotationModule
                 if (this.Text == "Customer Search")
                 {
                     QuotationUtils.customersearchID = "";
-                    QuotationUtils.customersearchname = CustomerName.Text;
+                    QuotationUtils.customersearchname = CustomerName.Text.ToUpperInvariant();
                     List<Customer> c = QuotationUtils.CustomerSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Supplier Search")
                 {
                     classSupplier.suppliersearchID = "";
-                    classSupplier.suppliersearchname = CustomerName.Text;
+                    classSupplier.suppliersearchname = CustomerName.Text.ToUpperInvariant();
                     List<Supplier> c = classSupplier.SupplierSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Account Search")
                 {
                     classAccount.accountsearchID = "";
-                    classAccount.accountsearchname = CustomerName.Text;
+                    classAccount.accountsearchname = CustomerName.Text.ToUpperInvariant();
                     List<DataSet.Account> c = classAccount.AccountSearch();
                     CustomerSearchGrid.DataSource = c;
                 }
                 if (this.Text == "Current Search")
                 {
-                    List<Current> c = classCurrent.CurrentSearch(CustomerName.Text, CustomerCode.Text);
+                    List<Current> c = classCurrent.CurrentSearch(CustomerName.Text.ToUpperInvariant(), CustomerCode.Text);
                     CustomerSearchGrid.DataSource = c;
                 }
             }
@@ -360,27 +360,27 @@ namespace LoginForm.QuotationModule
             if (this.Text == "Customer Search")
             {
                 QuotationUtils.customersearchID = "";
-                QuotationUtils.customersearchname = CustomerName.Text;
+                QuotationUtils.customersearchname = CustomerName.Text.ToUpperInvariant();
                 List<Customer> c = QuotationUtils.CustomerSearch();
                 CustomerSearchGrid.DataSource = c;
             }
             if (this.Text == "Supplier Search")
             {
                 classSupplier.suppliersearchID = "";
-                classSupplier.suppliersearchname = CustomerName.Text;
+                classSupplier.suppliersearchname = CustomerName.Text.ToUpperInvariant();
                 List<Supplier> c = classSupplier.SupplierSearch();
                 CustomerSearchGrid.DataSource = c;
             }
             if (this.Text == "Account Search")
             {
                 classAccount.accountsearchID = "";
-                classAccount.accountsearchname = CustomerName.Text;
+                classAccount.accountsearchname = CustomerName.Text.ToUpperInvariant();
                 List<DataSet.Account> c = classAccount.AccountSearch();
                 CustomerSearchGrid.DataSource = c;
             }
             if (this.Text == "Current Search")
             {
-                List<Current> c = classCurrent.CurrentSearch(CustomerName.Text, CustomerCode.Text);
+                List<Current> c = classCurrent.CurrentSearch(CustomerName.Text.ToUpperInvariant(), CustomerCode.Text);
                 CustomerSearchGrid.DataSource = c;
             }
         }

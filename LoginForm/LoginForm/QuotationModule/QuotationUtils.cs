@@ -27,7 +27,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                c = IME.Customers.Where(a => a.c_name.StartsWith(customersearchname)).ToList().Where(a => a.c_name != null).Where(b => b.c_name != string.Empty).ToList();
+                c = IME.Customers.Where(a => a.c_name.Contains(customersearchname)).ToList().Where(a => a.c_name != null).Where(b => b.c_name != string.Empty).ToList();
             }
             return c;
         }
