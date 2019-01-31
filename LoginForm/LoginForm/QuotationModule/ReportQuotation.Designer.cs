@@ -1792,7 +1792,7 @@ namespace LoginForm
             // 
             // objectDataSource1
             // 
-            this.objectDataSource1.DataSourceType = typeof(LoginForm.DataSet.QuotationDetail);
+            this.objectDataSource1.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
             this.objectDataSource1.Name = "objectDataSource1";
             // 
             // ReportQuotation
