@@ -817,7 +817,7 @@
           <Property Name="QuotationMainContact" Type="int" />
           <Property Name="approved" Type="bit" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="voucherNo" Type="nvarchar(max)" />
+          <Property Name="DiscOnSubTotal" Type="decimal" Precision="25" Scale="5" />
           <Property Name="RepresentativeID" Type="int" />
           <Property Name="ExchangeRateID" Type="int" />
           <Property Name="DeliveryDate" Type="datetime" />
@@ -5481,7 +5481,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="QuotationMainContact" Type="Int32" />
           <Property Name="approved" Type="Boolean" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiscOnSubTotal" Type="Decimal" Precision="25" Scale="5" />
           <Property Name="RepresentativeID" Type="Int32" />
           <Property Name="ExchangeRateID" Type="Int32" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
@@ -11077,7 +11077,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="QuotationMainContact" ColumnName="QuotationMainContact" />
                 <ScalarProperty Name="approved" ColumnName="approved" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
-                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="DiscOnSubTotal" ColumnName="DiscOnSubTotal" />
                 <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
                 <ScalarProperty Name="ExchangeRateID" ColumnName="ExchangeRateID" />
                 <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />

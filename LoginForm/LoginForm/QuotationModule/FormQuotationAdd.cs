@@ -3296,9 +3296,18 @@ namespace LoginForm.QuotationModule
                         q.ShippingMethodID = cbSMethod.SelectedIndex;
 
                         try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+                        try { q.DiscOnSubTotal = decimal.Parse(txtTotalDis.Text); } catch { }
                         try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-                        if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-                        try { q.VatValue = vat; } catch { }
+                        if (chkVat.Checked)
+                        {
+                            q.IsVatValue = 1;
+                            try { q.VatValue = vat; } catch { }
+
+                        }
+                        else
+                        {
+                            q.IsVatValue = 0;
+                        }
                         try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
                         try { q.Factor = Decimal.Parse(lblCustomerFactorValue.Text); } catch { }
                         try { q.Markup = Decimal.Parse(lblCustomerMarkupValue.Text); } catch { }
@@ -3530,9 +3539,18 @@ namespace LoginForm.QuotationModule
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
 
                 try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+                try { q.DiscOnSubTotal = decimal.Parse(txtTotalDis.Text); } catch { }
                 try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-                if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-                try { q.VatValue = vat; } catch { }
+                if (chkVat.Checked)
+                {
+                    q.IsVatValue = 1;
+                    try { q.VatValue = vat; } catch { }
+
+                }
+                else
+                {
+                    q.IsVatValue = 0;
+                }
                 try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(lblCustomerFactorValue.Text); } catch { }
                 try { q.Markup = Decimal.Parse(lblCustomerMarkupValue.Text); } catch { }
@@ -3603,9 +3621,18 @@ namespace LoginForm.QuotationModule
                 q.ShippingMethodID = cbSMethod.SelectedIndex;
 
                 try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+                try { q.DiscOnSubTotal = decimal.Parse(txtTotalDis.Text); } catch { }
                 try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-                if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-                try { q.VatValue = vat; } catch { }
+                if (chkVat.Checked)
+                {
+                    q.IsVatValue = 1;
+                    try { q.VatValue = vat; } catch { }
+
+                }
+                else
+                {
+                    q.IsVatValue = 0;
+                }
                 try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
                 try { q.Factor = Decimal.Parse(lblCustomerFactorValue.Text); } catch { }
                 try { q.Markup = Decimal.Parse(lblCustomerMarkupValue.Text); } catch { }
@@ -3698,9 +3725,18 @@ namespace LoginForm.QuotationModule
             q.ShippingMethodID = cbSMethod.SelectedIndex;
 
             try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+            try { q.DiscOnSubTotal = decimal.Parse(txtTotalDis.Text); } catch { }
             try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-            if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-            try { q.VatValue = vat; } catch { }
+            if (chkVat.Checked)
+            {
+                q.IsVatValue = 1;
+                try { q.VatValue = vat; } catch { }
+
+            }
+            else
+            {
+                q.IsVatValue = 0;
+            }
             try { q.StartDate = (DateTime)dtpDate.Value; } catch { }
             try { q.Factor = Decimal.Parse(lblCustomerFactorValue.Text); } catch { }
             try { q.Markup = Decimal.Parse(lblCustomerMarkupValue.Text); } catch { }
@@ -4133,9 +4169,10 @@ namespace LoginForm.QuotationModule
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
             txtTotalDis2.Text = q.DiscOnSubTotal2.ToString();
-            if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
-            decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4);
-            txtTotalDis.Text = totaldis.ToString();
+            txtTotalDis.Text = q.DiscOnSubTotal.ToString();
+            //if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
+            //decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4);
+            //txtTotalDis.Text = totaldis.ToString();
             lbltotal.Text = (q.DistributeDiscount == false) ? (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString() : lblsubtotal.Text;
             txtExtraChanges.Text = q.ExtraCharges.ToString();
             lblVat.Text = vat.ToString();
@@ -4311,7 +4348,7 @@ namespace LoginForm.QuotationModule
             }
             lbltotal.Text = (q.DistributeDiscount == false) ? (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString() : lblsubtotal.Text;
             txtExtraChanges.Text = q.ExtraCharges.ToString();
-            lblVat.Text = q.VatValue.ToString();
+            lblVat.Text = vat.ToString();
             if (q.IsVatValue == 1) { chkVat.Checked = true; } else { chkVat.Checked = false; }
             //
             if (q.IsItemCost == 1) { ckItemCost.Checked = true; } else { ckItemCost.Checked = false; }

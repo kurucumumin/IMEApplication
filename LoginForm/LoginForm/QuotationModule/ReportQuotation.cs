@@ -22,6 +22,8 @@ namespace LoginForm
         string subnit;
         CultureInfo culture = new CultureInfo("en-US", true);
         IMEEntities IME = new IMEEntities();
+        bool vat;
+        int quoVat;
         public ReportQuotation()
         {
             InitializeComponent();
@@ -45,10 +47,11 @@ namespace LoginForm
 
         }
 
-        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string rFQNo, int validaty, DateTime date, string represantative, string tel,string payment, string note, string currencySymbol, string currencyName, string pobox, string city, string disc, string gross, string subnitName, string sub, List<QuotationDetail> data,bool vat)
+        public void InitData(string quotationNo,string customerName, string mainContact, string cTel, string rFQNo, int validaty, DateTime date, string represantative, string tel,string payment, string note, string currencySymbol, string currencyName, string pobox, string city, string disc, string disc2, string gross, string subnitName, string sub, List<QuotationDetail> data,bool vat,int quoVat)
         {
             DataTable table = ConvertToDataTable<QuotationDetail>(data);
-            decimal toplam = 0;
+            this.vat = vat;
+            this.quoVat = quoVat;
             decimal grosstotal = 0;
             culture.NumberFormat.CurrencySymbol = currencySymbol;
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
@@ -216,26 +219,20 @@ namespace LoginForm
 
             xrTableCell11.Text = "Price Per UOM " + currencySymbol;
             xrTableCell14.Text = " Total                " + currencySymbol;
-            xrTableCell1.Text = "Sub Total " + currencySymbol;
-            xrTableCell9.Text = " Total " + currencySymbol;
+            xrTableCell1.Text = " Total " + currencySymbol;
+            xrTableCell9.Text = " Sub Total " + currencySymbol;
             xrTableCell20.Text = " Net " + currencySymbol;
             xrTableCell30.DataBindings["Text"].FormatString = "{0: 0.00}";
             xrTableCell21.DataBindings["Text"].FormatString = "{0: 0.00}";
            
             if (vat == false)
             {
-                xrTableCell9.Text = "";
-                xrTableCell10.Text = "";
                 xrTableCell3.Text = "";
                 xrTableCell28.Text = "";
-                sub = "";
-                pSubTotal.Value = sub;
                 xrLabel18.Visible = true;
             }
             else
             {
-                xrTableCell9.Visible = true;
-                xrTableCell10.Visible = true;
                 xrTableCell3.Visible = true;
                 xrTableCell28.Visible = true;
                 xrLabel18.Visible = false;
@@ -244,16 +241,15 @@ namespace LoginForm
             if (gross != "")
             {
                 grosstotal = Convert.ToDecimal(gross);
-                gross = Math.Round(grosstotal, 2).ToString();
+                gross = Math.Round(grosstotal, 1).ToString();
                 xrTableCell21.Text = gross;
+                xrTableCell10.Text = Math.Round((grosstotal - Convert.ToDecimal(disc2)),2).ToString();
                 NumberConvertString();
             }
 
-            if (disc != "" && disc != "0.00000")
+            if (disc2 != "" && disc2 != "0.00000")
             {
-                toplam = Convert.ToDecimal(xrTableCell2.Text) / Convert.ToDecimal(disc);
-                toplam = Math.Round(toplam, 0);
-                xrTableCell29.Text = " Discount " + toplam + "%";
+                xrTableCell29.Text = " Discount " + Math.Round(Convert.ToDecimal(disc2), 0).ToString() + " %";
             }
 
             xrLabel37.Text = Utils.getManagement().Note;
@@ -335,7 +331,19 @@ namespace LoginForm
             {
                 double sayi = Convert.ToDouble(xrTableCell2.Text);
                 double sonuc = (sayi * 5) / 100;
-                xrTableCell28.Text = Math.Round(Convert.ToDecimal(sonuc), 2).ToString();
+
+                if (vat == true)
+                {
+                    if (quoVat == 1)
+                    {
+                        xrTableCell28.Text = Math.Round(Convert.ToDecimal(sonuc), 2).ToString();
+                    }
+                    else
+                    {
+                        xrTableCell28.Text = "0.00";
+                    }
+                }
+                
             }
         }
     }

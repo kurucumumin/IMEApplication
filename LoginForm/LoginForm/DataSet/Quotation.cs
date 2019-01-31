@@ -45,7 +45,7 @@ namespace LoginForm.DataSet
         public Nullable<int> QuotationMainContact { get; set; }
         public Nullable<bool> approved { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
-        public string voucherNo { get; set; }
+        public Nullable<decimal> DiscOnSubTotal { get; set; }
         public Nullable<int> RepresentativeID { get; set; }
         public Nullable<int> ExchangeRateID { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
