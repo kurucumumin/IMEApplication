@@ -298,16 +298,18 @@ namespace LoginForm.QuotationModule
 
 
                 }
-                txtTotalDis2.Text = dis2.ToString();
+                txtTotalDis2.Text = String.Format("{0:N}", dis2.ToString());
 
-                lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                //lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)));
             }
             subtotal = 0;
             decimal DiscounRate = 0;
             if (lblsubtotal.Text != "" && lblsubtotal.Text != null) subtotal = decimal.Parse(lblsubtotal.Text);
             if (txtTotalDis.Text != "" && txtTotalDis.Text != null) DiscounRate = decimal.Parse(txtTotalDis.Text);
             try {
-                lbltotal.Text = (decimal.Parse(lblsubtotal.Text) - ((subtotal * DiscounRate) / 100)).ToString();
+                //lbltotal.Text = (decimal.Parse(lblsubtotal.Text) - ((subtotal * DiscounRate) / 100)).ToString();
+                lbltotal.Text = String.Format("{0:N}", (decimal.Parse(lblsubtotal.Text) - ((subtotal * DiscounRate) / 100)).ToString());
             } catch { }
 
         }
@@ -1004,62 +1006,11 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Columns[item].Visible = false;
             }
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
-            if (!modifyMod)
-            {
-
-                //DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                //dgQuotationAddedItems.Rows.Add(dgRow);
-                //txtQuotationNo.Text = NewQuotationID();/*New 1*/
-                ////txtQuotationNo.Text = CreateQuotationID(QuotationIdMod.New,null);
-                //dgQuotationAddedItems.Rows[0].Cells[dgNo.Index].Value = 1.ToString();
-                //LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
-                //vat = (decimal)Utils.getManagement().VAT;
-                //lblVat.Text = vat.ToString();
-                //#region ComboboxFiller.
-                //dtpDate.Value = Utils.GetCurrentDateTime();
-                //cbPayment.DataSource = IME.PaymentTerms.ToList();
-                //cbPayment.DisplayMember = "term_name";
-                //cbPayment.ValueMember = "ID";
-                //cbRep.DataSource = IME.Workers.ToList();
-                //cbRep.ValueMember = "WorkerID";
-                //cbRep.DisplayMember = "NameLastName";
-                //cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
-                //cbFactor.Text = Utils.getManagement().Factor.ToString();
-                //cbCurrency.DataSource = IME.Currencies.ToList();
-                //cbCurrency.DisplayMember = "currencyName";
-                //cbCurrency.ValueMember = "currencyID";
-                //cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
-                //#endregion
-            }
+           
             GetCurrency(dtpDate.Value);
             GetAutorities();
             tableLayoutPanel2.Height = 5;
-            //#region AutoCompleteCustomSource
-            //CustomerCode.Focus();
-            //AutoCompleteStringCollection auto = new AutoCompleteStringCollection();
-            //SqlConnection conn = new Utils().ImeSqlConnection();
-            //try
-            //{
-            //    foreach (DataRow row in sqlHelper.GetQueryResult("Select c_name from[Customer]").Rows)
-            //    {
-            //        auto.Add(row[0].ToString());
-            //    }
-
-            //    CustomerCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //    CustomerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //    CustomerCode.AutoCompleteCustomSource = auto;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Database Connection Error. \n\nError Message: " + ex.ToString(), "Error");
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
-
-            //#endregion
+          
 
             if (CustomerCode.Text != null && CustomerCode.Text != "")
             {
@@ -1072,6 +1023,25 @@ namespace LoginForm.QuotationModule
             }
 
             sayac = 1;
+
+            //#region N2 Format
+            //try
+            //{
+            //    string s;
+            //    DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.CurrentRow;
+            //    s = String.Format("{0:N}");
+            //    s = row.Cells[13].Value.ToString();
+            //    for (int i = 22; i < 30; i++)
+            //    {
+            //        s = "";
+            //        if (i != 25)
+            //        {
+            //           s = row.Cells[i].Value.ToString();
+            //        }
+            //    }
+            //}
+            //catch { }
+            //#endregion
         }
 
         private void GetAutorities()
@@ -1566,16 +1536,18 @@ namespace LoginForm.QuotationModule
                         if (txtHazardousInd.Text == "N")
                         {
                             #region Total
-                            decimal ucupcurr = decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString());
+                            decimal ucupcurr = decimal.Parse(String.Format("{0:N}", CurrentRow.Cells["dgUCUPCurr"].Value.ToString()));
+                            //decimal UcupIME = Math.Round(decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()), 2);
                             decimal UcupIME = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                            decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 2);
+                            //decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 2);
+                            decimal disc = ((UcupIME - ucupcurr) * (decimal)100 / UcupIME);
                             int workerID = Utils.getCurrentUser().WorkerID;
                             decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
                             if (disc > Minmarge)
                             {
                                 MessageBox.Show("Low Price ! Ask for authorization");
                                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index];
-                                CurrentRow.Cells["dgUCUPCurr"].Value = UcupIME;
+                                CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:N}", UcupIME);
                                 //if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                                 //{
                                 //    CurrentRow.Cells[dgPacketUP.Index].Value = decimal.Parse(CurrentRow.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString());
@@ -1594,11 +1566,13 @@ namespace LoginForm.QuotationModule
                             #region Calculate Total Margin
                             try
                             {
-                                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                txtTotalMargin.Text = (String.Format("{0:N}", calculateTotalMargin()));
                             }
                             catch (Exception ex)
                             {
-                                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                txtTotalMargin.Text = (String.Format("{0:N}", calculateTotalMargin()));
                             }
 
                             #endregion
@@ -1607,7 +1581,7 @@ namespace LoginForm.QuotationModule
                         }
                         else if (txtHazardousInd.Text == "Y")
                         {
-                            dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
+                            dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = String.Format("{0:N}", dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString());
 
                             //if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                             //{
@@ -1802,7 +1776,7 @@ namespace LoginForm.QuotationModule
                         //Cost hesaplama
                         CurrentRow.Cells["dgCost"].Value = QuotationUtils.GetCost(CurrentRow.Cells["dgProductCode"].Value.ToString(), Int32.Parse(CurrentRow.Cells["dgQty"].Value.ToString())).ToString("G29");
                         //LandingCost hesaplatma
-                        if (CurrentRow.Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(CurrentRow.Cells["dgCost"].Value.ToString())).ToString(); }
+                        if (CurrentRow.Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:N}", Decimal.Parse(CurrentRow.Cells["dgCost"].Value.ToString())).ToString(); }
                         GetLandingCost(rowindex);
                         decimal Currrate = 0;
                         if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
@@ -1850,8 +1824,9 @@ namespace LoginForm.QuotationModule
                             string articleNo = CurrentRow.Cells["dgProductCode"].Value.ToString();
                             string qty = CurrentRow.Cells["dgQty"].Value.ToString();
                             CurrentRow.Cells["dgUPIME"].Value = price / decimal.Parse(CurrentRow.Cells["dgQty"].Value.ToString());
-                            
-                            CurrentRow.Cells["dgTotal"].Value = Math.Round(price, 2);
+
+                            //CurrentRow.Cells["dgTotal"].Value = Math.Round(price, 2);
+                            CurrentRow.Cells["dgTotal"].Value = price;
                             //SuperdiskP değilse
                             if (!(articleNo.ToUpper().Contains('P')) && Int32.Parse(CurrentRow.Cells["dgUC"].Value.ToString()) > 1)
                             {
@@ -1865,9 +1840,10 @@ namespace LoginForm.QuotationModule
                                 else
                                 {
                                     CurrentRow.Cells["dgUPIME"].Value = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()) / (decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString()));
-                                    
-                                
-                                    CurrentRow.Cells["dgTotal"].Value = Math.Round(price / (decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())), 2);
+
+
+                                    //CurrentRow.Cells["dgTotal"].Value = Math.Round(price / (decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString())), 2);
+                                    CurrentRow.Cells["dgTotal"].Value = price / (decimal.Parse(CurrentRow.Cells["dgUC"].Value.ToString()));
                                 }
 
                             }
@@ -1891,19 +1867,22 @@ namespace LoginForm.QuotationModule
                                 //TOTAL ve UPIME belirleniyor
                                 ItemDetailsFiller(CurrentRow.Cells[dgProductCode.Index].Value.ToString());
                                 FiyatKirilmalari(Convert.ToDecimal(CurrentRow.Cells["dgQty"].Value.ToString()));
+                          //      CurrentRow.Cells[dgFirstUPIME.Index].Value = String.Format("N2", Decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString())).ToString();
                                 discResult = decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString());
-                                CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
+                                //CurrentRow.Cells["dgTotal"].Value = Math.Round(decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString()), 2);
+                                CurrentRow.Cells["dgTotal"].Value = decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString());
                                 if (CurrentRow.Cells[dgDisc.Index].Value != null && CurrentRow.Cells[dgDisc.Index].Value.ToString() != "")
                                 {
-                                    CurrentRow.Cells[dgDisc.Index].Value = Math.Round(Decimal.Parse(CurrentRow.Cells[dgDisc.Index].Value.ToString()), 2).ToString();
+                                    //CurrentRow.Cells[dgDisc.Index].Value = Math.Round(Decimal.Parse(CurrentRow.Cells[dgDisc.Index].Value.ToString()), 2).ToString();
+                                    CurrentRow.Cells[dgDisc.Index].Value = Decimal.Parse(CurrentRow.Cells[dgDisc.Index].Value.ToString());
                                     discResult = (discResult - (discResult * decimal.Parse(CurrentRow.Cells[dgDisc.Index].Value.ToString()) / 100));
                                 }
-                                CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
+                                CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:N}", discResult).ToString();
                                 //if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                                 //{
                                 //    CurrentRow.Cells[dgPacketUP.Index].Value = String.Format("{0:0.0000}", decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())).ToString();
                                 //}
-                                CurrentRow.Cells[dgPacketUP.Index].Value = String.Format("{0:0.0000}", decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())).ToString();
+                                CurrentRow.Cells[dgPacketUP.Index].Value = String.Format("{0:N}", decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(CurrentRow.Cells[dgUC.Index].Value.ToString())).ToString();
                                 //Change lblsubtotal
 
                                 CalculateSubTotal();
@@ -1917,7 +1896,8 @@ namespace LoginForm.QuotationModule
                                     GetMargin(rowindex);
 
                                 }
-                                CurrentRow.Cells["dgMargin"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()), 4).ToString();
+                                //CurrentRow.Cells["dgMargin"].Value = Math.Round(Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString()), 4).ToString();
+                                CurrentRow.Cells["dgMargin"].Value = Decimal.Parse(CurrentRow.Cells["dgMargin"].Value.ToString().ToString());
 
                                 if (this.Text != "Modify Quotation" && this.Text != "Edit Quotation" && this.Text != "View Quotation" && this.Text != "Copy Quotation")
                                 {
@@ -1960,7 +1940,8 @@ namespace LoginForm.QuotationModule
                                     }
                                 }
 
-                                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                txtTotalMargin.Text = (String.Format("{0:N}", calculateTotalMargin()));
                             }
                             //else { MessageBox.Show("This product does not have price"); }
                         }
@@ -2021,28 +2002,28 @@ namespace LoginForm.QuotationModule
             {
                 if (Convert.ToDecimal(txtUnitCount1.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount2.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
-                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb1.Text)).ToString();
-                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK1.Text)).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:N}", Decimal.Parse(txtWeb1.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:N}", Decimal.Parse(txtUK1.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount2.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount3.Text) || Convert.ToDecimal(txtUnitCount3.Text) == 0))
                 {
-                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb2.Text)).ToString();
-                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK2.Text)).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:N}", Decimal.Parse(txtWeb2.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:N}", Decimal.Parse(txtUK2.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount3.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount4.Text) || Convert.ToDecimal(txtUnitCount4.Text) == 0))
                 {
-                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb3.Text)).ToString();
-                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK3.Text)).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:N}", Decimal.Parse(txtWeb3.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:N}", Decimal.Parse(txtUK3.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount4.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount5.Text) || Convert.ToDecimal(txtUnitCount5.Text) == 0))
                 {
-                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb4.Text)).ToString();
-                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK4.Text)).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:N}", Decimal.Parse(txtWeb4.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:N}", Decimal.Parse(txtUK4.Text)).ToString();
                 }
                 else if (Convert.ToDecimal(txtUnitCount5.Text) <= adet)
                 {
-                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(txtWeb5.Text)).ToString();
-                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:0.0000}", Decimal.Parse(txtUK5.Text)).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = String.Format("{0:N}", Decimal.Parse(txtWeb5.Text)).ToString();
+                    CurrentRow.Cells[dgUKPrice.Index].Value = String.Format("{0:N}", Decimal.Parse(txtUK5.Text)).ToString();
                 }
             }
             catch { }
@@ -2056,25 +2037,25 @@ namespace LoginForm.QuotationModule
             {
                 if (Convert.ToDecimal(txtUnitCount1.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount2.Text) || Convert.ToDecimal(txtUnitCount2.Text) == 0))
                 {
-                    result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb1.Text)).ToString());
+                    result = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(txtWeb1.Text)).ToString());
 
                 }
                 else if (Convert.ToDecimal(txtUnitCount2.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount3.Text) || Convert.ToDecimal(txtUnitCount3.Text) == 0))
                 {
-                    result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb2.Text)).ToString());
+                    result = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(txtWeb2.Text)).ToString());
                 }
                 else if (Convert.ToDecimal(txtUnitCount3.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount4.Text) || Convert.ToDecimal(txtUnitCount4.Text) == 0))
                 {
-                    result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb3.Text)).ToString());
+                    result = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(txtWeb3.Text)).ToString());
 
                 }
                 else if (Convert.ToDecimal(txtUnitCount4.Text) <= adet && (adet < Convert.ToDecimal(txtUnitCount5.Text) || Convert.ToDecimal(txtUnitCount5.Text) == 0))
                 {
-                    result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb4.Text)).ToString());
+                    result = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(txtWeb4.Text)).ToString());
                 }
                 else if (Convert.ToDecimal(txtUnitCount5.Text) <= adet)
                 {
-                    result = Decimal.Parse(String.Format("{0:0.0000}", Decimal.Parse(txtWeb5.Text)).ToString());
+                    result = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(txtWeb5.Text)).ToString());
                 }
             }
             catch { }
@@ -2111,7 +2092,8 @@ namespace LoginForm.QuotationModule
                         PoundRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a => a.date).FirstOrDefault().rate;
                         CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.currencyId == (decimal)cbCurrency.SelectedValue).OrderByDescending(a => a.date).FirstOrDefault().rate;
                         totalCost = totalCost * PoundRate / (CurrentRate);
-                        txtTotalCost.Text = Math.Round(totalCost, 4).ToString();
+                        //txtTotalCost.Text = Math.Round(totalCost, 4).ToString();
+                        txtTotalCost.Text = String.Format("{0:N}", totalCost);
                     }
                 }
 
@@ -2721,7 +2703,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
-                    txtStandartWeight.Text = String.Format("{0:0.0000}", sW.ToString());
+                    txtStandartWeight.Text = String.Format("{0:N}", sW.ToString());
                 }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
@@ -2736,7 +2718,7 @@ namespace LoginForm.QuotationModule
                 txtHeight.Text = ((decimal)(ItemTabDetails.Heigh * ((Decimal)100))).ToString("G29");
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
-                txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                txtGrossWeight.Text = String.Format("{0:N}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
                 txtGrossWeight.Text = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Pack_Quantity).ToString() : (Decimal.Parse(txtGrossWeight.Text) / ItemTabDetails.Unit_Content).ToString();
                 txtUK1.Text = (ItemTabDetails.Col1Price / ItemTabDetails.Unit_Content).ToString();
                 txtUK2.Text = (ItemTabDetails.Col2Price / ItemTabDetails.Unit_Content).ToString();
@@ -2975,7 +2957,7 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (QuotationUtils.GetLandingCost(dgQuotationAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
                     , Int32.Parse(dgQuotationAddedItems.Rows[Rowindex].Cells[dgQty.Index].Value.ToString()))).ToString("G29");
-                dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
+                dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:N}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
             }
             catch (Exception e) { }
 
@@ -3018,8 +3000,8 @@ namespace LoginForm.QuotationModule
         {
             decimal currentGbpValue = Convert.ToDecimal(IME.Currencies.Where(x => x.currencyName == "Pound").FirstOrDefault().ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate);
             decimal gbpPrice = ((_Price) * CurrValue) / currentGbpValue;
-
-            return Math.Round((1 - (_LandingCost / gbpPrice)) * 100, 4);
+            
+            return Math.Round((1 - (_LandingCost / gbpPrice)) * 100, 2);
         }
 
         private void ckItemCost_CheckedChanged(object sender, EventArgs e)
@@ -3044,7 +3026,8 @@ namespace LoginForm.QuotationModule
                 catch { }
                 totalweight += rowTotal;
             }
-            lblTotalWeight.Text = Math.Round(totalweight, 4).ToString();
+            //lblTotalWeight.Text = Math.Round(totalweight, 4).ToString(); 
+            lblTotalWeight.Text = String.Format("{0:N}", totalweight);
         }
 
         private void CalculateTotalNetWeight()
@@ -3060,7 +3043,8 @@ namespace LoginForm.QuotationModule
                 catch { }
                 totalnetweight += rowTotal;
             }
-            lblTotalNetWeight.Text = Math.Round(totalnetweight, 4).ToString();
+            //lblTotalNetWeight.Text = Math.Round(totalnetweight, 4).ToString();
+            lblTotalNetWeight.Text = String.Format("{0:N}", totalnetweight);
         }
 
         private void CalculateSubTotal()
@@ -3077,18 +3061,19 @@ namespace LoginForm.QuotationModule
                 catch { }
                 subtotal += rowTotal;
             }
-            lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
+            //lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
+            lblsubtotal.Text = String.Format("{0:N}", subtotal);
             decimal dectotaldisc = 0;
 
             if (txtTotalDis2.Text != "" && txtTotalDis2.Text != null)
             {
                 decimal totaldis = 0;
                 totaldis = decimal.Parse(txtTotalDis.Text);
-                txtTotalDis2.Text = (subtotal * totaldis / 100).ToString();
-                dectotaldisc = decimal.Parse(txtTotalDis2.Text);
+                txtTotalDis2.Text = String.Format("{0:N}", (subtotal * totaldis / 100).ToString());
+                dectotaldisc = decimal.Parse(String.Format("{0:N}", txtTotalDis2.Text));
             }
 
-            lbltotal.Text = (subtotal - dectotaldisc).ToString();
+            lbltotal.Text = String.Format("{0:N}", (subtotal - dectotaldisc).ToString());
         }
 
         private void CalculateSubTotalActivate()
@@ -3105,18 +3090,19 @@ namespace LoginForm.QuotationModule
                 catch { }
                 subtotal += rowTotal;
             }
-            lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
+            //lblsubtotal.Text = Math.Round(subtotal, 4).ToString();
+            lblsubtotal.Text = String.Format("{0:N}", subtotal);
             decimal dectotaldisc = 0;
 
             if (txtTotalDis2.Text != "" && txtTotalDis2.Text != null)
             {
                 decimal totaldis = 0;
                 totaldis = decimal.Parse(txtTotalDis.Text);
-                txtTotalDis2.Text = (subtotal * totaldis / 100).ToString();
-                dectotaldisc = decimal.Parse(txtTotalDis2.Text);
+                txtTotalDis2.Text = String.Format("{0:N}", (subtotal * totaldis / 100).ToString());
+                dectotaldisc = decimal.Parse(String.Format("{0:N}", txtTotalDis2.Text));
             }
 
-            lbltotal.Text = (subtotal - dectotaldisc).ToString();
+            lbltotal.Text = String.Format("{0:N}", (subtotal - dectotaldisc).ToString());
         }
 
         private void chkVat_CheckedChanged(object sender, EventArgs e)
@@ -3129,14 +3115,14 @@ namespace LoginForm.QuotationModule
             if (chkVat.Checked)
             {
                 decimal totalextra = 0;
-                try { totalextra = Decimal.Parse(lblTotalExtra.Text); } catch { }
-                lblVatTotal.Text = (totalextra * (vat / 100)).ToString();
-                lblGrossTotal.Text = ((Decimal.Parse(lblTotalExtra.Text) + ((Decimal.Parse(lblTotalExtra.Text) * ((vat / 100)))))).ToString();
+                try { totalextra = Decimal.Parse(String.Format("{0:N}", Decimal.Parse(lblTotalExtra.Text))); } catch { }
+                lblVatTotal.Text = String.Format("{0:N}", (totalextra * (vat / 100)).ToString());
+                lblGrossTotal.Text = String.Format("{0:N}", ((Decimal.Parse(lblTotalExtra.Text) + ((Decimal.Parse(lblTotalExtra.Text) * ((vat / 100)))))));
             }
             else
             {
                 lblVatTotal.Text = 0.ToString();
-                lblGrossTotal.Text = lblTotalExtra.Text;
+                lblGrossTotal.Text = String.Format("{0:N}", lblTotalExtra.Text);
             }
         }
 
@@ -3146,15 +3132,15 @@ namespace LoginForm.QuotationModule
             try
             {
                 st = decimal.Parse(lblsubtotal.Text);
-                if (lblsubtotal.Text != Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblsubtotal.Text)))).ToString("G29")
+                if (lblsubtotal.Text != Decimal.Parse(String.Format("{0:N}", (decimal.Parse(lblsubtotal.Text)))).ToString("G29")
                 )
-                { lblsubtotal.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblsubtotal.Text)))).ToString("G29"); }
+                { lblsubtotal.Text = String.Format("{0:N}", (decimal.Parse(lblsubtotal.Text))); }
             }
             catch { }
             decimal p = 0;
             ///////////PROBLEM OLABİLİR her seferinde indirim hesaplaması
             try { p = decimal.Parse(lblTotalDis.Text); } catch { }
-            try { lbltotal.Text = (st - (st * (p / 100))).ToString(); } catch { }
+            try { lbltotal.Text = String.Format("{0:N}", (st - (st * (p / 100))).ToString()); } catch { }
         }
 
         private void lbltotal_TextChanged(object sender, EventArgs e)
@@ -3163,24 +3149,24 @@ namespace LoginForm.QuotationModule
             try
             {
                 total = decimal.Parse(lbltotal.Text);
-                if (lbltotal.Text != Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lbltotal.Text)))).ToString("G29")
+                if (lbltotal.Text != Decimal.Parse(String.Format("{0:N}", (decimal.Parse(lbltotal.Text)))).ToString("G29")
                 )
                 {
-                    lbltotal.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lbltotal.Text)))).ToString("G29");
+                    lbltotal.Text = String.Format("{0:N}", (decimal.Parse(lbltotal.Text)));
                 }
             }
             catch { }
             decimal extrachange = 0;
             try { extrachange = decimal.Parse(txtExtraChanges.Text); } catch { }
-            lblTotalExtra.Text = (total + extrachange).ToString();
+            lblTotalExtra.Text = String.Format("{0:N}", (total + extrachange).ToString());
         }
 
         private void lblTotalExtra_TextChanged(object sender, EventArgs e)
         {
-            if (lblTotalExtra.Text != Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblTotalExtra.Text)))).ToString("G29")
+            if (lblTotalExtra.Text != Decimal.Parse(String.Format("{0:N}", (decimal.Parse(lblTotalExtra.Text)))).ToString("G29")
                 )
             {
-                lblTotalExtra.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblTotalExtra.Text)))).ToString("G29");
+                lblTotalExtra.Text = String.Format("{0:N}", Decimal.Parse(String.Format("{0:N}", (decimal.Parse(lblTotalExtra.Text)))));
             }
             chkVat_Checked();
         }
@@ -3202,17 +3188,18 @@ namespace LoginForm.QuotationModule
                 {
                     if (CurrentDis == 0)
                     {
-                        CurrentDis = Decimal.Parse(txtTotalDis2.Text);
+                        CurrentDis = Decimal.Parse(String.Format("{0:N}", txtTotalDis2.Text));
                     }
                     else
                     {
-                        lbltotal.Text = (Decimal.Parse(lbltotal.Text) + CurrentDis).ToString();
-                        CurrentDis = Decimal.Parse(txtTotalDis2.Text);
+                        lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lbltotal.Text) + CurrentDis).ToString());
+                        CurrentDis = Decimal.Parse(String.Format("{0:N}", txtTotalDis2.Text));
                     }
-                    lbltotal.Text = (Decimal.Parse(lbltotal.Text) - CurrentDis).ToString();
+                    lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lbltotal.Text) - CurrentDis).ToString());
                     if (txtTotalDis.Text != ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString())
                     {
-                        txtTotalDis.Text = (Math.Round((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text), 4)).ToString();
+                      //txtTotalDis.Text = (Math.Round((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text), 4)).ToString();
+                        txtTotalDis.Text = String.Format("{0:N}", (CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text));
                         for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                         {
                             if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
@@ -3383,17 +3370,17 @@ namespace LoginForm.QuotationModule
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value?.ToString()))
                                     qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value?.ToString()))
-                                    qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                                    qd.UCUPCurr = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()), 2);
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value?.ToString()))
                                     qd.PacketUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgPacketUP.Index].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value?.ToString()))
-                                    qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
+                                    qd.UPIME = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()), 2);
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgFirstUPIME.Index].Value?.ToString()))
-                                    qd.FirstUPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgFirstUPIME.Index].Value.ToString());
+                                    qd.FirstUPIME = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgFirstUPIME"].Value.ToString()), 2);
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value?.ToString()))
                                     qd.Disc = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()),2);
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString()))
-                                    qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                                    qd.Total = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()), 2);
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value?.ToString()))
                                     qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString());
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value?.ToString()))
@@ -3423,7 +3410,7 @@ namespace LoginForm.QuotationModule
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgMPN.Index].Value.ToString()))
                                     qd.MPN = dgQuotationAddedItems.Rows[i].Cells[dgMPN.Index].Value.ToString();
                                 if (!String.IsNullOrEmpty(dgQuotationAddedItems.Rows[i].Cells[dgUKPrice.Index].Value.ToString()))
-                                    qd.UKPrice = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgUKPrice.Index].Value.ToString());
+                                    qd.UKPrice = Math.Round(Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUKPrice"].Value.ToString()), 2);
 
                                 if (dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value?.ToString() == "")
                                 {
@@ -4168,8 +4155,8 @@ namespace LoginForm.QuotationModule
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
-            txtTotalDis2.Text = q.DiscOnSubTotal2.ToString();
-            txtTotalDis.Text = q.DiscOnSubTotal.ToString();
+            txtTotalDis2.Text = String.Format("{0:N}", q.DiscOnSubTotal2.ToString());
+            txtTotalDis.Text = String.Format("{0:N}", q.DiscOnSubTotal.ToString());
             //if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
             //decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4);
             //txtTotalDis.Text = totaldis.ToString();
@@ -4285,7 +4272,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[dgSSM.Index].Value = item.SSM;
                     row.Cells[dgUC.Index].Value = item.UC;
                     row.Cells[dgUPIME.Index].Value = Math.Round((decimal)item.UPIME, 2);
-                    row.Cells[dgFirstUPIME.Index].Value = Math.Round((decimal)item.FirstUPIME, 2);
+                    row.Cells[dgFirstUPIME.Index].Value = (decimal)item.FirstUPIME;
                     row.Cells[dgUCUPCurr.Index].Value = item.UCUPCurr;
                     row.Cells[dgPacketUP.Index].Value = item.PacketUP;
                     row.Cells[dgDisc.Index].Value = item.Disc;
@@ -4336,15 +4323,17 @@ namespace LoginForm.QuotationModule
             #endregion
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
-            txtTotalDis2.Text = q.DiscOnSubTotal2.ToString();
+            txtTotalDis2.Text = String.Format("{0:N}", q.DiscOnSubTotal2.ToString());
             if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
             if(q.DistributeDiscount == true)
             {
-                txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / (decimal.Parse(lblsubtotal.Text) + Decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                //txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / (decimal.Parse(lblsubtotal.Text) + Decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                txtTotalDis.Text = String.Format("{0:N}", ((Decimal.Parse(txtTotalDis2.Text) * 100) / (decimal.Parse(lblsubtotal.Text) + Decimal.Parse(txtTotalDis2.Text))));
             }
             else
             {
-                txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4).ToString();
+                //txtTotalDis.Text = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text), 4).ToString();
+                txtTotalDis.Text = String.Format("{0:N}", ((Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text)));
             }
             lbltotal.Text = (q.DistributeDiscount == false) ? (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString() : lblsubtotal.Text;
             txtExtraChanges.Text = q.ExtraCharges.ToString();
@@ -4411,7 +4400,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal sW = (decimal)(ItemTabDetails.Standard_Weight / (decimal)1000);
                     sW = (ItemTabDetails.Pack_Quantity > ItemTabDetails.Unit_Content) ? (decimal)(sW / ItemTabDetails.Pack_Quantity) : (decimal)(sW / ItemTabDetails.Unit_Content);
-                    txtStandartWeight.Text = String.Format("{0:0.0000}", sW.ToString());
+                    txtStandartWeight.Text = String.Format("{0:N}", sW.ToString());
                 }
                 txtHazardousInd.Text = ItemTabDetails.Hazardous_Ind;
                 txtCalibrationInd.Text = ItemTabDetails.Calibration_Ind;
@@ -4427,14 +4416,14 @@ namespace LoginForm.QuotationModule
                 txtWidth.Text = ((decimal)(ItemTabDetails.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(ItemTabDetails.Length * ((Decimal)100))).ToString("G29");
 
-                txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                txtGrossWeight.Text = String.Format("{0:N}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
 
                 #region Length
                 try
                 {
                     if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
                     {
-                        txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                        txtGrossWeight.Text = String.Format("{0:N}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
                         if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                         {
                             txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
@@ -4950,37 +4939,41 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString() != "0")
                 {
                     CurrentRow = dgQuotationAddedItems.Rows[i];
-                    CurrentRow.Cells["dgUCUPCurr"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())) / Currfactor), 2).ToString();
+                    //CurrentRow.Cells["dgUCUPCurr"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())) / Currfactor), 2).ToString();
+                    CurrentRow.Cells["dgUCUPCurr"].Value = String.Format("{0:N}", ((Decimal.Parse(CurrentRow.Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString());
                     if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                     {
-                        CurrentRow.Cells[dgPacketUP.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgPacketUP.Index].Value.ToString())) / Currfactor), 4).ToString();
+                        //CurrentRow.Cells[dgPacketUP.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgPacketUP.Index].Value.ToString())) / Currfactor), 2).ToString();
+                        CurrentRow.Cells[dgPacketUP.Index].Value = ((Decimal.Parse(CurrentRow.Cells[dgPacketUP.Index].Value.ToString())) / Currfactor).ToString();
                     }
-                    CurrentRow.Cells["dgUPIME"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString())) / Currfactor), 2).ToString();
-                    CurrentRow.Cells[dgFirstUPIME.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString())) / Currfactor), 4).ToString();
-                    CurrentRow.Cells["dgTotal"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString())) / Currfactor), 4).ToString();
+                    //CurrentRow.Cells["dgUPIME"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString())) / Currfactor), 2).ToString();
+                    //CurrentRow.Cells[dgFirstUPIME.Index].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString())) / Currfactor), 2).ToString();
+                    //CurrentRow.Cells["dgTotal"].Value = Math.Round(((Decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString())) / Currfactor), 2).ToString();
+                    CurrentRow.Cells["dgUPIME"].Value = ((Decimal.Parse(CurrentRow.Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
+                    CurrentRow.Cells[dgFirstUPIME.Index].Value = ((Decimal.Parse(CurrentRow.Cells[dgFirstUPIME.Index].Value.ToString())) / Currfactor).ToString();
+                    CurrentRow.Cells["dgTotal"].Value = ((Decimal.Parse(CurrentRow.Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
 
                 }
                 #endregion
             }
             CalculateSubTotal();
-            lblCurrValue.Text = Math.Round(CurrValue, 4).ToString();
+            //lblCurrValue.Text = Math.Round(CurrValue, 4).ToString();
+            lblCurrValue.Text = (String.Format("{0:N}", CurrValue));
         }
 
         private void lblVatTotal_TextChanged(object sender, EventArgs e)
         {
-            if (lblVatTotal.Text != Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblVatTotal.Text)))).ToString("G29")
-                )
+            if (lblVatTotal.Text != String.Format("{0:N}", (decimal.Parse(lblVatTotal.Text))))
             {
-                lblVatTotal.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblVatTotal.Text)))).ToString("G29");
+                lblVatTotal.Text = String.Format("{0:N}", (decimal.Parse(lblVatTotal.Text)));
             }
         }
 
         private void lblGrossTotal_TextChanged(object sender, EventArgs e)
         {
-            if (lblGrossTotal.Text != Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblGrossTotal.Text)))).ToString("G29")
-                           )
+            if (lblGrossTotal.Text != String.Format("{0:N}", (decimal.Parse(lblGrossTotal.Text))))
             {
-                lblGrossTotal.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblGrossTotal.Text)))).ToString("G29");
+                lblGrossTotal.Text = String.Format("{0:N}", (decimal.Parse(lblGrossTotal.Text)));
             }
         }
 
@@ -5484,9 +5477,9 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 //
-                decimal totaldis = Math.Round((Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal, 1);
-                txtTotalDis.Text = totaldis.ToString();
-                lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
+                decimal totaldis = Decimal.Parse(String.Format("{0:N}", (Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal));
+                txtTotalDis.Text = String.Format("{0:N}", totaldis.ToString());
+                lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString());
             }
             Disc();
         }
@@ -5529,11 +5522,12 @@ namespace LoginForm.QuotationModule
                     }
                     else
                     {
-                        decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 4);
+                        decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 2);
                         //decimal dis2 = Math.Round(subtotal * Decimal.Parse(txtTotalDis.Text) / 100,0);
                         decimal dis2 = Math.Round(((subtotal * Decimal.Parse(txtTotalDis.Text)) / 100), 3);
-                        txtTotalDis2.Text = dis2.ToString();
-                        lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                        txtTotalDis2.Text = String.Format("{0:N}", dis2.ToString());
+                         //lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                         lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)));
                     }
                 }
 
@@ -5549,7 +5543,7 @@ namespace LoginForm.QuotationModule
                 {
                     decimal total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                     dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((total) - (((total) * Decimal.Parse(txtTotalDis2.Text)) / Decimal.Parse(lblsubtotal.Text))).ToString();
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()) / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
+                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = Decimal.Parse(String.Format("{0:N}", (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()) / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString()));
 
                 }
             }
@@ -5654,7 +5648,7 @@ namespace LoginForm.QuotationModule
                 decimal gbpDisc = 0;
                 if (!String.IsNullOrEmpty(txtTotalDis2.Text) && txtTotalDis2.Text!=0.ToString())
                 {
-                    Disc = Convert.ToDecimal(txtTotalDis2.Text);
+                    Disc = Convert.ToDecimal(String.Format("{0:N}", txtTotalDis2.Text));
                     gbpDisc = (Disc * CurrValue) / currentGbpValue;
                 }
                 return ((1 - (totalCost / (totalPrice - gbpDisc))) * 100);
@@ -5697,7 +5691,7 @@ namespace LoginForm.QuotationModule
                 decimal gbpDisc = 0;
                 if (!String.IsNullOrEmpty(txtTotalDis2.Text) && txtTotalDis2.Text != 0.ToString())
                 {
-                    Disc = Convert.ToDecimal(txtTotalDis2.Text);
+                    Disc = Convert.ToDecimal(String.Format("{0:N}", txtTotalDis2.Text));
                     gbpDisc = (Disc * CurrValue) / currentGbpValue;
                 }
                 return ((1 - (totalCost / (totalPrice - gbpDisc))) * 100);
@@ -5709,7 +5703,7 @@ namespace LoginForm.QuotationModule
             decimal ExtraCharge = 0;
 
             try { ExtraCharge = Decimal.Parse(txtExtraChanges.Text); } catch { }
-            lblTotalExtra.Text = (ExtraCharge + Decimal.Parse(lbltotal.Text)).ToString();
+            lblTotalExtra.Text = String.Format("{0:N}", (ExtraCharge + Decimal.Parse(lbltotal.Text)).ToString());
         }
 
         private void txtExtraChanges_Leave(object sender, EventArgs e)
@@ -5717,7 +5711,8 @@ namespace LoginForm.QuotationModule
             if (txtExtraChanges.Text != null && txtExtraChanges.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
-                sonuc = Math.Round(sonuc, 4);
+                //sonuc = Math.Round(sonuc, 4);
+                sonuc = Convert.ToDecimal(String.Format("{0:N}", sonuc));
                 txtExtraChanges.Text = sonuc.ToString();
             }
         }
@@ -5927,8 +5922,10 @@ namespace LoginForm.QuotationModule
                             }
                             UCUPCurr = DiscountedUCUPCurr * ((100 - disc) / 100);
                             decimal UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
-                            item.Cells[dgDisc.Index].Value = Math.Round((100 - ((UCUPCurr * 100) / UPIME)), 2).ToString();
-                            item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 2)).ToString();
+                            //item.Cells[dgDisc.Index].Value = Math.Round((100 - ((UCUPCurr * 100) / UPIME)), 2).ToString();
+                            //item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 2)).ToString();
+                            item.Cells[dgDisc.Index].Value = String.Format("{0:N}", (100 - ((UCUPCurr * 100) / UPIME)).ToString());
+                            item.Cells[dgUCUPCurr.Index].Value = String.Format("{0:N}", (UCUPCurr).ToString());
                             //if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                             //{
                             //    item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
@@ -5949,7 +5946,7 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 totallbl = subtotal;
-                lbltotal.Text = subtotal.ToString();
+                lbltotal.Text = String.Format("{0:N}", subtotal.ToString());
             }
             else
             {
@@ -5976,15 +5973,18 @@ namespace LoginForm.QuotationModule
                                 total = total / quantity;
                                 UPIME = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString());
                                 datagriddisc = 100 - (100 * (total * 100 / (100 - txtdisc)) / UPIME);
-                                item.Cells[dgDisc.Index].Value = Math.Round(datagriddisc, 2).ToString();
+                                //item.Cells[dgDisc.Index].Value = Math.Round(datagriddisc, 2).ToString();
+                                item.Cells[dgDisc.Index].Value = datagriddisc.ToString();
                                 UCUPCurr = (UPIME * (100 - datagriddisc)) / 100;
-                                item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 2)).ToString();
+                                //item.Cells[dgUCUPCurr.Index].Value = (Math.Round(UCUPCurr, 2)).ToString();
+                                item.Cells[dgUCUPCurr.Index].Value = String.Format("{0:N}", UCUPCurr.ToString());
                                 //if (Convert.ToInt32(CurrentRow.Cells[dgSSM.Index].Value.ToString()) > 1 || Convert.ToInt32(CurrentRow.Cells[dgUC.Index].Value.ToString()) > 1)
                                 //{
                                 //    item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                                 //}
                                 item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUPIME.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
-                                item.Cells[dgTotal.Index].Value = Math.Round((UCUPCurr * quantity), 2);
+                                //item.Cells[dgTotal.Index].Value = Math.Round((UCUPCurr * quantity), 2);
+                                item.Cells[dgTotal.Index].Value = UCUPCurr * quantity;
                                 subtotal = subtotal + (UCUPCurr * quantity);
                             }
                         }
@@ -6001,11 +6001,11 @@ namespace LoginForm.QuotationModule
             }
 
             lblsubtotal.Text = subtotal.ToString();
-            lbltotal.Text = totallbl.ToString();
+            lbltotal.Text = String.Format("{0:N}", totallbl.ToString());
             GetAllMargin();
 
-            txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
-
+            //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+            txtTotalMargin.Text = String.Format("{0:N}", calculateTotalMargin());
         }
 
         private void cbFactor_Leave(object sender, EventArgs e)
@@ -6124,7 +6124,11 @@ namespace LoginForm.QuotationModule
         {
             CalculateSubTotal();
             calculateTotalCost();
-            try { txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString(); }
+            try
+            {
+                //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                txtTotalMargin.Text = String.Format("{0:N}", calculateTotalMargin());
+            }
             catch { }
             Disc();
         }
@@ -6444,7 +6448,9 @@ namespace LoginForm.QuotationModule
         {
             if (txtTotalMargin.Text != "  .")
             {
-                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                //                txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                txtTotalMargin.Text = String.Format("{0:N}", calculateTotalMargin());
+                
             }
             else
             {
@@ -6520,26 +6526,29 @@ namespace LoginForm.QuotationModule
                         if (item.Cells["HS"].Style.BackColor != Color.Red && item.Cells["LI"].Style.BackColor != Color.Ivory)
                         {
                             item.Cells[dgUCUPCurr.Index].Value = "";
-                            item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text);
-                            item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 2).ToString();
+                            item.Cells[dgUCUPCurr.Index].Value = Decimal.Parse(String.Format("{0:N}", decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(lblCustomerFactorValue.Text)));
+                            //item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 2).ToString();
+                            item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(String.Format("{0:N}", item.Cells[dgUCUPCurr.Index].Value.ToString()));
 
                             item.Cells[dgTotal.Index].Value = "";
                             item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString());
-                            item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 2).ToString();
-                            
+                            //item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 2).ToString();
+                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()).ToString();
+
                             if (txtHazardousInd.Text == "N")
                             {
                                 #region Total
                                 decimal ucupcurr = decimal.Parse(item.Cells["dgUCUPCurr"].Value.ToString());
                                 decimal UcupIME = decimal.Parse(item.Cells["dgUPIME"].Value.ToString());
-                                decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 4);
+                                //decimal disc = Math.Round(((UcupIME - ucupcurr) * (decimal)100 / UcupIME), 4);
+                                decimal disc = (UcupIME - ucupcurr) * (decimal)100 / UcupIME;
                                 int workerID = Utils.getCurrentUser().WorkerID;
                                 decimal Minmarge = (decimal)IME.Workers.Where(x => x.WorkerID == workerID).FirstOrDefault().MinMarge;
                                 if (disc > Minmarge)
                                 {
                                     MessageBox.Show("Low Price ! Ask for authorization");
                                     //dgQuotationAddedItems.CurrentCell = item.Cells[dgUCUPCurr.Index];
-                                    item.Cells["dgUCUPCurr"].Value = UcupIME;
+                                    item.Cells["dgUCUPCurr"].Value = Decimal.Parse(String.Format("{0:N}", UcupIME));
 
                                     item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
                                     item.Cells["dgDisc"].Value = 0;
@@ -6555,11 +6564,12 @@ namespace LoginForm.QuotationModule
                                 #region Calculate Total Margin
                                 try
                                 {
-                                    txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                    //txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                    txtTotalMargin.Text = String.Format("{0:N}", calculateTotalMargin());
                                 }
                                 catch (Exception ex)
                                 {
-                                    txtTotalMargin.Text = Math.Round(calculateTotalMargin(), 4).ToString();
+                                    txtTotalMargin.Text = String.Format("{0:N}", calculateTotalMargin());
                                 }
 
                                 #endregion
@@ -6568,7 +6578,7 @@ namespace LoginForm.QuotationModule
                             }
                             else if (txtHazardousInd.Text == "Y")
                             {
-                                item.Cells[dgUCUPCurr.Index].Value = item.Cells[dgUPIME.Index].Value.ToString();
+                                item.Cells[dgUCUPCurr.Index].Value = Decimal.Parse(String.Format("{0:N}", item.Cells[dgUPIME.Index].Value.ToString()));
 
 
                                 item.Cells[dgPacketUP.Index].Value = decimal.Parse(item.Cells[dgUKPrice.Index].Value.ToString()) * decimal.Parse(item.Cells[dgSSM.Index].Value.ToString()) * decimal.Parse(item.Cells[dgUC.Index].Value.ToString());
@@ -6606,11 +6616,12 @@ namespace LoginForm.QuotationModule
                         {
                             item.Cells[dgUCUPCurr.Index].Value = "";
                             item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgLandingCost.Index].Value.ToString()) * decimal.Parse(lblCustomerMarkupValue.Text) * CurrentRate;
-                            item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 2).ToString();
-
+                            //item.Cells[dgUCUPCurr.Index].Value = Math.Round(decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()), 2).ToString();
+                            item.Cells[dgUCUPCurr.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()).ToString();
                             item.Cells[dgTotal.Index].Value = "";
                             item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgUCUPCurr.Index].Value.ToString()) * decimal.Parse(item.Cells[dgQty.Index].Value.ToString()) * CurrentRate;
-                            item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 2).ToString();
+                            //item.Cells[dgTotal.Index].Value = Math.Round(decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()), 2).ToString();
+                            item.Cells[dgTotal.Index].Value = decimal.Parse(item.Cells[dgTotal.Index].Value.ToString()).ToString();
                         }
                     }
                 }
@@ -6690,8 +6701,9 @@ namespace LoginForm.QuotationModule
                     {
                         decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 4);
                         decimal dis2 = Math.Round(((subtotal * Decimal.Parse(txtTotalDis.Text)) / 100), 3);
-                        txtTotalDis2.Text = dis2.ToString();
-                        lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                        txtTotalDis2.Text = String.Format("{0:N}", dis2.ToString());
+                        //lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                        lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)));
                     }
 
                     Disc();
@@ -6729,8 +6741,9 @@ namespace LoginForm.QuotationModule
                     {
                         decimal subtotal = Math.Round(Decimal.Parse(lblsubtotal.Text) - hztotal, 4);
                         decimal dis2 = Math.Round(((subtotal * Decimal.Parse(txtTotalDis.Text)) / 100), 3);
-                        txtTotalDis2.Text = dis2.ToString();
-                        lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                        txtTotalDis2.Text = String.Format("{0:N}", dis2.ToString());
+                        //lbltotal.Text = Math.Round((Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)), 4).ToString();
+                        lbltotal.Text = String.Format("{0:N}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)));
                     }
 
                     Disc();

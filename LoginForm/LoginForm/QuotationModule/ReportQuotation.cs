@@ -24,6 +24,7 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         bool vat;
         int quoVat;
+        decimal sub;
         public ReportQuotation()
         {
             InitializeComponent();
@@ -68,6 +69,7 @@ namespace LoginForm
             pContactTel.Value = tel;
             pPayment.Value = payment;
             sub = Math.Round(Convert.ToDecimal(sub), 2).ToString();
+            this.sub = Math.Round(Convert.ToDecimal(sub), 2);
             pSubTotal.Value = sub;
             if (pobox == null)
             {
@@ -222,8 +224,8 @@ namespace LoginForm
             xrTableCell1.Text = " Total " + currencySymbol;
             xrTableCell9.Text = " Sub Total " + currencySymbol;
             xrTableCell20.Text = " Net " + currencySymbol;
-            xrTableCell30.DataBindings["Text"].FormatString = "{0: 0.00}";
-            xrTableCell21.DataBindings["Text"].FormatString = "{0: 0.00}";
+            xrTableCell30.DataBindings["Text"].FormatString = "{0:N}";
+            xrTableCell21.DataBindings["Text"].FormatString = "{0:N}";
            
             if (vat == false)
             {
@@ -241,9 +243,9 @@ namespace LoginForm
             if (gross != "")
             {
                 grosstotal = Convert.ToDecimal(gross);
-                gross = Math.Round(grosstotal, 1).ToString();
-                xrTableCell21.Text = gross;
-                xrTableCell10.Text = Math.Round((grosstotal - Convert.ToDecimal(disc2)),2).ToString();
+                gross = String.Format("{0:N}", grosstotal);
+                xrTableCell21.Text = String.Format("{0:N}", gross);
+                xrTableCell10.Text = String.Format("{0:N}", (this.sub - Convert.ToDecimal(disc)));
                 NumberConvertString();
             }
 
@@ -327,16 +329,16 @@ namespace LoginForm
 
         private void xrTableCell2_TextChanged(object sender, EventArgs e)
         {
-            if (xrTableCell2.Text != "")
+            if (xrTableCell10.Text != "")
             {
-                double sayi = Convert.ToDouble(xrTableCell2.Text);
+                double sayi = Convert.ToDouble(xrTableCell10.Text);
                 double sonuc = (sayi * 5) / 100;
 
                 if (vat == true)
                 {
                     if (quoVat == 1)
                     {
-                        xrTableCell28.Text = Math.Round(Convert.ToDecimal(sonuc), 2).ToString();
+                        xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
                     }
                     else
                     {
