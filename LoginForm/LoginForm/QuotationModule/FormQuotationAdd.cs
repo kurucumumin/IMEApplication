@@ -1757,7 +1757,7 @@ namespace LoginForm.QuotationModule
                                     CurrentRow.Cells[dgUnitNetWeight.Index].Value = (Decimal.Parse(txtStandartWeight.Text)).ToString();
                                     CalculateTotalNetWeight();
                                 }
-                                txtGrossWeight.Text = String.Format("{0:0.0000}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
+                                txtGrossWeight.Text = String.Format("{0:N}", (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString());
                                 if (Int32.Parse(CurrentRow.Cells["dgSSM"].Value.ToString()) > 1)
                                 {
                                     txtGrossWeight.Text = (decimal.Parse(txtGrossWeight.Text) /
