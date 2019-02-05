@@ -68,8 +68,8 @@ namespace LoginForm
             pRepresantative.Value = represantative;
             pContactTel.Value = tel;
             pPayment.Value = payment;
-            sub = Math.Round(Convert.ToDecimal(sub), 2).ToString();
-            this.sub = Math.Round(Convert.ToDecimal(sub), 2);
+            sub = String.Format("{0:N}", Convert.ToDecimal(sub));
+            this.sub = decimal.Parse(String.Format("{0:N}", Convert.ToDecimal(sub)));
             pSubTotal.Value = sub;
             if (pobox == null)
             {
@@ -77,8 +77,8 @@ namespace LoginForm
             }
             pPoBox.Value = pobox;
             pCity.Value = city;
-            pDisc.Value = Math.Round(Convert.ToDecimal(disc), 2).ToString();
-            pGross.Value = Math.Round(Convert.ToDecimal(gross), 2).ToString();
+            pDisc.Value = String.Format("{0:N}", Convert.ToDecimal(disc));
+            pGross.Value = String.Format("{0:N}", Convert.ToDecimal(gross));
 
             if (currencyName == "Pound")
             {
@@ -152,19 +152,22 @@ namespace LoginForm
                 {
                     array.UnitOfMeasure = "BAG OF " + array.SSM * array.UC;
                     array.TargetUP = array.Qty / (array.SSM * array.UC);
-                    array.Qty = Convert.ToInt32(array.TargetUP);
+                    //array.Qty = Convert.ToInt32(array.TargetUP);
+                    array.Qty = Convert.ToInt32(array.TargetUP * array.SSM * array.UC);
                 }
                 else if (array.UnitOfMeasure == "MBAG")
                 {
                     array.UnitOfMeasure = "BAG OF " +array.SSM * array.UC + " M";
                     array.TargetUP = array.Qty / (array.SSM * array.UC);
-                    array.Qty = Convert.ToInt32(array.TargetUP);
+                    //array.Qty = Convert.ToInt32(array.TargetUP);
+                    array.Qty = Convert.ToInt32(array.TargetUP * array.SSM * array.UC);
                 }
                 else if (array.UnitOfMeasure == "BOX")
                 {
                     array.UnitOfMeasure = "BOX OF " + array.SSM * array.UC;
                     array.TargetUP = array.Qty / (array.SSM * array.UC);
-                    array.Qty = Convert.ToInt32(array.TargetUP);
+                    //array.Qty = Convert.ToInt32(array.TargetUP);
+                    array.Qty = Convert.ToInt32(array.TargetUP * array.SSM * array.UC);
                 }
                 else if (array.UnitOfMeasure == "SET")
                 {
@@ -242,7 +245,7 @@ namespace LoginForm
 
             if (gross != "")
             {
-                grosstotal = Convert.ToDecimal(gross);
+                grosstotal = decimal.Parse(String.Format("{0:N}", gross));
                 gross = String.Format("{0:N}", grosstotal);
                 xrTableCell21.Text = String.Format("{0:N}", gross);
                 xrTableCell10.Text = String.Format("{0:N}", (this.sub - Convert.ToDecimal(disc)));
@@ -251,7 +254,7 @@ namespace LoginForm
 
             if (disc2 != "" && disc2 != "0.00000")
             {
-                xrTableCell29.Text = " Discount " + Math.Round(Convert.ToDecimal(disc2), 0).ToString() + " %";
+                xrTableCell29.Text = " Discount " + String.Format("{0:N}", Convert.ToDecimal(disc2)) + " %";
             }
 
             xrLabel37.Text = Utils.getManagement().Note;
@@ -331,8 +334,8 @@ namespace LoginForm
         {
             if (xrTableCell10.Text != "")
             {
-                double sayi = Convert.ToDouble(xrTableCell10.Text);
-                double sonuc = (sayi * 5) / 100;
+                double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell10.Text)));
+                double sonuc = double.Parse(String.Format("{0:N}", (sayi * 5) / 100));
 
                 if (vat == true)
                 {

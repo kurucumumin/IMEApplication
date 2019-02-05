@@ -321,7 +321,7 @@ namespace LoginForm
             // xrTableCell25
             // 
             this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "UPIME", "{0:#.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "UPIME", "{0:N2}")});
             this.xrTableCell25.Dpi = 254F;
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.Padding = new DevExpress.XtraPrinting.PaddingInfo(13, 0, 0, 0, 254F);
@@ -333,7 +333,7 @@ namespace LoginForm
             // xrTableCell26
             // 
             this.xrTableCell26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Total", "{0:#.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Total", "{0:N2}")});
             this.xrTableCell26.Dpi = 254F;
             this.xrTableCell26.Name = "xrTableCell26";
             this.xrTableCell26.Padding = new DevExpress.XtraPrinting.PaddingInfo(13, 0, 0, 0, 254F);

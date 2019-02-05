@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -65,9 +64,53 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMarkup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgFirstUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgPacketUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitTotalNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,49 +365,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUKPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMarkup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgFirstUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgPacketUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitTotalNetWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -502,6 +502,476 @@
             this.dgQuotationAddedItems.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgQuotationAddedItems_SortCompare);
             this.dgQuotationAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
             this.dgQuotationAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
+            // 
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Format = "N1";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgNo.Frozen = true;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgNo.Width = 30;
+            // 
+            // HS
+            // 
+            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
+            this.HS.Frozen = true;
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 25;
+            // 
+            // LI
+            // 
+            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LI.Frozen = true;
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 25;
+            // 
+            // CL
+            // 
+            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CL.Frozen = true;
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 25;
+            // 
+            // LC
+            // 
+            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
+            this.LC.Frozen = true;
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 25;
+            // 
+            // LM
+            // 
+            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
+            this.LM.Frozen = true;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 25;
+            // 
+            // WT
+            // 
+            this.WT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.WT.Frozen = true;
+            this.WT.HeaderText = "WT";
+            this.WT.Name = "WT";
+            this.WT.ReadOnly = true;
+            this.WT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.WT.Width = 25;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgSupplier.Frozen = true;
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            this.dgSupplier.Width = 70;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgProductCode.Frozen = true;
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            this.dgProductCode.Width = 76;
+            // 
+            // dgStatus
+            // 
+            this.dgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgStatus.HeaderText = "Status";
+            this.dgStatus.Items.AddRange(new object[] {
+            "R",
+            "O",
+            "D"});
+            this.dgStatus.Name = "dgStatus";
+            this.dgStatus.Width = 44;
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgBrand.HeaderText = "Manuf.";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            this.dgBrand.Width = 5;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            this.dgMPN.Width = 5;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            this.dgDesc.Width = 5;
+            // 
+            // dgUKPrice
+            // 
+            this.dgUKPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.dgUKPrice.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgUKPrice.HeaderText = "UK Price";
+            this.dgUKPrice.Name = "dgUKPrice";
+            this.dgUKPrice.Width = 66;
+            // 
+            // dgCost
+            // 
+            this.dgCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            this.dgCost.Width = 66;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle14.Format = "C2";
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            this.dgLandingCost.Width = 89;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgMargin.HeaderText = "Margin (%)";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            this.dgMargin.Width = 79;
+            // 
+            // dgMarkup
+            // 
+            this.dgMarkup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMarkup.HeaderText = "Markup (%)";
+            this.dgMarkup.Name = "dgMarkup";
+            this.dgMarkup.Width = 82;
+            // 
+            // dgQty
+            // 
+            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
+            dataGridViewCellStyle16.NullValue = null;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
+            this.dgQty.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            this.dgQty.ReadOnly = true;
+            this.dgQty.Width = 50;
+            // 
+            // dgStock
+            // 
+            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            this.dgStock.Width = 58;
+            // 
+            // dgUOM
+            // 
+            this.dgUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            this.dgUOM.Width = 55;
+            // 
+            // dgSSM
+            // 
+            this.dgSSM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            this.dgSSM.Width = 52;
+            // 
+            // dgUC
+            // 
+            this.dgUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            this.dgUC.Width = 50;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            this.dgUPIME.Width = 68;
+            // 
+            // dgFirstUPIME
+            // 
+            this.dgFirstUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle22.Format = "N2";
+            this.dgFirstUPIME.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgFirstUPIME.HeaderText = "1st U/P";
+            this.dgFirstUPIME.Name = "dgFirstUPIME";
+            this.dgFirstUPIME.ReadOnly = true;
+            this.dgFirstUPIME.Width = 62;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle23.Format = "N2";
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.ReadOnly = true;
+            this.dgDisc.Width = 71;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle24.Format = "N2";
+            dataGridViewCellStyle24.NullValue = null;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
+            this.dgUCUPCurr.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            this.dgUCUPCurr.ReadOnly = true;
+            this.dgUCUPCurr.Width = 97;
+            // 
+            // dgPacketUP
+            // 
+            this.dgPacketUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle25.Format = "N2";
+            this.dgPacketUP.DefaultCellStyle = dataGridViewCellStyle25;
+            this.dgPacketUP.HeaderText = "Packet U/P";
+            this.dgPacketUP.Name = "dgPacketUP";
+            this.dgPacketUP.Width = 78;
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle26.Format = "N2";
+            dataGridViewCellStyle26.NullValue = null;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            this.dgTotal.Width = 64;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            this.dgTargetUP.ReadOnly = true;
+            this.dgTargetUP.Width = 78;
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            this.dgCompetitor.ReadOnly = true;
+            this.dgCompetitor.Width = 85;
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle27;
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            this.dgHZ.Visible = false;
+            // 
+            // dgCL
+            // 
+            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle28;
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            this.dgCL.Visible = false;
+            // 
+            // dgCR
+            // 
+            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle29;
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            this.dgCR.Visible = false;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgDelivery.Width = 71;
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle30.Format = "N2";
+            dataGridViewCellStyle30.NullValue = null;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle30;
+            this.dgUnitWeigt.HeaderText = "Gross Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            this.dgUnitWeigt.Width = 86;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle31.Format = "N2";
+            dataGridViewCellStyle31.NullValue = null;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle31;
+            this.dgTotalWeight.HeaderText = "Total Gross Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            this.dgTotalWeight.Width = 115;
+            // 
+            // dgUnitNetWeight
+            // 
+            this.dgUnitNetWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle32.Format = "N2";
+            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle32;
+            this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
+            this.dgUnitNetWeight.Name = "dgUnitNetWeight";
+            // 
+            // dgUnitTotalNetWeight
+            // 
+            this.dgUnitTotalNetWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle33.Format = "N2";
+            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle33;
+            this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
+            this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
+            this.dgUnitTotalNetWeight.Width = 106;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            this.dgCustStkCode.ReadOnly = true;
+            this.dgCustStkCode.Width = 92;
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            this.dgCustDescription.ReadOnly = true;
+            this.dgCustDescription.Width = 105;
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle34;
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            this.dgCOO.Width = 55;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle35;
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
+            this.dgCCCNO.Width = 68;
             // 
             // contextMenuStrip1
             // 
@@ -3099,478 +3569,6 @@
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
-            // 
-            // dgNo
-            // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N1";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgNo.Frozen = true;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgNo.Width = 30;
-            // 
-            // HS
-            // 
-            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
-            this.HS.Frozen = true;
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.ReadOnly = true;
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 25;
-            // 
-            // LI
-            // 
-            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
-            this.LI.Frozen = true;
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.ReadOnly = true;
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 25;
-            // 
-            // CL
-            // 
-            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CL.Frozen = true;
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.ReadOnly = true;
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 25;
-            // 
-            // LC
-            // 
-            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
-            this.LC.Frozen = true;
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.ReadOnly = true;
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 25;
-            // 
-            // LM
-            // 
-            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
-            this.LM.Frozen = true;
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.ReadOnly = true;
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 25;
-            // 
-            // WT
-            // 
-            this.WT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.WT.Frozen = true;
-            this.WT.HeaderText = "WT";
-            this.WT.Name = "WT";
-            this.WT.ReadOnly = true;
-            this.WT.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.WT.Width = 25;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgSupplier.Frozen = true;
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            this.dgSupplier.Width = 70;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgProductCode.Frozen = true;
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            this.dgProductCode.Width = 82;
-            // 
-            // dgStatus
-            // 
-            this.dgStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgStatus.HeaderText = "Status";
-            this.dgStatus.Items.AddRange(new object[] {
-            "R",
-            "O",
-            "D"});
-            this.dgStatus.Name = "dgStatus";
-            this.dgStatus.Width = 44;
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgBrand.HeaderText = "Manuf.";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            this.dgBrand.Width = 5;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 5;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            this.dgDesc.Width = 5;
-            // 
-            // dgUKPrice
-            // 
-            this.dgUKPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.dgUKPrice.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgUKPrice.HeaderText = "UK Price";
-            this.dgUKPrice.Name = "dgUKPrice";
-            this.dgUKPrice.Width = 71;
-            // 
-            // dgCost
-            // 
-            this.dgCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            this.dgCost.Width = 71;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle14.Format = "C2";
-            dataGridViewCellStyle14.NullValue = null;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            this.dgLandingCost.Width = 89;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgMargin.HeaderText = "Margin (%)";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            this.dgMargin.Width = 79;
-            // 
-            // dgMarkup
-            // 
-            this.dgMarkup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgMarkup.HeaderText = "Markup (%)";
-            this.dgMarkup.Name = "dgMarkup";
-            this.dgMarkup.Width = 82;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
-            dataGridViewCellStyle16.NullValue = null;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
-            this.dgQty.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.ReadOnly = true;
-            this.dgQty.Width = 50;
-            // 
-            // dgStock
-            // 
-            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            this.dgStock.Width = 58;
-            // 
-            // dgUOM
-            // 
-            this.dgUOM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            this.dgUOM.Width = 55;
-            // 
-            // dgSSM
-            // 
-            this.dgSSM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            this.dgSSM.Width = 52;
-            // 
-            // dgUC
-            // 
-            this.dgUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            this.dgUC.Width = 50;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            this.dgUPIME.Width = 68;
-            // 
-            // dgFirstUPIME
-            // 
-            this.dgFirstUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle22.Format = "N2";
-            this.dgFirstUPIME.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dgFirstUPIME.HeaderText = "1st U/P";
-            this.dgFirstUPIME.Name = "dgFirstUPIME";
-            this.dgFirstUPIME.ReadOnly = true;
-            this.dgFirstUPIME.Width = 62;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            this.dgDisc.ReadOnly = true;
-            this.dgDisc.Width = 71;
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(255)))), ((int)(((byte)(195)))));
-            this.dgUCUPCurr.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            this.dgUCUPCurr.ReadOnly = true;
-            this.dgUCUPCurr.Width = 97;
-            // 
-            // dgPacketUP
-            // 
-            this.dgPacketUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle25.Format = "N2";
-            this.dgPacketUP.DefaultCellStyle = dataGridViewCellStyle25;
-            this.dgPacketUP.HeaderText = "Packet U/P";
-            this.dgPacketUP.Name = "dgPacketUP";
-            this.dgPacketUP.Width = 78;
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle26.Format = "N2";
-            dataGridViewCellStyle26.NullValue = null;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            this.dgTotal.Width = 64;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            this.dgTargetUP.ReadOnly = true;
-            this.dgTargetUP.Width = 78;
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            this.dgCompetitor.ReadOnly = true;
-            this.dgCompetitor.Width = 85;
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle27;
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            this.dgHZ.Visible = false;
-            this.dgHZ.Width = 45;
-            // 
-            // dgCL
-            // 
-            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle28;
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            this.dgCL.Visible = false;
-            this.dgCL.Width = 44;
-            // 
-            // dgCR
-            // 
-            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle29;
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            this.dgCR.Visible = false;
-            this.dgCR.Width = 46;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            this.dgDelivery.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDelivery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgDelivery.Width = 71;
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle30.Format = "N2";
-            dataGridViewCellStyle30.NullValue = null;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle30;
-            this.dgUnitWeigt.HeaderText = "Gross Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            this.dgUnitWeigt.Width = 86;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle31.Format = "N2";
-            dataGridViewCellStyle31.NullValue = null;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle31;
-            this.dgTotalWeight.HeaderText = "Total Gross Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            this.dgTotalWeight.Width = 115;
-            // 
-            // dgUnitNetWeight
-            // 
-            this.dgUnitNetWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle32.Format = "N2";
-            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle32;
-            this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
-            this.dgUnitNetWeight.Name = "dgUnitNetWeight";
-            // 
-            // dgUnitTotalNetWeight
-            // 
-            this.dgUnitTotalNetWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle33.Format = "N2";
-            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle33;
-            this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
-            this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
-            this.dgUnitTotalNetWeight.Width = 106;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            this.dgCustStkCode.ReadOnly = true;
-            this.dgCustStkCode.Width = 92;
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            this.dgCustDescription.ReadOnly = true;
-            this.dgCustDescription.Width = 105;
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle34;
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            this.dgCOO.Width = 55;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle35;
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
-            this.dgCCCNO.Width = 68;
             // 
             // FormQuotationAdd
             // 
