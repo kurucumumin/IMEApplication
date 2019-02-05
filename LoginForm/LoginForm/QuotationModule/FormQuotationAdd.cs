@@ -305,6 +305,8 @@ namespace LoginForm.QuotationModule
             }
             subtotal = 0;
             decimal DiscounRate = 0;
+            if (lblsubtotal.Text != "" && lblsubtotal.Text != null) subtotal = Decimal.Parse(String.Format("{0:N}", decimal.Parse(lblsubtotal.Text)));
+            if (txtTotalDis.Text != "" && txtTotalDis.Text != null) DiscounRate = Decimal.Parse(String.Format("{0:N}", decimal.Parse(txtTotalDis.Text)));
             try {
                 //lbltotal.Text = (decimal.Parse(lblsubtotal.Text) - ((subtotal * DiscounRate) / 100)).ToString();
                 lbltotal.Text = String.Format("{0:N}", (decimal.Parse(lblsubtotal.Text) - ((subtotal * DiscounRate) / 100)).ToString());
