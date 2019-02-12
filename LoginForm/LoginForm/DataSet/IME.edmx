@@ -841,6 +841,8 @@
           <Property Name="ViewQuotationName" Type="nvarchar" MaxLength="50" />
           <Property Name="TotalNetWeight" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Markup" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="FirstColumn" Type="bit" />
+          <Property Name="MarkupColumn" Type="bit" />
         </EntityType>
         <EntityType Name="QuotationDelivery">
           <Key>
@@ -888,6 +890,7 @@
           <Property Name="CustomerDesc" Type="nvarchar" MaxLength="80" />
           <Property Name="Manufacturer" Type="nvarchar" MaxLength="40" />
           <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportIME" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -5505,6 +5508,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ViewQuotationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TotalNetWeight" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Markup" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="FirstColumn" Type="Boolean" />
+          <Property Name="MarkupColumn" Type="Boolean" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Quotation__Quota__597119F2" FromRole="Quotation" ToRole="CustomerWorker" />
@@ -5564,6 +5569,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="CustomerDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Manufacturer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportIME" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
           <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
@@ -11101,6 +11107,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ViewQuotationName" ColumnName="ViewQuotationName" />
                 <ScalarProperty Name="TotalNetWeight" ColumnName="TotalNetWeight" />
                 <ScalarProperty Name="Markup" ColumnName="Markup" />
+                <ScalarProperty Name="FirstColumn" ColumnName="FirstColumn" />
+                <ScalarProperty Name="MarkupColumn" ColumnName="MarkupColumn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11150,6 +11158,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="CustomerDesc" ColumnName="CustomerDesc" />
                 <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="ReportIME" ColumnName="ReportIME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

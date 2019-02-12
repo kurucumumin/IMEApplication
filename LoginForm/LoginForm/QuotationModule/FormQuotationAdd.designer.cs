@@ -493,6 +493,7 @@
             this.dgQuotationAddedItems.Size = new System.Drawing.Size(1290, 165);
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellClick);
+            this.dgQuotationAddedItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellContentClick);
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
             this.dgQuotationAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgQuotationAddedItems_DataError);
@@ -822,7 +823,7 @@
             // 
             // dgTotal
             // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle26.Format = "N2";
             dataGridViewCellStyle26.NullValue = null;
@@ -3343,6 +3344,7 @@
             // 
             // txtTotalDis2
             // 
+            this.txtTotalDis2.Enabled = false;
             this.txtTotalDis2.Location = new System.Drawing.Point(201, 13);
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 21);

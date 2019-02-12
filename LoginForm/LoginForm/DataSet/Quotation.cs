@@ -69,6 +69,8 @@ namespace LoginForm.DataSet
         public string ViewQuotationName { get; set; }
         public Nullable<decimal> TotalNetWeight { get; set; }
         public Nullable<decimal> Markup { get; set; }
+        public Nullable<bool> FirstColumn { get; set; }
+        public Nullable<bool> MarkupColumn { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

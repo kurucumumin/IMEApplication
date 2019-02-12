@@ -334,7 +334,7 @@ namespace LoginForm
         {
             if (xrTableCell10.Text != "")
             {
-                double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell10.Text)));
+                double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell2.Text)));
                 double sonuc = double.Parse(String.Format("{0:N}", (sayi * 5) / 100));
 
                 if (vat == true)

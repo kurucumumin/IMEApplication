@@ -55,6 +55,7 @@ namespace LoginForm.DataSet
         public string CustomerDesc { get; set; }
         public string Manufacturer { get; set; }
         public string SupplierName { get; set; }
+        public Nullable<decimal> ReportIME { get; set; }
     
         public virtual Quotation Quotation { get; set; }
         public virtual QuotationDelivery QuotationDelivery { get; set; }
