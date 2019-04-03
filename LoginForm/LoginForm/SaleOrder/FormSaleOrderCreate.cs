@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    public partial class FormSaleOrderCreate : MyForm
+    public partial class FormSaleOrderCreate : Form
     {
         private static string QuoStatusActive = "Pending";
         private static string QuoStatusPassive = "Passive";

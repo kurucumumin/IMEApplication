@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IME Application", "LoginFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printer_Settings", "Printer\Printer_Settings.csproj", "{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IMEDubai", "IMEDubai\IMEDubai.vdproj", "{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IMEDubai", "IMEDubai\IMEDubai.vdproj", "{4F7393EB-23BE-44B3-BB97-9AB44940E50F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,12 +39,12 @@ Global
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|x64.ActiveCfg = Release|x86
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|x86.ActiveCfg = Release|x86
 		{301B1C07-BC18-4571-A3BD-89D4D7C9B06C}.Release|x86.Build.0 = Release|x86
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Debug|Any CPU.ActiveCfg = Debug
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Debug|x64.ActiveCfg = Debug
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Debug|x86.ActiveCfg = Debug
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Release|Any CPU.ActiveCfg = Release
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Release|x64.ActiveCfg = Release
-		{1491D2BA-E411-4B4C-A7EB-2EADAA6BE4B6}.Release|x86.ActiveCfg = Release
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Debug|Any CPU.ActiveCfg = Debug
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Debug|x64.ActiveCfg = Debug
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Debug|x86.ActiveCfg = Debug
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Release|Any CPU.ActiveCfg = Release
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Release|x64.ActiveCfg = Release
+		{4F7393EB-23BE-44B3-BB97-9AB44940E50F}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

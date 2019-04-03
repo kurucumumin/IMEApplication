@@ -87,6 +87,27 @@
           <Property Name="City_name" Type="nvarchar" MaxLength="50" />
           <Property Name="CountryID" Type="int" />
         </EntityType>
+        <EntityType Name="CommandLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatabaseName" Type="nvarchar" MaxLength="128" />
+          <Property Name="SchemaName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ObjectType" Type="char" MaxLength="2" />
+          <Property Name="IndexName" Type="nvarchar" MaxLength="128" />
+          <Property Name="IndexType" Type="tinyint" />
+          <Property Name="StatisticsName" Type="nvarchar" MaxLength="128" />
+          <Property Name="PartitionNumber" Type="int" />
+          <Property Name="ExtendedInfo" Type="xml" />
+          <Property Name="Command" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommandType" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="ErrorNumber" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="companyId" />
@@ -3099,6 +3120,24 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="BackOrderItemSeach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductCode" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="CommandExecute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Command" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CommandType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Mode" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DatabaseName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="SchemaName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ObjectName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ObjectType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IndexName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IndexType" Type="int" Mode="In" />
+          <Parameter Name="StatisticsName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PartitionNumber" Type="int" Mode="In" />
+          <Parameter Name="ExtendedInfo" Type="xml" Mode="In" />
+          <Parameter Name="LockMessageSeverity" Type="int" Mode="In" />
+          <Parameter Name="LogToTable" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Execute" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="CompanyAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="companyId" Type="numeric" Mode="In" />
           <Parameter Name="companyName" Type="varchar(max)" Mode="In" />
@@ -3216,6 +3255,84 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="c_name" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="CustomersDebits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DatabaseBackup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Databases" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Directory" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BackupType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Verify" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CleanupTime" Type="int" Mode="In" />
+          <Parameter Name="CleanupMode" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Compress" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CopyOnly" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ChangeBackupType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BackupSoftware" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CheckSum" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BlockSize" Type="int" Mode="In" />
+          <Parameter Name="BufferCount" Type="int" Mode="In" />
+          <Parameter Name="MaxTransferSize" Type="int" Mode="In" />
+          <Parameter Name="NumberOfFiles" Type="int" Mode="In" />
+          <Parameter Name="CompressionLevel" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Threads" Type="int" Mode="In" />
+          <Parameter Name="Throttle" Type="int" Mode="In" />
+          <Parameter Name="Encrypt" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EncryptionAlgorithm" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ServerCertificate" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ServerAsymmetricKey" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EncryptionKey" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ReadWriteFileGroups" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="OverrideBackupPreference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NoRecovery" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="URL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Credential" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MirrorDirectory" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MirrorCleanupTime" Type="int" Mode="In" />
+          <Parameter Name="MirrorCleanupMode" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MirrorURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AvailabilityGroups" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Updateability" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AdaptiveCompression" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ModificationLevel" Type="int" Mode="In" />
+          <Parameter Name="LogSizeSinceLastLogBackup" Type="int" Mode="In" />
+          <Parameter Name="TimeSinceLastLogBackup" Type="int" Mode="In" />
+          <Parameter Name="DataDomainBoostHost" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DataDomainBoostUser" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DataDomainBoostDevicePath" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DataDomainBoostLockboxPath" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DirectoryStructure" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AvailabilityGroupDirectoryStructure" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FileName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AvailabilityGroupFileName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FileExtensionFull" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FileExtensionDiff" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FileExtensionLog" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Init" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DatabaseOrder" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DatabasesInParallel" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LogToTable" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Execute" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DatabaseIntegrityCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Databases" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CheckCommands" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PhysicalOnly" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NoIndex" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExtendedLogicalChecks" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TabLock" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FileGroups" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Objects" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MaxDOP" Type="int" Mode="In" />
+          <Parameter Name="AvailabilityGroups" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AvailabilityGroupReplicas" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Updateability" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TimeLimit" Type="int" Mode="In" />
+          <Parameter Name="LockTimeout" Type="int" Mode="In" />
+          <Parameter Name="LockMessageSeverity" Type="int" Mode="In" />
+          <Parameter Name="DatabaseOrder" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DatabasesInParallel" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LogToTable" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Execute" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="DefaultCurrencySet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="currencyId" Type="numeric" Mode="In" />
         </Function>
@@ -3349,6 +3466,45 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="Shipping" Type="nvarchar" Mode="In" />
           <Parameter Name="Lithium" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="IME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="object_id" Type="int" Mode="In" />
+          <Parameter Name="index_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IndexOptimize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Databases" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FragmentationLow" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FragmentationMedium" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FragmentationHigh" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FragmentationLevel1" Type="int" Mode="In" />
+          <Parameter Name="FragmentationLevel2" Type="int" Mode="In" />
+          <Parameter Name="MinNumberOfPages" Type="int" Mode="In" />
+          <Parameter Name="MaxNumberOfPages" Type="int" Mode="In" />
+          <Parameter Name="SortInTempdb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MaxDOP" Type="int" Mode="In" />
+          <Parameter Name="FillFactor" Type="int" Mode="In" />
+          <Parameter Name="PadIndex" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LOBCompaction" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="UpdateStatistics" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="OnlyModifiedStatistics" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="StatisticsModificationLevel" Type="int" Mode="In" />
+          <Parameter Name="StatisticsSample" Type="int" Mode="In" />
+          <Parameter Name="StatisticsResample" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="PartitionLevel" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MSShippedObjects" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Indexes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TimeLimit" Type="int" Mode="In" />
+          <Parameter Name="Delay" Type="int" Mode="In" />
+          <Parameter Name="WaitAtLowPriorityMaxDuration" Type="int" Mode="In" />
+          <Parameter Name="WaitAtLowPriorityAbortAfterWait" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Resumable" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AvailabilityGroups" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LockTimeout" Type="int" Mode="In" />
+          <Parameter Name="LockMessageSeverity" Type="int" Mode="In" />
+          <Parameter Name="DatabaseOrder" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DatabasesInParallel" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LogToTable" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Execute" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="ItemAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDesc" Type="nvarchar" Mode="In" />
@@ -3397,6 +3553,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="ItemMovement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="article" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="index_name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="object_id" Type="int" Mode="In" />
+          <Parameter Name="index_id" Type="int" Mode="In" />
         </Function>
         <Function Name="MasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="formName" Type="int" Mode="In" />
@@ -3859,6 +4019,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="UserAuthorization_Worker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WorkerID" Type="int" Mode="In" />
         </Function>
+        <Function Name="utl_DbReIndex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountOperation" EntityType="Self.AccountOperation" Schema="dbo" store:Type="Tables" />
@@ -3868,6 +4029,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="BackOrderMain" EntityType="Self.BackOrderMain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillTo" EntityType="Self.BillTo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommandLog" EntityType="Self.CommandLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyPath" EntityType="Self.CompanyPath" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
@@ -4642,6 +4804,27 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="City" ToRole="CustomerAddress" />
           <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="City" ToRole="SupplierAddress" />
           <NavigationProperty Name="Towns" Relationship="Self.FK__Town__CityID__2EFAF1E2" FromRole="City" ToRole="Town" />
+        </EntityType>
+        <EntityType Name="CommandLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatabaseName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SchemaName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectType" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="IndexName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IndexType" Type="Byte" />
+          <Property Name="StatisticsName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PartitionNumber" Type="Int32" />
+          <Property Name="ExtendedInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandType" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="ErrorNumber" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -7798,6 +7981,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="BackOrderMains" EntityType="Self.BackOrderMain" />
           <EntitySet Name="BillToes" EntityType="Self.BillTo" />
           <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="CommandLogs" EntityType="Self.CommandLog" />
           <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="CompanyPaths" EntityType="Self.CompanyPath" />
           <EntitySet Name="ContactTypes" EntityType="Self.ContactType" />
@@ -8388,6 +8572,24 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="BackOrderItemSeach" ReturnType="Collection(IMEModel.BackOrderItemSeach_Result)">
             <Parameter Name="ProductCode" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="CommandExecute">
+            <Parameter Name="Command" Mode="In" Type="String" />
+            <Parameter Name="CommandType" Mode="In" Type="String" />
+            <Parameter Name="Mode" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="DatabaseName" Mode="In" Type="String" />
+            <Parameter Name="SchemaName" Mode="In" Type="String" />
+            <Parameter Name="ObjectName" Mode="In" Type="String" />
+            <Parameter Name="ObjectType" Mode="In" Type="String" />
+            <Parameter Name="IndexName" Mode="In" Type="String" />
+            <Parameter Name="IndexType" Mode="In" Type="Int32" />
+            <Parameter Name="StatisticsName" Mode="In" Type="String" />
+            <Parameter Name="PartitionNumber" Mode="In" Type="Int32" />
+            <Parameter Name="ExtendedInfo" Mode="In" Type="String" />
+            <Parameter Name="LockMessageSeverity" Mode="In" Type="Int32" />
+            <Parameter Name="LogToTable" Mode="In" Type="String" />
+            <Parameter Name="Execute" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="CompanyAdd">
             <Parameter Name="companyId" Mode="In" Type="Decimal" />
             <Parameter Name="companyName" Mode="In" Type="String" />
@@ -8505,6 +8707,84 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="c_name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CustomersDebits" ReturnType="Collection(IMEModel.CustomersDebits_Result)" />
+          <FunctionImport Name="DatabaseBackup">
+            <Parameter Name="Databases" Mode="In" Type="String" />
+            <Parameter Name="Directory" Mode="In" Type="String" />
+            <Parameter Name="BackupType" Mode="In" Type="String" />
+            <Parameter Name="Verify" Mode="In" Type="String" />
+            <Parameter Name="CleanupTime" Mode="In" Type="Int32" />
+            <Parameter Name="CleanupMode" Mode="In" Type="String" />
+            <Parameter Name="Compress" Mode="In" Type="String" />
+            <Parameter Name="CopyOnly" Mode="In" Type="String" />
+            <Parameter Name="ChangeBackupType" Mode="In" Type="String" />
+            <Parameter Name="BackupSoftware" Mode="In" Type="String" />
+            <Parameter Name="CheckSum" Mode="In" Type="String" />
+            <Parameter Name="BlockSize" Mode="In" Type="Int32" />
+            <Parameter Name="BufferCount" Mode="In" Type="Int32" />
+            <Parameter Name="MaxTransferSize" Mode="In" Type="Int32" />
+            <Parameter Name="NumberOfFiles" Mode="In" Type="Int32" />
+            <Parameter Name="CompressionLevel" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Threads" Mode="In" Type="Int32" />
+            <Parameter Name="Throttle" Mode="In" Type="Int32" />
+            <Parameter Name="Encrypt" Mode="In" Type="String" />
+            <Parameter Name="EncryptionAlgorithm" Mode="In" Type="String" />
+            <Parameter Name="ServerCertificate" Mode="In" Type="String" />
+            <Parameter Name="ServerAsymmetricKey" Mode="In" Type="String" />
+            <Parameter Name="EncryptionKey" Mode="In" Type="String" />
+            <Parameter Name="ReadWriteFileGroups" Mode="In" Type="String" />
+            <Parameter Name="OverrideBackupPreference" Mode="In" Type="String" />
+            <Parameter Name="NoRecovery" Mode="In" Type="String" />
+            <Parameter Name="URL" Mode="In" Type="String" />
+            <Parameter Name="Credential" Mode="In" Type="String" />
+            <Parameter Name="MirrorDirectory" Mode="In" Type="String" />
+            <Parameter Name="MirrorCleanupTime" Mode="In" Type="Int32" />
+            <Parameter Name="MirrorCleanupMode" Mode="In" Type="String" />
+            <Parameter Name="MirrorURL" Mode="In" Type="String" />
+            <Parameter Name="AvailabilityGroups" Mode="In" Type="String" />
+            <Parameter Name="Updateability" Mode="In" Type="String" />
+            <Parameter Name="AdaptiveCompression" Mode="In" Type="String" />
+            <Parameter Name="ModificationLevel" Mode="In" Type="Int32" />
+            <Parameter Name="LogSizeSinceLastLogBackup" Mode="In" Type="Int32" />
+            <Parameter Name="TimeSinceLastLogBackup" Mode="In" Type="Int32" />
+            <Parameter Name="DataDomainBoostHost" Mode="In" Type="String" />
+            <Parameter Name="DataDomainBoostUser" Mode="In" Type="String" />
+            <Parameter Name="DataDomainBoostDevicePath" Mode="In" Type="String" />
+            <Parameter Name="DataDomainBoostLockboxPath" Mode="In" Type="String" />
+            <Parameter Name="DirectoryStructure" Mode="In" Type="String" />
+            <Parameter Name="AvailabilityGroupDirectoryStructure" Mode="In" Type="String" />
+            <Parameter Name="FileName" Mode="In" Type="String" />
+            <Parameter Name="AvailabilityGroupFileName" Mode="In" Type="String" />
+            <Parameter Name="FileExtensionFull" Mode="In" Type="String" />
+            <Parameter Name="FileExtensionDiff" Mode="In" Type="String" />
+            <Parameter Name="FileExtensionLog" Mode="In" Type="String" />
+            <Parameter Name="Init" Mode="In" Type="String" />
+            <Parameter Name="DatabaseOrder" Mode="In" Type="String" />
+            <Parameter Name="DatabasesInParallel" Mode="In" Type="String" />
+            <Parameter Name="LogToTable" Mode="In" Type="String" />
+            <Parameter Name="Execute" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DatabaseIntegrityCheck">
+            <Parameter Name="Databases" Mode="In" Type="String" />
+            <Parameter Name="CheckCommands" Mode="In" Type="String" />
+            <Parameter Name="PhysicalOnly" Mode="In" Type="String" />
+            <Parameter Name="NoIndex" Mode="In" Type="String" />
+            <Parameter Name="ExtendedLogicalChecks" Mode="In" Type="String" />
+            <Parameter Name="TabLock" Mode="In" Type="String" />
+            <Parameter Name="FileGroups" Mode="In" Type="String" />
+            <Parameter Name="Objects" Mode="In" Type="String" />
+            <Parameter Name="MaxDOP" Mode="In" Type="Int32" />
+            <Parameter Name="AvailabilityGroups" Mode="In" Type="String" />
+            <Parameter Name="AvailabilityGroupReplicas" Mode="In" Type="String" />
+            <Parameter Name="Updateability" Mode="In" Type="String" />
+            <Parameter Name="TimeLimit" Mode="In" Type="Int32" />
+            <Parameter Name="LockTimeout" Mode="In" Type="Int32" />
+            <Parameter Name="LockMessageSeverity" Mode="In" Type="Int32" />
+            <Parameter Name="DatabaseOrder" Mode="In" Type="String" />
+            <Parameter Name="DatabasesInParallel" Mode="In" Type="String" />
+            <Parameter Name="LogToTable" Mode="In" Type="String" />
+            <Parameter Name="Execute" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="DefaultCurrencySet">
             <Parameter Name="currencyId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -8636,6 +8916,41 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="Environment" Mode="In" Type="Int32" />
             <Parameter Name="Shipping" Mode="In" Type="String" />
             <Parameter Name="Lithium" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="IndexOptimize">
+            <Parameter Name="Databases" Mode="In" Type="String" />
+            <Parameter Name="FragmentationLow" Mode="In" Type="String" />
+            <Parameter Name="FragmentationMedium" Mode="In" Type="String" />
+            <Parameter Name="FragmentationHigh" Mode="In" Type="String" />
+            <Parameter Name="FragmentationLevel1" Mode="In" Type="Int32" />
+            <Parameter Name="FragmentationLevel2" Mode="In" Type="Int32" />
+            <Parameter Name="MinNumberOfPages" Mode="In" Type="Int32" />
+            <Parameter Name="MaxNumberOfPages" Mode="In" Type="Int32" />
+            <Parameter Name="SortInTempdb" Mode="In" Type="String" />
+            <Parameter Name="MaxDOP" Mode="In" Type="Int32" />
+            <Parameter Name="FillFactor" Mode="In" Type="Int32" />
+            <Parameter Name="PadIndex" Mode="In" Type="String" />
+            <Parameter Name="LOBCompaction" Mode="In" Type="String" />
+            <Parameter Name="UpdateStatistics" Mode="In" Type="String" />
+            <Parameter Name="OnlyModifiedStatistics" Mode="In" Type="String" />
+            <Parameter Name="StatisticsModificationLevel" Mode="In" Type="Int32" />
+            <Parameter Name="StatisticsSample" Mode="In" Type="Int32" />
+            <Parameter Name="StatisticsResample" Mode="In" Type="String" />
+            <Parameter Name="PartitionLevel" Mode="In" Type="String" />
+            <Parameter Name="MSShippedObjects" Mode="In" Type="String" />
+            <Parameter Name="Indexes" Mode="In" Type="String" />
+            <Parameter Name="TimeLimit" Mode="In" Type="Int32" />
+            <Parameter Name="Delay" Mode="In" Type="Int32" />
+            <Parameter Name="WaitAtLowPriorityMaxDuration" Mode="In" Type="Int32" />
+            <Parameter Name="WaitAtLowPriorityAbortAfterWait" Mode="In" Type="String" />
+            <Parameter Name="Resumable" Mode="In" Type="String" />
+            <Parameter Name="AvailabilityGroups" Mode="In" Type="String" />
+            <Parameter Name="LockTimeout" Mode="In" Type="Int32" />
+            <Parameter Name="LockMessageSeverity" Mode="In" Type="Int32" />
+            <Parameter Name="DatabaseOrder" Mode="In" Type="String" />
+            <Parameter Name="DatabasesInParallel" Mode="In" Type="String" />
+            <Parameter Name="LogToTable" Mode="In" Type="String" />
+            <Parameter Name="Execute" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ItemAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
@@ -9147,6 +9462,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="UserAuthorization_Worker" ReturnType="Collection(String)">
             <Parameter Name="WorkerID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="utl_DbReIndex" />
         </EntityContainer>
         <ComplexType Name="AccountMainDataGridFiller_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -10306,6 +10622,28 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="City_name" ColumnName="City_name" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommandLogs">
+            <EntityTypeMapping TypeName="IMEModel.CommandLog">
+              <MappingFragment StoreEntitySet="CommandLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="SchemaName" ColumnName="SchemaName" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+                <ScalarProperty Name="IndexType" ColumnName="IndexType" />
+                <ScalarProperty Name="StatisticsName" ColumnName="StatisticsName" />
+                <ScalarProperty Name="PartitionNumber" ColumnName="PartitionNumber" />
+                <ScalarProperty Name="ExtendedInfo" ColumnName="ExtendedInfo" />
+                <ScalarProperty Name="Command" ColumnName="Command" />
+                <ScalarProperty Name="CommandType" ColumnName="CommandType" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12031,6 +12369,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CommandExecute" FunctionName="IMEModel.Store.CommandExecute" />
           <FunctionImportMapping FunctionImportName="CompanyAdd" FunctionName="IMEModel.Store.CompanyAdd" />
           <FunctionImportMapping FunctionImportName="CompanyAddParticularFeilds" FunctionName="IMEModel.Store.CompanyAddParticularFeilds" />
           <FunctionImportMapping FunctionImportName="CompanyCheckExistence" FunctionName="IMEModel.Store.CompanyCheckExistence" />
@@ -12251,6 +12590,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DatabaseBackup" FunctionName="IMEModel.Store.DatabaseBackup" />
+          <FunctionImportMapping FunctionImportName="DatabaseIntegrityCheck" FunctionName="IMEModel.Store.DatabaseIntegrityCheck" />
           <FunctionImportMapping FunctionImportName="DefaultCurrencySet" FunctionName="IMEModel.Store.DefaultCurrencySet" />
           <FunctionImportMapping FunctionImportName="DetailsAdd" FunctionName="IMEModel.Store.DetailsAdd" />
           <FunctionImportMapping FunctionImportName="DetailsCopyAdd" FunctionName="IMEModel.Store.DetailsCopyAdd" />
@@ -12325,6 +12666,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="HazardouseAdd" FunctionName="IMEModel.Store.HazardouseAdd" />
+          <FunctionImportMapping FunctionImportName="IndexOptimize" FunctionName="IMEModel.Store.IndexOptimize" />
           <FunctionImportMapping FunctionImportName="ItemAdd" FunctionName="IMEModel.Store.ItemAdd" />
           <FunctionImportMapping FunctionImportName="ItemDetailTabFiller" FunctionName="IMEModel.Store.ItemDetailTabFiller">
             <ResultMapping>
@@ -13287,6 +13629,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
           <FunctionImportMapping FunctionImportName="UserAuthorization_Worker" FunctionName="IMEModel.Store.UserAuthorization_Worker" />
+          <FunctionImportMapping FunctionImportName="utl_DbReIndex" FunctionName="IMEModel.Store.utl_DbReIndex" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

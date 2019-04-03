@@ -20,7 +20,7 @@ namespace LoginForm.Services
         public static decimal _decCurrentCompanyId;
 
 
-        private readonly string server = @"159.69.213.172";
+        private readonly string server = @"ime.resetbulut.com,47500";
         private readonly string imedatabase = "IME";
         private readonly string sqluser = "sa";
         private readonly string sqlpassword = "IME1453";

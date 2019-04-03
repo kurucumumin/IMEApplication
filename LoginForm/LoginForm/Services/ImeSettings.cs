@@ -16,7 +16,7 @@ namespace LoginForm.Services
         public static Color DefaultGridRowColor = Color.Empty;
         public static Color GridPurchaseOrderCreatedRowColor = Color.FromArgb(114, 155, 185);
 
-        private static string dbDataSource = "159.69.213.172";
+        private static string dbDataSource = "ime.resetbulut.com,47500";
         private static string dbPassword = "IME1453";
         private static string dbUserID = "sa";
         private static string dbInitialCatalogLOGO = "LOGO";

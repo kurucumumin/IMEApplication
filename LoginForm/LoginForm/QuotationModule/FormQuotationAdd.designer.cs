@@ -116,6 +116,7 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnOnline = new System.Windows.Forms.Button();
             this.lblPara = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
@@ -493,7 +494,6 @@
             this.dgQuotationAddedItems.Size = new System.Drawing.Size(1290, 165);
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellClick);
-            this.dgQuotationAddedItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellContentClick);
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgQuotationAddedItems_CellValidating);
             this.dgQuotationAddedItems.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgQuotationAddedItems_DataError);
@@ -1012,6 +1012,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnOnline);
             this.panel2.Controls.Add(this.lblPara);
             this.panel2.Controls.Add(this.label65);
             this.panel2.Controls.Add(this.label61);
@@ -1032,6 +1033,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1286, 45);
             this.panel2.TabIndex = 0;
+            // 
+            // btnOnline
+            // 
+            this.btnOnline.Location = new System.Drawing.Point(429, 11);
+            this.btnOnline.Name = "btnOnline";
+            this.btnOnline.Size = new System.Drawing.Size(99, 23);
+            this.btnOnline.TabIndex = 15;
+            this.btnOnline.Text = "Online Quotation";
+            this.btnOnline.UseVisualStyleBackColor = true;
+            this.btnOnline.Click += new System.EventHandler(this.btnOnline_Click);
             // 
             // lblPara
             // 
@@ -1073,11 +1084,10 @@
             // 
             this.btnExQuotation.Location = new System.Drawing.Point(313, 11);
             this.btnExQuotation.Name = "btnExQuotation";
-            this.btnExQuotation.Size = new System.Drawing.Size(186, 23);
+            this.btnExQuotation.Size = new System.Drawing.Size(110, 23);
             this.btnExQuotation.TabIndex = 11;
-            this.btnExQuotation.Text = "Import From Other Quotatıon";
+            this.btnExQuotation.Text = "Import From Other";
             this.btnExQuotation.UseVisualStyleBackColor = true;
-            this.btnExQuotation.Visible = false;
             this.btnExQuotation.Click += new System.EventHandler(this.btnExQuotation_Click);
             // 
             // btnImportFromXML
@@ -3355,8 +3365,6 @@
             // chkVat
             // 
             this.chkVat.AutoSize = true;
-            this.chkVat.Checked = true;
-            this.chkVat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkVat.Location = new System.Drawing.Point(6, 83);
             this.chkVat.Name = "chkVat";
             this.chkVat.Size = new System.Drawing.Size(45, 17);
@@ -3924,5 +3932,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
+        private System.Windows.Forms.Button btnOnline;
     }
 }

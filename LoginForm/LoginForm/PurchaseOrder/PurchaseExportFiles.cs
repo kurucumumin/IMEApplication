@@ -16,7 +16,7 @@ using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class PurchaseExportFiles : MyForm
+    public partial class PurchaseExportFiles : Form
     {
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
@@ -186,11 +186,12 @@ namespace LoginForm.PurchaseOrder
             #endregion
 
             #region SendMail
+
+            sc.Credentials = new NetworkCredential(txtEmail.Text, txtPass.Text);
+
             sc.Port = Convert.ToInt32(txtPort.Text);
             sc.Host = txtHost.Text;
             sc.EnableSsl = true;
-
-            sc.Credentials = new NetworkCredential(txtEmail.Text, txtPass.Text);
 
             mail.From = new MailAddress(txtEmail.Text, "");
             mail.Subject = "ORDER"; mail.IsBodyHtml = true; mail.Body = "";

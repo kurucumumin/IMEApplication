@@ -39,7 +39,7 @@ namespace LoginForm.Main
         int ExtendingPanelHeight = 324;
         LogoSQL logosql = new LogoSQL();
 
-        private readonly string server = @"159.69.213.172";
+        private readonly string server = @"ime.resetbulut.com,47500";
         private readonly string imedatabase = "IME";
         private readonly string logodatabase = "TEST";
         private readonly string sqluser = "sa";

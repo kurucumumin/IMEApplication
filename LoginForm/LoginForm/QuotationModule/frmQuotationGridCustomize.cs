@@ -104,7 +104,8 @@ namespace LoginForm.QuotationModule
                 box = new CheckBox
                 {
                     Tag = i.ToString(),
-                    Text = QuotationDatagridCustomize.VisibleTrueNames[i].ToString(),
+                    Text = datagrid.Columns[i].HeaderText,
+                    //Text = QuotationDatagridCustomize.VisibleTrueNames[i].ToString(),
                     AutoSize = true
                 };
                 if (25 + previousLength >= this.Width)

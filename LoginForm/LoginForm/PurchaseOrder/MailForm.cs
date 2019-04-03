@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.PurchaseOrder
 {
-    public partial class MailForm : MyForm
+    public partial class MailForm : Form
     {
         IMEEntities IME = new IMEEntities();
         List<Mail> MailList = new List<Mail>();

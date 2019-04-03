@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle271 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle272 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle273 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle274 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle275 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle276 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle277 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle278 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle279 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle280 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle281 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle282 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle283 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle284 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle285 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle286 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle287 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle288 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle289 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle290 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle291 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle292 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle293 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle294 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle295 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle296 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle297 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle298 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle299 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle300 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgSaleAddedItems = new System.Windows.Forms.DataGridView();
@@ -314,6 +314,35 @@
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblTotalNetWeight = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.lblTotalWeight = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label42 = new System.Windows.Forms.Label();
+            this.lblTotalExtra = new System.Windows.Forms.Label();
+            this.lblTotalDis = new System.Windows.Forms.Label();
+            this.lblVat = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtExtraChanges = new System.Windows.Forms.TextBox();
+            this.lblVatTotal = new System.Windows.Forms.Label();
+            this.txtTotalDis2 = new System.Windows.Forms.TextBox();
+            this.chkVat = new System.Windows.Forms.CheckBox();
+            this.txtTotalDis = new System.Windows.Forms.TextBox();
+            this.lblGrossTotal = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
             this.label75 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -324,34 +353,6 @@
             this.cbOrderNature = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.lblTotalNetWeight = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.lblTotalWeight = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label74 = new System.Windows.Forms.Label();
-            this.lblTotalExtra = new System.Windows.Forms.Label();
-            this.lblTotalDis = new System.Windows.Forms.Label();
-            this.lblVat = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.lbltotal = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtExtraCharges = new System.Windows.Forms.TextBox();
-            this.lblVatTotal = new System.Windows.Forms.Label();
-            this.txtTotalDis2 = new System.Windows.Forms.TextBox();
-            this.chkVat = new System.Windows.Forms.CheckBox();
-            this.txtTotalDis = new System.Windows.Forms.TextBox();
-            this.lblGrossTotal = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.grpShipto = new System.Windows.Forms.GroupBox();
             this.btnShipTo = new System.Windows.Forms.Button();
@@ -381,9 +382,9 @@
             this.tabItemDetails.SuspendLayout();
             this.gbCost.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.grpShipto.SuspendLayout();
             this.grpBillTo.SuspendLayout();
@@ -404,7 +405,7 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 186F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1322, 749);
@@ -429,16 +430,16 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(1310, 371);
-            this.splitContainer1.SplitterDistance = 307;
+            this.splitContainer1.Size = new System.Drawing.Size(1310, 375);
+            this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 57;
             // 
             // dgSaleAddedItems
             // 
             this.dgSaleAddedItems.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgSaleAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle271.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgSaleAddedItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle271;
             this.dgSaleAddedItems.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgSaleAddedItems.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgSaleAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -488,7 +489,7 @@
             this.dgSaleAddedItems.Location = new System.Drawing.Point(0, 0);
             this.dgSaleAddedItems.MultiSelect = false;
             this.dgSaleAddedItems.Name = "dgSaleAddedItems";
-            this.dgSaleAddedItems.Size = new System.Drawing.Size(1306, 303);
+            this.dgSaleAddedItems.Size = new System.Drawing.Size(1306, 306);
             this.dgSaleAddedItems.TabIndex = 9;
             this.dgSaleAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaleAddedItems_CellClick);
             this.dgSaleAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaleAddedItems_CellEndEdit);
@@ -504,9 +505,9 @@
             // dgNo
             // 
             this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Format = "N1";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgNo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle272.Format = "N1";
+            dataGridViewCellStyle272.NullValue = null;
+            this.dgNo.DefaultCellStyle = dataGridViewCellStyle272;
             this.dgNo.Frozen = true;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
@@ -515,9 +516,9 @@
             // HS
             // 
             this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle273.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle273.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle273;
             this.HS.Frozen = true;
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
@@ -527,8 +528,8 @@
             // LI
             // 
             this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle274.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle274;
             this.LI.Frozen = true;
             this.LI.HeaderText = "LI";
             this.LI.Name = "LI";
@@ -538,8 +539,8 @@
             // CL
             // 
             this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle275.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle275;
             this.CL.Frozen = true;
             this.CL.HeaderText = "CL";
             this.CL.Name = "CL";
@@ -549,8 +550,8 @@
             // LC
             // 
             this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle276.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle276;
             this.LC.Frozen = true;
             this.LC.HeaderText = "LC";
             this.LC.Name = "LC";
@@ -560,8 +561,8 @@
             // LM
             // 
             this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle277.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle277;
             this.LM.Frozen = true;
             this.LM.HeaderText = "LM";
             this.LM.Name = "LM";
@@ -581,9 +582,9 @@
             // dgSupplier
             // 
             this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle278.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle278.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle278;
             this.dgSupplier.Frozen = true;
             this.dgSupplier.HeaderText = "Supplier";
             this.dgSupplier.Name = "dgSupplier";
@@ -600,9 +601,9 @@
             // dgBrand
             // 
             this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle279.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle279.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle279;
             this.dgBrand.Frozen = true;
             this.dgBrand.HeaderText = "Manuf.";
             this.dgBrand.Name = "dgBrand";
@@ -611,9 +612,9 @@
             // dgMPN
             // 
             this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle280.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle280.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle280;
             this.dgMPN.Frozen = true;
             this.dgMPN.HeaderText = "MPN";
             this.dgMPN.Name = "dgMPN";
@@ -622,9 +623,9 @@
             // dgDesc
             // 
             this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle281.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle281.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle281;
             this.dgDesc.Frozen = true;
             this.dgDesc.HeaderText = "Description";
             this.dgDesc.Name = "dgDesc";
@@ -637,20 +638,20 @@
             // 
             // dgCost
             // 
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle282.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle282.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle282;
             this.dgCost.HeaderText = "Cost (£)";
             this.dgCost.Name = "dgCost";
             // 
             // dgLandingCost
             // 
             this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle13.Format = "N3";
-            dataGridViewCellStyle13.NullValue = null;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle283.Format = "N3";
+            dataGridViewCellStyle283.NullValue = null;
+            dataGridViewCellStyle283.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle283.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle283;
             this.dgLandingCost.HeaderText = "Landing Cost (£)";
             this.dgLandingCost.Name = "dgLandingCost";
             this.dgLandingCost.Width = 89;
@@ -658,9 +659,9 @@
             // dgMargin
             // 
             this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle284.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle284.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle284;
             this.dgMargin.HeaderText = "Margin";
             this.dgMargin.Name = "dgMargin";
             this.dgMargin.Width = 64;
@@ -675,44 +676,44 @@
             // dgStock
             // 
             this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle285.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle285.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle285;
             this.dgStock.HeaderText = "Stock";
             this.dgStock.Name = "dgStock";
             this.dgStock.Width = 58;
             // 
             // dgUOM
             // 
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle286.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle286.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle286;
             this.dgUOM.HeaderText = "UOM";
             this.dgUOM.Name = "dgUOM";
             this.dgUOM.Width = 57;
             // 
             // dgSSM
             // 
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle287.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle287.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle287;
             this.dgSSM.HeaderText = "SSM";
             this.dgSSM.Name = "dgSSM";
             // 
             // dgUC
             // 
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle288.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle288.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle288;
             this.dgUC.HeaderText = "U/C";
             this.dgUC.Name = "dgUC";
             // 
             // dgUPIME
             // 
             this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle289.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle289.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle289;
             this.dgUPIME.HeaderText = "U/P IME L/P ";
             this.dgUPIME.Name = "dgUPIME";
             this.dgUPIME.Width = 68;
@@ -720,9 +721,9 @@
             // dgDisc
             // 
             this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle290.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle290.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle290;
             this.dgDisc.HeaderText = "Disc. (%)";
             this.dgDisc.Name = "dgDisc";
             this.dgDisc.Width = 71;
@@ -737,9 +738,9 @@
             // dgTotal
             // 
             this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle291.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle291.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle291;
             this.dgTotal.HeaderText = "TOTAL";
             this.dgTotal.Name = "dgTotal";
             this.dgTotal.Width = 64;
@@ -761,9 +762,9 @@
             // dgHZ
             // 
             this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle292.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle292.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle292;
             this.dgHZ.HeaderText = "HZ";
             this.dgHZ.Name = "dgHZ";
             this.dgHZ.Visible = false;
@@ -771,9 +772,9 @@
             // dgCL
             // 
             this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle293.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle293.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle293;
             this.dgCL.HeaderText = "CL";
             this.dgCL.Name = "dgCL";
             this.dgCL.Visible = false;
@@ -781,9 +782,9 @@
             // dgCR
             // 
             this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle294.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle294.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle294;
             this.dgCR.HeaderText = "CR";
             this.dgCR.Name = "dgCR";
             this.dgCR.Visible = false;
@@ -801,10 +802,10 @@
             // dgUnitWeigt
             // 
             this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle25.Format = "N4";
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle295.Format = "N4";
+            dataGridViewCellStyle295.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle295.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle295;
             this.dgUnitWeigt.HeaderText = "Gross Weigt (Kg)";
             this.dgUnitWeigt.Name = "dgUnitWeigt";
             this.dgUnitWeigt.Width = 86;
@@ -812,25 +813,25 @@
             // dgTotalWeight
             // 
             this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle26.Format = "N4";
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle296.Format = "N4";
+            dataGridViewCellStyle296.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle296.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle296;
             this.dgTotalWeight.HeaderText = "Total Gross Weight (Kg)";
             this.dgTotalWeight.Name = "dgTotalWeight";
             this.dgTotalWeight.Width = 115;
             // 
             // dgUnitNetWeight
             // 
-            dataGridViewCellStyle27.Format = "N4";
-            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle297.Format = "N4";
+            this.dgUnitNetWeight.DefaultCellStyle = dataGridViewCellStyle297;
             this.dgUnitNetWeight.HeaderText = "Net Weight (Kg)";
             this.dgUnitNetWeight.Name = "dgUnitNetWeight";
             // 
             // dgUnitTotalNetWeight
             // 
-            dataGridViewCellStyle28.Format = "N4";
-            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle298.Format = "N4";
+            this.dgUnitTotalNetWeight.DefaultCellStyle = dataGridViewCellStyle298;
             this.dgUnitTotalNetWeight.HeaderText = "Total Net Weight (Kg)";
             this.dgUnitTotalNetWeight.Name = "dgUnitTotalNetWeight";
             // 
@@ -851,9 +852,9 @@
             // dgCOO
             // 
             this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle299.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle299.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle299;
             this.dgCOO.HeaderText = "COO";
             this.dgCOO.Name = "dgCOO";
             this.dgCOO.Width = 55;
@@ -861,9 +862,9 @@
             // dgCCCNO
             // 
             this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle300.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle300.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle300;
             this.dgCCCNO.HeaderText = "CCCNO";
             this.dgCCCNO.Name = "dgCCCNO";
             this.dgCCCNO.Width = 68;
@@ -892,7 +893,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1306, 55);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1306, 56);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgSaleDeleted
@@ -940,7 +941,7 @@
             this.dgSaleDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSaleDeleted.Location = new System.Drawing.Point(3, 48);
             this.dgSaleDeleted.Name = "dgSaleDeleted";
-            this.dgSaleDeleted.Size = new System.Drawing.Size(1300, 4);
+            this.dgSaleDeleted.Size = new System.Drawing.Size(1300, 5);
             this.dgSaleDeleted.TabIndex = 10;
             this.dgSaleDeleted.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSaleDeleted_CellValidating);
             this.dgSaleDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -2992,27 +2993,323 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox11);
             this.panel1.Controls.Add(this.label75);
             this.panel1.Controls.Add(this.label76);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.groupBox11);
             this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Controls.Add(this.gbShipment);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 565);
+            this.panel1.Location = new System.Drawing.Point(2, 569);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1318, 182);
+            this.panel1.Size = new System.Drawing.Size(1318, 178);
             this.panel1.TabIndex = 58;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.label4);
+            this.groupBox11.Controls.Add(this.lblTotalNetWeight);
+            this.groupBox11.Controls.Add(this.label34);
+            this.groupBox11.Controls.Add(this.lblTotalWeight);
+            this.groupBox11.Controls.Add(this.panel9);
+            this.groupBox11.Controls.Add(this.panel8);
+            this.groupBox11.Controls.Add(this.panel7);
+            this.groupBox11.Controls.Add(this.panel6);
+            this.groupBox11.Controls.Add(this.panel5);
+            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
+            this.groupBox11.Controls.Add(this.panel4);
+            this.groupBox11.Controls.Add(this.label42);
+            this.groupBox11.Controls.Add(this.lblTotalExtra);
+            this.groupBox11.Controls.Add(this.lblTotalDis);
+            this.groupBox11.Controls.Add(this.lblVat);
+            this.groupBox11.Controls.Add(this.label40);
+            this.groupBox11.Controls.Add(this.lbltotal);
+            this.groupBox11.Controls.Add(this.label52);
+            this.groupBox11.Controls.Add(this.label39);
+            this.groupBox11.Controls.Add(this.textBox7);
+            this.groupBox11.Controls.Add(this.txtExtraChanges);
+            this.groupBox11.Controls.Add(this.lblVatTotal);
+            this.groupBox11.Controls.Add(this.txtTotalDis2);
+            this.groupBox11.Controls.Add(this.chkVat);
+            this.groupBox11.Controls.Add(this.txtTotalDis);
+            this.groupBox11.Controls.Add(this.lblGrossTotal);
+            this.groupBox11.Controls.Add(this.label74);
+            this.groupBox11.Controls.Add(this.label80);
+            this.groupBox11.ForeColor = System.Drawing.Color.Black;
+            this.groupBox11.Location = new System.Drawing.Point(783, 7);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(273, 166);
+            this.groupBox11.TabIndex = 63;
+            this.groupBox11.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 76;
+            this.label4.Text = "Distribute Discount";
+            // 
+            // lblTotalNetWeight
+            // 
+            this.lblTotalNetWeight.Location = new System.Drawing.Point(172, 149);
+            this.lblTotalNetWeight.Name = "lblTotalNetWeight";
+            this.lblTotalNetWeight.Size = new System.Drawing.Size(73, 17);
+            this.lblTotalNetWeight.TabIndex = 75;
+            this.lblTotalNetWeight.Text = "0,00";
+            this.lblTotalNetWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(6, 147);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(88, 13);
+            this.label34.TabIndex = 74;
+            this.label34.Text = "Total Net Weight";
+            // 
+            // lblTotalWeight
+            // 
+            this.lblTotalWeight.Location = new System.Drawing.Point(172, 126);
+            this.lblTotalWeight.Name = "lblTotalWeight";
+            this.lblTotalWeight.Size = new System.Drawing.Size(73, 17);
+            this.lblTotalWeight.TabIndex = 73;
+            this.lblTotalWeight.Text = "0,00";
+            this.lblTotalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.DarkGray;
+            this.panel9.Location = new System.Drawing.Point(8, 144);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(240, 2);
+            this.panel9.TabIndex = 72;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.DarkGray;
+            this.panel8.Location = new System.Drawing.Point(8, 120);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(240, 2);
+            this.panel8.TabIndex = 71;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
+            this.panel7.Location = new System.Drawing.Point(8, 101);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(240, 2);
+            this.panel7.TabIndex = 70;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DarkGray;
+            this.panel6.Location = new System.Drawing.Point(8, 80);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(240, 2);
+            this.panel6.TabIndex = 69;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel5.Location = new System.Drawing.Point(8, 55);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(240, 2);
+            this.panel5.TabIndex = 68;
+            // 
+            // cbDeliverDiscount
+            // 
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(5, 17);
+            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(19, 18);
+            this.cbDeliverDiscount.TabIndex = 58;
+            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
+            this.cbDeliverDiscount.Visible = false;
+            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DarkGray;
+            this.panel4.Location = new System.Drawing.Point(8, 36);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(240, 2);
+            this.panel4.TabIndex = 67;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(6, 126);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(98, 13);
+            this.label42.TabIndex = 59;
+            this.label42.Text = "Total Gross Weight";
+            // 
+            // lblTotalExtra
+            // 
+            this.lblTotalExtra.Location = new System.Drawing.Point(181, 59);
+            this.lblTotalExtra.Name = "lblTotalExtra";
+            this.lblTotalExtra.Size = new System.Drawing.Size(64, 17);
+            this.lblTotalExtra.TabIndex = 57;
+            this.lblTotalExtra.Text = "0,00";
+            this.lblTotalExtra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotalExtra.TextChanged += new System.EventHandler(this.lblTotalExtra_TextChanged);
+            // 
+            // lblTotalDis
+            // 
+            this.lblTotalDis.AutoSize = true;
+            this.lblTotalDis.Location = new System.Drawing.Point(236, 27);
+            this.lblTotalDis.Name = "lblTotalDis";
+            this.lblTotalDis.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalDis.TabIndex = 56;
+            // 
+            // lblVat
+            // 
+            this.lblVat.AutoSize = true;
+            this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblVat.Location = new System.Drawing.Point(123, 83);
+            this.lblVat.Name = "lblVat";
+            this.lblVat.Size = new System.Drawing.Size(24, 16);
+            this.lblVat.TabIndex = 55;
+            this.lblVat.Text = "40";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label40.Location = new System.Drawing.Point(155, 83);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(20, 16);
+            this.label40.TabIndex = 54;
+            this.label40.Text = "%";
+            // 
+            // lbltotal
+            // 
+            this.lbltotal.Location = new System.Drawing.Point(172, 37);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(73, 17);
+            this.lbltotal.TabIndex = 53;
+            this.lbltotal.Text = "0,00";
+            this.lbltotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbltotal.TextChanged += new System.EventHandler(this.lbltotal_TextChanged);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 39);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 52;
+            this.label52.Text = "Total";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label39.Location = new System.Drawing.Point(178, 12);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(20, 16);
+            this.label39.TabIndex = 23;
+            this.label39.Text = "%";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(6, 59);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(77, 21);
+            this.textBox7.TabIndex = 21;
+            this.textBox7.Text = "Extra Charges";
+            // 
+            // txtExtraChanges
+            // 
+            this.txtExtraChanges.Location = new System.Drawing.Point(127, 57);
+            this.txtExtraChanges.Name = "txtExtraChanges";
+            this.txtExtraChanges.Size = new System.Drawing.Size(50, 21);
+            this.txtExtraChanges.TabIndex = 20;
+            this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraChanges.Click += new System.EventHandler(this.txtExtraChanges_Click);
+            this.txtExtraChanges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
+            this.txtExtraChanges.Leave += new System.EventHandler(this.txtExtraChanges_Leave);
+            // 
+            // lblVatTotal
+            // 
+            this.lblVatTotal.Location = new System.Drawing.Point(181, 83);
+            this.lblVatTotal.Name = "lblVatTotal";
+            this.lblVatTotal.Size = new System.Drawing.Size(64, 17);
+            this.lblVatTotal.TabIndex = 18;
+            this.lblVatTotal.Text = "0,00";
+            this.lblVatTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
+            // 
+            // txtTotalDis2
+            // 
+            this.txtTotalDis2.Enabled = false;
+            this.txtTotalDis2.Location = new System.Drawing.Point(201, 13);
+            this.txtTotalDis2.Name = "txtTotalDis2";
+            this.txtTotalDis2.Size = new System.Drawing.Size(54, 21);
+            this.txtTotalDis2.TabIndex = 15;
+            this.txtTotalDis2.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
+            // 
+            // chkVat
+            // 
+            this.chkVat.AutoSize = true;
+            this.chkVat.Location = new System.Drawing.Point(6, 83);
+            this.chkVat.Name = "chkVat";
+            this.chkVat.Size = new System.Drawing.Size(45, 17);
+            this.chkVat.TabIndex = 17;
+            this.chkVat.Text = "VAT";
+            this.chkVat.UseVisualStyleBackColor = true;
+            this.chkVat.CheckedChanged += new System.EventHandler(this.chkVat_CheckedChanged);
+            // 
+            // txtTotalDis
+            // 
+            this.txtTotalDis.Location = new System.Drawing.Point(127, 14);
+            this.txtTotalDis.Name = "txtTotalDis";
+            this.txtTotalDis.Size = new System.Drawing.Size(50, 21);
+            this.txtTotalDis.TabIndex = 13;
+            this.txtTotalDis.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalDis_KeyDown);
+            this.txtTotalDis.Leave += new System.EventHandler(this.txtTotalDis_Leave);
+            // 
+            // lblGrossTotal
+            // 
+            this.lblGrossTotal.Location = new System.Drawing.Point(172, 102);
+            this.lblGrossTotal.Name = "lblGrossTotal";
+            this.lblGrossTotal.Size = new System.Drawing.Size(73, 17);
+            this.lblGrossTotal.TabIndex = 12;
+            this.lblGrossTotal.Text = "0,00";
+            this.lblGrossTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblGrossTotal.TextChanged += new System.EventHandler(this.lblGrossTotal_TextChanged);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(6, 104);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(61, 13);
+            this.label74.TabIndex = 5;
+            this.label74.Text = "Gross Total";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(8, 2);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(84, 13);
+            this.label80.TabIndex = 0;
+            this.label80.Text = "Disc on Subtotal";
             // 
             // label75
             // 
             this.label75.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(1222, 159);
+            this.label75.Location = new System.Drawing.Point(1222, 157);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(31, 13);
             this.label75.TabIndex = 61;
@@ -3022,7 +3319,7 @@
             // 
             this.label76.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(1272, 158);
+            this.label76.Location = new System.Drawing.Point(1272, 156);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(33, 13);
             this.label76.TabIndex = 62;
@@ -3033,7 +3330,7 @@
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox4.Controls.Add(this.label67);
             this.groupBox4.Controls.Add(this.cbPaymentTerm);
-            this.groupBox4.Location = new System.Drawing.Point(515, 78);
+            this.groupBox4.Location = new System.Drawing.Point(515, 76);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(256, 43);
             this.groupBox4.TabIndex = 53;
@@ -3063,7 +3360,7 @@
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.label69);
             this.groupBox2.Controls.Add(this.cbOrderNature);
-            this.groupBox2.Location = new System.Drawing.Point(660, 19);
+            this.groupBox2.Location = new System.Drawing.Point(660, 17);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(111, 53);
             this.groupBox2.TabIndex = 52;
@@ -3095,7 +3392,7 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.ForeColor = System.Drawing.Color.Transparent;
             this.btnSave.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.btnSave.Location = new System.Drawing.Point(1208, 107);
+            this.btnSave.Location = new System.Drawing.Point(1208, 105);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(52, 52);
             this.btnSave.TabIndex = 8;
@@ -3107,302 +3404,12 @@
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnClose.ForeColor = System.Drawing.SystemColors.Highlight;
             this.btnClose.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
-            this.btnClose.Location = new System.Drawing.Point(1260, 106);
+            this.btnClose.Location = new System.Drawing.Point(1260, 104);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(52, 52);
             this.btnClose.TabIndex = 9;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox11.Controls.Add(this.lblTotalNetWeight);
-            this.groupBox11.Controls.Add(this.label81);
-            this.groupBox11.Controls.Add(this.lblTotalWeight);
-            this.groupBox11.Controls.Add(this.label42);
-            this.groupBox11.Controls.Add(this.panel8);
-            this.groupBox11.Controls.Add(this.panel7);
-            this.groupBox11.Controls.Add(this.panel6);
-            this.groupBox11.Controls.Add(this.panel5);
-            this.groupBox11.Controls.Add(this.panel3);
-            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
-            this.groupBox11.Controls.Add(this.panel4);
-            this.groupBox11.Controls.Add(this.label74);
-            this.groupBox11.Controls.Add(this.lblTotalExtra);
-            this.groupBox11.Controls.Add(this.lblTotalDis);
-            this.groupBox11.Controls.Add(this.lblVat);
-            this.groupBox11.Controls.Add(this.label40);
-            this.groupBox11.Controls.Add(this.lbltotal);
-            this.groupBox11.Controls.Add(this.label52);
-            this.groupBox11.Controls.Add(this.label4);
-            this.groupBox11.Controls.Add(this.txtExtraCharges);
-            this.groupBox11.Controls.Add(this.lblVatTotal);
-            this.groupBox11.Controls.Add(this.txtTotalDis2);
-            this.groupBox11.Controls.Add(this.chkVat);
-            this.groupBox11.Controls.Add(this.txtTotalDis);
-            this.groupBox11.Controls.Add(this.lblGrossTotal);
-            this.groupBox11.Controls.Add(this.label39);
-            this.groupBox11.Controls.Add(this.label34);
-            this.groupBox11.ForeColor = System.Drawing.Color.Black;
-            this.groupBox11.Location = new System.Drawing.Point(777, 3);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(336, 172);
-            this.groupBox11.TabIndex = 49;
-            this.groupBox11.TabStop = false;
-            // 
-            // lblTotalNetWeight
-            // 
-            this.lblTotalNetWeight.Location = new System.Drawing.Point(170, 149);
-            this.lblTotalNetWeight.Name = "lblTotalNetWeight";
-            this.lblTotalNetWeight.Size = new System.Drawing.Size(73, 17);
-            this.lblTotalNetWeight.TabIndex = 77;
-            this.lblTotalNetWeight.Text = "0,00";
-            this.lblTotalNetWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(5, 152);
-            this.label81.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(88, 13);
-            this.label81.TabIndex = 76;
-            this.label81.Text = "Total Net Weight";
-            // 
-            // lblTotalWeight
-            // 
-            this.lblTotalWeight.Location = new System.Drawing.Point(170, 127);
-            this.lblTotalWeight.Name = "lblTotalWeight";
-            this.lblTotalWeight.Size = new System.Drawing.Size(73, 17);
-            this.lblTotalWeight.TabIndex = 75;
-            this.lblTotalWeight.Text = "0,00";
-            this.lblTotalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(5, 129);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(98, 13);
-            this.label42.TabIndex = 74;
-            this.label42.Text = "Total Gross Weight";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.DarkGray;
-            this.panel8.Location = new System.Drawing.Point(3, 146);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(240, 2);
-            this.panel8.TabIndex = 73;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.DarkGray;
-            this.panel7.Location = new System.Drawing.Point(3, 125);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(240, 2);
-            this.panel7.TabIndex = 72;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.DarkGray;
-            this.panel6.Location = new System.Drawing.Point(3, 99);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(240, 2);
-            this.panel6.TabIndex = 71;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Location = new System.Drawing.Point(3, 78);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(240, 2);
-            this.panel5.TabIndex = 70;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(3, 55);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(240, 2);
-            this.panel3.TabIndex = 69;
-            // 
-            // cbDeliverDiscount
-            // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(3, 13);
-            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
-            this.cbDeliverDiscount.Size = new System.Drawing.Size(115, 15);
-            this.cbDeliverDiscount.TabIndex = 58;
-            this.cbDeliverDiscount.Text = "Distribute Discount";
-            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
-            this.cbDeliverDiscount.Visible = false;
-            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DarkGray;
-            this.panel4.Location = new System.Drawing.Point(3, 34);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(240, 2);
-            this.panel4.TabIndex = 68;
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(2, 61);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(76, 13);
-            this.label74.TabIndex = 60;
-            this.label74.Text = "Extra Charges";
-            // 
-            // lblTotalExtra
-            // 
-            this.lblTotalExtra.Location = new System.Drawing.Point(173, 60);
-            this.lblTotalExtra.Name = "lblTotalExtra";
-            this.lblTotalExtra.Size = new System.Drawing.Size(70, 14);
-            this.lblTotalExtra.TabIndex = 57;
-            this.lblTotalExtra.Text = "0,00";
-            this.lblTotalExtra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTotalExtra.TextChanged += new System.EventHandler(this.lblTotalExtra_TextChanged);
-            // 
-            // lblTotalDis
-            // 
-            this.lblTotalDis.AutoSize = true;
-            this.lblTotalDis.Location = new System.Drawing.Point(204, 30);
-            this.lblTotalDis.Name = "lblTotalDis";
-            this.lblTotalDis.Size = new System.Drawing.Size(0, 13);
-            this.lblTotalDis.TabIndex = 56;
-            // 
-            // lblVat
-            // 
-            this.lblVat.AutoSize = true;
-            this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblVat.Location = new System.Drawing.Point(118, 83);
-            this.lblVat.Name = "lblVat";
-            this.lblVat.Size = new System.Drawing.Size(24, 16);
-            this.lblVat.TabIndex = 55;
-            this.lblVat.Text = "40";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label40.Location = new System.Drawing.Point(153, 83);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(20, 16);
-            this.label40.TabIndex = 54;
-            this.label40.Text = "%";
-            // 
-            // lbltotal
-            // 
-            this.lbltotal.Location = new System.Drawing.Point(165, 38);
-            this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(78, 14);
-            this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00";
-            this.lbltotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbltotal.TextChanged += new System.EventHandler(this.lbltotal_TextChanged);
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(6, 39);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(31, 13);
-            this.label52.TabIndex = 52;
-            this.label52.Text = "Total";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(176, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 16);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "%";
-            // 
-            // txtExtraCharges
-            // 
-            this.txtExtraCharges.Location = new System.Drawing.Point(119, 58);
-            this.txtExtraCharges.Name = "txtExtraCharges";
-            this.txtExtraCharges.Size = new System.Drawing.Size(54, 21);
-            this.txtExtraCharges.TabIndex = 20;
-            this.txtExtraCharges.Text = "0";
-            this.txtExtraCharges.Click += new System.EventHandler(this.txtExtraCharges_Click);
-            this.txtExtraCharges.TextChanged += new System.EventHandler(this.txtExtraCharges_TextChanged);
-            this.txtExtraCharges.Leave += new System.EventHandler(this.txtExtraCharges_Leave);
-            // 
-            // lblVatTotal
-            // 
-            this.lblVatTotal.Location = new System.Drawing.Point(165, 83);
-            this.lblVatTotal.Name = "lblVatTotal";
-            this.lblVatTotal.Size = new System.Drawing.Size(78, 14);
-            this.lblVatTotal.TabIndex = 18;
-            this.lblVatTotal.Text = "0,00";
-            this.lblVatTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
-            // 
-            // txtTotalDis2
-            // 
-            this.txtTotalDis2.Location = new System.Drawing.Point(200, 10);
-            this.txtTotalDis2.Name = "txtTotalDis2";
-            this.txtTotalDis2.Size = new System.Drawing.Size(54, 21);
-            this.txtTotalDis2.TabIndex = 15;
-            this.txtTotalDis2.TextChanged += new System.EventHandler(this.txtTotalDis2_TextChanged);
-            this.txtTotalDis2.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
-            // 
-            // chkVat
-            // 
-            this.chkVat.AutoSize = true;
-            this.chkVat.Checked = true;
-            this.chkVat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVat.Location = new System.Drawing.Point(8, 81);
-            this.chkVat.Name = "chkVat";
-            this.chkVat.Size = new System.Drawing.Size(45, 17);
-            this.chkVat.TabIndex = 17;
-            this.chkVat.Text = "VAT";
-            this.chkVat.UseVisualStyleBackColor = true;
-            this.chkVat.CheckedChanged += new System.EventHandler(this.chkVat_CheckedChanged);
-            // 
-            // txtTotalDis
-            // 
-            this.txtTotalDis.Location = new System.Drawing.Point(121, 10);
-            this.txtTotalDis.Name = "txtTotalDis";
-            this.txtTotalDis.Size = new System.Drawing.Size(54, 21);
-            this.txtTotalDis.TabIndex = 13;
-            this.txtTotalDis.Text = "0";
-            this.txtTotalDis.Leave += new System.EventHandler(this.txtTotalDis_Leave);
-            // 
-            // lblGrossTotal
-            // 
-            this.lblGrossTotal.Location = new System.Drawing.Point(165, 107);
-            this.lblGrossTotal.Name = "lblGrossTotal";
-            this.lblGrossTotal.Size = new System.Drawing.Size(78, 14);
-            this.lblGrossTotal.TabIndex = 12;
-            this.lblGrossTotal.Text = "0,00";
-            this.lblGrossTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblGrossTotal.TextChanged += new System.EventHandler(this.lblGrossTotal_TextChanged);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(5, 107);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(61, 13);
-            this.label39.TabIndex = 5;
-            this.label39.Text = "Gross Total";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(84, 13);
-            this.label34.TabIndex = 0;
-            this.label34.Text = "Disc on Subtotal";
             // 
             // groupBox7
             // 
@@ -3411,7 +3418,7 @@
             this.groupBox7.Controls.Add(this.grpBillTo);
             this.groupBox7.Controls.Add(this.chkbForFinance);
             this.groupBox7.Controls.Add(this.txtNoteForUs);
-            this.groupBox7.Location = new System.Drawing.Point(9, 18);
+            this.groupBox7.Location = new System.Drawing.Point(9, 16);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(500, 161);
             this.groupBox7.TabIndex = 4;
@@ -3521,7 +3528,7 @@
             this.gbShipment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbShipment.Controls.Add(this.label7);
             this.gbShipment.Controls.Add(this.cbSMethod);
-            this.gbShipment.Location = new System.Drawing.Point(515, 18);
+            this.gbShipment.Location = new System.Drawing.Point(515, 16);
             this.gbShipment.Name = "gbShipment";
             this.gbShipment.Size = new System.Drawing.Size(139, 54);
             this.gbShipment.TabIndex = 46;
@@ -3584,12 +3591,12 @@
             this.gbCost.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.grpShipto.ResumeLayout(false);
@@ -3748,22 +3755,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label lblTotalExtra;
-        private System.Windows.Forms.Label lblTotalDis;
-        private System.Windows.Forms.Label lblVat;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label lbltotal;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtExtraCharges;
-        private System.Windows.Forms.Label lblVatTotal;
-        private System.Windows.Forms.TextBox txtTotalDis2;
-        private System.Windows.Forms.CheckBox chkVat;
-        private System.Windows.Forms.TextBox txtTotalDis;
-        private System.Windows.Forms.Label lblGrossTotal;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox chkbForFinance;
         private System.Windows.Forms.TextBox txtNoteForUs;
@@ -3776,7 +3767,6 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Button btnProductHistory;
         private System.Windows.Forms.Label lblCurrValue;
-        private System.Windows.Forms.CheckBox cbDeliverDiscount;
         private System.Windows.Forms.Button btnImportFromXML;
         private System.Windows.Forms.Button btnCustomizeGrid;
         private System.Windows.Forms.Label label61;
@@ -3810,7 +3800,6 @@
         private System.Windows.Forms.ComboBox cbDeliveryAddress;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Label label74;
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.Label label77;
@@ -3851,12 +3840,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable1;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblPara;
         private System.Windows.Forms.GroupBox grpBillTo;
         private System.Windows.Forms.Label label79;
@@ -3866,10 +3849,35 @@
         private System.Windows.Forms.Button btnShipTo;
         private System.Windows.Forms.TextBox txtShipTo;
         private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalNetWeight;
-        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label lblTotalWeight;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.CheckBox cbDeliverDiscount;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label lblTotalExtra;
+        private System.Windows.Forms.Label lblTotalDis;
+        private System.Windows.Forms.Label lblVat;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label lbltotal;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtExtraChanges;
+        private System.Windows.Forms.Label lblVatTotal;
+        private System.Windows.Forms.TextBox txtTotalDis2;
+        private System.Windows.Forms.CheckBox chkVat;
+        private System.Windows.Forms.TextBox txtTotalDis;
+        private System.Windows.Forms.Label lblGrossTotal;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label80;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn HS;
         private System.Windows.Forms.DataGridViewTextBoxColumn LI;

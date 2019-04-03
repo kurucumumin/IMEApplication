@@ -228,26 +228,55 @@ namespace LoginForm
             xrTableCell9.Text = " Sub Total " + currencySymbol;
             xrTableCell20.Text = " Net " + currencySymbol;
             xrTableCell30.DataBindings["Text"].FormatString = "{0:N}";
-            xrTableCell21.DataBindings["Text"].FormatString = "{0:N}";
-           
-            if (vat == false)
-            {
-                xrTableCell3.Text = "";
-                xrTableCell28.Text = "";
-                xrLabel18.Visible = true;
-            }
-            else
-            {
-                xrTableCell3.Visible = true;
-                xrTableCell28.Visible = true;
-                xrLabel18.Visible = false;
-            }
+            //xrTableCell21.DataBindings["Text"].FormatString = "{0:N}";
+
+            
+            //if (vat == false)
+            //{
+            //    xrTableCell3.Text = "";
+            //    xrTableCell28.Text = "";
+            //    xrLabel18.Visible = true;
+            //}
+            //else
+            //{
+            //    xrTableCell3.Visible = true;
+            //    xrTableCell28.Visible = true;
+            //    xrLabel18.Visible = false;
+            //}
 
             if (gross != "")
             {
                 grosstotal = decimal.Parse(String.Format("{0:N}", gross));
                 gross = String.Format("{0:N}", grosstotal);
-                xrTableCell21.Text = String.Format("{0:N}", gross);
+                double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell2.Text)));
+                double sonuc = double.Parse(String.Format("{0:N}", (sayi * 5) / 100));
+                if (quoVat == 1)
+                {
+                    xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
+                }
+                else
+                {
+                    xrTableCell28.Text = "0.00";
+                }
+                if (vat == false)
+                {
+                    xrTableCell21.Text = String.Format("{0:N}", decimal.Parse(gross) - decimal.Parse(xrTableCell28.Text));
+                    xrTableCell28.Text = "0.00";
+                }
+                else
+                {
+                    if (quoVat == 1)
+                    {
+                        xrTableCell21.Text = String.Format("{0:N}", Convert.ToDecimal(gross));
+                        xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
+                    }
+                    else
+                    {
+                        xrTableCell21.Text = String.Format("{0:N}", Convert.ToDecimal(gross) + Convert.ToDecimal(sonuc.ToString()));
+                        xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
+
+                    }
+                }
                 xrTableCell10.Text = String.Format("{0:N}", (this.sub - Convert.ToDecimal(disc)));
                 NumberConvertString();
             }
@@ -332,24 +361,32 @@ namespace LoginForm
 
         private void xrTableCell2_TextChanged(object sender, EventArgs e)
         {
-            if (xrTableCell10.Text != "")
-            {
-                double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell2.Text)));
-                double sonuc = double.Parse(String.Format("{0:N}", (sayi * 5) / 100));
+            //if (xrTableCell10.Text != "")
+            //{
+            //    double sayi = double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell2.Text)));
+            //    double sonuc = double.Parse(String.Format("{0:N}", (sayi * 5) / 100));
 
-                if (vat == true)
-                {
-                    if (quoVat == 1)
-                    {
-                        xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
-                    }
-                    else
-                    {
-                        xrTableCell28.Text = "0.00";
-                    }
-                }
-                
-            }
+            //    if (vat == true)
+            //    {
+            //        //if (quoVat == 1)
+            //        //{
+            //        //    xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
+            //        //}
+            //        //else
+            //        //{
+            //        //    xrTableCell28.Text = "0.00";
+            //        //}
+            //        xrTableCell28.Text = String.Format("{0:N}", (Convert.ToDecimal(sonuc)));
+            //        xrTableCell21.Text = String.Format("{0:N}", Convert.ToDecimal(xrTableCell10.Text) + Convert.ToDecimal(xrTableCell28.Text));
+            //    }
+            //    else
+            //    {
+            //        xrTableCell28.Text = "0.00";
+            //        xrTableCell21.Text = (double.Parse(String.Format("{0:N}", Convert.ToDouble(xrTableCell21.Text) - Convert.ToDouble(sonuc)))).ToString();
+            //    }
+
+
+            //}
         }
     }
 }

@@ -34,6 +34,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<BackOrderMain> BackOrderMains { get; set; }
         public virtual DbSet<BillTo> BillToes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<CommandLog> CommandLogs { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<CompanyPath> CompanyPaths { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
@@ -208,6 +209,75 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ProductCode", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BackOrderItemSeach_Result>("BackOrderItemSeach", productCodeParameter);
+        }
+    
+        public virtual int CommandExecute(string command, string commandType, Nullable<int> mode, string comment, string databaseName, string schemaName, string objectName, string objectType, string indexName, Nullable<int> indexType, string statisticsName, Nullable<int> partitionNumber, string extendedInfo, Nullable<int> lockMessageSeverity, string logToTable, string execute)
+        {
+            var commandParameter = command != null ?
+                new ObjectParameter("Command", command) :
+                new ObjectParameter("Command", typeof(string));
+    
+            var commandTypeParameter = commandType != null ?
+                new ObjectParameter("CommandType", commandType) :
+                new ObjectParameter("CommandType", typeof(string));
+    
+            var modeParameter = mode.HasValue ?
+                new ObjectParameter("Mode", mode) :
+                new ObjectParameter("Mode", typeof(int));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("Comment", comment) :
+                new ObjectParameter("Comment", typeof(string));
+    
+            var databaseNameParameter = databaseName != null ?
+                new ObjectParameter("DatabaseName", databaseName) :
+                new ObjectParameter("DatabaseName", typeof(string));
+    
+            var schemaNameParameter = schemaName != null ?
+                new ObjectParameter("SchemaName", schemaName) :
+                new ObjectParameter("SchemaName", typeof(string));
+    
+            var objectNameParameter = objectName != null ?
+                new ObjectParameter("ObjectName", objectName) :
+                new ObjectParameter("ObjectName", typeof(string));
+    
+            var objectTypeParameter = objectType != null ?
+                new ObjectParameter("ObjectType", objectType) :
+                new ObjectParameter("ObjectType", typeof(string));
+    
+            var indexNameParameter = indexName != null ?
+                new ObjectParameter("IndexName", indexName) :
+                new ObjectParameter("IndexName", typeof(string));
+    
+            var indexTypeParameter = indexType.HasValue ?
+                new ObjectParameter("IndexType", indexType) :
+                new ObjectParameter("IndexType", typeof(int));
+    
+            var statisticsNameParameter = statisticsName != null ?
+                new ObjectParameter("StatisticsName", statisticsName) :
+                new ObjectParameter("StatisticsName", typeof(string));
+    
+            var partitionNumberParameter = partitionNumber.HasValue ?
+                new ObjectParameter("PartitionNumber", partitionNumber) :
+                new ObjectParameter("PartitionNumber", typeof(int));
+    
+            var extendedInfoParameter = extendedInfo != null ?
+                new ObjectParameter("ExtendedInfo", extendedInfo) :
+                new ObjectParameter("ExtendedInfo", typeof(string));
+    
+            var lockMessageSeverityParameter = lockMessageSeverity.HasValue ?
+                new ObjectParameter("LockMessageSeverity", lockMessageSeverity) :
+                new ObjectParameter("LockMessageSeverity", typeof(int));
+    
+            var logToTableParameter = logToTable != null ?
+                new ObjectParameter("LogToTable", logToTable) :
+                new ObjectParameter("LogToTable", typeof(string));
+    
+            var executeParameter = execute != null ?
+                new ObjectParameter("Execute", execute) :
+                new ObjectParameter("Execute", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CommandExecute", commandParameter, commandTypeParameter, modeParameter, commentParameter, databaseNameParameter, schemaNameParameter, objectNameParameter, objectTypeParameter, indexNameParameter, indexTypeParameter, statisticsNameParameter, partitionNumberParameter, extendedInfoParameter, lockMessageSeverityParameter, logToTableParameter, executeParameter);
         }
     
         public virtual int CompanyAdd(Nullable<decimal> companyId, string companyName, string mailingName, string address, string phone, string mobile, string emailId, string web, string country, string state, string pin, Nullable<decimal> currencyId, Nullable<System.DateTime> financialYearFrom, Nullable<System.DateTime> booksBeginingFrom, string tin, string cst, string pan)
@@ -631,6 +701,312 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<CustomersDebits_Result> CustomersDebits()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CustomersDebits_Result>("CustomersDebits");
+        }
+    
+        public virtual int DatabaseBackup(string databases, string directory, string backupType, string verify, Nullable<int> cleanupTime, string cleanupMode, string compress, string copyOnly, string changeBackupType, string backupSoftware, string checkSum, Nullable<int> blockSize, Nullable<int> bufferCount, Nullable<int> maxTransferSize, Nullable<int> numberOfFiles, Nullable<int> compressionLevel, string description, Nullable<int> threads, Nullable<int> throttle, string encrypt, string encryptionAlgorithm, string serverCertificate, string serverAsymmetricKey, string encryptionKey, string readWriteFileGroups, string overrideBackupPreference, string noRecovery, string uRL, string credential, string mirrorDirectory, Nullable<int> mirrorCleanupTime, string mirrorCleanupMode, string mirrorURL, string availabilityGroups, string updateability, string adaptiveCompression, Nullable<int> modificationLevel, Nullable<int> logSizeSinceLastLogBackup, Nullable<int> timeSinceLastLogBackup, string dataDomainBoostHost, string dataDomainBoostUser, string dataDomainBoostDevicePath, string dataDomainBoostLockboxPath, string directoryStructure, string availabilityGroupDirectoryStructure, string fileName, string availabilityGroupFileName, string fileExtensionFull, string fileExtensionDiff, string fileExtensionLog, string init, string databaseOrder, string databasesInParallel, string logToTable, string execute)
+        {
+            var databasesParameter = databases != null ?
+                new ObjectParameter("Databases", databases) :
+                new ObjectParameter("Databases", typeof(string));
+    
+            var directoryParameter = directory != null ?
+                new ObjectParameter("Directory", directory) :
+                new ObjectParameter("Directory", typeof(string));
+    
+            var backupTypeParameter = backupType != null ?
+                new ObjectParameter("BackupType", backupType) :
+                new ObjectParameter("BackupType", typeof(string));
+    
+            var verifyParameter = verify != null ?
+                new ObjectParameter("Verify", verify) :
+                new ObjectParameter("Verify", typeof(string));
+    
+            var cleanupTimeParameter = cleanupTime.HasValue ?
+                new ObjectParameter("CleanupTime", cleanupTime) :
+                new ObjectParameter("CleanupTime", typeof(int));
+    
+            var cleanupModeParameter = cleanupMode != null ?
+                new ObjectParameter("CleanupMode", cleanupMode) :
+                new ObjectParameter("CleanupMode", typeof(string));
+    
+            var compressParameter = compress != null ?
+                new ObjectParameter("Compress", compress) :
+                new ObjectParameter("Compress", typeof(string));
+    
+            var copyOnlyParameter = copyOnly != null ?
+                new ObjectParameter("CopyOnly", copyOnly) :
+                new ObjectParameter("CopyOnly", typeof(string));
+    
+            var changeBackupTypeParameter = changeBackupType != null ?
+                new ObjectParameter("ChangeBackupType", changeBackupType) :
+                new ObjectParameter("ChangeBackupType", typeof(string));
+    
+            var backupSoftwareParameter = backupSoftware != null ?
+                new ObjectParameter("BackupSoftware", backupSoftware) :
+                new ObjectParameter("BackupSoftware", typeof(string));
+    
+            var checkSumParameter = checkSum != null ?
+                new ObjectParameter("CheckSum", checkSum) :
+                new ObjectParameter("CheckSum", typeof(string));
+    
+            var blockSizeParameter = blockSize.HasValue ?
+                new ObjectParameter("BlockSize", blockSize) :
+                new ObjectParameter("BlockSize", typeof(int));
+    
+            var bufferCountParameter = bufferCount.HasValue ?
+                new ObjectParameter("BufferCount", bufferCount) :
+                new ObjectParameter("BufferCount", typeof(int));
+    
+            var maxTransferSizeParameter = maxTransferSize.HasValue ?
+                new ObjectParameter("MaxTransferSize", maxTransferSize) :
+                new ObjectParameter("MaxTransferSize", typeof(int));
+    
+            var numberOfFilesParameter = numberOfFiles.HasValue ?
+                new ObjectParameter("NumberOfFiles", numberOfFiles) :
+                new ObjectParameter("NumberOfFiles", typeof(int));
+    
+            var compressionLevelParameter = compressionLevel.HasValue ?
+                new ObjectParameter("CompressionLevel", compressionLevel) :
+                new ObjectParameter("CompressionLevel", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var threadsParameter = threads.HasValue ?
+                new ObjectParameter("Threads", threads) :
+                new ObjectParameter("Threads", typeof(int));
+    
+            var throttleParameter = throttle.HasValue ?
+                new ObjectParameter("Throttle", throttle) :
+                new ObjectParameter("Throttle", typeof(int));
+    
+            var encryptParameter = encrypt != null ?
+                new ObjectParameter("Encrypt", encrypt) :
+                new ObjectParameter("Encrypt", typeof(string));
+    
+            var encryptionAlgorithmParameter = encryptionAlgorithm != null ?
+                new ObjectParameter("EncryptionAlgorithm", encryptionAlgorithm) :
+                new ObjectParameter("EncryptionAlgorithm", typeof(string));
+    
+            var serverCertificateParameter = serverCertificate != null ?
+                new ObjectParameter("ServerCertificate", serverCertificate) :
+                new ObjectParameter("ServerCertificate", typeof(string));
+    
+            var serverAsymmetricKeyParameter = serverAsymmetricKey != null ?
+                new ObjectParameter("ServerAsymmetricKey", serverAsymmetricKey) :
+                new ObjectParameter("ServerAsymmetricKey", typeof(string));
+    
+            var encryptionKeyParameter = encryptionKey != null ?
+                new ObjectParameter("EncryptionKey", encryptionKey) :
+                new ObjectParameter("EncryptionKey", typeof(string));
+    
+            var readWriteFileGroupsParameter = readWriteFileGroups != null ?
+                new ObjectParameter("ReadWriteFileGroups", readWriteFileGroups) :
+                new ObjectParameter("ReadWriteFileGroups", typeof(string));
+    
+            var overrideBackupPreferenceParameter = overrideBackupPreference != null ?
+                new ObjectParameter("OverrideBackupPreference", overrideBackupPreference) :
+                new ObjectParameter("OverrideBackupPreference", typeof(string));
+    
+            var noRecoveryParameter = noRecovery != null ?
+                new ObjectParameter("NoRecovery", noRecovery) :
+                new ObjectParameter("NoRecovery", typeof(string));
+    
+            var uRLParameter = uRL != null ?
+                new ObjectParameter("URL", uRL) :
+                new ObjectParameter("URL", typeof(string));
+    
+            var credentialParameter = credential != null ?
+                new ObjectParameter("Credential", credential) :
+                new ObjectParameter("Credential", typeof(string));
+    
+            var mirrorDirectoryParameter = mirrorDirectory != null ?
+                new ObjectParameter("MirrorDirectory", mirrorDirectory) :
+                new ObjectParameter("MirrorDirectory", typeof(string));
+    
+            var mirrorCleanupTimeParameter = mirrorCleanupTime.HasValue ?
+                new ObjectParameter("MirrorCleanupTime", mirrorCleanupTime) :
+                new ObjectParameter("MirrorCleanupTime", typeof(int));
+    
+            var mirrorCleanupModeParameter = mirrorCleanupMode != null ?
+                new ObjectParameter("MirrorCleanupMode", mirrorCleanupMode) :
+                new ObjectParameter("MirrorCleanupMode", typeof(string));
+    
+            var mirrorURLParameter = mirrorURL != null ?
+                new ObjectParameter("MirrorURL", mirrorURL) :
+                new ObjectParameter("MirrorURL", typeof(string));
+    
+            var availabilityGroupsParameter = availabilityGroups != null ?
+                new ObjectParameter("AvailabilityGroups", availabilityGroups) :
+                new ObjectParameter("AvailabilityGroups", typeof(string));
+    
+            var updateabilityParameter = updateability != null ?
+                new ObjectParameter("Updateability", updateability) :
+                new ObjectParameter("Updateability", typeof(string));
+    
+            var adaptiveCompressionParameter = adaptiveCompression != null ?
+                new ObjectParameter("AdaptiveCompression", adaptiveCompression) :
+                new ObjectParameter("AdaptiveCompression", typeof(string));
+    
+            var modificationLevelParameter = modificationLevel.HasValue ?
+                new ObjectParameter("ModificationLevel", modificationLevel) :
+                new ObjectParameter("ModificationLevel", typeof(int));
+    
+            var logSizeSinceLastLogBackupParameter = logSizeSinceLastLogBackup.HasValue ?
+                new ObjectParameter("LogSizeSinceLastLogBackup", logSizeSinceLastLogBackup) :
+                new ObjectParameter("LogSizeSinceLastLogBackup", typeof(int));
+    
+            var timeSinceLastLogBackupParameter = timeSinceLastLogBackup.HasValue ?
+                new ObjectParameter("TimeSinceLastLogBackup", timeSinceLastLogBackup) :
+                new ObjectParameter("TimeSinceLastLogBackup", typeof(int));
+    
+            var dataDomainBoostHostParameter = dataDomainBoostHost != null ?
+                new ObjectParameter("DataDomainBoostHost", dataDomainBoostHost) :
+                new ObjectParameter("DataDomainBoostHost", typeof(string));
+    
+            var dataDomainBoostUserParameter = dataDomainBoostUser != null ?
+                new ObjectParameter("DataDomainBoostUser", dataDomainBoostUser) :
+                new ObjectParameter("DataDomainBoostUser", typeof(string));
+    
+            var dataDomainBoostDevicePathParameter = dataDomainBoostDevicePath != null ?
+                new ObjectParameter("DataDomainBoostDevicePath", dataDomainBoostDevicePath) :
+                new ObjectParameter("DataDomainBoostDevicePath", typeof(string));
+    
+            var dataDomainBoostLockboxPathParameter = dataDomainBoostLockboxPath != null ?
+                new ObjectParameter("DataDomainBoostLockboxPath", dataDomainBoostLockboxPath) :
+                new ObjectParameter("DataDomainBoostLockboxPath", typeof(string));
+    
+            var directoryStructureParameter = directoryStructure != null ?
+                new ObjectParameter("DirectoryStructure", directoryStructure) :
+                new ObjectParameter("DirectoryStructure", typeof(string));
+    
+            var availabilityGroupDirectoryStructureParameter = availabilityGroupDirectoryStructure != null ?
+                new ObjectParameter("AvailabilityGroupDirectoryStructure", availabilityGroupDirectoryStructure) :
+                new ObjectParameter("AvailabilityGroupDirectoryStructure", typeof(string));
+    
+            var fileNameParameter = fileName != null ?
+                new ObjectParameter("FileName", fileName) :
+                new ObjectParameter("FileName", typeof(string));
+    
+            var availabilityGroupFileNameParameter = availabilityGroupFileName != null ?
+                new ObjectParameter("AvailabilityGroupFileName", availabilityGroupFileName) :
+                new ObjectParameter("AvailabilityGroupFileName", typeof(string));
+    
+            var fileExtensionFullParameter = fileExtensionFull != null ?
+                new ObjectParameter("FileExtensionFull", fileExtensionFull) :
+                new ObjectParameter("FileExtensionFull", typeof(string));
+    
+            var fileExtensionDiffParameter = fileExtensionDiff != null ?
+                new ObjectParameter("FileExtensionDiff", fileExtensionDiff) :
+                new ObjectParameter("FileExtensionDiff", typeof(string));
+    
+            var fileExtensionLogParameter = fileExtensionLog != null ?
+                new ObjectParameter("FileExtensionLog", fileExtensionLog) :
+                new ObjectParameter("FileExtensionLog", typeof(string));
+    
+            var initParameter = init != null ?
+                new ObjectParameter("Init", init) :
+                new ObjectParameter("Init", typeof(string));
+    
+            var databaseOrderParameter = databaseOrder != null ?
+                new ObjectParameter("DatabaseOrder", databaseOrder) :
+                new ObjectParameter("DatabaseOrder", typeof(string));
+    
+            var databasesInParallelParameter = databasesInParallel != null ?
+                new ObjectParameter("DatabasesInParallel", databasesInParallel) :
+                new ObjectParameter("DatabasesInParallel", typeof(string));
+    
+            var logToTableParameter = logToTable != null ?
+                new ObjectParameter("LogToTable", logToTable) :
+                new ObjectParameter("LogToTable", typeof(string));
+    
+            var executeParameter = execute != null ?
+                new ObjectParameter("Execute", execute) :
+                new ObjectParameter("Execute", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DatabaseBackup", databasesParameter, directoryParameter, backupTypeParameter, verifyParameter, cleanupTimeParameter, cleanupModeParameter, compressParameter, copyOnlyParameter, changeBackupTypeParameter, backupSoftwareParameter, checkSumParameter, blockSizeParameter, bufferCountParameter, maxTransferSizeParameter, numberOfFilesParameter, compressionLevelParameter, descriptionParameter, threadsParameter, throttleParameter, encryptParameter, encryptionAlgorithmParameter, serverCertificateParameter, serverAsymmetricKeyParameter, encryptionKeyParameter, readWriteFileGroupsParameter, overrideBackupPreferenceParameter, noRecoveryParameter, uRLParameter, credentialParameter, mirrorDirectoryParameter, mirrorCleanupTimeParameter, mirrorCleanupModeParameter, mirrorURLParameter, availabilityGroupsParameter, updateabilityParameter, adaptiveCompressionParameter, modificationLevelParameter, logSizeSinceLastLogBackupParameter, timeSinceLastLogBackupParameter, dataDomainBoostHostParameter, dataDomainBoostUserParameter, dataDomainBoostDevicePathParameter, dataDomainBoostLockboxPathParameter, directoryStructureParameter, availabilityGroupDirectoryStructureParameter, fileNameParameter, availabilityGroupFileNameParameter, fileExtensionFullParameter, fileExtensionDiffParameter, fileExtensionLogParameter, initParameter, databaseOrderParameter, databasesInParallelParameter, logToTableParameter, executeParameter);
+        }
+    
+        public virtual int DatabaseIntegrityCheck(string databases, string checkCommands, string physicalOnly, string noIndex, string extendedLogicalChecks, string tabLock, string fileGroups, string objects, Nullable<int> maxDOP, string availabilityGroups, string availabilityGroupReplicas, string updateability, Nullable<int> timeLimit, Nullable<int> lockTimeout, Nullable<int> lockMessageSeverity, string databaseOrder, string databasesInParallel, string logToTable, string execute)
+        {
+            var databasesParameter = databases != null ?
+                new ObjectParameter("Databases", databases) :
+                new ObjectParameter("Databases", typeof(string));
+    
+            var checkCommandsParameter = checkCommands != null ?
+                new ObjectParameter("CheckCommands", checkCommands) :
+                new ObjectParameter("CheckCommands", typeof(string));
+    
+            var physicalOnlyParameter = physicalOnly != null ?
+                new ObjectParameter("PhysicalOnly", physicalOnly) :
+                new ObjectParameter("PhysicalOnly", typeof(string));
+    
+            var noIndexParameter = noIndex != null ?
+                new ObjectParameter("NoIndex", noIndex) :
+                new ObjectParameter("NoIndex", typeof(string));
+    
+            var extendedLogicalChecksParameter = extendedLogicalChecks != null ?
+                new ObjectParameter("ExtendedLogicalChecks", extendedLogicalChecks) :
+                new ObjectParameter("ExtendedLogicalChecks", typeof(string));
+    
+            var tabLockParameter = tabLock != null ?
+                new ObjectParameter("TabLock", tabLock) :
+                new ObjectParameter("TabLock", typeof(string));
+    
+            var fileGroupsParameter = fileGroups != null ?
+                new ObjectParameter("FileGroups", fileGroups) :
+                new ObjectParameter("FileGroups", typeof(string));
+    
+            var objectsParameter = objects != null ?
+                new ObjectParameter("Objects", objects) :
+                new ObjectParameter("Objects", typeof(string));
+    
+            var maxDOPParameter = maxDOP.HasValue ?
+                new ObjectParameter("MaxDOP", maxDOP) :
+                new ObjectParameter("MaxDOP", typeof(int));
+    
+            var availabilityGroupsParameter = availabilityGroups != null ?
+                new ObjectParameter("AvailabilityGroups", availabilityGroups) :
+                new ObjectParameter("AvailabilityGroups", typeof(string));
+    
+            var availabilityGroupReplicasParameter = availabilityGroupReplicas != null ?
+                new ObjectParameter("AvailabilityGroupReplicas", availabilityGroupReplicas) :
+                new ObjectParameter("AvailabilityGroupReplicas", typeof(string));
+    
+            var updateabilityParameter = updateability != null ?
+                new ObjectParameter("Updateability", updateability) :
+                new ObjectParameter("Updateability", typeof(string));
+    
+            var timeLimitParameter = timeLimit.HasValue ?
+                new ObjectParameter("TimeLimit", timeLimit) :
+                new ObjectParameter("TimeLimit", typeof(int));
+    
+            var lockTimeoutParameter = lockTimeout.HasValue ?
+                new ObjectParameter("LockTimeout", lockTimeout) :
+                new ObjectParameter("LockTimeout", typeof(int));
+    
+            var lockMessageSeverityParameter = lockMessageSeverity.HasValue ?
+                new ObjectParameter("LockMessageSeverity", lockMessageSeverity) :
+                new ObjectParameter("LockMessageSeverity", typeof(int));
+    
+            var databaseOrderParameter = databaseOrder != null ?
+                new ObjectParameter("DatabaseOrder", databaseOrder) :
+                new ObjectParameter("DatabaseOrder", typeof(string));
+    
+            var databasesInParallelParameter = databasesInParallel != null ?
+                new ObjectParameter("DatabasesInParallel", databasesInParallel) :
+                new ObjectParameter("DatabasesInParallel", typeof(string));
+    
+            var logToTableParameter = logToTable != null ?
+                new ObjectParameter("LogToTable", logToTable) :
+                new ObjectParameter("LogToTable", typeof(string));
+    
+            var executeParameter = execute != null ?
+                new ObjectParameter("Execute", execute) :
+                new ObjectParameter("Execute", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DatabaseIntegrityCheck", databasesParameter, checkCommandsParameter, physicalOnlyParameter, noIndexParameter, extendedLogicalChecksParameter, tabLockParameter, fileGroupsParameter, objectsParameter, maxDOPParameter, availabilityGroupsParameter, availabilityGroupReplicasParameter, updateabilityParameter, timeLimitParameter, lockTimeoutParameter, lockMessageSeverityParameter, databaseOrderParameter, databasesInParallelParameter, logToTableParameter, executeParameter);
         }
     
         public virtual int DefaultCurrencySet(Nullable<decimal> currencyId)
@@ -1103,6 +1479,143 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Lithium", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HazardouseAdd", articleNoParameter, occurrencesParameter, environmentParameter, shippingParameter, lithiumParameter);
+        }
+    
+        public virtual int IndexOptimize(string databases, string fragmentationLow, string fragmentationMedium, string fragmentationHigh, Nullable<int> fragmentationLevel1, Nullable<int> fragmentationLevel2, Nullable<int> minNumberOfPages, Nullable<int> maxNumberOfPages, string sortInTempdb, Nullable<int> maxDOP, Nullable<int> fillFactor, string padIndex, string lOBCompaction, string updateStatistics, string onlyModifiedStatistics, Nullable<int> statisticsModificationLevel, Nullable<int> statisticsSample, string statisticsResample, string partitionLevel, string mSShippedObjects, string indexes, Nullable<int> timeLimit, Nullable<int> delay, Nullable<int> waitAtLowPriorityMaxDuration, string waitAtLowPriorityAbortAfterWait, string resumable, string availabilityGroups, Nullable<int> lockTimeout, Nullable<int> lockMessageSeverity, string databaseOrder, string databasesInParallel, string logToTable, string execute)
+        {
+            var databasesParameter = databases != null ?
+                new ObjectParameter("Databases", databases) :
+                new ObjectParameter("Databases", typeof(string));
+    
+            var fragmentationLowParameter = fragmentationLow != null ?
+                new ObjectParameter("FragmentationLow", fragmentationLow) :
+                new ObjectParameter("FragmentationLow", typeof(string));
+    
+            var fragmentationMediumParameter = fragmentationMedium != null ?
+                new ObjectParameter("FragmentationMedium", fragmentationMedium) :
+                new ObjectParameter("FragmentationMedium", typeof(string));
+    
+            var fragmentationHighParameter = fragmentationHigh != null ?
+                new ObjectParameter("FragmentationHigh", fragmentationHigh) :
+                new ObjectParameter("FragmentationHigh", typeof(string));
+    
+            var fragmentationLevel1Parameter = fragmentationLevel1.HasValue ?
+                new ObjectParameter("FragmentationLevel1", fragmentationLevel1) :
+                new ObjectParameter("FragmentationLevel1", typeof(int));
+    
+            var fragmentationLevel2Parameter = fragmentationLevel2.HasValue ?
+                new ObjectParameter("FragmentationLevel2", fragmentationLevel2) :
+                new ObjectParameter("FragmentationLevel2", typeof(int));
+    
+            var minNumberOfPagesParameter = minNumberOfPages.HasValue ?
+                new ObjectParameter("MinNumberOfPages", minNumberOfPages) :
+                new ObjectParameter("MinNumberOfPages", typeof(int));
+    
+            var maxNumberOfPagesParameter = maxNumberOfPages.HasValue ?
+                new ObjectParameter("MaxNumberOfPages", maxNumberOfPages) :
+                new ObjectParameter("MaxNumberOfPages", typeof(int));
+    
+            var sortInTempdbParameter = sortInTempdb != null ?
+                new ObjectParameter("SortInTempdb", sortInTempdb) :
+                new ObjectParameter("SortInTempdb", typeof(string));
+    
+            var maxDOPParameter = maxDOP.HasValue ?
+                new ObjectParameter("MaxDOP", maxDOP) :
+                new ObjectParameter("MaxDOP", typeof(int));
+    
+            var fillFactorParameter = fillFactor.HasValue ?
+                new ObjectParameter("FillFactor", fillFactor) :
+                new ObjectParameter("FillFactor", typeof(int));
+    
+            var padIndexParameter = padIndex != null ?
+                new ObjectParameter("PadIndex", padIndex) :
+                new ObjectParameter("PadIndex", typeof(string));
+    
+            var lOBCompactionParameter = lOBCompaction != null ?
+                new ObjectParameter("LOBCompaction", lOBCompaction) :
+                new ObjectParameter("LOBCompaction", typeof(string));
+    
+            var updateStatisticsParameter = updateStatistics != null ?
+                new ObjectParameter("UpdateStatistics", updateStatistics) :
+                new ObjectParameter("UpdateStatistics", typeof(string));
+    
+            var onlyModifiedStatisticsParameter = onlyModifiedStatistics != null ?
+                new ObjectParameter("OnlyModifiedStatistics", onlyModifiedStatistics) :
+                new ObjectParameter("OnlyModifiedStatistics", typeof(string));
+    
+            var statisticsModificationLevelParameter = statisticsModificationLevel.HasValue ?
+                new ObjectParameter("StatisticsModificationLevel", statisticsModificationLevel) :
+                new ObjectParameter("StatisticsModificationLevel", typeof(int));
+    
+            var statisticsSampleParameter = statisticsSample.HasValue ?
+                new ObjectParameter("StatisticsSample", statisticsSample) :
+                new ObjectParameter("StatisticsSample", typeof(int));
+    
+            var statisticsResampleParameter = statisticsResample != null ?
+                new ObjectParameter("StatisticsResample", statisticsResample) :
+                new ObjectParameter("StatisticsResample", typeof(string));
+    
+            var partitionLevelParameter = partitionLevel != null ?
+                new ObjectParameter("PartitionLevel", partitionLevel) :
+                new ObjectParameter("PartitionLevel", typeof(string));
+    
+            var mSShippedObjectsParameter = mSShippedObjects != null ?
+                new ObjectParameter("MSShippedObjects", mSShippedObjects) :
+                new ObjectParameter("MSShippedObjects", typeof(string));
+    
+            var indexesParameter = indexes != null ?
+                new ObjectParameter("Indexes", indexes) :
+                new ObjectParameter("Indexes", typeof(string));
+    
+            var timeLimitParameter = timeLimit.HasValue ?
+                new ObjectParameter("TimeLimit", timeLimit) :
+                new ObjectParameter("TimeLimit", typeof(int));
+    
+            var delayParameter = delay.HasValue ?
+                new ObjectParameter("Delay", delay) :
+                new ObjectParameter("Delay", typeof(int));
+    
+            var waitAtLowPriorityMaxDurationParameter = waitAtLowPriorityMaxDuration.HasValue ?
+                new ObjectParameter("WaitAtLowPriorityMaxDuration", waitAtLowPriorityMaxDuration) :
+                new ObjectParameter("WaitAtLowPriorityMaxDuration", typeof(int));
+    
+            var waitAtLowPriorityAbortAfterWaitParameter = waitAtLowPriorityAbortAfterWait != null ?
+                new ObjectParameter("WaitAtLowPriorityAbortAfterWait", waitAtLowPriorityAbortAfterWait) :
+                new ObjectParameter("WaitAtLowPriorityAbortAfterWait", typeof(string));
+    
+            var resumableParameter = resumable != null ?
+                new ObjectParameter("Resumable", resumable) :
+                new ObjectParameter("Resumable", typeof(string));
+    
+            var availabilityGroupsParameter = availabilityGroups != null ?
+                new ObjectParameter("AvailabilityGroups", availabilityGroups) :
+                new ObjectParameter("AvailabilityGroups", typeof(string));
+    
+            var lockTimeoutParameter = lockTimeout.HasValue ?
+                new ObjectParameter("LockTimeout", lockTimeout) :
+                new ObjectParameter("LockTimeout", typeof(int));
+    
+            var lockMessageSeverityParameter = lockMessageSeverity.HasValue ?
+                new ObjectParameter("LockMessageSeverity", lockMessageSeverity) :
+                new ObjectParameter("LockMessageSeverity", typeof(int));
+    
+            var databaseOrderParameter = databaseOrder != null ?
+                new ObjectParameter("DatabaseOrder", databaseOrder) :
+                new ObjectParameter("DatabaseOrder", typeof(string));
+    
+            var databasesInParallelParameter = databasesInParallel != null ?
+                new ObjectParameter("DatabasesInParallel", databasesInParallel) :
+                new ObjectParameter("DatabasesInParallel", typeof(string));
+    
+            var logToTableParameter = logToTable != null ?
+                new ObjectParameter("LogToTable", logToTable) :
+                new ObjectParameter("LogToTable", typeof(string));
+    
+            var executeParameter = execute != null ?
+                new ObjectParameter("Execute", execute) :
+                new ObjectParameter("Execute", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IndexOptimize", databasesParameter, fragmentationLowParameter, fragmentationMediumParameter, fragmentationHighParameter, fragmentationLevel1Parameter, fragmentationLevel2Parameter, minNumberOfPagesParameter, maxNumberOfPagesParameter, sortInTempdbParameter, maxDOPParameter, fillFactorParameter, padIndexParameter, lOBCompactionParameter, updateStatisticsParameter, onlyModifiedStatisticsParameter, statisticsModificationLevelParameter, statisticsSampleParameter, statisticsResampleParameter, partitionLevelParameter, mSShippedObjectsParameter, indexesParameter, timeLimitParameter, delayParameter, waitAtLowPriorityMaxDurationParameter, waitAtLowPriorityAbortAfterWaitParameter, resumableParameter, availabilityGroupsParameter, lockTimeoutParameter, lockMessageSeverityParameter, databaseOrderParameter, databasesInParallelParameter, logToTableParameter, executeParameter);
         }
     
         public virtual int ItemAdd(string articleNo, string articleDesc, Nullable<int> packCode, Nullable<int> packQuantity, Nullable<int> unitContent, string unitMeasure, Nullable<decimal> ukCol1, Nullable<decimal> standardWeight, string hazardousInd, string calibrationInd, string obsoleteFlag, string mH1, string lowDiscountInd, string licensedInd, string shelfLife, string cofO, string eUR1Indicator, string cCCNNo, string supercedeDate, string currentCatpage, string ukIntroDate, string filler, string ukDiscDate, string substituteBy, string bHCFlag, string filler1, Nullable<decimal> futureSellPrice, string intCat, string newProdChangeInd, string outofStockProhibitchangeind, string discChangeInd, string supercededChangeInd, string packSizeChangeInd, string rolledProductChangeInd, string expiringProductChangeInd, string manufacturer, string mPN, string mHCodeLevel1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
@@ -2972,6 +3485,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("WorkerID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UserAuthorization_Worker", workerIDParameter);
+        }
+    
+        public virtual int utl_DbReIndex()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("utl_DbReIndex");
         }
     }
 }

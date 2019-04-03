@@ -11,7 +11,7 @@ namespace LoginForm
     public partial class frmCustomerGroup : DevExpress.XtraEditors.XtraForm
     {
         LogoSQL logosql = new LogoSQL();
-        private readonly string server = @"159.69.213.172";
+        private readonly string server = @"ime.resetbulut.com,47500";
         private readonly string logodatabase = "LOGO";
         private readonly string sqluser = "sa";
         private readonly string sqlpassword = "IME1453";

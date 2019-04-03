@@ -1,12 +1,15 @@
-﻿using LoginForm.DataSet;
+﻿using DevExpress.XtraSplashScreen;
+using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace LoginForm.QuotationModule
 {
@@ -709,6 +712,43 @@ namespace LoginForm.QuotationModule
         {
             //CustomerCode.Text = CustomerSearchGrid.CurrentRow.Cells["ID"].Value.ToString();
             //CustomerName.Text = CustomerSearchGrid.CurrentRow.Cells["c_name"].Value.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "XML File | *.xml",
+                Title = "Aktarılacak Online Siparişi Se\x00e7iniz"
+            };
+
+            if (DialogResult.OK == dialog.ShowDialog())
+            {
+                try
+                {
+                    XmlTextReader reader = new XmlTextReader(dialog.FileName);
+                    while (reader.Read())
+                    {
+                        if (reader.NodeType == XmlNodeType.Element)
+                        {
+                            string name = reader.Name;
+                            switch (name)
+                            {
+                                case "Company":
+                                    reader.Read();
+                                    CustomerName.Text = reader.Value;
+                                    break;
+                            }
+                        }
+                    }
+                    reader.Close();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }

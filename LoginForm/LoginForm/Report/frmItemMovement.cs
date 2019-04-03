@@ -16,7 +16,7 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string txtSelected = "";
         LogoSQL logosql = new LogoSQL();
-        string server = @"159.69.213.172";
+        string server = @"ime.resetbulut.com,47500";
         string logodatabase = "LOGO";
         string sqluser = "sa";
         string sqlpassword = "IME1453";

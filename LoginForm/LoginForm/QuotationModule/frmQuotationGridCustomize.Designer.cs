@@ -40,7 +40,7 @@
             // 
             this.DoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DoneButton.Image = global::LoginForm.Properties.Resources.if_floppy_285657;
-            this.DoneButton.Location = new System.Drawing.Point(1196, 171);
+            this.DoneButton.Location = new System.Drawing.Point(1216, 171);
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.Size = new System.Drawing.Size(52, 52);
             this.DoneButton.TabIndex = 1;
@@ -93,7 +93,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1206, 227);
+            this.label1.Location = new System.Drawing.Point(1226, 227);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 26;
@@ -104,13 +104,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(237)))), ((int)(((byte)(220)))));
-            this.ClientSize = new System.Drawing.Size(1260, 244);
+            this.ClientSize = new System.Drawing.Size(1280, 244);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.DoneButton);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1296, 283);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1296, 283);
             this.Name = "frmQuotationGridCustomize";
             this.Text = "Quotation Grid Customize";
             this.ResumeLayout(false);

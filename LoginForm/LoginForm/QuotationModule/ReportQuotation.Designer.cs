@@ -654,8 +654,8 @@ namespace LoginForm
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell21.BorderWidth = 2F;
-            this.xrTableCell21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding(this.pGross, "Text", "{0:#.00}")});
+            //this.xrTableCell21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            //new DevExpress.XtraReports.UI.XRBinding(this.pGross, "Text", "{0:#.00}")});
             this.xrTableCell21.Dpi = 254F;
             this.xrTableCell21.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.xrTableCell21.Name = "xrTableCell21";

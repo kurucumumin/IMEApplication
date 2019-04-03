@@ -1,6 +1,5 @@
 ﻿using LoginForm.DataSet;
 using System;
-using LoginForm.DataSet;
 using LoginForm.Main;
 using LoginForm.Services;
 using System.Data;
@@ -55,7 +54,6 @@ namespace LoginForm
                     Utils.setCurrentUser(Logged);
 
                     Utils.User(countryLogo, PW);
-
                     Utils.LogKayit("Login", "Login form screen has been entered");
 
                     frmMainMetro formMain = new frmMainMetro();
