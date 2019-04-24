@@ -1574,5 +1574,35 @@ namespace LoginForm.QuotationModule
             dgQuotation.DrawToBitmap(bm, new Rectangle(0, 0, this.dgQuotation.Width, this.dgQuotation.Height));
             e.Graphics.DrawImage(bm,10,10);
         }
+
+        private void dubaiQouToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+                Quotation quo;
+                Customer c;
+                IMEEntities IME = new IMEEntities();
+                try
+                {
+                    quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+                    c = IME.Customers.Where(q => q.ID == quo.CustomerID).FirstOrDefault();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (quo != null)
+                {
+                    FormQuotationAdd_Dubai newForm = new FormQuotationAdd_Dubai("View", quo, c);
+                    newForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
     }
 }

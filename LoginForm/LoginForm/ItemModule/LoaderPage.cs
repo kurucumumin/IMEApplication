@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.ItemModule
 {
-    public partial class LoaderPage : MyForm
+    public partial class LoaderPage : Form
     {
         IMEEntities IME = new IMEEntities();
         public LoaderPage()

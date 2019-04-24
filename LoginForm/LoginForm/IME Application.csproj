@@ -1061,6 +1061,12 @@
     <Compile Include="QuotationModule\FormQuotationAdd -Turkey.designer.cs">
       <DependentUpon>FormQuotationAdd -Turkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd-Dubai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd-Dubai.Designer.cs">
+      <DependentUpon>FormQuotationAdd-Dubai.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuotationAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1572,6 +1578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationAdd -Turkey.resx">
       <DependentUpon>FormQuotationAdd -Turkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\FormQuotationAdd-Dubai.resx">
+      <DependentUpon>FormQuotationAdd-Dubai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationAdd.resx">
       <DependentUpon>FormQuotationAdd.cs</DependentUpon>
